@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edelstahl 316L 3D-Druck – SLM/DMLS Metall | 3D DRUCK LIFE</title>
+<meta name="description" content="Edelstahl 316L im 3D-Druck: SLM/DMLS-Verfahren, Eigenschaften, technische Daten, Anwendungen in Medizintechnik, Chemie und Maschinenbau. Jetzt Preis berechnen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+/* BREADCRUMB */
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+/* HERO */
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(36px, 5.5vw, 58px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+/* STICKY TOC */
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+/* SECTION BASE */
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+/* INTRO */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+/* VERGLEICH */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 24px; font-weight: 900; margin-bottom: 18px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.ccard__row:last-child { border-bottom: none; padding-bottom: 0; }
+.ccard__key { color: var(--ink-soft); }
+.ccard__val { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-g { background: #22c55e; }
+.dot-y { background: #f59e0b; }
+.dot-r { background: #ef4444; }
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+
+/* CHEM / TECH TABLES */
+.chem-table-wrap, .tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table, .tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead, .tech-table thead { background: var(--ink); color: #fff; }
+.chem-table th, .tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td, .tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.chem-table td:first-child, .tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table tr:last-child td, .tech-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td, .tech-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* BLOG-LINK-BOX */
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+/* VARIANTEN */
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ANWENDUNGEN */
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+
+/* NACHBEARBEITUNG */
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__num { width: 32px; height: 32px; border-radius: 50%; background: var(--orange); color: #fff; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: var(--orange-soft); border: 1px solid #ffd0a8; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: var(--orange-dark); }
+.post-note strong { font-weight: 700; }
+
+/* FÜLLUNGSGRADE */
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__name { font-size: 15px; font-weight: 900; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-tag { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 700; margin-bottom: 8px; }
+
+/* GRENZEN */
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+/* FAQ */
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+
+/* CTA */
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.contact-row { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.contact-icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); flex-shrink: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { display: none; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">›</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">›</span>
+    <span class="breadcrumb__current">Edelstahl SLM/DMLS</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__eyebrow">Metall 3D-Druck · SLM / DMLS</div>
+      <h1 class="hero__title">Edelstahl 3D-Druck: korrosionsbeständig, <span class="accent">vielseitig</span> und hochfest.</h1>
+      <p class="hero__sub">316L (1.4404) ist der meistgenutzte Werkstoff im Metall-3D-Druck. Exzellente Korrosionsbeständigkeit, biokompatibel auf Anfrage und direkt druckfertig von der CAD-Datei.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">~530 MPa</span><span class="kstat__lbl">Zugfestigkeit</span></div>
+        <div class="kstat"><span class="kstat__val">bis 400 °C</span><span class="kstat__lbl">Einsatztemp.</span></div>
+        <div class="kstat"><span class="kstat__val">7,9 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+        <div class="kstat"><span class="kstat__val">16 W/mK</span><span class="kstat__lbl">Wärmeleitf.</span></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+        <span class="chip chip--orange">Korrosionsbeständig</span>
+        <span class="chip chip--blue">Nicht magnetisch</span>
+        <span class="chip chip--orange">Lebensmittelgeeignet</span>
+      </div>
+      <div class="btn-row">
+        <a href="https://3ddrucklife.com" class="btn btn--orange" target="_parent">&#10154; Preis berechnen</a>
+        <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Edelstahl" class="btn btn--outline">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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" alt="Edelstahl 316L SLM 3D-gedrucktes Bauteil" width="900" height="900">
+    </div>
+  </div>
+</header>
+
+<!-- STICKY TOC -->
+<nav class="toc-bar" aria-label="Seitennavigation">
+  <div class="toc-bar__inner">
+    <a class="toc-link" data-s="material" href="#material">Material</a>
+    <a class="toc-link" data-s="eigenschaften" href="#eigenschaften">Eigenschaften</a>
+    <a class="toc-link" data-s="chemie" href="#chemie">Chemie</a>
+    <a class="toc-link" data-s="techdaten" href="#techdaten">Techdaten</a>
+    <a class="toc-link" data-s="anwendungen" href="#anwendungen">Anwendungen</a>
+    <a class="toc-link" data-s="varianten" href="#varianten">Varianten</a>
+    <a class="toc-link" data-s="nachbearbeitung" href="#nachbearbeitung">Nachbearbeitung</a>
+    <a class="toc-link" data-s="fuellungsgrade" href="#fuellungsgrade">Wandstärken</a>
+    <a class="toc-link" data-s="grenzen" href="#grenzen">Grenzen</a>
+    <a class="toc-link" data-s="faq" href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST EDELSTAHL 316L -->
+<section id="material" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Werkstoff-Übersicht</div>
+    <h2 class="sec-title">Was ist Edelstahl 316L im 3D-Druck?</h2>
+    <p class="sec-sub">Alles Wissenswerte über den vielseitigsten Metallwerkstoff in der additiven Fertigung.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>Edelstahl 316L (Werkstoff-Nr. 1.4404) ist der Standard-Werkstoff im Metall-3D-Druck. Als austenitischer Chrom-Nickel-Molybdän-Stahl vereint er exzellente Korrosionsbeständigkeit mit guter mechanischer Festigkeit und lässt sich per SLM (Selective Laser Melting) oder DMLS (Direct Metal Laser Sintering) zu komplexen Bauteilen verarbeiten.</p>
+        <p>Das "L" in 316L steht für "Low Carbon" und bezeichnet einen reduzierten Kohlenstoffgehalt von maximal 0,03 %. Dieser niedrige C-Anteil verhindert die Sensibilisierung der Korngrenzen beim Schweissen und verbessert die Beständigkeit in aggressiven Medien erheblich.</p>
+        <p>Per SLM verschmilzt ein Hochleistungslaser das Metallpulver schichtweise mit Schichtdicken von 20 bis 60 Mikrometern. Das Ergebnis ist ein annähernd vollständig dichtes Bauteil (Dichte über 99,5 %) mit mechanischen Eigenschaften, die mit konventionell gefertigten Teilen vergleichbar oder sogar überlegen sind.</p>
+        <p>Das breite Anwendungsspektrum reicht von Medizintechnik und Pharmaindustrie über chemische Anlagen bis hin zu Schmuck und Designobjekten.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">🔬</div>
+          <div class="fact__body"><strong>Verfahren: SLM / DMLS</strong><span>Schichtdicke 20 bis 60 µm. Schutzgasatmosphäre (Argon). Porosität unter 0,5 %.</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🛡️</div>
+          <div class="fact__body"><strong>Passivschicht Cr₂O₃</strong><span>Selbstheilende Chromoxidschicht (2 bis 5 nm) schützt gegen Korrosion in fast allen Medien.</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🧲</div>
+          <div class="fact__body"><strong>Nicht magnetisch</strong><span>Austenitisches Gefüge bleibt auch nach dem Drucken paramagnetisch.</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🍽️</div>
+          <div class="fact__body"><strong>Lebensmittelgeeignet</strong><span>Nach Elektropolieren und Passivieren für Lebensmittel- und Pharmakontakt geeignet.</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">⚕️</div>
+          <div class="fact__body"><strong>Medizintechnik-tauglich</strong><span>Bedingt biokompatibel gemäß ISO 10993 (je nach Anwendung Zertifizierung erforderlich).</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN / VERGLEICH -->
+<section id="eigenschaften" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialvergleich</div>
+    <h2 class="sec-title">316L im Vergleich zu anderen Metallwerkstoffen.</h2>
+    <p class="sec-sub">Aluminium AlSi10Mg, Edelstahl 316L und Titan Ti6Al4V auf einen Blick.</p>
+    <div class="compare-grid">
+      <div class="ccard">
+        <div class="ccard__label">Leichtbau</div>
+        <div class="ccard__name">Aluminium AlSi10Mg</div>
+        <div class="ccard__row"><span class="ccard__key">Dichte</span><span class="ccard__val">2,67 g/cm³</span></div>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">400 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Korrosion</span><span class="ccard__val"><span class="dot dot-g"></span>Sehr gut</span></div>
+        <div class="ccard__row"><span class="ccard__key">Biokompatibel</span><span class="ccard__val"><span class="dot dot-r"></span>Nein</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis relativ</span><span class="ccard__val">Mittel</span></div>
+      </div>
+      <div class="ccard ccard--center">
+        <div class="ccard__label">Standard Edelstahl</div>
+        <div class="ccard__name">Edelstahl 316L ★</div>
+        <div class="ccard__row"><span class="ccard__key">Dichte</span><span class="ccard__val">7,9 g/cm³</span></div>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">530 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Korrosion</span><span class="ccard__val"><span class="dot dot-g"></span>Exzellent</span></div>
+        <div class="ccard__row"><span class="ccard__key">Biokompatibel</span><span class="ccard__val"><span class="dot dot-y"></span>Bedingt</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis relativ</span><span class="ccard__val">Mittel</span></div>
+      </div>
+      <div class="ccard">
+        <div class="ccard__label">Hochleistung</div>
+        <div class="ccard__name">Titan Ti6Al4V</div>
+        <div class="ccard__row"><span class="ccard__key">Dichte</span><span class="ccard__val">4,43 g/cm³</span></div>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">1.100 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Korrosion</span><span class="ccard__val"><span class="dot dot-g"></span>Exzellent</span></div>
+        <div class="ccard__row"><span class="ccard__key">Biokompatibel</span><span class="ccard__val"><span class="dot dot-g"></span>Ja</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis relativ</span><span class="ccard__val">Hoch</span></div>
+      </div>
+    </div>
+    <h3 style="font-size:17px;font-weight:900;margin-bottom:16px;">Stärken von 316L auf einen Blick</h3>
+    <div class="strengths">
+      <div class="sitem">
+        <div class="sitem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><strong>Korrosionsschutz</strong><span>Beständig gegen Chloride, Säuren und alkalische Medien</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><strong>Hohe Duktilität</strong><span>Bruchdehnung bis 40 %, sehr gut umformbar</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div><strong>Vollmaterialdichte</strong><span>Dichte über 99,5 % erreichbar, nahezu porenfrei</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <div><strong>Komplexe Geometrien</strong><span>Innenkanäle, Hinterschnitte, Gitter ohne Aufpreis</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div><strong>Breites Einsatzgebiet</strong><span>Medizin, Chemie, Lebensmittel, Maschinenbau</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div><strong>Schweissbar</strong><span>Gut fügbar durch TIG/MIG, kein Vorwärmen nötig</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Chemie &amp; Metallurgie</div>
+    <h2 class="sec-title">Zusammensetzung und Mikrostruktur.</h2>
+    <p class="sec-sub">316L ist ein austenitischer CrNiMo-Stahl. Das Legierungskonzept bestimmt alle wesentlichen Eigenschaften.</p>
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead>
+          <tr><th>Element</th><th>Anteil (Masse-%)</th><th>Funktion</th><th>Wirkung</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Eisen (Fe)</td><td>Basis (~65 %)</td><td>Grundwerkstoff</td><td>Mechanische Tragfähigkeit</td></tr>
+          <tr><td>Chrom (Cr)</td><td>16 bis 18 %</td><td>Passivschicht</td><td>Bildet Cr₂O₃-Schutzschicht (2 bis 5 nm), selbstheilend</td></tr>
+          <tr><td>Nickel (Ni)</td><td>10 bis 14 %</td><td>Austenitbilder</td><td>Stabilisiert austenitisches Gefüge, erhöht Zähigkeit</td></tr>
+          <tr><td>Molybdän (Mo)</td><td>2 bis 3 %</td><td>Lochkorrosion</td><td>Erhöht Beständigkeit gegen Chloride (z. B. Meerwasser, Salzlösungen)</td></tr>
+          <tr><td>Kohlenstoff (C)</td><td>max. 0,03 %</td><td>Low-Carbon</td><td>Verhindert Chromkarbidausscheidung, kein Sensibilisierungsrisiko</td></tr>
+          <tr><td>Mangan (Mn)</td><td>max. 2 %</td><td>Desoxidation</td><td>Verbessert Verarbeitbarkeit</td></tr>
+          <tr><td>Silizium (Si)</td><td>max. 1 %</td><td>Desoxidation</td><td>Verbesserung der Schmelzflüssigkeit</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:28px;">
+      <h3 style="font-size:17px;font-weight:900;margin-bottom:12px;">SLM-Mikrostruktur vs. konventioneller Guss</h3>
+      <p style="color:var(--ink-soft);margin-bottom:12px;">SLM erzeugt eine sehr feine dendritische Mikrostruktur durch schnelle Erstarrungsraten (10³ bis 10⁶ K/s). Diese Feinkornstruktur führt zu einer höheren Festigkeit als bei gegossenem 316L (Hall-Petch-Verfestigung). Gleichzeitig entstehen durch den Schichtaufbau anisotrope Eigenschaften: Senkrecht zur Aufbaurichtung ist die Zugfestigkeit typisch 5 bis 10 % höher als parallel dazu.</p>
+      <p style="color:var(--ink-soft);">Lösungsglühen bei 1.050 °C homogenisiert das Gefüge und baut Eigenspannungen ab, reduziert aber einen Teil der durch den Druckprozess erzielten Festigkeitssteigerung. Spannungsarmglühen bei 650 °C bietet einen guten Kompromiss zwischen Eigenspannungsabbau und Festigkeitserhalt.</p>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <div>
+        <p>Welche Metalle lassen sich per SLM/DMLS drucken? Alle gängigen Pulverwerkstoffe und Verfahrensunterschiede im Überblick.</p>
+        <a href="https://www.3ddrucklife.de/post/metall-3d-druck" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Metall-3D-Druck im Detail</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNISCHE DATEN -->
+<section id="techdaten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Technische Daten</div>
+    <h2 class="sec-title">Richtwerte 316L SLM auf einen Blick.</h2>
+    <p class="sec-sub">Typische Werte nach ISO-Normprüfung. Abweichungen je nach Orientierung, Wärmebehandlung und Pulvercharge möglich.</p>
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead>
+          <tr><th>Eigenschaft</th><th>Wert</th><th>Norm</th><th>Hinweis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Zugfestigkeit (Rm)</td><td><span class="tval">510 bis 540 MPa</span></td><td>ISO 6892</td><td>Richtungsabhängig, vertikal tendenziell höher</td></tr>
+          <tr><td>Streckgrenze (Rp0,2)</td><td><span class="tval">310 bis 360 MPa</span></td><td>ISO 6892</td><td>Steigerbar durch Kaltverformung</td></tr>
+          <tr><td>Bruchdehnung (A5)</td><td><span class="tval">25 bis 40 %</span></td><td>ISO 6892</td><td>Sehr duktil, gut umformbar</td></tr>
+          <tr><td>E-Modul</td><td><span class="tval">~193 GPa</span></td><td>ISO 6892</td><td>Annähernd isotrop</td></tr>
+          <tr><td>Härte</td><td><span class="tval">175 bis 220 HV</span></td><td>ISO 6507</td><td>Oberfläche nach Elektropolieren etwas weicher</td></tr>
+          <tr><td>Dichte</td><td><span class="tval">7,9 bis 7,95 g/cm³</span></td><td>ISO 3369</td><td>Über 99,5 % Relativdichte erreichbar</td></tr>
+          <tr><td>Wärmeleitfähigkeit</td><td><span class="tval">16 W/(mK)</span></td><td>DIN EN ISO 22007</td><td>Niedrig (ca. 1/10 von Aluminium)</td></tr>
+          <tr><td>Magnetisch</td><td><span class="tval">Nicht magnetisch</span></td><td>austenitisch</td><td>Paramagnetisch auch nach SLM-Prozess</td></tr>
+          <tr><td>Einsatztemperatur</td><td><span class="tval">bis 400 °C</span></td><td>Dauerbetrieb</td><td>Kurzzeitig bis ca. 600 °C möglich</td></tr>
+          <tr><td>Schmelzpunkt</td><td><span class="tval">1.371 bis 1.399 °C</span></td><td>Lit.</td><td>Laserschmelze weit oberhalb</td></tr>
+          <tr><td>Spez. Wärmekapazität</td><td><span class="tval">500 J/(kgK)</span></td><td>Lit.</td><td>Raumtemperatur</td></tr>
+          <tr><td>Elektrischer Widerstand</td><td><span class="tval">7,4 × 10⁻⁷ Ω·m</span></td><td>Lit.</td><td>Kein ESD-Schutz, Nicht leitend für el. Abschirmung</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <div>
+        <p>Vollständige Materialdatenblätter, DIN-Normen und Vergleichswerte für alle gängigen Metall-3D-Druckwerkstoffe.</p>
+        <a href="https://www.3ddrucklife.de/post/3d-druck-materialeigenschaften" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Materialeigenschaften im Detail</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Anwendungsgebiete</div>
+    <h2 class="sec-title">Wo wird Edelstahl 316L eingesetzt?</h2>
+    <p class="sec-sub">Von der Medizintechnik bis zur chemischen Industrie. Überall dort, wo Korrosionsbeständigkeit und Festigkeit gefragt sind.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 21v-4M6.5 17C4 17 2 15 2 12.5S4 8 6.5 8c.3 0 .6 0 .9.1C8.3 5.7 10.5 4 13 4c3.3 0 6 2.7 6 6 0 .3 0 .6-.1.9 1.2.5 2.1 1.7 2.1 3.1 0 1.9-1.6 3-3 3H6.5z"/></svg></div>
+        <div class="ucard__title">Chemische Anlagen</div>
+        <p>Reaktorbauteile, Ventilkörper, Flansche und Rohrfittings. Beständig gegen Laugen, Säuren und Chloride auch bei erhöhter Temperatur.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="ucard__title">Medizintechnik</div>
+        <p>Chirurgische Instrumente, Endoskopkomponenten und medizinische Implantate. Sterilisierbar in Autoklav (134 °C, Dampf).</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2l1.5 1.5M19.5 2L21 3.5M12 2v2M2 12h2M20 12h2M4.5 19.5L3 21M19.5 19.5L21 21M12 20v2"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <div class="ucard__title">Lebensmittel und Pharma</div>
+        <p>Dosier- und Abfüllkomponenten, Mischerdüsen, Reaktionsgehäuse. Nach Elektropolieren FDA-konform einsetzbar.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M5.34 18.66l-1.41 1.41M20 12h-2M6 12H4M19.07 19.07l-1.41-1.41M5.34 5.34L3.93 3.93M12 20v-2M12 4V2"/></svg></div>
+        <div class="ucard__title">Hydraulik und Pneumatik</div>
+        <p>Ventilblöcke mit komplexen Innenkanälen, Druckleitungsanschlüsse und Aktuatorgehäuse. Drücke bis 400 bar erprobt.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="ucard__title">Schmuck und Design</div>
+        <p>Individuelle Ringe, Anhänger und Designobjekte. Hohe Oberflächenqualität nach Elektropolieren. Langlebig und hypoallergen.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="ucard__title">Kraftstoff- und Motorsysteme</div>
+        <p>Injektorbauteile, Kraftstoffverteiler und Auspuffkomponenten. Hitzefest bis 400 °C, korrosionsbeständig gegen Kraftstoffe.</p>
+      </div>
+    </div>
+    <div class="blog-link-box" style="margin-top:24px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <div>
+        <p>Konkrete Bauteilbeispiele aus der Medizintechnik, Chemie und Automobilindustrie. Welches Material passt für Ihr Projekt?</p>
+        <a href="https://www.3ddrucklife.de/post/metall-3d-druck-anwendungen" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Metall-Anwendungen erkunden</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialvarianten</div>
+    <h2 class="sec-title">316L und seine Edelstahl-Verwandten.</h2>
+    <p class="sec-sub">Je nach Anforderung gibt es spezialisierte Edelstahllegierungen für den 3D-Druck.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Standard</div>
+        <div class="vcard__name">316L</div>
+        <p>Die meistgenutzte Variante. Nicht magnetisch, exzellente Korrosionsbeständigkeit, gut schweissbar. Zugfestigkeit 510 bis 540 MPa. Ideal für Chemie, Medizin und Lebensmittel.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Aushärtbar</div>
+        <div class="vcard__name">17-4 PH</div>
+        <p>Martensitisch aushärtbar. Nach H900-Wärmebehandlung bis 1.200 MPa Zugfestigkeit. Für hochbelastete Bauteile in Luft- und Raumfahrt sowie Maschinenbau.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Aushärtbar</div>
+        <div class="vcard__name">15-5 PH</div>
+        <p>Ähnlich 17-4 PH, aber mit verbesserter Zähigkeit und gleichmässigerem Gefüge. Ebenfalls aushärtbar bis 1.100 MPa. Bevorzugt in der Luft- und Raumfahrt.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Günstigere Option</div>
+        <div class="vcard__name">304L</div>
+        <p>Ohne Molybdän, dadurch günstiger. Geringere Beständigkeit gegen Chloride. Für Anwendungen ohne Chloridkontakt eine kosteneffiziente Alternative zu 316L.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Stickstofflegiert</div>
+        <div class="vcard__name">316LN</div>
+        <p>Wie 316L aber mit Stickstoffzusatz (0,1 bis 0,2 %). Höhere Streckgrenze bei gleicher Zähigkeit. Für drucktragende Bauteile und Tieftemperaturanwendungen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Nachbearbeitung</div>
+    <h2 class="sec-title">Von der Bauplatte zum fertigem Bauteil.</h2>
+    <p class="sec-sub">Edelstahl 316L SLM durchläuft nach dem Druck typischerweise mehrere Nachbearbeitungsschritte.</p>
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__num">1</div>
+        <strong>Stützstrukturen abtrennen</strong>
+        <p>Per Erodieren (EDM) oder Fräsen. Stützstrukturen sind aus demselben Material, müssen mechanisch entfernt werden. Aufwand je nach Geometrie.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">2</div>
+        <strong>Spannungsarmglühen</strong>
+        <p>Optional: 650 °C für 1 bis 2 Stunden in Schutzgasatmosphäre. Reduziert Eigenspannungen ohne vollständige Rekristallisation. Massmasshaltigkeit bleibt erhalten.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">3</div>
+        <strong>Strahlen</strong>
+        <p>Sandstrahlen: Ra 4 bis 6 µm. Glasperlenstrahlen: Ra 2 bis 4 µm. Erzeugt gleichmässige matte Oberfläche, entfernt Pulverrückstände.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">4</div>
+        <strong>Passivieren</strong>
+        <p>Salpetersäurebad (HNO₃) gemäß ASTM A967. Maximiert Korrosionsbeständigkeit durch gezielten Aufbau der Chromoxidschicht.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">5</div>
+        <strong>Elektropolieren</strong>
+        <p>Ra unter 0,5 µm, hochglänzend. Entfernt Rauheitsspitzen elektrochemisch. Erforderlich für Lebensmittel, Pharma und Reinraum. Optisch hochwertig.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">6</div>
+        <strong>CNC-Fräsen</strong>
+        <p>Passbohrungen, Gewinde und Planflächen auf Fertigungstoleranz. Edelstahl gut zerspanbar. IT6 erreichbar bei kritischen Passflächen.</p>
+      </div>
+    </div>
+    <div class="post-note">
+      <strong>Tipp:</strong> Für Anwendungen in der Lebensmittel- und Pharmaindustrie empfehlen wir immer die Kombination aus Elektropolieren und anschließendem Passivieren. So erreichen Sie Ra-Werte unter 0,4 µm und maximale Korrosionsbeständigkeit in einem Schritt.
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <div>
+        <p>Alle Nachbearbeitungsverfahren für Metall-Bauteile im Vergleich: Elektropolieren, Sandstrahlen, Passivieren und mehr.</p>
+        <a href="https://www.3ddrucklife.de/post/nachbearbeitung-metall-3d-druck" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Nachbearbeitung erkunden</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE / WANDSTÄRKEN -->
+<section id="fuellungsgrade" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Designrichtlinien</div>
+    <h2 class="sec-title">Wandstärken, Hohlräume und Pulverentfernung.</h2>
+    <p class="sec-sub">Metall-3D-Druck ist kein FDM. Diese Parameter bestimmen Machbarkeit und Qualität Ihres Edelstahl-Bauteils.</p>
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-tag">Vollmaterial</div>
+        <div class="fill-card__name">Immer 100 % Dichte</div>
+        <p>SLM erzeugt grundsätzlich Vollmaterial. Infill-Konzepte wie im FDM-Druck gibt es nicht. Gewichtsreduktion erfolgt durch Topologieoptimierung oder Gitterstrukturen.</p>
+      </div>
+      <div class="fill-card">
+        <div class="fill-tag">Mindestwandstärke</div>
+        <div class="fill-card__name">0,4 bis 0,6 mm</div>
+        <p>Freistehende Wände ab 0,4 mm druckbar, empfohlen ab 0,6 mm für strukturelle Stabilität. Dünnere Wände sind möglich, erfordern aber optimierte Ausrichtung auf der Bauplatte.</p>
+      </div>
+      <div class="fill-card">
+        <div class="fill-tag">Innenkanäle</div>
+        <div class="fill-card__name">Pulverentfernung einplanen</div>
+        <p>Interne Kanäle und Hohlräume müssen über Ablassöffnungen zugänglich sein. Unentfernbares Pulver kann Korrosionsherde und Kontaminationen verursachen. Mindestdurchmesser für Reinigung: 2 mm.</p>
+      </div>
+      <div class="fill-card">
+        <div class="fill-tag">Gitterstrukturen</div>
+        <div class="fill-card__name">Gewichtsoptimierung</div>
+        <p>Gyroid-, Schwartz-Diamond- oder Streben-Gitter reduzieren Gewicht bei gezielter Festigkeit. Zellgrössen ab 2 mm. Innengitter benötigen ebenfalls Pulveröffnungen.</p>
+      </div>
+      <div class="fill-card">
+        <div class="fill-tag">Überhänge</div>
+        <div class="fill-card__name">Bis 45° ohne Stützen</div>
+        <p>Überhänge bis 45° relativ zur Bauplattform meist stützenfrei druckbar. Steiler als 45° erfordern Stützstrukturen, die später entfernt werden müssen.</p>
+      </div>
+      <div class="fill-card">
+        <div class="fill-tag">Toleranzen</div>
+        <div class="fill-card__name">± 0,1 bis 0,2 mm</div>
+        <p>Im Rohzustand sind ± 0,1 bis 0,2 mm erreichbar. Für engere Toleranzen (IT7 und enger) ist CNC-Nachbearbeitung der Passflächen empfohlen.</p>
+      </div>
+    </div>
+    <div class="blog-link-box" style="margin-top:4px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <div>
+        <p>Designrichtlinien für Metall-3D-Druck: Wandstärken, Toleranzen, Stützstrategien und Topologieoptimierung im Detail.</p>
+        <a href="https://www.3ddrucklife.de/post/metall-3d-druck-designrichtlinien" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Designrichtlinien lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Einschränkungen</div>
+    <h2 class="sec-title">Wann ist 316L die falsche Wahl?</h2>
+    <p class="sec-sub">Ehrliche Einschätzung: Für diese Anforderungen gibt es bessere Alternativen.</p>
+    <div class="callout">
+      <div class="callout__title">Grenzen von Edelstahl 316L im 3D-Druck</div>
+      <p><strong>Hohe Dichte (7,9 g/cm³):</strong> Für Leichtbauanwendungen ist Aluminium AlSi10Mg (2,67 g/cm³) oder Titan Ti6Al4V (4,43 g/cm³) deutlich geeigneter. Gewichtskritische Strukturen profitieren kaum von 316L.</p>
+      <p><strong>Schlechte Wärmeleitfähigkeit (16 W/mK):</strong> Für Wärmetauscher oder Kühlkörper ist Aluminium mit ca. 150 W/mK zehnmal effizienter. 316L ist kein Wärmeleitungswerkstoff.</p>
+      <p><strong>Kosten (ca. 3 bis 6 €/cm³):</strong> Für einfache Halterungen und Gehäuse, die kein Metall zwingend erfordern, können technische Polymere wie PA12 oder ABS deutlich günstiger sein.</p>
+      <p><strong>Nicht magnetisch:</strong> Für Anwendungen, die ferromagnetische Eigenschaften benötigen (Magnete, Magnetventile, Sensoren), ist 316L ungeeignet. Hier ist Stahl 1.2344 oder Ferrit-Stahl die bessere Wahl.</p>
+      <p><strong>Festigkeit über 800 MPa:</strong> Für hochbelastete Bauteile ist Titan Ti6Al4V (über 1.000 MPa) oder Werkzeugstahl 1.2709 (über 1.800 MPa nach Wärmebehandlung) besser geeignet.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="callout__link" target="_parent">Alle Materialien vergleichen</a>
+        <a href="https://www.3ddrucklife.de/post/materialberatung-3d-druck" class="callout__link" target="_parent">Materialberatung anfragen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">FAQ</div>
+    <h2 class="sec-title">Häufige Fragen zu Edelstahl im 3D-Druck.</h2>
+    <p class="sec-sub">Alle wichtigen Antworten auf einen Blick.</p>
+    <div class="faq-list">
+
+      <!-- Gruppe 1 -->
+      <div class="faq-group-label">Über Edelstahl 3D-Druck</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist der Unterschied zwischen SLM und DMLS bei Edelstahl?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">SLM (Selective Laser Melting) schmilzt das Metallpulver vollständig auf, DMLS (Direct Metal Laser Sintering) sintert es ursprünglich nur an. Heute werden beide Begriffe oft synonym verwendet. Technisch gibt es bei modernen Anlagen kaum noch Unterschiede im Ergebnis: beide erzeugen vollständig dichte Bauteile mit Dichten über 99 %. Der Begriff DMLS ist ein eingetragenes Warenzeichen von EOS, SLM ein generischer Begriff.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist 316L SLM wirklich nicht magnetisch?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja. 316L ist ein austenitischer Stahl, der auch nach dem SLM-Prozess paramagnetisch bleibt. Das bedeutet: er zeigt keine Anziehung durch Magnete und erzeugt keine messbaren Magnetfelder. Erst starke Kaltverformung kann geringe Mengen Martensit erzeugen und damit eine schwache Magnetisierbarkeit auslösen. Im 3D-gedruckten Zustand ist das jedoch kein Problem.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann Edelstahl 316L SLM in der Medizintechnik eingesetzt werden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">316L ist grundsätzlich biokompatibel gemäß ISO 10993 und wird seit Jahrzehnten in medizinischen Implantaten eingesetzt. Für permanente Implantate (länger als 30 Tage im Körper) ist in vielen Ländern eine spezifische Zertifizierung und ein validierter Herstellungsprozess erforderlich. Für chirurgische Instrumente und kurzfristigen Körperkontakt reicht die ISO 10993-Biokompatibilität. Sprechen Sie uns an, wenn Sie medizinische Zertifizierungsanforderungen haben.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie korrosionsbeständig ist SLM-Edelstahl im Vergleich zu gewalztem 316L?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Im Rohzustand kann SLM-316L durch die raue Oberfläche (Ra 6 bis 15 µm) anfälliger für lokale Korrosion sein als gewalztes Material. Nach Elektropolieren und Passivieren erreicht SLM-316L jedoch vergleichbare oder sogar bessere Korrosionsbeständigkeit, da die Passivschicht gleichmässiger aufgebaut wird. Die Mikrostruktur selbst ist durch die schnelle Erstarrung feiner und homogener als bei Guss.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Wandstärke ist für Edelstahl SLM mindestens erforderlich?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Freistehende Wände sind ab 0,4 mm technisch druckbar, für strukturelle Anwendungen empfehlen wir mindestens 0,6 mm. Sehr dünne Wände unter 0,5 mm können durch Eigenspannungen und thermische Verformungen instabil werden. Für filigrane Schmuckstücke oder Gitterstrukturen gelten besondere Designregeln. Schicken Sie uns Ihre CAD-Datei zur kostenlosen Druckbarkeitsanalyse.</div>
+      </div>
+
+      <!-- Gruppe 2 -->
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was kostet Edelstahl 316L 3D-Druck?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Der Preis hängt vom Bauvolumen, der Bauteilhöhe (Druckzeit) und der erforderlichen Nachbearbeitung ab. Als Richtwert gilt 3 bis 6 Euro pro cm³ Bauteilvolumen für den Rohzustand. Elektropolieren, Passivieren und CNC-Nachbearbeitung werden separat berechnet. Nutzen Sie unseren Online-Preisrechner für ein sofortiges Angebot zu Ihrer konkreten Geometrie.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lange dauert die Fertigung eines Edelstahl-Bauteils?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Typische Lieferzeiten: Rohzustand ohne Nachbearbeitung 3 bis 5 Werktage. Mit Standardnachbearbeitung (Strahlen, Passivieren) 5 bis 8 Werktage. Mit Elektropolieren und CNC-Nachbearbeitung 8 bis 12 Werktage. Eilaufträge nach Rücksprache möglich. Die Druckzeit selbst beträgt je nach Bauteilhöhe 2 bis 24 Stunden.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Dateiformate werden für den Edelstahl-Druck benötigt?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Wir verarbeiten STL, STEP (empfohlen), OBJ und 3MF. STEP-Dateien bevorzugen wir, da sie die exakte Geometrie ohne Triangulierungsfehler übertragen. Die Mindestaullösung für die Datei sollte 0,05 mm betragen. Bitte stellen Sie vor dem Upload sicher, dass das Modell wasserdicht (kein Mesh-Fehler) und in Millimetern gespeichert ist.</div>
+      </div>
+
+      <!-- Gruppe 3 -->
+      <div class="faq-group-label">3D-Druck allgemein &amp; Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann ich Edelstahl SLM-Teile schweissen oder löten?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja. SLM-316L ist gut schweissbar mit TIG (WIG) und MIG-Verfahren, ebenso gut lötbar mit Silber- oder Messinglot. Kein Vorwärmen notwendig. Achten Sie darauf, nach dem Schweissen eine erneute Passivierung durchzuführen, um die Chromoxidschicht in der Wärmeeinflusszonen zu regenerieren. Spannungsarmglühen nach dem Schweissen ist ebenfalls empfehlenswert.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Oberflächenrauheit erreiche ich direkt nach dem Druck?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Direkt nach dem SLM-Prozess beträgt die Oberflächenrauheit typisch Ra 6 bis 15 µm (je nach Orientierung zur Bauplatte, Schichtdicke und Laserparametern). Nach Sandstrahlen: Ra 4 bis 6 µm. Nach Glasperlenstrahlen: Ra 2 bis 4 µm. Nach Elektropolieren: Ra unter 0,5 µm, hochglänzend. Für Dichtflächen und Passflächen ist CNC-Nachbearbeitung erforderlich.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Können Innengewinde direkt gedruckt werden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Innengewinde können ab M6 direkt gedruckt werden, sind aber durch die raue Oberfläche des Rohzustands nicht sofort funktionsfähig. Empfohlen wird, den Kernlochdurchmesser zu drucken und anschließend mit einem Gewindebohrer nachzuschneiden. Außengewinde werden ebenfalls besser nachgefräst oder nachgedreht, um die nötige Oberflächenqualität und Massgenauigkeit zu erreichen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie unterscheidet sich Edelstahl 3D-Druck von CNC-Fräsen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">3D-Druck ermöglicht Geometrien, die beim Fräsen unmöglich sind: Innenkanäle, Hinterschnitte, Gitterstrukturen und bionische Formen. Dafür ist die Masstoleranzen im Rohzustand breiter als beim Fräsen. Für Serienteile mit einfacher Geometrie ist CNC oft günstiger. Der beste Ansatz: 3D-Druck für die Basisgeometrie, CNC-Nachbearbeitung für Passflächen und Gewinde. Wir bieten beide Verfahren und die Kombination daraus an.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist Edelstahl 316L lebensmittelgeeignet?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">316L ist im Grundwerkstoff lebensmittelgeeignet und entspricht FDA- und EU-Anforderungen für Lebensmittelkontakt. Im SLM-Rohzustand ist die raue Oberfläche jedoch für Lebensmittelanwendungen nicht geeignet, da Bakterien in den Mikroporen haften können. Nach Elektropolieren (Ra unter 0,4 µm) und anschliessender Passivierung ist das Bauteil lebensmittelgeeignet gemäß EN 1.4404. Für Pharmaanwendungen kommen oft noch zusätzliche Anforderungen nach GMP hinzu.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">Edelstahl-Bauteile jetzt fertigen lassen</div>
+        <p class="cta-left__text">3D-Datei hochladen, Material wählen, Preis sofort erhalten. Kein Angebot, kein Warten. Oder kontaktieren Sie uns direkt für Projekte mit besonderen Anforderungen.</p>
+        <div class="btn-row">
+          <a href="https://3ddrucklife.com" class="btn btn--white" target="_parent">Preisrechner öffnen</a>
+          <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Edelstahl" class="btn btn--white-outline">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Direktkontakt</div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.64a16 16 0 0 0 5.55 5.55l.83-.83a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <span><a href="tel:+4917664056860">+49 176 64056860</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <span><a href="mailto:Info@3ddrucklife.de">Info@3ddrucklife.de</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <span><a href="https://wa.me/4917664056860" target="_parent">WhatsApp schreiben</a></span>
+        </div>
+        <div style="margin-top:8px;padding-top:16px;border-top:1px solid var(--line);">
+          <p style="font-size:13px;color:var(--ink-soft);">Mo-Fr erreichbar · Zweibrücken, Deutschland</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-q').forEach(b => { b.setAttribute('aria-expanded','false'); b.nextElementSibling.style.display='none'; });
+    if (!open) { btn.setAttribute('aria-expanded','true'); btn.nextElementSibling.style.display='block'; }
+  });
+});
+
+// Active TOC
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.toc-link');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.dataset.s === e.target.id));
+  });
+}, { rootMargin: '-50px 0px -60% 0px' });
+secs.forEach(s => obs.observe(s));
+links.forEach(l => l.addEventListener('click', e => { e.preventDefault(); document.getElementById(l.dataset.s)?.scrollIntoView({behavior:'smooth'}); }));
+</script>
+</body>
+</html>

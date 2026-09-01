@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHA Bioplastik – Materialeigenschaften & 3D-Druck | 3D DRUCK LIFE</title>
+<meta name="description" content="PHA (Polyhydroxyalkanoate) ist ein 100 % biobasierter und marineabbaubarer Biokunststoff fuer den FDM 3D-Druck. Eigenschaften, technische Daten, Anwendungen und Varianten.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+/* BREADCRUMB */
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+/* HERO */
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+/* STICKY TOC */
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+/* SECTION BASE */
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+/* INTRO GRID */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+/* STRENGTHS */
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+
+/* CHEM TABLE */
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+/* TECH TABLE */
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* VARIANTEN */
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ANWENDUNGEN */
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+.ucard__link { font-size: 13px; font-weight: 700; color: var(--orange-dark); text-decoration: none; margin-top: auto; padding-top: 4px; }
+.ucard__link:hover { text-decoration: underline; }
+
+/* NACHBEARBEITUNG */
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__icon { width: 36px; height: 36px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); font-size: 18px; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note strong { font-weight: 700; }
+
+/* FUELLUNGSGRADE */
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-visual { display: flex; gap: 4px; margin-top: 10px; }
+.fill-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--line); overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 3px; }
+
+/* GRENZEN */
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+/* FAQ */
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.faq-a a { color: var(--orange); text-decoration: underline; }
+
+/* CTA SPLIT */
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.contact-row { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-soft); }
+.contact-row a { color: var(--orange); font-weight: 700; }
+.contact-icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); flex-shrink: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { order: -1; }
+  .hero__image img { border-radius: 8px; width: 100%; height: auto; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+  .sec, .sec--alt { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">/</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">/</span>
+    <span class="breadcrumb__current">PHA</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__inner">
+    <div>
+      <div class="hero__eyebrow">Material · Bioplastik · FDM</div>
+      <h1 class="hero__title">PHA <span class="accent">Bioplastik</span></h1>
+      <p class="hero__sub">Polyhydroxyalkanoate (PHA) ist der einzige vollstaendig biobasierte und marineabbaubare Kunststoff fuer den FDM 3D-Druck. Von Bakterien produziert, kompostierbar und mit negativem CO2-Potenzial.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">100 %</span><span class="kstat__lbl">Biobasiert</span></div>
+        <div class="kstat"><span class="kstat__val">Marin</span><span class="kstat__lbl">Abbaubar</span></div>
+        <div class="kstat"><span class="kstat__val">~35 MPa</span><span class="kstat__lbl">Zugfestigkeit</span></div>
+        <div class="kstat"><span class="kstat__val">1,20 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+      </div>
+      <div class="btn-row">
+        <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--orange" target="_parent">Preis berechnen</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--outline" target="_parent">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//2Q==" alt="PHA Bioplastik 3D-Druck Bauteil – 3D DRUCK LIFE" loading="eager" width="900" height="900">
+    </div>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc-bar">
+  <div class="toc-bar__inner">
+    <a class="toc-link" href="#material">Was ist PHA?</a>
+    <a class="toc-link" href="#eigenschaften">Eigenschaften</a>
+    <a class="toc-link" href="#chemie">Chemie</a>
+    <a class="toc-link" href="#techdaten">Techdaten</a>
+    <a class="toc-link" href="#anwendungen">Anwendungen</a>
+    <a class="toc-link" href="#varianten">Varianten</a>
+    <a class="toc-link" href="#nachbearbeitung">Nachbearbeitung</a>
+    <a class="toc-link" href="#fuellungsgrade">Fuellungsgrade</a>
+    <a class="toc-link" href="#grenzen">Grenzen</a>
+    <a class="toc-link" href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST PHA -->
+<section id="material" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Ueberblick</div>
+    <h2 class="sec-title">Was ist PHA (Polyhydroxyalkanoate)?</h2>
+    <p class="sec-sub">Der einzige echte Biokunststoff, der sich vollstaendig in der Umwelt abbaut, inklusive Meerwasser.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>PHA steht fuer Polyhydroxyalkanoate, eine Familie von Biopolymeren, die von Bakterien durch Fermentation von Zuckern und pflanzlichen Oelen produziert werden. Anders als PLA, das zwar biobasiert ist, aber industrielle Kompostierung benoetigt, baut PHA sich auch im Meerwasser und im heimischen Kompost ab.</p>
+        <p>Fuer den 3D-Druck relevante PHA-Typen sind vor allem PHB (Polyhydroxybutyrat), PHBV und Blends mit PLA. Das Druckverhalten aehnelt PLA, jedoch ist das Verarbeitungsfenster enger und die Materialeigenschaften haengen stark vom Monomerverhaeltnis ab.</p>
+        <p>PHA gilt als eines der vielversprechendsten Materialien fuer eine zirkulaere Kreislaufwirtschaft im Bereich Rapid Prototyping und Einwegprodukte, da es keine persistenten Rueckstaende hinterlaesst.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">🌿</div>
+          <div class="fact__body">
+            <strong>100 % biobasiert</strong>
+            <span>Aus nachwachsenden Rohstoffen, kein Erdoel</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🌊</div>
+          <div class="fact__body">
+            <strong>Marineabbaubar</strong>
+            <span>Baut sich auch im Meerwasser ab</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🦠</div>
+          <div class="fact__body">
+            <strong>Bakteriell produziert</strong>
+            <span>Fermentation von Zuckern und Oelen</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">♻️</div>
+          <div class="fact__body">
+            <strong>Kompostierbar</strong>
+            <span>Industriell und teilweise heimisch kompostierbar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN -->
+<section id="eigenschaften" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Eigenschaften</div>
+    <h2 class="sec-title">Eigenschaften von PHA</h2>
+    <p class="sec-sub">Nachhaltigkeit als Kernmerkmal, kombiniert mit soliden mechanischen Grundeigenschaften.</p>
+    <div class="strengths">
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong>Vollstaendig biobasiert</strong>
+          <span>Kein Erdoel, 100 % nachwachsende Rohstoffe</span>
+        </div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong>Marineabbaubar</strong>
+          <span>Einziger FDM-Kunststoff der im Meer abgebaut wird</span>
+        </div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong>CO2-negatives Potenzial</strong>
+          <span>Produktion bindet mehr CO2 als sie freisetzt</span>
+        </div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong>Aehnlich PLA druckbar</strong>
+          <span>Kein Heizbett zwingend noetig, bekannter Workflow</span>
+        </div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong>Kompostierbar</strong>
+          <span>Industrielle und heimische Kompostierung moeglich</span>
+        </div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong>Biomedizinisch erforschbar</strong>
+          <span>Biokompatibler als die meisten Thermoplasten</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Chemie &amp; Aufbau</div>
+    <h2 class="sec-title">Chemischer Aufbau von PHA</h2>
+    <p class="sec-sub">Eine Familie von Polyestern mit variabler Monomerstruktur, produziert durch mikrobielle Fermentation.</p>
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead>
+          <tr><th>Merkmal</th><th>Wert / Beschreibung</th><th>Hinweis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Polymerklasse</td><td>Biopolyester</td><td>Bakteriell synthetisierter Polyester</td></tr>
+          <tr><td>Hauptmonomere</td><td>PHB, PHBV, PHBHV</td><td>Je nach Bakterienstamm und Substrat</td></tr>
+          <tr><td>Produktion</td><td>Mikrobielle Fermentation</td><td>Zucker, pflanzliche Oele als Substrat</td></tr>
+          <tr><td>Kristallstruktur</td><td>Semikristallin</td><td>Aehnlich wie PLA und PP</td></tr>
+          <tr><td>Schmelzpunkt</td><td>~160-175 °C</td><td>Abhaengig von Monomerverhaeltnis</td></tr>
+          <tr><td>Bioabbaubarkeit</td><td><span class="badge-g">Marin + Heimkompost</span></td><td>Einzigartig unter FDM-Materialien</td></tr>
+          <tr><td>Biobasiert</td><td><span class="badge-g">100 %</span></td><td>Keine fossilen Rohstoffe</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr ueber Biopolymere und nachhaltige Materialien im 3D-Druck in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHDATEN -->
+<section id="techdaten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Technische Daten</div>
+    <h2 class="sec-title">Technische Daten</h2>
+    <p class="sec-sub">Materialkennwerte von PHA-Filamenten fuer den FDM 3D-Druck.</p>
+    <h3>Material-Kennwerte im Detail</h3>
+    <div class="tech-table-wrap" style="margin-top:16px;">
+      <table class="tech-table">
+        <thead>
+          <tr><th>Eigenschaft</th><th>Wert</th><th>Norm</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Zugfestigkeit</td><td><span class="tval">~35 MPa</span></td><td>ISO 527</td></tr>
+          <tr><td>Dichte</td><td><span class="tval">~1,20 g/cm³</span></td><td>ISO 1183</td></tr>
+          <tr><td>Schmelzpunkt</td><td><span class="tval">~160-175 °C</span></td><td>DSC</td></tr>
+          <tr><td>Bruchdehnung</td><td><span class="tval">~5-10 %</span></td><td>ISO 527</td></tr>
+          <tr><td>HDT (Waermeformbestaendigkeit)</td><td><span class="tval">~45-60 °C</span></td><td>ISO 75</td></tr>
+          <tr><td>Bioabbaubarkeit</td><td><span class="tval">Marin + Kompost</span></td><td>ISO 14855</td></tr>
+          <tr><td>Biobasierter Anteil</td><td><span class="tval">100 %</span></td><td>ASTM D6866</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Technische Vergleiche zwischen PHA, PLA und anderen Biokunststoffen in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Materialvergleich lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Anwendungen</div>
+    <h2 class="sec-title">Anwendungen von PHA im 3D-Druck</h2>
+    <p class="sec-sub">PHA eignet sich ueberall dort, wo Nachhaltigkeit und Abbaubarkeit an erster Stelle stehen.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <div class="ucard__title">Nachhaltige Verpackungsprototypen</div>
+        <p>Entwicklung von Einwegverpackungen, die sich vollstaendig in der Umwelt abbauen. Ideal fuer Konzeptstudien in der Konsumgueterbranche.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="ucard__title">Biomedizinische Forschung</div>
+        <p>Resorbierbare Implantate und Scaffolds fuer die Gewebeforschung. PHA wird vom menschlichen Koerper schrittweise abgebaut.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="ucard__title">Meeresanwendungen</div>
+        <p>Einwegteile fuer die Fischereiindustrie und Meeresforschung, die nach Gebrauch keinerlei Mikroplastik hinterlassen.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="ucard__title">Agrarwirtschaft</div>
+        <p>Biologisch abbaubare Stifte, Klemmen und Halterungen fuer den Pflanzenbau. Keine Kontamination des Bodens.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div class="ucard__title">Lehrmodelle</div>
+        <p>Anschauungsmodelle fuer Schulen und Universitaeten mit echtem Nachhaltigkeitsnachweis.</p>
+      </div>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Nachhaltige 3D-Druck-Anwendungen und Fallstudien zu Biopolymeren in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Anwendungsfaelle entdecken</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Varianten</div>
+    <h2 class="sec-title">PHA-Varianten im Ueberblick</h2>
+    <p class="sec-sub">Von sprödem PHB bis zu flexiblen Blends mit PLA.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Standard</div>
+        <div class="vcard__name">PHB (Polyhydroxybutyrat)</div>
+        <p>Der am haeufigstem produzierte PHA-Typ. Sehr steif und sproed, begrenztes Verarbeitungsfenster. Gute Basis fuer starre Prototypen.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Flexibler</div>
+        <div class="vcard__name">PHBV (Polyhydroxybutyrat-co-valerat)</div>
+        <p>Durch Einbau von Valeratsegmenten deutlich flexibler als reines PHB. Bessere Schlagzaehigkeit und einfachere Verarbeitung.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Erweitert</div>
+        <div class="vcard__name">PHBHV</div>
+        <p>Terpolymer mit noch breiteren Eigenschaftsspektrum. Hohes Potenzial fuer medizinische und technische Anwendungen in der Forschung.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Blend</div>
+        <div class="vcard__name">PHA-PLA-Blends</div>
+        <p>Kombination verbessert die Zaehigkeit und erleichtert das Drucken. Haeufig als kommerzielles Filament erhaeltlich. Kompromiss zwischen Eigenschaften und Verarbeitbarkeit.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Funktional</div>
+        <div class="vcard__name">Copper3D PLACTIVE</div>
+        <p>PHA-basiertes Filament mit antimikrobiellen Eigenschaften. Fuer medizinische Prototypen und hygieneempfindliche Anwendungen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Nachbearbeitung</div>
+    <h2 class="sec-title">Nachbearbeitung von PHA-Bauteilen</h2>
+    <p class="sec-sub">PHA laesst sich aehnlich wie PLA nachbearbeiten, reagiert aber empfindlicher auf Feuchtigkeit.</p>
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__icon">🪚</div>
+        <strong>Schleifen</strong>
+        <p>Mit feinem Schleifpapier (120-400 Koernung) lassen sich Schichtlinien glaetten. Trocken schleifen bevorzugt.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🎨</div>
+        <strong>Lackieren</strong>
+        <p>Nach Grundierung mit wasserbasiertem Primer lassen sich Acrylfarben gut auftragen. Loesemittelbasierte Farben testen.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">♻️</div>
+        <strong>Kompostieren</strong>
+        <p>Unbrauchbare Teile koennen industriell kompostiert werden, manche Varianten auch im Heimkompost.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🔧</div>
+        <strong>Kleben</strong>
+        <p>Sekunden- oder Epoxidkleber funktionieren. Auf Feuchtigkeitsfreiheit der Klebeflaechen achten.</p>
+      </div>
+    </div>
+    <div class="post-note">
+      <strong>Hinweis:</strong> PHA ist feuchtigkeitsempfindlich. Filament trocken lagern (Silicagel) und Bauteile nicht dauerhaft Wasser aussetzen, da dies den Abbau beschleunigt.
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Tipps zur Nachbearbeitung von Biokunststoffen und nachhaltigen 3D-Druck-Materialien im Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Nachbearbeitungs-Tipps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUELLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Fuellungsgrade</div>
+    <h2 class="sec-title">Fuellungsgrade und Materialvarianten</h2>
+    <p class="sec-sub">PHA wird meist ungefuellt eingesetzt. Blends erweiterern das Eigenschaftsspektrum.</p>
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">Ungefuellt</div>
+        <div class="fill-card__name">Reines PHA</div>
+        <p>Maximale Kompostierbarkeit und Bioabbaubarkeit. Fuer alle Anwendungen, bei denen Nachhaltigkeit an erster Stelle steht.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:60%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">PLA-Blend</div>
+        <div class="fill-card__name">PHA-PLA-Mischung</div>
+        <p>Verbesserte Zaehigkeit und leichtere Verarbeitung. Teilweise reduzierte Abbaugeschwindigkeit im Vergleich zu reinem PHA.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:75%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:40%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr zu Biopolymer-Blends und nachhaltigen Materialoptionen in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Materialblog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Grenzen</div>
+    <h2 class="sec-title">Grenzen und Einschraenkungen</h2>
+    <p class="sec-sub">PHA ist kein Allround-Material, sondern ein Spezialmaterial fuer Nachhaltigkeitsanwendungen.</p>
+    <div class="callout">
+      <div class="callout__title">Wo PHA an seine Grenzen stoesst</div>
+      <p>PHB und viele reine PHA-Typen sind spröde und brechen eher als PLA oder PETG. Das enge Verarbeitungsfenster erfordert praezise Temperaturkontrolle. PHA ist feuchtigkeitsempfindlich: Filament muss trocken gelagert werden und Bauteile sollten nicht dauerhaft Feuchtigkeit ausgesetzt werden, da dies den biologischen Abbau aktiviert.</p>
+      <p>Die Verfuegbarkeit von PHA-Filamenten ist deutlich geringer als bei PLA oder PETG, und die Kosten sind entsprechend hoeher. Die Waermeformbestaendigkeit liegt unter der von PLA (HDT ~45-60 degC statt ~55-60 degC bei PLA), was den Einsatz in warmen Umgebungen einschraenkt.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/pla" class="callout__link" target="_parent">PLA ansehen</a>
+        <a href="https://www.3ddrucklife.de/petg" class="callout__link" target="_parent">PETG ansehen</a>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="callout__link" target="_parent">Alle Materialien</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">FAQ</div>
+    <h2 class="sec-title">Haeufige Fragen zu PHA</h2>
+    <p class="sec-sub">Antworten zu Material, Konfiguration und 3D-Druck allgemein.</p>
+    <div class="faq-list">
+
+      <!-- Gruppe 1 -->
+      <div class="faq-group-label">Ueber PHA</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist PHA wirklich kompostierbar oder nur biobasiert?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">PHA ist beides: biobasiert UND kompostierbar. Es baut sich sogar im Meerwasser ab, was es einzigartig unter den FDM-Materialien macht. PLA hingegen ist zwar biobasiert, braucht aber industrielle Kompostieranlagen und baut sich im Meer nicht ab.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie unterscheidet sich PHA von PLA in der Praxis?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">PHA ist in der Regel sproeders als PLA, hat ein engeres Druckfenster und ist teurer. Dafuer ist es echter abbaubar. Blends aus PLA und PHA verbessern die Zähigkeit und erleichtern die Verarbeitung erheblich.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Baut sich ein PHA-Druckteil im Garten ab?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Ja, je nach Grad und Feuchtigkeit kann PHA auch im heimischen Kompost abgebaut werden, allerdings langsamer als in industriellen Anlagen. Im Boden und Wasser wird der Abbau durch Mikroorganismen eingeleitet. Das dauert je nach Bedingungen Wochen bis Monate.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Fuer welche medizinischen Anwendungen wird PHA erforscht?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">PHA wird fuer resorbierbare Implantate, Nahtmaterial, Drug-Delivery-Systeme und Tissue-Engineering-Scaffolds erforscht. Der menschliche Koerper baut PHA enzymatisch ab, ohne toxische Rueckstaende. Aktuell meist noch in der Forschungsphase, nicht in der klinischen Routine.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Warum ist PHA so teuer?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Die Fermentationsproduktion ist aufwaendiger als petrochemische Synthese. Die Skalierung der PHA-Produktion ist noch begrenzt, was den Preis hochtreibt. Mit wachsender Nachfrage und Skaleneffekten wird erwartet, dass sich der Preis dem von PLA annähert.</div>
+      </div>
+
+      <!-- Gruppe 2 -->
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie erhalte ich einen Preis fuer mein PHA-Bauteil?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Laden Sie Ihre 3D-Datei im <a href="https://www.3ddrucklife.de/preisrechner" target="_parent">Preisrechner</a> hoch und waehlen Sie PHA als Material. Sie erhalten sofort einen verbindlichen Preis inkl. Lieferzeit.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Dateiformate werden akzeptiert?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Wir akzeptieren STL, STEP, OBJ und 3MF. Fuer beste Ergebnisse empfehlen wir STEP oder STL mit einer Aufloessung von mindestens 0,1 mm.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lange dauert die Lieferung?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Standardlieferung in 5-7 Werktagen. Express in 2-3 Werktagen moeglich. Den genauen Termin erhalten Sie im Preisrechner nach dem Hochladen Ihrer Datei.</div>
+      </div>
+
+      <!-- Gruppe 3 -->
+      <div class="faq-group-label">3D-Druck allgemein und Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist FDM 3D-Druck?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">FDM (Fused Deposition Modeling) ist das verbreitetste 3D-Druckverfahren. Ein Kunststofffaden wird erhitzt und schichtweise auf einer Bauplatte abgelegt. PHA ist ein FDM-Material und kann auf gaengigen Open-Source-Druckern verarbeitet werden.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann ich PHA-Bauteile schleifen und lackieren?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Ja. PHA laesst sich mit Sandpapier (120-400 Koernung) schleifen und anschliessend mit wasserbasiertem Primer grundieren. Acrylfarben haften gut. Loesemittelbasierte Systeme sollten vorab getestet werden.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welches Material ist robuster: PHA oder PLA?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">PLA ist in den meisten Faellen robuster und steifer als reines PHA. PHA-PLA-Blends koennen die Luecke schliessen. Fuer strukturell anspruchsvolle Anwendungen empfehlen wir PETG oder ASA. Schauen Sie sich unsere <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialuebersicht</a> fuer den passenden Vergleich an.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lagere ich PHA-Filament richtig?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">PHA ist feuchtigkeitsempfindlich. Lagern Sie es in einem luftdichten Behaelter mit Silicagel-Trockenmittel. Bei erhoehter Luftfeuchtigkeit empfiehlt sich ein Filamenttrockner vor dem Druck fuer optimale Ergebnisse.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Hinterlaesst PHA nach dem Kompostieren Rueckstaende?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Nein. PHA wird durch Bakterien und Pilze vollstaendig zu Wasser, CO2 und Biomasse abgebaut. Es hinterlaesst kein Mikroplastik und keine toxischen Reste. Das ist ein entscheidender Vorteil gegenueber allen anderen gaengigen 3D-Druck-Materialien.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">PHA-Bauteile jetzt bestellen</div>
+        <p class="cta-left__text">3D-Datei hochladen, PHA Bioplastik waehlen, Preis sofort erhalten.</p>
+        <div class="btn-row">
+          <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--white" target="_parent">Preisrechner oeffnen</a>
+          <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--white-outline" target="_parent">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Direkt Kontakt aufnehmen</div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span>Schreiben Sie uns: <a href="mailto:info@3ddrucklife.de">info@3ddrucklife.de</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <span>Antwort in der Regel innerhalb von 24 Stunden</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// TOC active highlight
+const links = document.querySelectorAll('.toc-link');
+const sections = document.querySelectorAll('section[id]');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector('.toc-link[href="#' + e.target.id + '"]');
+      if (a) a.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => obs.observe(s));
+
+// FAQ toggle
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+    const ans = btn.nextElementSibling;
+    ans.style.display = expanded ? 'none' : 'block';
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LW-Filament (Lightweight) – Schäumendes PLA | 3D DRUCK LIFE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__icon { width: 36px; height: 36px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); font-size: 18px; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note strong { font-weight: 700; }
+
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-visual { display: flex; gap: 4px; margin-top: 10px; }
+.fill-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--line); overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 3px; }
+
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.faq-a a { color: var(--orange); text-decoration: underline; }
+
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.contact-row { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-soft); }
+.contact-row a { color: var(--orange); font-weight: 700; }
+.contact-icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); flex-shrink: 0; }
+
+@media (max-width: 800px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { order: -1; }
+  .hero__image img { border-radius: 8px; width: 100%; height: auto; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+  .sec, .sec--alt { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">/</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">/</span>
+    <span class="breadcrumb__current">LW-Filament</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__eyebrow">FDM / Schaumfilament</div>
+      <h1 class="hero__title">LW-<span class="accent">Filament</span></h1>
+      <p class="hero__sub">Aktiv schaumiges PLA, das bei hoher Temperatur expandiert und das Bauteilgewicht auf bis zu ein Drittel reduziert. Das Standardmaterial fur leichte RC-Modelle und Drohnenstrukturen.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">3x leichter</span><span class="kstat__lbl">vs. Standard-PLA</span></div>
+        <div class="kstat"><span class="kstat__val">~0,30 g/cm3</span><span class="kstat__lbl">Dichte geschaumt</span></div>
+        <div class="kstat"><span class="kstat__val">RC-tauglich</span><span class="kstat__lbl">Flugmodellbau</span></div>
+        <div class="kstat"><span class="kstat__val">aktiv</span><span class="kstat__lbl">Geschaumt</span></div>
+      </div>
+      <div class="btn-row">
+        <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--orange" target="_parent">Preis berechnen</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--outline" target="_parent">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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" alt="LW-Filament Lightweight Schaumfilament 3D-Druck Bauteil – 3D DRUCK LIFE" loading="eager" width="900" height="900">
+    </div>
+  </div>
+</header>
+
+<!-- STICKY TOC -->
+<nav class="toc-bar" aria-label="Inhaltsverzeichnis">
+  <div class="toc-bar__inner">
+    <a class="toc-link" href="#material">Was ist LW?</a>
+    <a class="toc-link" href="#eigenschaften">Eigenschaften</a>
+    <a class="toc-link" href="#chemie">Chemie</a>
+    <a class="toc-link" href="#techdaten">Techdaten</a>
+    <a class="toc-link" href="#anwendungen">Anwendungen</a>
+    <a class="toc-link" href="#varianten">Varianten</a>
+    <a class="toc-link" href="#nachbearbeitung">Nachbearbeitung</a>
+    <a class="toc-link" href="#fuellungsgrade">Fullungsgrade</a>
+    <a class="toc-link" href="#grenzen">Grenzen</a>
+    <a class="toc-link" href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST LW-FILAMENT -->
+<section id="material" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Grundlagen</div>
+    <h2 class="sec-title">Was ist LW-Filament?</h2>
+    <p class="sec-sub">Das Schaumfilament, das Gewicht neu definiert.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>LW-Filament (Lightweight Filament) ist ein spezielles PLA-basiertes Filament, das chemische Treibmittel enthalt. Ab einer Drucktemperatur von etwa 230 Grad Celsius beginnt das Material aktiv zu schaumen und expandiert auf das Zwei- bis Dreifache seines ursprunglichen Volumens.</p>
+        <p>Das Resultat ist ein Bauteil mit einer einzigartigen Schaumstruktur, die die Dichte drastisch senkt. Wahrend Standard-PLA bei etwa 1,24 g/cm3 liegt, erreicht vollstandig geschaumtes LW-Filament Werte von nur 0,30 bis 0,50 g/cm3. Das ist weniger als Wasser.</p>
+        <p>Der bekannteste Hersteller ist ColorFabb mit seinem LW-PLA. Das Material hat sich besonders im RC-Flugzeug- und Drohnenbau als Game-Changer etabliert, weil es erstmals ermoglicht, hochfeste und gleichzeitig extrem leichte Strukturen direkt zu drucken.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">✈</div>
+          <div class="fact__body">
+            <strong>Flugmodellbau</strong>
+            <span>Standardmaterial fur RC-Flugel und Rumpfe im Hobby- und Profibereich</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🌡</div>
+          <div class="fact__body">
+            <strong>Temperaturgesteuertes Schaumen</strong>
+            <span>Ab ~230 Grad startet die Expansion. Drucktemperatur regelt den Schaumgrad direkt</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">⚖</div>
+          <div class="fact__body">
+            <strong>Bis zu 3x leichter</strong>
+            <span>Dichte sinkt von 1,24 auf ~0,30 g/cm3 bei maximalem Schaumgrad</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🏭</div>
+          <div class="fact__body">
+            <strong>FDM-Prozess</strong>
+            <span>Einsatz auf handelsublichem FDM-Drucker, erfordert aber Temperaturfeintuning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN -->
+<section id="eigenschaften" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialcharakter</div>
+    <h2 class="sec-title">Eigenschaften von LW-Filament</h2>
+    <p class="sec-sub">Extrem leicht, einzigartige Schaumstruktur, regelbare Dichte.</p>
+    <div class="strengths">
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong>Aktiv schaumend</strong>
+          <span>Chemische Treibmittel expandieren das Material bei hoher Temperatur</span>
+        </div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong>Regelbare Dichte</strong>
+          <span>Schaumgrad uber Temperatur und Druckgeschwindigkeit stufenlos einstellbar</span>
+        </div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong>Extrem leicht</strong>
+          <span>Dichte bis 0,30 g/cm3 bei maximalem Schaumgrad, schwimmt auf Wasser</span>
+        </div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong>RC-Modell-tauglich</strong>
+          <span>Etabliert fur Flugel, Rumpfe und Drohnenrahmen im Modellbau</span>
+        </div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong>Schleifbar</strong>
+          <span>Schaumige Oberflache lasst sich gut schleifen und mit Spachtel glatten</span>
+        </div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong>PLA-Basis</strong>
+          <span>Biobasierter Rohstoff, auf Standard-FDM-Druckern verarbeitbar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE & AUFBAU -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Materialwissenschaft</div>
+    <h2 class="sec-title">Chemie und Aufbau</h2>
+    <p class="sec-sub">PLA mit Treibmitteln, die bei Hitze Gas freisetzen und das Material aufschaumen lassen.</p>
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead>
+          <tr><th>Eigenschaft</th><th>Wert / Beschreibung</th><th>Hinweis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Basispolymer</td><td>Polylactid (PLA)</td><td>Biobasiert aus Maistarke oder Zuckerrohr</td></tr>
+          <tr><td>Additive</td><td>Chemische Treibmittel (Blowing Agents)</td><td>Zersetzen sich bei Schmelztemperatur unter CO2/N2-Freisetzung</td></tr>
+          <tr><td>Schmelzpunkt PLA</td><td>~180 °C</td><td>Materialfluss startet, noch kein Schaumen</td></tr>
+          <tr><td>Schaum-Starttemperatur</td><td>~230 °C</td><td>Ab hier beginnt aktive Expansion des Materials</td></tr>
+          <tr><td>Struktur geschaumt</td><td>Amorph, offenporig</td><td>Einzigartige Wabenstruktur im Inneren</td></tr>
+          <tr><td>Bioabbaubarkeit</td><td><span class="badge-y">Bedingt</span></td><td>PLA industriell kompostierbar; Treibmittel-Additive abhangig vom Hersteller</td></tr>
+          <tr><td>Feuchteempfindlichkeit</td><td><span class="badge-y">Mittel</span></td><td>Trocken lagern; Feuchtigkeit stort Schaumbildung</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Tiefer in die Materialchemie eintauchen? Unser Blog erklart, wie chemische Treibmittel im FDM-Druck funktionieren.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNISCHE DATEN -->
+<section id="techdaten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Material-Kennwerte</div>
+    <h2 class="sec-title">Technische Daten</h2>
+    <p class="sec-sub">Kennwerte variieren stark mit dem gewahlten Schaumgrad. Alle Angaben fur typische FDM-Druckteile.</p>
+    <h3 style="margin-bottom:12px;font-size:17px;">Material-Kennwerte im Detail</h3>
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead>
+          <tr><th>Eigenschaft</th><th>Wert</th><th>Norm / Hinweis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Dichte (ungefullt, nicht geschaumt)</td><td><span class="tval">1,24 g/cm3</span></td><td>ISO 1183 – Ausgangsmaterial</td></tr>
+          <tr><td>Dichte (vollstandig geschaumt)</td><td><span class="tval">~0,30 g/cm3</span></td><td>Je nach Temperatur und Geschwindigkeit</td></tr>
+          <tr><td>Dichte (teilgeschaumt)</td><td><span class="tval">0,50–0,90 g/cm3</span></td><td>Einstellbar uber Druckparameter</td></tr>
+          <tr><td>Zugfestigkeit (geschaumt)</td><td><span class="tval">stark reduziert</span></td><td>ISO 527 – Deutlich niedriger als Standard-PLA</td></tr>
+          <tr><td>Drucktemperatur</td><td><span class="tval">195–250 °C</span></td><td>Schaumgrad steigt mit Temperatur</td></tr>
+          <tr><td>Wärmeformbeständigkeit (HDT)</td><td><span class="tval">~50–60 °C</span></td><td>PLA-typisch, keine Hochtemperaturanwendung</td></tr>
+          <tr><td>Wasseraufnahme</td><td><span class="tval">nicht wasserdicht</span></td><td>Schaumstruktur ist porig, Beschichtung notig</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Wie beeinflusst die Drucktemperatur den Schaumgrad? Unser Blog zeigt Praxis-Tipps fur optimale Einstellungen.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Druckparameter-Guide</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Einsatzgebiete</div>
+    <h2 class="sec-title">Anwendungen</h2>
+    <p class="sec-sub">Uberall dort, wo jedes Gramm zahlt.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="ucard__title">RC-Flugzeugflugel und Rumpfe</div>
+        <p>Das Einsatzgebiet Nummer eins. Leichte Tragflachen und Rumpfstrukturen, die die Flugzeit und Tragfahigkeit maximieren.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="ucard__title">Drohnen-Strukturteile</div>
+        <p>Arme, Rahmenteile und Gehauseelemente fur Multikopter, bei denen Gewichtsersparnis die Flugzeit direkt verlangert.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="ucard__title">Cosplay-Rustungen</div>
+        <p>Grossflachige Kostumteile und Rustungsplatten mit minimaler Traglast und guter Formgebung durch Schleifen und Lackieren.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="ucard__title">Gewichtsoptimierte Prototypen</div>
+        <p>Funktionsmuster und Konzeptmodelle, bei denen das spatere Serienteil moglichst leicht sein soll und erste Stresstests durchgefuhrt werden.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div class="ucard__title">Leichte Modelle und Schaustucke</div>
+        <p>Ausstellungsstucke, Dekorationen und Showmodelle, die gut aussehen sollen, aber nicht schwer sein durfen.</p>
+      </div>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Projektideen und Einsatzgebiete fur LW-Filament im Detail: unser Blog zeigt reale Anwendungsbeispiele aus dem RC-Bereich und Prototypenbau.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Praxisbeispiele ansehen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Produktubersicht</div>
+    <h2 class="sec-title">LW-Filament Varianten</h2>
+    <p class="sec-sub">ColorFabb und andere Hersteller bieten spezialisierte LW-Varianten fur unterschiedliche Anforderungen.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Standard</div>
+        <div class="vcard__name">ColorFabb LW-PLA</div>
+        <p>Das Original und der Marktfuhrer. PLA-basiert mit aktiven Treibmitteln. Drucktemperatur 195–250 Grad, Schaumgrad stufenlos regelbar. Optimal fur RC-Flugzeuge und leichte Strukturteile.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">UV-bestandig</div>
+        <div class="vcard__name">LW-ASA</div>
+        <p>ASA-basierte Leichtvariante mit deutlich besserer UV- und Witterungsbestandigkeit. Geeignet fur Aussenmodelle und dauerhaft exponierte Bauteile. Schwieriger zu drucken als LW-PLA.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Hitzebestandig</div>
+        <div class="vcard__name">LW-PLA HT</div>
+        <p>High-Temperature Variante mit erhohter Warmeformbestandigkeit gegenuber Standard-LW-PLA. Fur Anwendungen, bei denen Sonneneinwirkung oder motornahe Warme relevant ist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Finishing</div>
+    <h2 class="sec-title">Nachbearbeitung</h2>
+    <p class="sec-sub">Die raue Schaumstruktur ist bearbeitbar. Mit den richtigen Mitteln entstehen glatte, lackierfahige Oberflachen.</p>
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__icon">🪵</div>
+        <strong>Schleifen</strong>
+        <p>Die porose Schaumoberflache lasst sich gut schleifen. Mit Kornung 80–220 lassen sich Schichtlinien und Unebenheiten effektiv abtragen.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🔧</div>
+        <strong>Spachteln und Fullern</strong>
+        <p>Polyesterspachtel oder Fullprimer verschliessen die offenporige Schaumstruktur und schaffen eine glatte Grundlage fur Lack.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🎨</div>
+        <strong>Lackieren</strong>
+        <p>Nach dem Fullern ist eine vollstandige Lackierung moglich. Acryl- und Kunstharzlacke haften gut auf geschliffenen und grundierten Flachen.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🛡</div>
+        <strong>Glasfaser-Laminierung</strong>
+        <p>Fur hochfeste Anwendungen: Glasfasergewebe mit Epoxidharz auflaminieren. Verbessert Festigkeit und macht das Teil wasserdicht.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">💧</div>
+        <strong>Beschichtung fur Dichtigkeit</strong>
+        <p>Epoxid-Coatings oder Lack verschliessen die porose Struktur. Ohne Versiegelung ist LW-Filament nicht wasserdicht.</p>
+      </div>
+    </div>
+    <div class="post-note">
+      <strong>Hinweis:</strong> Die Schaumstruktur von LW-Filament ist weicher als Standard-PLA. Beim Schleifen behutsam vorgehen und mit feinen Kornungen beginnen, um das Material nicht zu beschadigen.
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Schritt-fur-Schritt-Anleitungen zur Nachbearbeitung von Schaumfilament-Drucken finden Sie in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Finishing-Guide lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Schaumgrad</div>
+    <h2 class="sec-title">Fullungsgrade und Schaumkontrolle</h2>
+    <p class="sec-sub">LW-Filament kennt keine klassischen Fullungsgrade wie normale FDM-Materialien. Stattdessen regeln Temperatur und Druckgeschwindigkeit den Schaumgrad und damit die Dichte.</p>
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">195 °C</div>
+        <div class="fill-card__name">Kein Schaum</div>
+        <p>Material fliesst wie normales PLA. Dichte ~1,24 g/cm3. Fur feine Details und Verbindungsbereiche.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:10%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:10%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:10%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:10%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">230 °C</div>
+        <div class="fill-card__name">Leichtes Schaumen</div>
+        <p>Moderate Expansion. Dichte ~0,8–0,9 g/cm3. Guter Kompromiss aus Gewicht und Festigkeit.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:40%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:40%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:40%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:40%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">240 °C</div>
+        <div class="fill-card__name">Starkes Schaumen</div>
+        <p>Hohe Expansion. Dichte ~0,50–0,60 g/cm3. Fur grosse leichte Flachen und Strukturen.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:70%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:70%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:70%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:70%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">250 °C</div>
+        <div class="fill-card__name">Maximales Schaumen</div>
+        <p>Vollstandige Expansion. Dichte ~0,30 g/cm3. Maximale Gewichtsreduktion, niedrigste Festigkeit.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:14px;color:var(--ink-soft);margin-top:4px;">Hinweis: Auch die Druckgeschwindigkeit beeinflusst den Schaumgrad. Niedrigere Geschwindigkeit bei hoher Temperatur ergibt mehr Expansion.</p>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Alles uber Schaumgrad-Kalibrierung, Extruder-Flow-Kompensation und optimale Druckprofile in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Kalibrierungsguide lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Limitierungen</div>
+    <h2 class="sec-title">Grenzen von LW-Filament</h2>
+    <p class="sec-sub">Wo LW-Filament an seine Grenzen stosst und welche Alternativen in Frage kommen.</p>
+    <div class="callout">
+      <div class="callout__title">Wichtige Einschrankungen kennen</div>
+      <p>LW-Filament erfordert Erfahrung mit Temperaturregelung am Drucker. Kleine Temperaturschwankungen verandern den Schaumgrad und damit Gewicht und Festigkeit des Bauteils erheblich. Anfanger benotigen mehrere Testdrucke zur Kalibrierung.</p>
+      <p>Die Schaumstruktur reduziert die mechanische Festigkeit im Vergleich zu Standard-PLA deutlich. Fur lasttragende Strukturbauteile ist LW-Filament ungeeignet. Auch ist das Material ohne Beschichtung nicht wasserdicht, da die Schaumstruktur offen und porig ist.</p>
+      <p>LW-Filament ist deutlich teurer als Standard-PLA. Bei grossen Bauteilen summieren sich die Materialkosten schnell. Fur Anwendungen ohne Gewichtsanforderungen sind PLA oder PETG wirtschaftlicher.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/pla" class="callout__link" target="_parent">PLA</a>
+        <a href="https://www.3ddrucklife.de/petg" class="callout__link" target="_parent">PETG</a>
+        <a href="https://www.3ddrucklife.de/asa" class="callout__link" target="_parent">ASA (UV-bestandig)</a>
+        <a href="https://www.3ddrucklife.de/tpu" class="callout__link" target="_parent">TPU (flexibel)</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="callout__link" target="_parent">Materialberatung anfragen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Haufige Fragen</div>
+    <h2 class="sec-title">FAQ zu LW-Filament</h2>
+    <div class="faq-list">
+
+      <!-- Gruppe 1 -->
+      <div class="faq-group-label">Uber LW-Filament</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ab welcher Temperatur fangt LW-Filament an zu schaumen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Der Schaumprozess beginnt bei etwa 230 Grad Celsius. Darunter fliesst das Material wie normales PLA ohne nennenswerte Expansion. Mit steigender Temperatur bis zu 250 Grad nimmt der Schaumgrad zu und die Dichte sinkt auf bis zu 0,30 g/cm3.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie viel leichter ist ein LW-Filament-Bauteil wirklich?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Bei maximalem Schaumgrad (250 Grad, langsame Geschwindigkeit) sinkt die Dichte von 1,24 g/cm3 auf etwa 0,30 g/cm3. Das entspricht einer Gewichtsreduktion von bis zu 75 Prozent gegenuber einem nicht geschaumten Bauteil gleichen Volumens. Praktisch bedeutet das: ein 100-Gramm-PLA-Teil wiegt in LW-Filament etwa 30 bis 40 Gramm.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Brauche ich einen speziellen Drucker fur LW-Filament?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">LW-Filament funktioniert auf den meisten FDM-Druckern, die 250 Grad Celsius erreichen konnen. Wichtig ist eine prazise und stabile Temperaturregelung, da schon wenige Grad den Schaumgrad stark verandern. Direkte Extruder (Direct Drive) sind von Vorteil, aber kein absolutes Muss.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist LW-Filament fur den RC-Modellbau geeignet?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja, das ist der Hauptanwendungsbereich. RC-Flugzeugflugel und Rumpfe aus LW-PLA sind leicht, strukturell ausreichend belastbar und konnen mit Glasfaser-Laminierung zusatzlich verstarkt werden. Die Kombination aus Gewicht und Formgebungsfreiheit des 3D-Drucks macht LW-Filament zur ersten Wahl im Modellflugzeugbau.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lagere ich LW-Filament richtig?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Trocken lagern ist entscheidend. Feuchtigkeit dringt in die PLA-Matrix ein und stort die Treibmittel-Reaktion, was zu unregelmassigem Schaumen und Qualitatseinbussen fuhrt. Vakuumbeutel mit Silicagel oder eine Trockenbox sind empfehlenswert. Vor dem Druck bei 45–50 Grad fur 4–6 Stunden trocknen, wenn das Material langer gelagert wurde.</div>
+      </div>
+
+      <!-- Gruppe 2 -->
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was kostet LW-Filament im Vergleich zu Standard-PLA?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">LW-Filament ist deutlich teurer als Standard-PLA. ColorFabb LW-PLA kostet je nach Bezugsquelle das Drei- bis Funffache eines normalen PLA-Filaments. Da beim Schaumen jedoch weniger Material pro Volumen eingesetzt wird, relativieren sich die Kosten teilweise. Fur Anwendungen ohne Gewichtsanforderungen ist Standard-PLA wirtschaftlicher.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie erhalte ich einen Preis fur mein LW-Filament-Bauteil?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">3D-Datei hochladen, Material auswahlen und sofort den Preis erhalten. Unser <a href="https://www.3ddrucklife.de/preisrechner" target="_parent">Preisrechner</a> berechnet Kosten fur FDM-Druckteile direkt online. Bei komplexen Anfragen oder besonderen Schaumgrad-Anforderungen konnen Sie uns auch kontaktieren.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Schichthohe ist fur LW-Filament optimal?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Aufgrund der Schaumexpansion werden beim Druck mit LW-Filament oft grosse Schichthohen von 0,3–0,5 mm eingesetzt. Die Expansion kompensiert das uberschussige Material. Es empfiehlt sich, den Flow-Wert im Slicer an den gewahlten Schaumgrad anzupassen. Viele Anwender setzen den Flow auf 50–60 Prozent bei hohen Drucktemperaturen.</div>
+      </div>
+
+      <!-- Gruppe 3 -->
+      <div class="faq-group-label">3D-Druck allgemein und Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann man LW-Filament-Teile lackieren?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja, aber Vorbereitung ist entscheidend. Die raue Schaumoberflache zuerst mit Fullprimer oder Spachtel schliessen, dann schleifen und anschliessend lackieren. Ohne Vorbehandlung saugt die porose Oberflache Lack ungleichmassig auf. Nach ordentlicher Grundierung lassen sich sehr glatte, professionelle Oberflachen erzielen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist der Unterschied zwischen FDM und anderen 3D-Druckverfahren?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">FDM (Fused Deposition Modeling) schmilzt einen Kunststofffaden und legt ihn schichtweise auf einer Plattform ab. Es ist das gunstigste und weitverbreitetste Verfahren. Alternativen wie SLA (Resin), SLS (Pulver) oder MJF bieten feinere Oberflachen oder bessere mechanische Eigenschaften, sind aber teurer und erfordern mehr Nachbearbeitung.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lange dauert ein typischer 3D-Druck bei 3D DRUCK LIFE?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Kleine bis mittlere Bauteile sind oft in 2–5 Werktagen lieferbar. Grosse oder komplexe Teile konnen 7–10 Werktage benotigen. Nach Bestellung erhalten Sie eine Auftragsbestatigung mit voraussichtlichem Liefertermin. Bei dringendem Bedarf sprechen Sie uns an.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann man LW-Filament-Teile mit anderen Materialien kombinieren?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja, im Modellbau ist die Kombination von LW-Filament-Strukturen mit Glasfasergewebe und Epoxidharz (Laminierung) weit verbreitet. Das ergibt leichte, aber deutlich festere Verbundbauteile. Auch Klebeverbindungen mit anderen 3D-gedruckten Materialien wie PLA oder PETG fur Verbindungsknoten sind moglich.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Datei-Formate werden fur den 3D-Druck benotigt?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Am gangigsten sind STL- und 3MF-Dateien. Wir akzeptieren auch STEP, OBJ und andere Formate. Die Datei sollte ein geschlossenes, wasserdichtes Volumenkorper-Netz ohne Locher oder umgekehrte Normalen enthalten. Bei Unsicherheiten konnen wir die Datei prufem und bei Bedarf korrigieren.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">LW-Filament-Bauteile jetzt bestellen</div>
+        <p class="cta-left__text">3D-Datei hochladen, Material wahlen, Preis sofort erhalten.</p>
+        <div class="btn-row">
+          <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--white" target="_parent">Preisrechner offnen</a>
+          <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--white-outline" target="_parent">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Direktkontakt</div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span>E-Mail: <a href="mailto:3ddrucklife@gmail.com">3ddrucklife@gmail.com</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <span>Antwort in der Regel innerhalb von 24 Stunden</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// TOC active state
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc-link');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-50px 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-q').forEach(b => {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.style.display = 'none';
+    });
+    if (!expanded) {
+      btn.setAttribute('aria-expanded', 'true');
+      btn.nextElementSibling.style.display = 'block';
+    }
+  });
+});
+</script>
+</body>
+</html>

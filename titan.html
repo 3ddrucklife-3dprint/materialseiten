@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Titan Ti6Al4V 3D-Druck – SLM und EBM Metall | 3D DRUCK LIFE</title>
+<meta name="description" content="Titan Ti6Al4V (Grade 5) per SLM oder EBM: Eigenschaften, technische Daten, Anwendungen (Medizin, Aerospace), Nachbearbeitung und Varianten. Bestes Festigkeit-zu-Gewicht aller Metalllegierungen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+/* BREADCRUMB */
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+/* HERO */
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(36px, 5vw, 58px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+/* STICKY TOC */
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+/* SECTION BASE */
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+/* INTRO */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+/* VERGLEICH */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 24px; font-weight: 900; margin-bottom: 18px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.ccard__row:last-child { border-bottom: none; padding-bottom: 0; }
+.ccard__key { color: var(--ink-soft); }
+.ccard__val { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-g { background: #22c55e; }
+.dot-y { background: #f59e0b; }
+.dot-r { background: #ef4444; }
+
+/* BLOG LINK BOX */
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+/* CHEM TABLE */
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* TECH TABLE */
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* VARIANTEN */
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ANWENDUNGEN */
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+
+/* NACHBEARBEITUNG */
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__num { width: 30px; height: 30px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 900; flex-shrink: 0; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note strong { font-weight: 700; }
+
+/* FUELLUNGSGRADE */
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-visual { display: flex; gap: 4px; margin-top: 10px; }
+.fill-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--line); overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 3px; }
+
+/* GRENZEN */
+.limit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 28px; }
+.limit-item { border: 1px solid #fecaca; background: #fff5f5; border-radius: var(--radius); padding: 16px 18px; }
+.limit-item strong { display: block; font-size: 14px; font-weight: 900; color: #991b1b; margin-bottom: 4px; }
+.limit-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+/* FAQ */
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+
+/* CTA */
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.cta-right__title { font-size: clamp(18px, 2vw, 24px); font-weight: 900; line-height: 1.2; }
+.cta-right__text { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px; }
+  .hero__image { order: -1; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .intro-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">›</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">›</span>
+    <span class="breadcrumb__current">Titan Ti6Al4V</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__eyebrow">Metallpulver / SLM / EBM</div>
+      <h1 class="hero__title">Titan Ti6Al4V: leicht, <span class="accent">biokompatibel</span> und stärker als Stahl.</h1>
+      <p class="hero__sub">Grade 5 Titan per SLM oder EBM gedruckt. Bestes Festigkeit-zu-Gewicht-Verhältnis aller Metalllegierungen im 3D-Druck. Vollständig biokompatibel nach ISO 10993 und ASTM F136.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">~1.100 MPa</span><span class="kstat__lbl">Zugfestigkeit</span></div>
+        <div class="kstat"><span class="kstat__val">biokompatibel</span><span class="kstat__lbl">ISO 10993</span></div>
+        <div class="kstat"><span class="kstat__val">4,43 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+        <div class="kstat"><span class="kstat__val">bis 350 °C</span><span class="kstat__lbl">Einsatztemp.</span></div>
+      </div>
+      <div class="btn-row">
+        <a href="https://3ddrucklife.com" class="btn btn--orange" target="_parent">&#x279C; Preis berechnen</a>
+        <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Titan" class="btn btn--outline">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/9k=" alt="Titan Ti6Al4V 3D-Druck Bauteil" width="900" height="900" loading="eager">
+    </div>
+  </div>
+</header>
+
+<!-- STICKY TOC -->
+<nav class="toc-bar" aria-label="Seitennavigation">
+  <div class="toc-bar__inner">
+    <a class="toc-link" href="#material">Material</a>
+    <a class="toc-link" href="#eigenschaften">Eigenschaften</a>
+    <a class="toc-link" href="#chemie">Chemie</a>
+    <a class="toc-link" href="#techdaten">Techdaten</a>
+    <a class="toc-link" href="#anwendungen">Anwendungen</a>
+    <a class="toc-link" href="#varianten">Varianten</a>
+    <a class="toc-link" href="#nachbearbeitung">Nachbearbeitung</a>
+    <a class="toc-link" href="#fuellungsgrade">Fuellungsgrade</a>
+    <a class="toc-link" href="#grenzen">Grenzen</a>
+    <a class="toc-link" href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- MATERIAL / WAS IST ES -->
+<section id="material" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Was ist Ti6Al4V?</div>
+    <h2 class="sec-title">Die wichtigste Titanlegierung weltweit.</h2>
+    <p class="sec-sub">Ti6Al4V (Grade 5 Titan) vereint maximale Festigkeit mit minimalem Gewicht und vollständiger Biokompatibilität.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>Ti6Al4V ist die meistverwendete Titanlegierung weltweit und macht rund 50 % des gesamten Titanverbrauchs aus. Im 3D-Druck wird sie per <strong>SLM (Selective Laser Melting)</strong> oder <strong>EBM (Electron Beam Melting)</strong> verarbeitet. Das Pulver wird schichtweise aufgetragen und lokal aufgeschmolzen, sodass auch komplexeste Geometrien ohne Werkzeug entstehen.</p>
+        <p>Das Besondere: Ti6Al4V bietet das <strong>beste Festigkeit-zu-Gewicht-Verhältnis aller Metalllegierungen im 3D-Druck</strong>. Mit einer spezifischen Zugfestigkeit von rund 248 kNm/kg liegt es weit vor Aluminium (150 kNm/kg) und Edelstahl (67 kNm/kg). Gleichzeitig ist die Legierung vollständig biokompatibel nach <strong>ISO 10993</strong> und <strong>ASTM F136</strong>, was sie zur ersten Wahl fur medizinische Implantate macht.</p>
+        <p>Die natürliche TiO2-Passivschicht (2 bis 10 nm) schützt vor Korrosion ohne zusätzliche Beschichtung. Kein anderes Metall im 3D-Druck vereint diese Kombination aus Festigkeit, Leichtigkeit, Biokompatibilität und Korrosionsbeständigkeit.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">&#9878;</div>
+          <div class="fact__body"><strong>SLM / EBM</strong><span>Laserbasiert (SLM) oder per Elektronenstrahl (EBM, im Vakuum). Beide Verfahren erzeugen vollständig dichte Bauteile.</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">&#10024;</div>
+          <div class="fact__body"><strong>Grade 5 (Standard)</strong><span>Ti-6Al-4V nach AMS 4928, ASTM B265 und ISO 5832-3. Basis aller Luft- und Raumfahrt- sowie Medizinzertifizierungen.</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">&#128138;</div>
+          <div class="fact__body"><strong>Vollständig biokompatibel</strong><span>ISO 10993, ASTM F136 und FDA-Konformität. Einsatz in Implantaten, Prothesen und Dentalrestaurationen.</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">&#128200;</div>
+          <div class="fact__body"><strong>Hohe Festigkeit bei niedrigem Gewicht</strong><span>Dichte 4,43 g/cm³. Nur halb so schwer wie Stahl bei vergleichbarer oder höherer Festigkeit.</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">&#127758;</div>
+          <div class="fact__body"><strong>Hervorragende Korrosionsbeständigkeit</strong><span>Natürliche TiO2-Passivschicht. Beständig gegen Salzwasser, Körperflüssigkeiten und die meisten Säuren.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN / VERGLEICH -->
+<section id="eigenschaften" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialvergleich</div>
+    <h2 class="sec-title">Ti6Al4V vs. Aluminium vs. Edelstahl.</h2>
+    <p class="sec-sub">Warum Titan für Leichtbau und Medizintechnik ungeschlagen bleibt.</p>
+    <div class="compare-grid">
+      <div class="ccard">
+        <div class="ccard__label">Alternative</div>
+        <div class="ccard__name">AlSi10Mg</div>
+        <div class="ccard__row"><span class="ccard__key">Festigkeit/Gewicht</span><span class="ccard__val">150 kNm/kg</span></div>
+        <div class="ccard__row"><span class="ccard__key">Biokompatibilität</span><span class="ccard__val"><span class="dot dot-r"></span> Nein</span></div>
+        <div class="ccard__row"><span class="ccard__key">Wärmeleitf.</span><span class="ccard__val">68 W/mK</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis</span><span class="ccard__val"><span class="dot dot-y"></span> Mittel</span></div>
+        <div class="ccard__row"><span class="ccard__key">Max. Einsatztemp.</span><span class="ccard__val">150 °C</span></div>
+      </div>
+      <div class="ccard ccard--center">
+        <div class="ccard__label">&#9733; Empfohlen</div>
+        <div class="ccard__name">Ti6Al4V</div>
+        <div class="ccard__row"><span class="ccard__key">Festigkeit/Gewicht</span><span class="ccard__val"><strong>248 kNm/kg</strong></span></div>
+        <div class="ccard__row"><span class="ccard__key">Biokompatibilität</span><span class="ccard__val"><span class="dot dot-g"></span> Vollständig</span></div>
+        <div class="ccard__row"><span class="ccard__key">Wärmeleitf.</span><span class="ccard__val">7 W/mK</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis</span><span class="ccard__val"><span class="dot dot-r"></span> Hoch</span></div>
+        <div class="ccard__row"><span class="ccard__key">Max. Einsatztemp.</span><span class="ccard__val"><strong>350 °C</strong></span></div>
+      </div>
+      <div class="ccard">
+        <div class="ccard__label">Alternative</div>
+        <div class="ccard__name">Edelstahl 316L</div>
+        <div class="ccard__row"><span class="ccard__key">Festigkeit/Gewicht</span><span class="ccard__val">67 kNm/kg</span></div>
+        <div class="ccard__row"><span class="ccard__key">Biokompatibilität</span><span class="ccard__val"><span class="dot dot-y"></span> Bedingt</span></div>
+        <div class="ccard__row"><span class="ccard__key">Wärmeleitf.</span><span class="ccard__val">16 W/mK</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis</span><span class="ccard__val"><span class="dot dot-y"></span> Mittel</span></div>
+        <div class="ccard__row"><span class="ccard__key">Max. Einsatztemp.</span><span class="ccard__val">400 °C</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE / GEFÜGE -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Werkstoffkunde</div>
+    <h2 class="sec-title">Chemie und Gefügestruktur von Ti6Al4V.</h2>
+    <p class="sec-sub">Die Legierungschemie erklärt, warum Ti6Al4V so einzigartige Eigenschaften hat.</p>
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead>
+          <tr><th>Element / Eigenschaft</th><th>Anteil / Wert</th><th>Funktion und Bedeutung</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Titan (Ti)</td><td>Basis (~90 %)</td><td>Trägermetall, verleiht Leichtigkeit und Biokompatibilität</td></tr>
+          <tr><td>Aluminium (Al)</td><td>6 %</td><td>Alphastabilisator, Festigkeitssteigerung durch Mischkristall</td></tr>
+          <tr><td>Vanadium (V)</td><td>4 %</td><td>Betastabilisator, verbessert Umformbarkeit und Verarbeitbarkeit</td></tr>
+          <tr><td>Gefügetyp</td><td>Alpha-Beta</td><td>Zweiphasengefüge; optimale Kombination aus Festigkeit und Zähigkeit</td></tr>
+          <tr><td>SLM-Gefüge (as-built)</td><td>Martensitisch</td><td>Feines martensitisches Alpha-Gefüge durch schnelle Abkühlung</td></tr>
+          <tr><td>Nach Wärmebehandlung</td><td>Alpha + Beta</td><td>Stabiles Zweiphasengefüge nach Glühen bei 800 bis 920 °C</td></tr>
+          <tr><td>TiO2-Passivschicht</td><td>2 bis 10 nm</td><td>Natürlicher Korrosionsschutz ohne Beschichtung, wächst spontan nach</td></tr>
+          <tr><td>Biokompatibilität</td><td><span class="badge-g">ISO 10993 / ASTM F136</span></td><td>Keine toxischen Reaktionen im Körper, FDA-konform</td></tr>
+          <tr><td>O, N, C, Fe (Verunreinigungen)</td><td>Streng limitiert</td><td>Grade 23 (ELI) hat nochmals niedrigere Grenzwerte fur Implantate</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <div>
+        <p>Vollständige Übersicht aller Metalllegierungen im 3D-Druck: Eigenschaften, Zertifizierungen und Verfahrensvergleich SLM vs. EBM.</p>
+        <a href="https://www.3ddrucklife.de/post/3d-druck-materialeigenschaften" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Metalllegierungen im Vergleich</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNISCHE DATEN -->
+<section id="techdaten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Technische Daten</div>
+    <h2 class="sec-title">Ti6Al4V SLM: Richtwerte nach Wärmebehandlung.</h2>
+    <p class="sec-sub">Werte aus gängigen Herstellerdatenblättern und Fachliteratur. Je nach Anlage und Charge können Werte abweichen.</p>
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead><tr><th>Eigenschaft</th><th>Richtwert</th><th>Norm</th><th>Hinweis</th></tr></thead>
+        <tbody>
+          <tr><td>Zugfestigkeit</td><td><span class="tval">1.050 bis 1.150 MPa</span></td><td>ISO 6892</td><td>Nach Wärmebehandlung (HT)</td></tr>
+          <tr><td>Streckgrenze (Rp0,2)</td><td><span class="tval">900 bis 1.000 MPa</span></td><td>ISO 6892</td><td>Dehngrenze bei 0,2 % bleibender Dehnung</td></tr>
+          <tr><td>Bruchdehnung</td><td><span class="tval">8 bis 14 %</span></td><td>ISO 6892</td><td>Verbessert durch HIP-Behandlung</td></tr>
+          <tr><td>E-Modul</td><td><span class="tval">ca. 114 GPa</span></td><td>ISO 6892</td><td>Richtungsunabhängig nach HT</td></tr>
+          <tr><td>Dichte</td><td><span class="tval">4,43 g/cm³</span></td><td>ISO 787</td><td>Rund 57 % leichter als Stahl</td></tr>
+          <tr><td>Wärmeleitfähigkeit</td><td><span class="tval">7,2 W/(mK)</span></td><td>ASTM E1461</td><td>Niedrig; beachten bei Wärmeübertragungsanwendungen</td></tr>
+          <tr><td>Schmelzpunkt</td><td><span class="tval">ca. 1.604 °C</span></td><td></td><td>SLM-Prozesstemperatur: Laserleistung >200 W</td></tr>
+          <tr><td>Max. Einsatztemperatur</td><td><span class="tval">bis 350 °C</span></td><td></td><td>Dauerhaft; kurzzeitig bis 500 °C möglich</td></tr>
+          <tr><td>Biokompatibilität</td><td><span class="tval">ISO 10993 / ASTM F136</span></td><td></td><td>Vollständig; ELI Grade 23 fur Langzeitimplantate</td></tr>
+          <tr><td>Relativer Verfestigungsgrad (SLM as-built)</td><td><span class="tval">99,5 %</span></td><td>Archimedes</td><td>Relative Dichte; HIP verbessert auf >99,9 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <div>
+        <p>Wie SLM und EBM funktionieren, wo die Unterschiede liegen und welche Toleranzen erreichbar sind.</p>
+        <a href="https://www.3ddrucklife.de/post/slm-3d-druck" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">SLM-Verfahren im Detail</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Einsatzgebiete</div>
+    <h2 class="sec-title">Wo Ti6Al4V seinen Wert beweist.</h2>
+    <p class="sec-sub">Von der Medizin bis in den Weltraum: Titan ist die erste Wahl, wo Gewicht, Festigkeit und Biokompatibilität gleichzeitig gefragt sind.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="ucard__title">Medizinische Implantate</div>
+        <p>Hüft- und Knieprothesen, Wirbelsäulenimplantate, Knochenschrauben. Osseointegration durch Gitterstrukturen mit 300 bis 800 µm Porengröße.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="ucard__title">Dentaltechnik</div>
+        <p>Kronen, Brücken, Dentalimplantate und Abutments. Hohe Passgenauigkeit durch digitalen Workflow: Scan, CAD, SLM, Polieren.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>
+        </div>
+        <div class="ucard__title">Aerospace-Strukturteile</div>
+        <p>Spanten, Beschläge, Halterungen und Hydraulikblöcke. Topologieoptimierte Geometrien reduzieren Gewicht um bis zu 60 % vs. konventionelle Fertigung.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <div class="ucard__title">Motorsport</div>
+        <p>Pleuel, Naben, Bremskolben und Getriebegehäuse. Titankomponenten senken ungefederte Massen und verbessern Wärmehaushalt.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+        </div>
+        <div class="ucard__title">Wärmeübertrager</div>
+        <p>Komplexe Kanalgeometrien für Luft- und Raumfahrt-Wärmetauscher. Korrosionsbeständigkeit in aggressiven Medien (Salzwasser, Chlor).</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="ucard__title">Raumfahrt und Forschung</div>
+        <p>Satellitenbauteile, Raketentriebwerke, Kryogenik-Komponenten. EBM im Vakuum ideal für oxidationsempfindliche Geometrien.</p>
+      </div>
+    </div>
+    <div class="blog-link-box" style="margin-top:32px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <div>
+        <p>Welche Metallbauteile eignen sich für SLM, welche besser für Guss oder Zerspanung? Entscheidungshilfe im Blogartikel.</p>
+        <a href="https://www.3ddrucklife.de/post/metall-3d-druck-anwendungen" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Metalldruck-Anwendungen ansehen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialvarianten</div>
+    <h2 class="sec-title">Titan-Legierungen im Überblick.</h2>
+    <p class="sec-sub">Nicht jede Titanvariante ist fur jeden Anwendungsfall optimal. Die Übersicht hilft bei der Auswahl.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Standard</div>
+        <div class="vcard__name">Ti6Al4V Grade 5</div>
+        <p>Universalvariante für Aerospace, Motorsport und allgemeinen Leichtbau. Höchste Festigkeit, breiteste Verfügbarkeit als SLM-Pulver.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Medizin</div>
+        <div class="vcard__name">Ti6Al4V ELI Grade 23</div>
+        <p>Extra Low Interstitials: noch niedrigere O, N, C, Fe-Gehalte als Grade 5. Standard fur Langzeitimplantate und chirurgische Instrumente nach ASTM F136.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Weich</div>
+        <div class="vcard__name">CP-Titan Grade 2</div>
+        <p>Kommerziell reines Titan. Weicher und duktiler als Ti6Al4V. Geringer Festigkeit, aber maximale Biokompatibilität und hervorragende Schweißbarkeit. Einsatz: Dentalimplantate, Chemietechnik.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Hochtemperatur</div>
+        <div class="vcard__name">Ti6Al2Sn4Zr2Mo</div>
+        <p>Hochtemperatur-Titanlegierung für Dauereinsatz bis 450 °C. Eingesetzt in Kompressorschaufeln von Flugtriebwerken und thermisch hochbelasteten Aerospace-Bauteilen.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Beta-Titan</div>
+        <div class="vcard__name">Ti-15V-3Cr</div>
+        <p>Beta-Titanlegierung mit sehr hohem Betaphaseanteil. Exzellente Kaltumformbarkeit, gute Aushärtbarkeit. Speziell fur Blech- und Federelemente in der Luft- und Raumfahrt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Nachbearbeitung</div>
+    <h2 class="sec-title">Von der Bauplattform zum Fertigteil.</h2>
+    <p class="sec-sub">Ti6Al4V-Bauteile aus dem SLM-Prozess durchlaufen mehrere Nachbearbeitungsschritte bis zur Freigabe.</p>
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__num">1</div>
+        <strong>Stützstrukturen abtrennen</strong>
+        <p>EDM-Drahtschneiden oder Fräsen mit Hartmetall-VHM-Werkzeug. Titan ist sehr schwer zerspanbar; Spezialwerkzeug und niedrige Schnittgeschwindigkeiten erforderlich.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">2</div>
+        <strong>Wärmebehandlung</strong>
+        <p>Spannungsabbau bei 800 bis 920 °C im Schutzgasofen (Argon). Alternativ: Lösungsglühen plus Abschrecken fur maximale Festigkeit. Pflicht vor Weiterverarbeitung.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">3</div>
+        <strong>HIP (optional)</strong>
+        <p>Heißisostatisches Pressen bei 900 °C / 100 MPa. Schließt verbleibende Poren, verbessert Ermüdungsfestigkeit um bis zu 30 %. Standard in der Medizintechnik.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">4</div>
+        <strong>Strahlen / Schleifen</strong>
+        <p>Kugelstrahlen erzeugt Rauheit Ra 3 bis 6 µm und Druckeigenspannungen (Dauerfestigkeit +). Glasperlen oder Korund je nach Anforderung.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">5</div>
+        <strong>Elektropolieren</strong>
+        <p>Für medizinische Teile: elektrolytisches Polieren reduziert Rauheit auf Ra unter 0,4 µm, entfernt Kontaminationen und verbessert Korrosionsbeständigkeit.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">6</div>
+        <strong>Anodisieren</strong>
+        <p>Titanoxid-Schicht in Farben (Bronze, Blau, Grün, Violett) ohne Farbe durch Spannungssteuerung. Dekorativ und schützt vor Abrieb. Dickschichtanodisieren für Hartbeschichtung.</p>
+      </div>
+    </div>
+    <div class="post-note">
+      <strong>Wichtig:</strong> Titan oxidiert ab 600 °C stark. Alle Wärmebehandlungen musen unter Schutzgas (Argon) oder im Vakuum durchgeführt werden. EBM-Bauteile profitieren davon, dass der gesamte Prozess bereits im Vakuum stattfindet.
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <div>
+        <p>Alle Nachbearbeitungsverfahren fur Metallbauteile aus dem 3D-Druck: HIP, Wärmebehandlung, Oberflächenbehandlung und Zertifizierung.</p>
+        <a href="https://www.3ddrucklife.de/post/metall-3d-druck-nachbearbeitung" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Nachbearbeitung Metall-3D-Druck</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUELLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Füllungsgrade und Gitterstrukturen</div>
+    <h2 class="sec-title">Vollmaterial oder biomedizinisches Gitter.</h2>
+    <p class="sec-sub">Ti6Al4V wird im 3D-Druck entweder als Vollmaterial oder mit gezielten Gitterstrukturen (Lattice) gefertigt.</p>
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">100 %</div>
+        <div class="fill-card__name">Vollmaterial</div>
+        <p>Standard für Aerospace, Motorsport und mechanisch hochbelastete Strukturteile. Relative Dichte über 99,5 % nach SLM, über 99,9 % nach HIP.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div></div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">20-40 %</div>
+        <div class="fill-card__name">Leichtbau-Lattice</div>
+        <p>Topologieoptimierte Gitterstrukturen für maximale Steifigkeit bei minimalem Gewicht. Einsatz in Aerospace-Halterungen und Motorsport-Strukturbauteilen.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:40%"></div></div></div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">20-40 %</div>
+        <div class="fill-card__name">Biomedizinisches Gitter</div>
+        <p>Porengrößen 300 bis 800 µm bei 60 bis 80 % Porosität. Fördert Knocheneinwachsung (Osseointegration) an der Implantatoberfläche. Mimik der Spongiosa-Struktur.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:30%"></div></div></div>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="callout__title">Warum Gitterstrukturen fur Implantate?</div>
+      <p>Kortikaler Knochen hat einen E-Modul von 15 bis 25 GPa. Vollmaterial-Titan mit 114 GPa ist zu steif und kann Stress-Shielding verursachen: der Knochen baut sich ab, weil er mechanisch entlastet wird. Gitterstrukturen senken den effektiven E-Modul des Implantats auf knochennähes Niveau und fördern gleichzeitig die Osseointegration durch erhöhte Oberfläche.</p>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <div>
+        <p>Gitterstrukturen im 3D-Druck: Topologieoptimierung, Lattice-Design und wann Vollmaterial die bessere Wahl ist.</p>
+        <a href="https://www.3ddrucklife.de/post/lattice-strukturen-3d-druck" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Gitterstrukturen im Detail</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Grenzen kennen</div>
+    <h2 class="sec-title">Wann Ti6Al4V nicht die richtige Wahl ist.</h2>
+    <p class="sec-sub">Titan ist außergewöhnlich, aber nicht fur jede Anwendung optimal.</p>
+    <div class="limit-grid">
+      <div class="limit-item">
+        <strong>Sehr hohe Kosten</strong>
+        <p>Ti6Al4V-Bauteile kosten 8 bis 20 Euro/cm³. Titanpulver ist 5 bis 10 Mal teurer als Edelstahl 316L. Nur sinnvoll, wenn Gewichts- oder Biokompatibilitätsanforderungen dies rechtfertigen.</p>
+      </div>
+      <div class="limit-item">
+        <strong>Schlechte Wärmeleitfähigkeit</strong>
+        <p>Nur 7,2 W/(mK) verglichen mit 68 W/(mK) bei Aluminium. Ungeeignet für Wärmeableitung und Kühlkörper. Für Wärmeübertrager nur in korrosiven Medien sinnvoll.</p>
+      </div>
+      <div class="limit-item">
+        <strong>Schwer zerspanbar</strong>
+        <p>Titan klebt beim Zerspanen am Werkzeug (Aufbauschneide). Spezial-VHM-Werkzeuge und niedrige Schnittgeschwindigkeiten (40 bis 60 m/min) nötig. Erhöht Nachbearbeitungskosten stark.</p>
+      </div>
+      <div class="limit-item">
+        <strong>Oxidationsempfindlichkeit</strong>
+        <p>Oberhalb 600 °C starke Oxidation. Wärmebehandlung und Schweißen zwingend unter Argon oder im Vakuum. EBM-Prozess (Vakuum) vorteilhafter als SLM fur hochreaktive Geometrien.</p>
+      </div>
+      <div class="limit-item">
+        <strong>Geringe elektrische Leitfähigkeit</strong>
+        <p>Titan leitet Strom schlecht. Für elektrische oder EMV-Anwendungen ist Kupfer oder Aluminium die bessere Wahl.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="callout__title">Alternatives Material prüfen?</div>
+      <p>Wenn Biokompatibilität nicht gefragt ist und Kosten eine Rolle spielen: Aluminium AlSi10Mg bietet exzellenten Leichtbau zu einem Bruchteil der Kosten. Für Hochtemperatur ohne Biokompatibilitätspflicht kommt Inconel 625 in Frage.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/aluminium" class="callout__link" target="_parent">AlSi10Mg ansehen</a>
+        <a href="https://www.3ddrucklife.de/edelstahl" class="callout__link" target="_parent">Edelstahl 316L ansehen</a>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="callout__link" target="_parent">Alle Materialien</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">FAQ</div>
+    <h2 class="sec-title">Häufige Fragen zu Titan Ti6Al4V.</h2>
+    <p class="sec-sub">Die wichtigsten Antworten zum 3D-Druck mit Titan.</p>
+    <div class="faq-list">
+
+      <div class="faq-group-label">Über Titan 3D-Druck</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist der Unterschied zwischen SLM und EBM bei Titan?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">SLM (Selective Laser Melting) verwendet einen Laserstrahl und läuft unter Schutzgas (Argon). EBM (Electron Beam Melting) nutzt einen Elektronenstrahl und arbeitet im Vakuum bei erhöhter Vorwärmtemperatur (~700 °C). EBM erzeugt weniger Eigenspannungen, hat gröbere Auflösung, braucht aber keine Schutzgasatmosphäre. SLM bietet bessere Detailtreue und ist weiter verbreitet. Für Titanlegierungen sind beide Verfahren etabliert.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist Ti6Al4V wirklich stärker als Stahl?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Bei gleicher Masse ja. Ti6Al4V hat mit ca. 248 kNm/kg eine fast viermal höhere spezifische Festigkeit als Baustahl. Die absolute Zugfestigkeit liegt mit 1.050 bis 1.150 MPa auf dem Niveau hochwertiger Werkzeugstähle. Der entscheidende Vorteil ist die Kombination: vergleichbare Festigkeit bei nur 57 % der Dichte von Stahl.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Für welche Implantate ist Ti6Al4V geeignet?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ti6Al4V ELI (Grade 23) ist die Standardlegierung fur belastete Implantate: Hüft- und Knieprothesen, Wirbelsäulenimplantate, Knochenfixierungsplatten. Grade 5 wird für chirurgische Instrumente und weniger belastete Anwendungen eingesetzt. Für Dentalimplantate und Zahnwurzeln wird häufig kommerziell reines Titan (CP-Titan Grade 2 oder 4) bevorzugt, da es weicher und noch bioverträglicher ist.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Warum wird Titan so wenig im allgemeinen Maschinenbau verwendet?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Der Preis ist der Hauptgrund. Titanpulver für SLM kostet 200 bis 500 Euro/kg, deutlich mehr als Edelstahl (50 bis 150 Euro/kg) oder Aluminium (30 bis 100 Euro/kg). Dazu kommt die aufwendige Nachbearbeitung (Schutzgasglühen, Spezialwerkzeug). Der Einsatz lohnt sich nur, wenn das Gewichts-zu-Festigkeit-Verhältnis oder die Biokompatibilität entscheidend sind.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist Stress-Shielding bei Titanimplantaten?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Stress-Shielding entsteht, wenn ein Implantat zu steif ist (E-Modul viel höher als Knochen) und mechanische Last vom Knochen abschirmt. Der Knochen verliert dann Dichte (Wolff'sches Gesetz). Ti6Al4V mit 114 GPa ist immer noch 5 bis 7 Mal steifer als Knochen (15 bis 25 GPa). Gitterstrukturen (Lattice) reduzieren den effektiven E-Modul des Implantats und mindern Stress-Shielding deutlich.</div>
+      </div>
+
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was kostet ein Ti6Al4V-Bauteil aus dem SLM-Druck?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Als Richtwert: 8 bis 20 Euro/cm³ Bauteilvolumen, je nach Geometriekomplexität, Stützstrukturanteil, Nachbearbeitung und Stückzahl. Ein kleines Motorsport-Bauteil (20 cm³) liegt typisch bei 200 bis 400 Euro. Medizinische Implantate mit Zertifizierung, HIP und Elektropolieren können ein Vielfaches kosten. Unser Preisrechner gibt eine sofortige Kostenschätzung nach CAD-Upload.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Wanddicken sind bei Titan SLM möglich?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Minimalwanddicke bei SLM Titan: ca. 0,3 bis 0,5 mm (geometrieabhängig). Empfohlen werden 0,8 mm und mehr fur stabile Strukturen. Gitterstrukturen (Streben) ab ca. 0,4 mm Strebendurchmesser. EBM hat etwas gröbere Auflösung (min. ~0,8 mm Wanddicke), dafür weniger Stützstrukturen nötig.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Brauche ich eine Zertifizierung fur medizinische Titanteile?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja. Für Medizinprodukte Klasse IIb (belastete Implantate) ist eine CE-Kennzeichnung nach MDR 2017/745 erforderlich, die eine vollständige klinische Bewertung und Qualitätsmanagementsystem (ISO 13485) umfasst. Das Titanmaterial selbst muss ASTM F136 oder ISO 5832-3 entsprechen. Wir beraten gerne zu Anforderungen und können mit zertifizierten Partnern zusammenarbeiten.</div>
+      </div>
+
+      <div class="faq-group-label">3D-Druck allgemein und Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann ich Ti6Al4V nach dem Druck schweißen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja, Titan schweißt sich gut mit TIG (WIG) unter Argon-Schutzgasabdeckung oder im Vakuum. Die Naht muss vollständig vor Sauerstoff und Stickstoff geschützt sein (auch die Rückseite und die Abkühlzone). Laser- und Elektronenstrahlschweißen sind ebenfalls möglich. Schweißnähte können anschließend wärmebehandelt werden.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was bedeutet HIP und wann ist es notwendig?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">HIP (Heißisostatisches Pressen) behandelt Bauteile bei ca. 900 °C und 100 MPa isostatischem Gasdruck. Verbliebene Mikroporen werden geschlossen, relative Dichte steigt auf über 99,9 %. Das verbessert die Ermüdungsfestigkeit um bis zu 30 % und ist Pflicht bei sicherheitskritischen Luft- und Raumfahrtbauteilen und Medizinimplantaten. Für unbelastete Prototypen oder Sichtbauteile ist HIP nicht erforderlich.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie sieht die Oberfläche eines SLM-Titanteils aus (as-built)?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">As-built (ohne Nachbearbeitung) liegt die Rauheit bei Ra 10 bis 20 µm. Die Oberfläche erscheint metallisch-grau mit sichtbarer Schichtstruktur. Kugelstrahlen verbessert auf Ra 3 bis 6 µm, Elektropolieren auf Ra unter 0,4 µm (spiegelglänzend). Anodisieren erzeugt Farbschichten (Bronze, Blau, Grün, Violett) durch Spannungssteuerung der Oxidschichtdicke.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann man Ti6Al4V mit normalen HSS-Werkzeugen bearbeiten?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Nur eingeschränkt und unwirtschaftlich. Titan klebt beim Zerspanen am Werkzeug (Aufbauschneide), was schnell zu Werkzeugbruch führt. Standard sind VHM-Fräser (Vollhartmetall) mit TiAlN- oder AlTiN-Beschichtung, niedriger Schnittgeschwindigkeit (40 bis 60 m/min), hohem Vorschub und ausreichender Kühlmittelzufuhr. HSS ist nur fur leichte Handarbeiten oder kurze Bohrungen geeignet.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist der Unterschied zwischen Grade 5 und Grade 23?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Beide sind Ti6Al4V. Grade 23 (ELI = Extra Low Interstitials) hat niedrigere Grenzwerte fur Sauerstoff (max. 0,13 % statt 0,20 %), Eisen, Kohlenstoff und Stickstoff. Das verbessert Zähigkeit, Schwingfestigkeit und Biokompatibilität. Grade 23 ist der Standard fur Langzeit-Implantate nach ASTM F136. Grade 5 ist günstiger und wird für Aerospace, Motorsport und kurzfristig eingesetzte medizinische Instrumente verwendet.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">Titan Ti6Al4V-Bauteile jetzt bestellen</div>
+        <p class="cta-left__text">3D-Datei hochladen, Material wählen, Preis sofort erhalten. Kein Angebot, kein Warten. Oder kontaktiere uns direkt fur Projekte mit Medizin- oder Aerospace-Anforderungen.</p>
+        <div class="btn-row">
+          <a href="https://3ddrucklife.com" class="btn btn--white" target="_parent">Preisrechner öffnen</a>
+          <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Titan" class="btn btn--white-outline" target="_parent">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Warum 3D DRUCK LIFE</div>
+        <div class="cta-right__title">Erfahrung mit Titan in Medizin und Aerospace</div>
+        <p class="cta-right__text">Wir drucken Ti6Al4V Grade 5 und Grade 23 per SLM und vermitteln EBM-Kapazitäten. Nachbearbeitung, HIP und Elektropolieren aus einer Hand. Beratung zu Zertifizierungsanforderungen inklusive.</p>
+        <div class="btn-row">
+          <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="btn btn--orange" target="_parent">Alle Materialien ansehen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// STICKY TOC ACTIVE STATE
+(function() {
+  var links = document.querySelectorAll('.toc-link');
+  var sections = Array.from(links).map(function(l) {
+    var id = l.getAttribute('href').replace('#','');
+    return document.getElementById(id);
+  }).filter(Boolean);
+
+  function onScroll() {
+    var scrollY = window.scrollY + 80;
+    var active = sections[0];
+    sections.forEach(function(s) { if (s.offsetTop <= scrollY) active = s; });
+    links.forEach(function(l) {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + active.id);
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive: true});
+  onScroll();
+})();
+
+// FAQ ACCORDION
+document.querySelectorAll('.faq-q').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var expanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !expanded);
+    var ans = this.nextElementSibling;
+    ans.style.display = expanded ? 'none' : 'block';
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMMA (Acrylglas) 3D-Druck – Eigenschaften, Anwendungen & Preisrechner | 3D DRUCK LIFE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 24px; font-weight: 900; margin-bottom: 18px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.ccard__row:last-child { border-bottom: none; padding-bottom: 0; }
+.ccard__key { color: var(--ink-soft); }
+.ccard__val { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-g { background: #22c55e; }
+.dot-y { background: #f59e0b; }
+.dot-r { background: #ef4444; }
+
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+.ucard__link { font-size: 13px; font-weight: 700; color: var(--orange-dark); text-decoration: none; margin-top: auto; padding-top: 4px; }
+.ucard__link:hover { text-decoration: underline; }
+
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__icon { width: 36px; height: 36px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); font-size: 18px; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note--orange { background: var(--orange-soft); border-color: #ffd0a8; color: var(--orange-dark); }
+.post-note strong { font-weight: 700; }
+
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-visual { display: flex; gap: 4px; margin-top: 10px; }
+.fill-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--line); overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 3px; }
+
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.faq-a a { color: var(--orange); text-decoration: underline; }
+
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.contact-row { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-soft); }
+.contact-row a { color: var(--orange); font-weight: 700; }
+.contact-icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); flex-shrink: 0; }
+
+@media (max-width: 800px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { order: -1; }
+  .hero__image img { border-radius: 8px; width: 100%; height: auto; }
+  .intro-grid, .compare-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+  .sec, .sec--alt { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">3D DRUCK LIFE</a>
+    <span class="breadcrumb__sep">›</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">›</span>
+    <span class="breadcrumb__current">PMMA</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="material" class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow">3D-Druckmaterial</p>
+      <h1 class="hero__title">PMMA<br><span class="accent">Acrylglas</span></h1>
+      <p class="hero__sub">Polymethylmethacrylat (PMMA) begeistert mit 92 % Lichtdurchlässigkeit, UV-Beständigkeit und glasklarer Optik. Ideal für Linsen, Displays und transparente Gehäuse.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">~75 MPa</span><span class="kstat__lbl">Zugfestigkeit</span></div>
+        <div class="kstat"><span class="kstat__val">92 %</span><span class="kstat__lbl">Transparenz</span></div>
+        <div class="kstat"><span class="kstat__val">bis 95 °C</span><span class="kstat__lbl">Wärmeform.</span></div>
+        <div class="kstat"><span class="kstat__val">1,19 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+        <span class="chip chip--orange">SLA / DLP</span>
+        <span class="chip chip--orange">FDM</span>
+        <span class="chip chip--blue">PolyJet</span>
+        <span class="chip chip--blue">Optisch klar</span>
+      </div>
+      <div class="btn-row">
+        <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--orange" target="_parent">Preis berechnen</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--outline" target="_parent">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,PMMA_B64_PLACEHOLDER" alt="PMMA Acrylglas 3D-Druck Material" width="900" height="900">
+    </div>
+  </div>
+</section>
+
+<!-- STICKY TOC -->
+<nav class="toc-bar" aria-label="Seitennavigation">
+  <div class="toc-bar__inner">
+    <a href="#material" class="toc-link">Material</a>
+    <a href="#eigenschaften" class="toc-link">Eigenschaften</a>
+    <a href="#chemie" class="toc-link">Chemie</a>
+    <a href="#techdaten" class="toc-link">Techdaten</a>
+    <a href="#anwendungen" class="toc-link">Anwendungen</a>
+    <a href="#varianten" class="toc-link">Varianten</a>
+    <a href="#nachbearbeitung" class="toc-link">Nachbearbeitung</a>
+    <a href="#fuellungsgrade" class="toc-link">Füllungsgrade</a>
+    <a href="#grenzen" class="toc-link">Grenzen</a>
+    <a href="#faq" class="toc-link">FAQ</a>
+  </div>
+</nav>
+
+<!-- EIGENSCHAFTEN -->
+<section id="eigenschaften" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Was ist PMMA?</p>
+    <h2 class="sec-title">Glasklare Optik trifft 3D-Druck</h2>
+    <p class="sec-sub">PMMA (Polymethylmethacrylat), bekannt als Acrylglas oder Plexiglas, ist der transparenteste aller technischen Kunststoffe und lässt sich per SLA, DLP, FDM und PolyJet drucken.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>PMMA überträgt 92 % des sichtbaren Lichts und übertrifft damit fast alle anderen Kunststoffe. Als amorphes Polymer ist es optisch isotrop, zeigt keine Doppelbrechung und eignet sich damit hervorragend für Linsen, Lichtleiter und Displayabdeckungen.</p>
+        <p>Durch seine gute Witterungsbeständigkeit und UV-Stabilität bleibt PMMA über Jahre optisch klar, ohne zu vergilben. Im Vergleich zu Glas ist es leichter und bruchsicherer, kratzt aber auch schneller.</p>
+        <p>Im 3D-Druck liefern SLA- und PolyJet-Verfahren die beste optische Qualität. FDM mit PMMA-Filamenten ist möglich, erreicht aber aufgrund der Schichtlinien selten optische Klarheit ohne aufwendige Nachbearbeitung.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">&#128301;</div>
+          <div class="fact__body"><strong>92 % Lichtdurchlässigkeit</strong><span>Höchste Transparenz aller Standardkunststoffe, nahe an optischem Glas</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">&#9728;</div>
+          <div class="fact__body"><strong>UV-beständig</strong><span>Kein Vergilben bei Außeneinsatz, stabile Optik über Jahre</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">&#128295;</div>
+          <div class="fact__body"><strong>Polierbar auf Glasglanz</strong><span>Durch Flammpolieren oder Nassschliff bis 2000er-Körnung</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">&#9935;</div>
+          <div class="fact__body"><strong>Leichter als Glas</strong><span>1,19 g/cm³ gegenüber 2,5 g/cm³ bei Glas, bei gleicher Klarheit</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">&#127754;</div>
+          <div class="fact__body"><strong>Witterungsbeständig</strong><span>Geeignet für Außenanwendungen und Fahrzeugleuchten</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section id="chemie" class="sec--alt">
+  <div class="container">
+    <p class="sec-eyebrow">Chemische Grundlagen</p>
+    <h2 class="sec-title">Polymerchemie von PMMA</h2>
+    <p class="sec-sub">PMMA entsteht durch radikalische Polymerisation von Methylmethacrylat (MMA) und ist ein vollständig amorphes Thermoplast.</p>
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead>
+          <tr><th>Eigenschaft</th><th>Wert</th><th>Bedeutung</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Chemische Bezeichnung</td><td>Poly(methyl-2-methylpropenoat)</td><td>IUPAC-Name des Polymers</td></tr>
+          <tr><td>Monomer</td><td>Methylmethacrylat (MMA)</td><td>Flüssiges Monomer, reaktionsfreudig</td></tr>
+          <tr><td>Polymerisationsart</td><td>Radikalisch (frei oder UV-initiiert)</td><td>Grundlage fur SLA/DLP-Resins</td></tr>
+          <tr><td>Strukturtyp</td><td>Amorph</td><td>Keine Kristallinitat, daher optisch klar</td></tr>
+          <tr><td>Glasübergangstemperatur Tg</td><td>ca. 105 °C</td><td>Formstabilität bis etwa 95 °C (HDT)</td></tr>
+          <tr><td>UV-Transmission</td><td>Exzellent (bis ca. 350 nm)</td><td>Geeignet für UV-Optiken</td></tr>
+          <tr><td>Löslichkeit</td><td>In Aceton, Dichlormethan, Chloroform</td><td>Lösungsmittel lösen PMMA auf</td></tr>
+          <tr><td>CAS-Nummer</td><td>9011-14-7</td><td>Eindeutige chemische Identifikation</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box">
+      <p>Mehr dazu in unserem Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- TECHDATEN -->
+<section id="techdaten" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Technische Daten</p>
+    <h2 class="sec-title">PMMA Kennwerte im Überblick</h2>
+    <p class="sec-sub">Typische Materialkennwerte für PMMA (je nach Verarbeitungsverfahren und Hersteller können Werte abweichen).</p>
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead>
+          <tr><th>Kenngröße</th><th>Wert</th><th>Norm / Methode</th><th>Bewertung</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Zugfestigkeit</td><td><span class="tval">~75 MPa</span></td><td>ISO 527</td><td>Gut für ein transparentes Polymer</td></tr>
+          <tr><td>E-Modul</td><td><span class="tval">~3,3 GPa</span></td><td>ISO 527</td><td>Steif, aber spröder als PC</td></tr>
+          <tr><td>Schlagzähigkeit (Charpy)</td><td>~15 kJ/m²</td><td>ISO 179</td><td>Gering, kerbempfindlich</td></tr>
+          <tr><td>Glasübergangstemperatur</td><td>~105 °C</td><td>DSC</td><td>Besser als PLA, schlechter als PC</td></tr>
+          <tr><td>HDT (Formbeständigkeit)</td><td>bis 95 °C</td><td>ISO 75-A</td><td>Gut für technische Anwendungen</td></tr>
+          <tr><td>Dichte</td><td>1,19 g/cm³</td><td>ISO 1183</td><td>Leichter als Glas (2,5 g/cm³)</td></tr>
+          <tr><td>Lichtdurchlässigkeit</td><td>92 %</td><td>ASTM D1003</td><td>Höchste Klasse unter Kunststoffen</td></tr>
+          <tr><td>Brechungsindex</td><td>1,49</td><td>ISO 489</td><td>Geeignet fur Linsen und Optiken</td></tr>
+          <tr><td>Wasseraufnahme</td><td>ca. 0,3 %</td><td>ISO 62</td><td>Gering, aber vor dem Druck trocknen</td></tr>
+          <tr><td>Chemikalienbeständigkeit</td><td>Gut gegenüber Wasser, schlecht gegen Lösungsmittel</td><td>-</td><td>Lösungsmittel vermeiden</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box">
+      <p>Mehr dazu in unserem Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec--alt">
+  <div class="container">
+    <p class="sec-eyebrow">Einsatzgebiete</p>
+    <h2 class="sec-title">PMMA Anwendungen im 3D-Druck</h2>
+    <p class="sec-sub">Von Optik und Medizin bis Automotive: PMMA ist die erste Wahl, wenn Transparenz und Witterungsbeständigkeit entscheidend sind.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path></svg>
+        </div>
+        <div class="ucard__title">Linsen und Optiken</div>
+        <p>Prototypen fur Brillenglaser, Lupen und Kollimatorlinsen. SLA-Druck ermöglicht glatte Oberflächen mit geringer Nacharbeit.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </div>
+        <div class="ucard__title">Displayabdeckungen</div>
+        <p>Transparente Schutzabdeckungen für Displays, Messgeräte und Kontrollpanels. Kratzfest polierbar.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"></path></svg>
+        </div>
+        <div class="ucard__title">Lichtdiffusoren</div>
+        <p>Streuelemente fur LED-Leuchten, Signalanlagen und Architekturmodelle mit gleichmäßiger Lichtverteilung.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+        </div>
+        <div class="ucard__title">Medizin und Dental</div>
+        <p>Anatomische Modelle, Schienen und Prototypen fur diagnostische Zwecke. Biokompatible Resins verfügbar.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </div>
+        <div class="ucard__title">Schilder und Beschilderung</div>
+        <p>Klare oder eingefärbte Schilder fur Innen- und Außenbereiche mit hervorragender Witterungsbeständigkeit.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3m-1 11l3-3m0 0l3 3m-3-3v6"></path></svg>
+        </div>
+        <div class="ucard__title">Automotive Leuchten</div>
+        <p>Prototypen für Scheinwerfergläser, Rückleuchtenabdeckungen und Blinkergläser. UV-stabil fur Außeneinsatz.</p>
+      </div>
+    </div>
+    <div class="blog-link-box">
+      <p>Mehr dazu in unserem Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Materialvarianten</p>
+    <h2 class="sec-title">PMMA Varianten und Handelsnamen</h2>
+    <p class="sec-sub">PMMA ist in verschiedenen Varianten für unterschiedliche Druckverfahren verfügbar.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <span class="vcard__badge">SLA / DLP</span>
+        <div class="vcard__name">PMMA-Resin klar</div>
+        <p>Glasklares Photopolymer-Resin fur SLA- und DLP-Drucker. Liefert die beste optische Qualität mit glatter Oberfläche direkt aus dem Drucker.</p>
+      </div>
+      <div class="vcard">
+        <span class="vcard__badge">FDM</span>
+        <div class="vcard__name">PMMA Filament</div>
+        <p>Transparent bis klar in 1,75 mm und 2,85 mm. Anspruchsvoll in der Verarbeitung: hohe Drucktemperaturen (220 bis 250 °C), trocken lagern. Optisch nur mit Nachbearbeitung klar.</p>
+      </div>
+      <div class="vcard">
+        <span class="vcard__badge">PolyJet</span>
+        <div class="vcard__name">Stratasys VeroClear</div>
+        <p>Industrielles PolyJet-Resin von Stratasys mit exzellenter Transparenz und sehr glatter Oberfläche direkt ab Drucker. Ideal fur hochwertige Displayprototypen.</p>
+      </div>
+      <div class="vcard">
+        <span class="vcard__badge">Eingefärbt</span>
+        <div class="vcard__name">PMMA eingefärbt</div>
+        <p>Buntes Acrylglas fur farbige Lichtdiffusoren und Schilder. Verfügbar in Rot, Blau, Grün, Gelb und weiteren Farben. Verliert bei intensiver Färbung die volle Transparenz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec--alt">
+  <div class="container">
+    <p class="sec-eyebrow">Nachbearbeitung</p>
+    <h2 class="sec-title">PMMA polieren und veredeln</h2>
+    <p class="sec-sub">PMMA lässt sich durch verschiedene Methoden auf nahezu optische Klarheit bringen. Die Methode hängt vom Druckverfahren ab.</p>
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__icon">&#128293;</div>
+        <strong>Flammpolieren</strong>
+        <p>Schnelle Methode fur FDM-Teile: Flamme kurz über die Oberfläche, Schichtlinien schmelzen zu klarer Schicht. Erfordert Übung und gute Belüftung.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">&#128296;</div>
+        <strong>Nassschliff 400 bis 2000</strong>
+        <p>Stufenweises Schleifen mit Schleifpapier (400, 800, 1200, 2000 Körnung) unter Wasser. Entfernt Schichtlinien und bereitet die Fläche fur Polieren vor.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">&#10024;</div>
+        <strong>Polierpaste / UV-Politur</strong>
+        <p>Nach dem Nassschliff mit Kunststoffpolitur oder UV-Lack die Oberfläche auf Hochglanz bringen. Ergibt nahezu glasklare Oberfläche.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">&#127798;</div>
+        <strong>Klarlack-Beschichtung</strong>
+        <p>2K-Acryl- oder UV-Klarlack zapft Mikroporen und macht FDM-Teile optisch deutlich klarer. Auch als Schutz vor Kratzern geeignet.</p>
+      </div>
+    </div>
+    <div class="post-note post-note--orange">
+      <strong>Hinweis:</strong> Lösungsmittel wie Aceton oder Dichlormethan lösen PMMA auf. Nur lösungsmittelfreie Reiniger und kompatible Beschichtungen verwenden.
+    </div>
+    <div class="blog-link-box">
+      <p>Mehr dazu in unserem Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Füllungsgrade</p>
+    <h2 class="sec-title">Füllungsgrade bei PMMA</h2>
+    <p class="sec-sub">PMMA wird im 3D-Druck sehr selten gefüllt, da Füllstoffe die Transparenz sofort zerstören. Standardmäßig wird ungefülltes PMMA verwendet.</p>
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">100 %</div>
+        <div class="fill-card__name">Ungefüllt (Standard)</div>
+        <p>Maximale Transparenz von 92 %. Einzige sinnvolle Option wenn optische Klarheit gefragt ist.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct" style="color:#aaa;">selten</div>
+        <div class="fill-card__name">PMMA GF (Glasfaser)</div>
+        <p>Sehr seltene Variante fur erhöhte Steifigkeit. Verliert sofort Transparenz. Kaum im 3D-Druck verfügbar.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:5%;background:#ccc"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct" style="color:#aaa;">nein</div>
+        <div class="fill-card__name">Partikel- / CF-Füllung</div>
+        <p>Kohlefaser oder Partikel machen PMMA vollständig opak. Kein sinnvoller Anwendungsfall im 3D-Druck.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:0%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="post-note">
+      <strong>Fazit:</strong> Wer PMMA für Füllstoffe öffnet, verliert das wichtigste Merkmal des Materials. Für gefüllte transparente Bauteile ist Polycarbonat (PC) oder SAN die bessere Wahl.
+    </div>
+    <div class="blog-link-box">
+      <p>Mehr dazu in unserem Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec--alt">
+  <div class="container">
+    <p class="sec-eyebrow">Grenzen und Alternativen</p>
+    <h2 class="sec-title">Wo stößt PMMA an seine Grenzen?</h2>
+    <p class="sec-sub">PMMA ist kein Allrounder. Bei Schlagbelastung, Lösungsmittelkontakt oder schwierigen FDM-Drucken gibt es bessere Optionen.</p>
+    <div class="callout">
+      <div class="callout__title">Bekannte Schwächen von PMMA</div>
+      <p>PMMA ist spröde und kerbempfindlich: Schlagbelastungen führen schnell zum Bruch, besonders bei scharfen Kanten. Im FDM-Druck sind Schichtlinien sichtbar und optische Klarheit nur durch aufwendige Nachbearbeitung erreichbar. Lösungsmittel wie Aceton oder Dichlormethan lösen PMMA sofort auf. Auch kratzt PMMA leichter als echtes Glas, obwohl es deutlich besser als andere Kunststoffe abschneidet.</p>
+      <p>Für Schlagfestigkeit ist Polycarbonat (PC) die bessere Wahl. Für chemikalienresistente transparente Teile eignet sich PFA oder PVDF. Für einfachen FDM-Druck in Klarsicht bietet PETG niedrigere Anforderungen bei guter Transparenz.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="callout__link" target="_parent">Alle Materialien</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="callout__link" target="_parent">Materialberatung</a>
+        <a href="https://www.3ddrucklife.de/preisrechner" class="callout__link" target="_parent">Preisrechner</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Häufige Fragen</p>
+    <h2 class="sec-title">FAQ zu PMMA im 3D-Druck</h2>
+    <div class="faq-list">
+
+      <!-- Gruppe 1 -->
+      <div class="faq-group-label">Über PMMA</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Was ist der Unterschied zwischen PMMA und Polycarbonat (PC)?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/></svg>
+        </button>
+        <div class="faq-a">PMMA hat die höhere Transparenz (92 % vs. 88 %) und bessere UV-Beständigkeit, ist aber deutlich spröder. PC ist schlagfester und temperaturfester (Tg 147 °C vs. 105 °C), vergilbt aber bei UV-Dauereinsatz. PMMA ist günstiger und einfacher zu polieren.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Ist PMMA das gleiche wie Plexiglas oder Acrylglas?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/></svg>
+        </button>
+        <div class="faq-a">Ja. Plexiglas ist ein eingetragenes Warenzeichen von Röhm GmbH, Acrylglas der Oberbegriff. Alle drei bezeichnen dasselbe Material: Polymethylmethacrylat. Im 3D-Druck wird PMMA als Filament, Resin (SLA/DLP) oder PolyJet-Material angeboten.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Wie UV-beständig ist PMMA im Außeneinsatz?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/></svg>
+        </button>
+        <div class="faq-a">PMMA ist eines der UV-beständigsten Polymere und vergilbt deutlich weniger als PC oder ABS. Für langfristige Außenanwendungen (5 bis 10 Jahre) bleibt es optisch stabil. Bei extremer UV-Belastung empfiehlt sich ein UV-Schutzlack als Topcoat.</div>
+      </div>
+
+      <!-- Gruppe 2 -->
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Welches 3D-Druckverfahren liefert die beste PMMA-Qualität?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/></svg>
+        </button>
+        <div class="faq-a">PolyJet (Stratasys VeroClear) liefert die beste optische Qualität direkt ab Drucker ohne Nachbearbeitung. SLA/DLP ist die zweitbeste Option mit glatter Oberfläche und gutem Preis-Leistungs-Verhältnis. FDM ist preiswert, erfordert aber umfangreiche Nachbearbeitung für optische Klarheit.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Was kostet PMMA im 3D-Druck im Vergleich zu anderen Materialien?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/></svg>
+        </button>
+        <div class="faq-a">PMMA-Filament ist preiswert (ca. 20 bis 40 EUR/kg), SLA-Resin liegt im mittleren Preissegment. PolyJet ist teurer, liefert aber direkt druckfertige optische Qualität. Den genauen Preis fur Ihren Auftrag berechnen Sie einfach im <a href="https://www.3ddrucklife.de/preisrechner" target="_parent">Preisrechner</a>.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Muss PMMA-Filament vor dem Druck getrocknet werden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/></svg>
+        </button>
+        <div class="faq-a">Ja. PMMA nimmt Feuchtigkeit auf und sollte vor dem Druck 4 bis 6 Stunden bei 60 bis 70 °C getrocknet werden. Feuchtes Filament produziert Blasen, trübt das Druckteil und führt zu Druckfehlern. Trockene Lagerung in versiegelten Behältern mit Silicagel empfohlen.</div>
+      </div>
+
+      <!-- Gruppe 3 -->
+      <div class="faq-group-label">3D-Druck allgemein und Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Wie poliere ich PMMA-Druckteile auf Glasklarheit?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/></svg>
+        </button>
+        <div class="faq-a">Stufenweises Nassschleifen von Körnung 400 bis 2000, dann Kunststoffpolitur auftragen und maschinell oder von Hand polieren. Alternativ: kurz mit einer Propangasflamme flammpolieren (Flammpolieren). Abschließend optional UV-Klarlack fur Kratzschutz.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Kann man PMMA-Druckteile kleben oder schweißen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/></svg>
+        </button>
+        <div class="faq-a">Kleben: sehr gut mit 2K-Acrylkleber oder Lösungsmittelkleber (Dichlormethan löst PMMA an und erzeugt eine transparente Klebeverbindung). Ultraschallschweißen ist ebenfalls möglich. Vorsicht: Dichlormethan ist gesundheitsgefährdend und nur mit guter Belüftung zu verwenden.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Was sind typische Druckparameter für PMMA im FDM-Druck?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/></svg>
+        </button>
+        <div class="faq-a">Drucktemperatur 220 bis 250 °C, Betttemperatur 80 bis 100 °C (beheiztes Bett nötig), Druckgeschwindigkeit 30 bis 50 mm/s. Geschlossene Druckkammer empfehlenswert, da PMMA sehr schrumpffreudig ist und zum Verwerfen neigt. Druckbett mit Haftlack oder PEI beschichten.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">Jetzt loslegen</div>
+        <div class="cta-left__title">PMMA 3D-Druck Preis berechnen</div>
+        <div class="cta-left__text">Laden Sie Ihr 3D-Modell hoch und erhalten Sie sofort einen Preis fur Ihren PMMA-Auftrag in SLA, DLP oder FDM.</div>
+        <div>
+          <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--white" target="_parent">Zum Preisrechner</a>
+          <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--white-outline" style="margin-left:10px;" target="_parent">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Direktkontakt</div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+          <span>Schreiben Sie uns: <a href="https://www.3ddrucklife.de/kontakt" target="_parent">Kontaktformular</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <span>3D DRUCK LIFE, Deutschland</span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <span>Antwort in der Regel innerhalb von 24 Stunden</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleFaq(btn) {
+  var expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !expanded);
+  var answer = btn.nextElementSibling;
+  if (answer) answer.style.display = expanded ? 'none' : 'block';
+}
+
+// TOC active state
+(function() {
+  var links = document.querySelectorAll('.toc-link');
+  var sections = [];
+  links.forEach(function(l) {
+    var id = l.getAttribute('href').replace('#','');
+    var el = document.getElementById(id);
+    if (el) sections.push({ el: el, link: l });
+  });
+  function onScroll() {
+    var y = window.scrollY + 70;
+    var active = null;
+    sections.forEach(function(s) {
+      if (s.el.offsetTop <= y) active = s;
+    });
+    links.forEach(function(l) { l.classList.remove('active'); });
+    if (active) active.link.classList.add('active');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>

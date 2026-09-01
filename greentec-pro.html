@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenTEC PRO – Materialeigenschaften & Fertigung | 3D DRUCK LIFE</title>
+<meta name="description" content="GreenTEC PRO ist ein Hochleistungs-Biopolymer aus 100 % nachwachsenden Rohstoffen. Wärmeformbeständigkeit bis 115 °C, 61 MPa Zugfestigkeit, biologisch abbaubar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+/* BREADCRUMB */
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+/* HERO */
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn--white { background: #fff; color: var(--orange-dark); border: none; font-weight: 700; }
+.btn--white:hover { background: var(--orange-soft); }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.6); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+/* STICKY TOC */
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+/* SECTION BASE */
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+/* INTRO */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+/* VERGLEICH */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 20px; font-weight: 900; margin-bottom: 14px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.ccard__row:last-child { border-bottom: none; }
+.ccard__row span:first-child { color: var(--ink-soft); }
+.ccard__row span:last-child { font-weight: 700; }
+
+/* TECHDATEN */
+.tech-table-wrap { overflow-x: auto; }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table th, .tech-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--line); }
+.tech-table thead th { font-weight: 700; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); background: var(--paper-2); }
+.tech-table tbody tr:hover td { background: var(--orange-soft); }
+
+/* USE GRID */
+.use-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+.ucard { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+.ucard__icon { width: 40px; height: 40px; background: var(--orange-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+.ucard__title { font-weight: 900; font-size: 15px; margin-bottom: 6px; }
+.ucard p { font-size: 14px; color: var(--ink-soft); }
+
+/* VARIANTS */
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 16px; }
+.vcard { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--orange-soft); color: var(--orange-dark); border-radius: 100px; padding: 3px 10px; margin-bottom: 8px; }
+.vcard__name { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 13px; color: var(--ink-soft); }
+
+/* NACHBEARBEITUNG */
+.post-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 14px; margin-bottom: 32px; }
+.post-item { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.post-item__icon { font-size: 22px; margin-bottom: 8px; }
+.post-item strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.post-item p { font-size: 13px; color: var(--ink-soft); }
+
+/* FÜLLUNGSGRADE */
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 14px; margin-bottom: 32px; }
+.fill-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.fill-card__pct { font-size: 28px; font-weight: 900; color: var(--orange-dark); line-height: 1; margin-bottom: 2px; }
+.fill-card__name { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); margin-bottom: 12px; }
+.fill-visual { margin-top: auto; }
+.fill-bar { height: 6px; background: var(--line); border-radius: 100px; overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 100px; }
+
+/* CALLOUT / GRENZEN */
+.callout { background: var(--paper-2); border-left: 4px solid var(--orange); border-radius: 0 var(--radius) var(--radius) 0; padding: 20px 24px; margin-bottom: 16px; }
+.callout__title { font-weight: 900; font-size: 16px; margin-bottom: 8px; }
+.callout p { font-size: 15px; color: var(--ink-soft); }
+.callout__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.callout__link { font-size: 13px; font-weight: 700; color: var(--orange-dark); text-decoration: underline; text-underline-offset: 2px; }
+
+/* BLOG-LINK-BOX */
+.blog-link-box { display: flex; align-items: flex-start; gap: 14px; background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 18px 20px; margin-top: 20px; }
+.blog-link-box svg { color: var(--blue-dark); flex-shrink: 0; margin-top: 2px; }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); margin-bottom: 0; }
+
+/* FAQ */
+.faq-list { max-width: 820px; }
+.faq-group-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); margin: 28px 0 10px; padding-bottom: 6px; border-bottom: 2px solid var(--orange-soft); }
+.faq-group-label:first-child { margin-top: 0; }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 16px 0; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 0 16px; font-size: 15px; color: var(--ink-soft); line-height: 1.65; }
+
+/* CTA */
+.cta-wrap { background: var(--orange); padding: 56px 0; }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 8px; }
+.cta-left__title { font-size: clamp(22px,3vw,34px); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 10px; }
+.cta-left__text { color: rgba(255,255,255,.85); font-size: 16px; }
+.cta-right { border-left: 1px solid rgba(255,255,255,.25); padding-left: 48px; }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 16px; }
+.contact-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; color: #fff; font-size: 15px; }
+.contact-icon { width: 28px; height: 28px; background: rgba(255,255,255,.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.contact-row a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { order: -1; }
+  .hero__image img { border-radius: 8px; width: 100%; height: auto; }
+  .intro-grid, .compare-grid { grid-template-columns: 1fr; }
+  .use-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid rgba(255,255,255,.25); padding-left: 0; padding-top: 32px; }
+  .sec, .sec--alt { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">/</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">/</span>
+    <span class="breadcrumb__current">GreenTEC PRO</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__inner">
+    <div>
+      <div class="hero__eyebrow">Material · Biopolymer · Nachhaltigkeit</div>
+      <h1 class="hero__title">GreenTEC PRO: biobasiert, <span class="accent">hitzebeständig</span> und formstabil.</h1>
+      <p class="hero__sub">GreenTEC PRO ist ein Hochleistungs-Biopolymer aus 100 % nachwachsenden Rohstoffen. Mit 115 °C Wärmeformbeständigkeit und 61 MPa Zugfestigkeit übertrifft es Standard-PLA deutlich und ist vollständig biologisch abbaubar.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">61 MPa</span><span class="kstat__lbl">Zugfestigkeit</span></div>
+        <div class="kstat"><span class="kstat__val">bis 115 °C</span><span class="kstat__lbl">Formstabil</span></div>
+        <div class="kstat"><span class="kstat__val">100 %</span><span class="kstat__lbl">Biobasiert</span></div>
+        <div class="kstat"><span class="kstat__val">1,39 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+      </div>
+      <div class="btn-row">
+        <a href="https://3ddrucklife.com" class="btn btn--orange" target="_parent">➜ Preis berechnen</a>
+        <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage GreenTEC PRO" class="btn btn--outline">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCAOEA4QDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD0eiiiuczCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAWiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiimAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUALRRRQMKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKAEopaKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKADFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRilooATFGKWigBMUYpaKAExRS0UAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFMYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAC0UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAC0UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRTJZY4ULyuFX1JqjLfSygi0j2jtJJxn6D8uaTdiXJI0GIVSzEAAZJPaqkmpW6MVQtKw6iIZ/HPSqbQ+awa5dpmHTPAH0FSKoUYUAD0AqbkOb6D2vrl/8AVW6oOoaRs5H0HQ1EWvHzuutoPVUQDH0PWn0UE3ZEYWIw1xcMp6qZOCKb9jt/+ef/AI8anopCIPsdv/zz/wDHjQLSJTmPdGw6MrEEVPRRYCMJMh3Jdz7h03NuH5U9Zr5Okscuf76Yx+VLRQO7HrqTL/rrWRfTYQ9WYLy3nOIpVJzjHQn8DVOmSQxy/wCsQH3707spTZrUVkIbmDAt5soP+WcnIH49fwq3DqMbEJcKYH/2j8p+hp3KU0y5RRRVFhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUU2WRIo2kkYKqjJJoAdVCbUCzbLNRIe8jZ2j/GoZZpbzqGhhBPyZ+Z/r6D2pVUKMKAB6AVLfYzlPsRrDl/MmYyyf3m7fQdqlooqTMKKKKACiiigAooooAKKKKACiiigAooooAKRlDDDAEehFLRQBHF51qc27bo/+eTk4/A9qv2l5HcjAysoGWjbqKqUyWIPyCUkH3XXgimnYpSaNaiqNret5ghuRhjwsg6Of6Gr1Wnc1TT2CiiigYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLTZZEijaSRgqqMkmgCO4njtojJKcKPzJ9BWaDLcSedcZAzlIs8L7/Wg77mfz584B/dIf4R6n3qSobuYylcKKKKRIUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAjqrqVcZB6ii2u3tpBFdOWiY/JKx5B9D/n/AOstI6q6lXGQeopjTa2NSis6wmaBhbzPlDxEx/8AQSf5f5FaVWnc2TuhKKWigYlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVkzy/bJwcEQxN8vP329fp6VNqcrMVtI+DIMuc4IXP9aiVQqhV4AGBUyfQznLoLRRRUmYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFADZY1ljKN0NWtPuWkDQS/62MDkn749f8ar1HMrZSSL/AFsZyvOM+opp2KTszYoqK2mW4gSVeAw6eh7ipas2CiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKZNKsMTyOflUZNPrN1GUSzpag8L88g9fQf1/KhuwpOyIIFY7pZP8AWSnc3t6D8KloorMwCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAs3+zXewn93P6no/wD9etSsiaPzIyAcMOVPoe1aFlcC6tklGMkYYDse9VF9DSD6E9FFFUaBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQA1iFUsxAAGST2rHgYyl7hxhpTnHoOw/Kr2qyFLMopw0rCMH69f0zVVVCqFXgAYFTIzm9bC0UUVJmFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABTtPfyruSD+CQeYuf73ce/rTainbyWiuB/yycE467TwRTGnZ3NmiloqzcSilooASilooASilooASilooASilooASilooASilooASilooASilooASilooASilooASilooASilooASilooASilooASilooASilooASilooASilooASilooAKKMUYoGFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAFFGKMUAZmpNvvIIucIpkYHoew/Gm02Q79QuWzuC7VB6445H506oe5zy1YUUUUhBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU2ZPMidOORgZ9adRQBd0+XzrKF8knbglupI4P8qsVQ0c/upoyfuynC+gPTj061fxWi2N46oKKMUYoKCijFGKACijFGKACijFGKACijFGKACijFGKACijFGKACijFGKACijFGKACijFGKACijFGKACijFGKACijFGKACijFGKACijFGKACijFGKACijFGKACijFGKACijFGKACijFFAC0UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAGJAcvcMOVaZiCOhGalqCw/49U/H+ZqeszmCiiigAooooAKKKKACiiigAooooAKKKKACiiop7mKAgSE5IJwqljgd+B0oAloqu97bo2Gc/cD5CEgKc4JIGAODVigAooooAKKKKACiiigAooooAKKKKACiiigAooooAfpZxeXQPBIQgeowa06yrL/kKH/rh/7NWrVx2NqewUUUUywooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigDBsP+PVPx/manqCzBSHy24ZGKsPQ5qes0cwUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVTuEmW5eSJGYSRBMoVBQgk557HPv0q5RQBmw2U0uPtJZFa1ijkVNoDEbtw6cDntjrWlRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUALY/wDIUP8A1w/9mrVrL08FtSkYfdSIKx9CTkVq1cdjansJRS0UyxKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigAooopgFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAGIgKXN0jcN5pbHseRUlFyvl6nKM58yNX+mOMUVkc70YUUUUCCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAl0kEzXcg+6WVQfcDn+daVUNGX/QzJn/AFsjPj05xj9Kv1pHY3h8IUUUUygooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigDN1ddr2sufuyFMf7w6/pUVX7+E3FnLEASSvAHcjkfrWbBJ5sSP6jn61EtzGa1H0UUVJAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFRXbbLaQ4zxj8+KlpqJ519BEOiHzWx2x0/Wge5qwR+VDHHnOxQufXAqSiitToCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigArFdPs97LABhD+8T2B6j2Ga2qpatCWgE6DLwHd9V7j8v5VMloRNXRVopFYMoZeQRkUtQYhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVNo6b0kumHMhwmeyj+XOfyqrMGlZLdDhpTtz6DufyraRFjRUQYVQAB7VUVqaQV3cWiiirNQooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAFooooGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBiNEbS4MB/1bZaI47Z5H1FPq/f2ouocLtEqnMbkdDWbFJvBVuJEO119DWbVjnlGzH0UUUiQooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACgkAEk4A6mimRxG9n8lSPKQgzH19FH5UD3LWlQs267k4MgxGMYIXP9a0aRVCqFUAADAA7UtaJWOhKysFFFFMYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRS4oxQAlFLijFACUUuKMUAJRS4oxQAlFLijFACUUuKMUAJRS4oxQAlFLijFACUUuKMUAJRS4oxQAlFLijFACUUuKMUAJRS4oxQAlFLijFACUUuKMUAJRS4oxQAlFLijFACUUuKMUAJRS4oxQAlFLijFACUUuKMUAJWfqNq5YXNuuXH+sUDlx/iK0cUYoauJq6sYqMrqGQ5B6Glp1/avayPcwAtEx3Sp3B/vD/P/wBZiMrqGQ5B6Gs9jnaadmLRRRSEFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFRyyEMscS75n4VB/M+1ACv5jsIYOZW6eij1PtWtawLbQrGvJHLN/ePcmotPs/sqMXffNJgu3b6D2q3irirG8I21YlFLijFUWJRS4oxQAlFLijFACUUuKMUAJRS4oxQAlFLijFACUUuKMUAJRS4oxQAlFLijFACUUuKMUAJRS4oxQAlFLijFACUUuKMUAJRS4oxQAlFLijFACUUuKMUAJRS4oxQAlFLijFACUUuKMUAJRS4oxQAlFLijFACUUuKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigArLudPaBnmtBlDy0IH5lf8P8A61alFJq4pRT3MSORJV3RtkU6rd5p4lbzbdhFL1PHyv8AX/GqCyHf5UyNFLz8jd/cHvUNWMJRa3JKKKKRIUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFBIAJJwB1NNhjlvSVgzHFjmYjr7Ad6B7ibmeXyYBulPbso9T7VpWNilruYt5kz/ekIxx6D0FS21tFbJtiXB/iY9W9ye9S1ajY2jC2rCiiiqLCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACori2huV2zxq4HTPUfQ1LRQBkS2VzbZMZ+0Rdcfxj/Goo5UkJAOGHVTwR+FblV7qzgu1xNGCcYDDgj8alx7GTp9jOoqSTT7iLm3lEqf3Zfvfge/41XeVoeLqGSL3IyufQEVOxm01uSUU1JY5PuOrcZwDzTqQgooooAKKKKACiiigAoqJ7qBMZkXn05/lUiR3c3+qtyg6bpvlx+HWga12FqNZTKxS2jaZh129B9T0q3HpKvhryVpD12L8qj+v41ooiRqFjVVUdAowBVKLLVNvcz7fTMt5l6yyHtGudgPr71oKoVQqgAAYAHaloqkrGqilsFFFFMYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAJRS0UAVprC1mz5kCEk5JAwSfqKrNpMYyY550/ujdkL6celaVFKyJcU+hlHTLkDK3gYjoDEAD+tM+xah/etfzatiilyoXs4mP8AYtQ/vWv5tSrYXzHDywIvdkBJH4GteijlQeziZa6XKTiW8Yp3CIFP51IukW3PmmWb08xzx+WK0KKfKh8kexHFDFDnyokTPXaoGafS0UyhKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooopgFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFACUUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAC0UUUDCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBaKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigAooopjCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBaKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigBKKWigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooopgFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB//2Q=="
+           alt="GreenTEC PRO 3D-Druck Bauteil – biobasiertes Hochleistungspolymer, 3D DRUCK LIFE"
+           loading="eager" width="900" height="900">
+    </div>
+  </div>
+</header>
+
+<!-- STICKY TOC -->
+<nav class="toc-bar" id="toc-bar">
+  <div class="toc-bar__inner">
+    <a href="#material" class="toc-link" data-s="material">Material</a>
+    <a href="#eigenschaften" class="toc-link" data-s="eigenschaften">Eigenschaften</a>
+    <a href="#chemie" class="toc-link" data-s="chemie">Nachhaltigkeit</a>
+    <a href="#techdaten" class="toc-link" data-s="techdaten">Techn. Daten</a>
+    <a href="#anwendungen" class="toc-link" data-s="anwendungen">Anwendungen</a>
+    <a href="#varianten" class="toc-link" data-s="varianten">Varianten</a>
+    <a href="#nachbearbeitung" class="toc-link" data-s="nachbearbeitung">Nachbearbeitung</a>
+    <a href="#fuellungsgrade" class="toc-link" data-s="fuellungsgrade">Füllungsgrade</a>
+    <a href="#grenzen" class="toc-link" data-s="grenzen">Grenzen</a>
+    <a href="#faq" class="toc-link" data-s="faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST GREENTEC PRO -->
+<section id="material" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Materialübersicht</div>
+    <h2 class="sec-title">Was ist GreenTEC PRO?</h2>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>GreenTEC PRO ist ein technisches Biopolymer des österreichischen Herstellers extrudr. Es basiert zu 100 % auf nachwachsenden Rohstoffen, ist biologisch abbaubar nach DIN EN ISO 14855 und gleichzeitig CO₂-neutral in der Herstellung. Anders als Standard-PLA bietet GreenTEC PRO deutlich höhere Wärmeformbeständigkeit und mechanische Festigkeit.</p>
+        <p>Mit einer HDT-B von 115 °C und einem Biegemodul von 4.400 MPa ist GreenTEC PRO steifer und hitzebeständiger als PETG oder ABS. Es ist lebensmittelecht und damit für Anwendungen im Lebensmittelkontakt geeignet. Die semimatte Oberfläche sorgt für ein hochwertiges Erscheinungsbild direkt aus dem Drucker.</p>
+        <p>GreenTEC PRO verarbeitet sich ähnlich wie PLA, benötigt keine beheizte Druckkammer und neigt kaum zum Verziehen. Es ist die erste Wahl, wenn Nachhaltigkeit und technische Leistungsfähigkeit gleichermaßen gefragt sind.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">🌿</div>
+          <div class="fact__body">
+            <strong>100 % biobasiert</strong>
+            <span>Aus nachwachsenden Rohstoffen ohne fossile Anteile. CO₂-neutral in der Herstellung.</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🌡️</div>
+          <div class="fact__body">
+            <strong>115 °C Wärmeformbeständigkeit</strong>
+            <span>HDT-B nach ISO 75. Deutlich über PLA (ca. 60 °C) und auf Augenhöhe mit ABS.</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🍽️</div>
+          <div class="fact__body">
+            <strong>Lebensmittelecht</strong>
+            <span>Food-Grade-zertifiziert. Geeignet für Bauteile mit Lebensmittelkontakt.</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">♻️</div>
+          <div class="fact__body">
+            <strong>Biologisch abbaubar</strong>
+            <span>Abbaubar nach DIN EN ISO 14855 unter industriellen Kompostierbedingungen.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN / VERGLEICH -->
+<section id="eigenschaften" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Eigenschaften</div>
+    <h2 class="sec-title">GreenTEC PRO im Materialvergleich.</h2>
+    <p class="sec-sub">Wie schlägt sich GreenTEC PRO gegenüber den gängigen FDM-Materialien?</p>
+    <div class="compare-grid">
+      <div class="ccard">
+        <div class="ccard__label">Vergleich</div>
+        <div class="ccard__name">PLA</div>
+        <div class="ccard__row"><span>Zugfestigkeit</span><span>~45 MPa</span></div>
+        <div class="ccard__row"><span>HDT-B</span><span>~60 °C</span></div>
+        <div class="ccard__row"><span>Biobasiert</span><span>Teilweise</span></div>
+        <div class="ccard__row"><span>Nachhaltigkeit</span><span>Mittel</span></div>
+        <div class="ccard__row"><span>Steifigkeit</span><span>Mittel</span></div>
+      </div>
+      <div class="ccard ccard--center">
+        <div class="ccard__label">Dieses Material</div>
+        <div class="ccard__name">GreenTEC PRO</div>
+        <div class="ccard__row"><span>Zugfestigkeit</span><span>61 MPa</span></div>
+        <div class="ccard__row"><span>HDT-B</span><span>115 °C</span></div>
+        <div class="ccard__row"><span>Biobasiert</span><span>100 %</span></div>
+        <div class="ccard__row"><span>Nachhaltigkeit</span><span>Sehr hoch</span></div>
+        <div class="ccard__row"><span>Steifigkeit</span><span>Sehr hoch</span></div>
+      </div>
+      <div class="ccard">
+        <div class="ccard__label">Vergleich</div>
+        <div class="ccard__name">PETG</div>
+        <div class="ccard__row"><span>Zugfestigkeit</span><span>~50 MPa</span></div>
+        <div class="ccard__row"><span>HDT-B</span><span>~75 °C</span></div>
+        <div class="ccard__row"><span>Biobasiert</span><span>Nein</span></div>
+        <div class="ccard__row"><span>Nachhaltigkeit</span><span>Gering</span></div>
+        <div class="ccard__row"><span>Steifigkeit</span><span>Mittel</span></div>
+      </div>
+    </div>
+    <div class="fact-stack" style="max-width:700px;">
+      <div class="fact">
+        <div class="fact__icon">💪</div>
+        <div class="fact__body">
+          <strong>Höhere Festigkeit als Standard-PLA</strong>
+          <span>61 MPa Zugfestigkeit (ISO 527) gegenüber ca. 45 MPa bei Standard-PLA. Biegemodul 4.400 MPa für hohe Steifigkeit.</span>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact__icon">🔥</div>
+        <div class="fact__body">
+          <strong>Deutlich hitzebeständiger als PLA</strong>
+          <span>115 °C HDT-B statt ca. 60 °C bei PLA. Für Bauteile in warmen Umgebungen wie Fahrzeuginnenräumen oder in der Nähe von Wärmequellen.</span>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact__icon">⚖️</div>
+        <div class="fact__body">
+          <strong>Etwas sprödere als PETG</strong>
+          <span>Bruchdehnung 3 % (ISO 527). GreenTEC PRO ist steifer als PETG, aber weniger schlagzäh. Für stoßbelastete Teile besser PETG wählen.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE & AUFBAU / NACHHALTIGKEIT -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Chemie & Aufbau</div>
+    <h2 class="sec-title">Biobasiert und trotzdem hochleistungsfähig.</h2>
+    <p class="sec-sub">GreenTEC PRO vereint Nachhaltigkeitsanspruch mit technischen Kennwerten auf Industrie-Niveau.</p>
+    <div class="intro-text" style="max-width:720px;">
+      <p>GreenTEC PRO basiert auf einem mineralisch gefüllten Biopolymer, das vollständig aus nachwachsenden Rohstoffen gewonnen wird. Die Mineralfüllung ist der Schlüssel zur erhöhten Wärmeformbeständigkeit: Anders als bei reinem PLA, das schon ab 60 °C weich wird, bleibt GreenTEC PRO bis 115 °C formstabil. Gleichzeitig erhöht die Füllung den Biegemodul auf 4.400 MPa, was das Material deutlich steifer macht als ungefüllte Biopolymere.</p>
+      <p>Die Herstellung ist CO₂-neutral zertifiziert. Das Material ist biologisch abbaubar nach DIN EN ISO 14855, dem internationalen Standard für industrielle Kompostierbarkeit. Es enthält keine fossilen Rohstoffe und ist frei von schädlichen Weichmachern.</p>
+      <p>GreenTEC PRO ist lebensmittelecht und erfüllt entsprechende Sicherheitsanforderungen für den Kontakt mit Lebensmitteln. Das macht es zur nachhaltigen Alternative für Anwendungen im Lebensmittel- und Pharmabereich, für die bislang meist PETG oder PP eingesetzt wurde.</p>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Vollständige Übersicht aller Materialeigenschaften: ESD, UV-Beständigkeit, Brennhemmung, Shore-Härte und Biomaterialien.</p>
+        <a href="https://www.3ddrucklife.de/post/3d-druck-materialeigenschaften" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Materialeigenschaften im Detail</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNISCHE DATEN -->
+<section id="techdaten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Technische Daten</div>
+    <h2 class="sec-title">Richtwerte auf einen Blick.</h2>
+    <p class="sec-sub">Aus dem extrudr-Herstellerdatenblatt (TDS April 2024). Je nach Charge können Werte leicht abweichen.</p>
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead><tr><th>Eigenschaft</th><th>Richtwert</th><th>Norm</th><th>Hinweis</th></tr></thead>
+        <tbody>
+          <tr><td>Zugfestigkeit</td><td>61 MPa</td><td>ISO 527</td><td>In Baurichtung XY</td></tr>
+          <tr><td>Biegemodul</td><td>4.400 MPa</td><td>ISO 178</td><td>Sehr hohe Steifigkeit</td></tr>
+          <tr><td>Bruchdehnung</td><td>3 %</td><td>ISO 527</td><td>Spröder als PETG</td></tr>
+          <tr><td>Charpy-Schlagzähigkeit (ungekerbt)</td><td>72 kJ/m²</td><td>ISO 179</td><td></td></tr>
+          <tr><td>Wärmeformbeständigkeit (HDT-B)</td><td>115 °C</td><td>ISO 75</td><td>Bei 0,45 MPa</td></tr>
+          <tr><td>Dichte</td><td>1,39 g/cm³</td><td>ISO 1183</td><td></td></tr>
+          <tr><td>Schwindung</td><td>~0,4 %</td><td>ISO 294-4</td><td>Gering, kaum Verzug</td></tr>
+          <tr><td>Biobasierter Anteil</td><td>100 %</td><td>DIN EN ISO 14855</td><td>Vollständig kompostierbar (industriell)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px;color:var(--ink-soft);margin-top:10px;">Alle Werte sind Richtwerte ohne Gewähr. Für bauteilspezifische Auslegung nehmt Kontakt auf.</p>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Das Originaldatenblatt von extrudr mit allen Prüfnormen und Kennwerten im Detail.</p>
+        <a href="https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/greentec-pro-TDS-en.pdf" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Datenblatt extrudr (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Anwendungsbereiche</div>
+    <h2 class="sec-title">Wofür GreenTEC PRO sich besonders eignet.</h2>
+    <p class="sec-sub">Überall dort, wo technische Anforderungen auf Nachhaltigkeitsziele treffen.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+          </svg>
+        </div>
+        <div class="ucard__title">Gehäuse & Vorrichtungen</div>
+        <p>Elektronikgehäuse, Klemmenhalter und Maschinenverkleidungen, die Temperaturbeständigkeit und ein grünes Profil erfordern. Dank 115 °C HDT auch in wärmeren Umgebungen einsetzbar.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          </svg>
+        </div>
+        <div class="ucard__title">Lebensmittel & Labor</div>
+        <p>Lebensmittelbehälter, Schalen und Laboradapter in Food-Grade-Qualität. GreenTEC PRO ist zertifiziert lebensmittelecht und biologisch abbaubar, ideal für nachhaltige Einweglösungen.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <div class="ucard__title">Displayteile & Modelle</div>
+        <p>Designprototypen, Architekturmodelle und Messeexponate mit hochwertiger semimatter Oberfläche. Für Unternehmen, die Nachhaltigkeit sichtbar kommunizieren wollen.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="ucard__title">Nachhaltige Serienteile</div>
+        <p>Verpackungsprototypen, Halterungen und Standardteile, die nach Verwendung kompostierbar sein sollen. Für Unternehmen mit CO₂-Ziel oder Green-Procurement-Anforderungen.</p>
+      </div>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Reale Einsatzbeispiele aus der Praxis: Gehäuse, Funktionsteile, Prototypen und Sonderkonstruktionen aus verschiedenen Materialien.</p>
+        <a href="https://www.3ddrucklife.de/anwendung" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Weitere Anwendungsbeispiele im Blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Varianten</div>
+    <h2 class="sec-title">Nicht jedes GreenTEC ist gleich.</h2>
+    <p class="sec-sub">extrudr bietet verschiedene Ausführungen an. Die wichtigsten im Überblick.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Flagship</div>
+        <div class="vcard__name">GreenTEC PRO</div>
+        <p>Das leistungsstärkste Modell der GreenTEC-Linie. 100 % biobasiert, 115 °C HDT-B, 61 MPa Zugfestigkeit, Food-Grade. Richtige Wahl wenn Nachhaltigkeit auf technische Anforderungen trifft.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Einstieg</div>
+        <div class="vcard__name">GreenTEC (Standard)</div>
+        <p>Günstigere Variante mit niedrigerer Temperaturbeständigkeit (HDT ca. 65 °C). Für einfache Sichtteile, Designprototypen und nicht-technische Anwendungen, bei denen die Nachhaltigkeit im Vordergrund steht.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Verstärkt</div>
+        <div class="vcard__name">GreenTEC PRO CF (Carbon)</div>
+        <p>Kohlefaserverstärkte Ausführung von GreenTEC PRO. Deutlich höherer E-Modul und noch bessere Maßhaltigkeit. Für strukturelle Bauteile die leicht, steif und nachhaltig sein müssen. Gehärtete Düse erforderlich.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Nachbearbeitung</div>
+    <h2 class="sec-title">Was nach dem Druck möglich ist.</h2>
+    <p class="sec-sub">GreenTEC PRO lässt sich gut mechanisch und optisch nachbearbeiten.</p>
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__icon">🪚</div>
+        <strong>Schleifen</strong>
+        <p>Nassschleifen ab 400er Körnung. Die semimatte Oberfläche reagiert gut auf Schleifbearbeitung. Trocken schleifen ist möglich, aber langsamer.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🎨</div>
+        <strong>Lackieren</strong>
+        <p>Nach Grundierung mit Füller-Primer haftet Lack gut. Oberfläche vorher schleifen und entfetten. Wasserbasierte Lacke bevorzugen für maximale Nachhaltigkeit.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🖌️</div>
+        <strong>Einfärben</strong>
+        <p>Individuelle Farbgebung nach Wunsch. Für beste Deckkraft Grundierung vor der Farbe empfohlen.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🔩</div>
+        <strong>Kleben & Fügen</strong>
+        <p>Cyanacrylat (Sekundenkleber) und Epoxid-Kleber haften gut. Für mechanisch belastete Klebestellen Zweikomponentenkleber empfohlen.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">⚡</div>
+        <strong>Bohren & Fräsen</strong>
+        <p>Gut spanend nachbearbeitbar. Heat-Set-Gewindeeinsätze lassen sich mit Wärmezufuhr einpressen. Vorsicht: GreenTEC PRO ist steifer als PLA und neigt bei dünnen Wandstärken früher zum Reißen.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">✨</div>
+        <strong>Oberflächenveredelung</strong>
+        <p>Sandstrahlen und Beschichtungen sind möglich. Keine Acetonbehandlung (wie bei ABS), da GreenTEC PRO nicht lösungsmittelglättbar ist.</p>
+      </div>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Insgesamt bieten wir 24 Nachbearbeitungsmethoden an: von Schleifen und Lackieren über Einfärben bis zu leitfähigen Beschichtungen.</p>
+        <a href="https://www.3ddrucklife.de/post/oberflachenbehandlung" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Alle 24 Methoden ansehen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Füllungsgrade</div>
+    <h2 class="sec-title">Infill: Stabilität gegen Kosten abwägen.</h2>
+    <p class="sec-sub">Der Füllungsgrad bestimmt die innere Struktur des Bauteils und beeinflusst Gewicht, Stabilität und Preis.</p>
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">15 %</div>
+        <div class="fill-card__name">Leicht</div>
+        <p>Für Sichtmodelle und nicht belastete Teile. Günstig und leicht, aber geringe mechanische Tragfähigkeit.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:15%"></div></div></div>
+      </div>
+      <div class="fill-card" style="border-color:var(--orange);background:var(--orange-soft);position:relative;">
+        <div style="position:absolute;top:-10px;left:16px;background:var(--orange);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:.05em;">Am häufigsten gewählt</div>
+        <div class="fill-card__pct">20 %</div>
+        <div class="fill-card__name">Standard</div>
+        <p>Der meistgewählte Füllungsgrad. Gute Balance aus Stabilität und Wirtschaftlichkeit für die meisten Bauteile.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:20%"></div></div></div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">40 %</div>
+        <div class="fill-card__name">Solide</div>
+        <p>Für mechanisch belastete Teile, Halterungen und Funktionsteile mit erhöhten Festigkeitsanforderungen.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:40%"></div></div></div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">100 %</div>
+        <div class="fill-card__name">Massiv</div>
+        <p>Vollständig gefüllt. Für Werkzeuge, Einspannvorrichtungen und Teile mit maximaler Druckfestigkeit.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div></div>
+      </div>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Der optimale Füllungsgrad hängt von Einsatz, Geometrie und Budget ab. Unser Infill-Guide erklärt die gängigen Muster und wann welcher Prozentsatz sinnvoll ist.</p>
+        <a href="https://www.3ddrucklife.de/post/fullung-3ddruck" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Infill-Guide lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Einschränkungen</div>
+    <h2 class="sec-title">Wann ist GreenTEC PRO nicht die beste Wahl?</h2>
+    <div style="max-width:820px;">
+      <div class="callout">
+        <div class="callout__title">Grenzen kennen, bevor man bestellt</div>
+        <p>GreenTEC PRO ist sehr steif, aber weniger schlagzäh als PETG oder ABS. Bei Stoßbelastung, dynamischer Last oder Einsatz als Feder-/Scharnierersatz ist PETG oder TPU die bessere Wahl. Für Dauertemperaturen über 120 °C sollte auf PC oder PEEK ausgewichen werden. GreenTEC PRO ist nicht für den dauerhaften Außeneinsatz mit direkter UV-Belastung ausgelegt. Für hochmechanisch belastete tragende Bauteile sind PA12 oder Endlosfaser-Verbundwerkstoffe geeigneter.</p>
+        <div class="callout__links">
+          <a href="https://www.3ddrucklife.de/petg" class="callout__link" target="_parent">PETG ansehen</a>
+          <a href="https://www.3ddrucklife.de/pa12" class="callout__link" target="_parent">PA12 ansehen</a>
+          <a href="https://www.3ddrucklife.de/peek" class="callout__link" target="_parent">PEEK ansehen</a>
+          <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="callout__link" target="_parent">Alle Materialien</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Häufige Fragen</div>
+    <h2 class="sec-title">Was Kunden uns oft fragen.</h2>
+    <p class="sec-sub" style="margin-bottom:24px;">Zu GreenTEC PRO, Bestellung und Nachbearbeitung.</p>
+    <div class="faq-list">
+
+      <div class="faq-group-label">Über GreenTEC PRO</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was bedeutet "100 % biobasiert" bei GreenTEC PRO?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Der Begriff bedeutet, dass alle Rohstoffe aus nachwachsenden Quellen stammen und keine fossilen Ausgangsstoffe wie Erdöl oder Erdgas verwendet werden. GreenTEC PRO wird von extrudr aus 100 % nachwachsenden Rohstoffen hergestellt und ist zudem CO₂-neutral in der Produktion. Das ist ein wesentlicher Unterschied zu Standard-PLA, das zwar oft teilweise biobasiert ist, aber selten vollständig fossilverfrei.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist GreenTEC PRO wirklich kompostierbar?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">GreenTEC PRO ist biologisch abbaubar nach DIN EN ISO 14855, dem Standardtest für industrielle Kompostierbarkeit. Das bedeutet: Unter kontrollierten Bedingungen (Temperatur, Feuchtigkeit, Mikroorganismen) baut es sich vollständig ab. Im Hausgarten oder in der braunen Tonne wird dieser Prozess deutlich langsamer sein. Für unsachgemäße Entsorgung in der Natur ist es nicht gedacht, auch wenn die Umweltauswirkung gegenüber fossilen Kunststoffen deutlich geringer ist.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist der Unterschied zwischen GreenTEC und GreenTEC PRO?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">GreenTEC (ohne PRO) ist die Basisversion mit niedrigerer Wärmeformbeständigkeit (HDT ca. 65 °C) und geringerer mechanischer Festigkeit. Sie eignet sich für Sichtteile und weniger anspruchsvolle Anwendungen. GreenTEC PRO hingegen erreicht 115 °C HDT-B und 61 MPa Zugfestigkeit und ist damit für technische Bauteile geeignet. Wenn ihr Teile braucht, die Wärme oder mechanischer Last standhalten sollen, ist GreenTEC PRO die richtige Wahl.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist GreenTEC PRO lebensmittelecht?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja. GreenTEC PRO ist food-grade-zertifiziert. Wie bei allen FDM-Bauteilen gilt aber: Die Schichtstruktur erzeugt Mikroporen, in denen Bakterien ansetzen können. Für den Dauereinsatz mit direktem Lebensmittelkontakt empfehlen wir eine lebensmittelechte Versiegelung oder eine glattere Oberfläche durch Schleifen. Für Einwegbauteile oder kurzzeitigen Kontakt ist GreenTEC PRO ohne weitere Behandlung geeignet.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann GreenTEC PRO sterilisiert werden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Kurzzeit-Heißwasserbehandlung bis 100 °C ist möglich. Für Autoklavieren (134 °C, 3 bar Dampf) ist GreenTEC PRO nicht geeignet, da die HDT-B bei 115 °C liegt und die Feuchtigkeit den Erweichungspunkt weiter absenkt. Für sterilisierbare Mehrwegprodukte sind PPSU oder PC besser geeignet. Für sterile Einwegteile ist GreenTEC PRO jedoch eine interessante, nachhaltige Option.</div>
+      </div>
+
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welcher Füllungsgrad ist für mein Bauteil richtig?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Für die meisten Funktionsteile reicht 20 % Infill aus, das ist auch unser Standard. Bei mechanisch belasteten Teilen (Halterungen, Vorrichtungen) empfehlen wir 40 %. Volle Füllung (100 %) ist für Werkzeuge oder Teile mit extrem hoher Druckbelastung sinnvoll. Unser <a href="https://3ddrucklife.com" target="_parent">Preisrechner</a> zeigt euch direkt die Kosten je Füllungsgrad.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was kostet ein GreenTEC PRO-Bauteil?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Der Preis hängt von Geometrie, Größe, Füllungsgrad und Nachbearbeitung ab. Am schnellsten kommt ihr über unseren <a href="https://3ddrucklife.com" target="_parent">Online-Preisrechner</a> zu einer Kalkulation: 3D-Datei hochladen, Material wählen, Preis erhalten. Für größere Projekte oder Sonderanfragen meldet euch direkt bei uns.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann ich statt der Direktbestellung ein individuelles Angebot anfragen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja. Für Unternehmen, die ein formelles Angebot benötigen, schickt uns einfach eure Anfrage mit Bauteilbeschreibung, Stückzahl und Wunschtermin, dann erstellen wir ein verbindliches Angebot. Besonders bei größeren Mengen oder Serienteilen lohnt sich das, weil wir dort auch Mengenrabatte einkalkulieren können.</div>
+      </div>
+
+      <div class="faq-group-label">3D-Druck allgemein & Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie werden GreenTEC PRO-Bauteile gefertigt?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">GreenTEC PRO wird im FDM-Verfahren (Fused Deposition Modeling) gedruckt. Dabei wird ein Kunststofffaden schichtweise aufgeschmolzen und aufgetragen. GreenTEC PRO benötigt keine beheizte Druckkammer und verarbeitet sich ähnlich wie PLA, mit etwas höherer Drucktemperatur. Mehr zum Verfahren: <a href="https://www.3ddrucklife.de/verfahren/3d-druck-fdm-dienstleistung" style="color:var(--orange-dark);font-weight:700;text-decoration:underline;" target="_parent">FDM-Fertigung bei 3D DRUCK LIFE</a></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welches Dateiformat benötige ich für eine Bestellung?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Wir akzeptieren STL, STEP (STP) und 3MF. STL ist am weitesten verbreitet und funktioniert problemlos. STEP bevorzugen wir bei Präzisionsbauteilen. OBJ-Dateien sind ebenfalls möglich. Habt ihr nur ein PDF oder eine technische Zeichnung, können wir euch beim nächsten Schritt weiterhelfen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lange dauert die Lieferung?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Wir bieten drei Lieferoptionen: Economy (günstigster Versand, längere Laufzeit), Standard (unser Regelversand) und Express (schnellstmögliche Ausführung mit Aufpreis). Die genauen Preise hängen von Gewicht und Zieladresse ab. Vor Auftragsstart bekommt ihr immer eine konkrete Zeitangabe.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ich habe keine 3D-Datei. Kann ich trotzdem bestellen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja. Schickt uns eine Skizze, ein Foto oder eine technische Zeichnung, dann erstellen wir die 3D-Datei für euch. Konstruktionsaufwand und Preis besprechen wir vorab. Für Ersatzteile ohne Vorlage bieten wir auch Reverse Engineering an.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Nachbearbeitungen bietet ihr an?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Wir bieten insgesamt 24 Nachbearbeitungsmethoden an: von Schleifen, Lackieren und Grundieren über Gewindeschneiden, Einsätze einpressen und Lasergravur bis zu Sandstrahlen und Beschichtungen. Was für GreenTEC PRO machbar ist, klären wir auf Anfrage. Eine vollständige Übersicht findet ihr in unserem <a href="https://www.3ddrucklife.de/post/oberflachenbehandlung" style="color:var(--orange);font-weight:700;" target="_parent">Blogbeitrag zur Nachbearbeitung</a>.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">GreenTEC PRO-Bauteile jetzt bestellen</div>
+        <p class="cta-left__text">3D-Datei hochladen, Material wählen, Preis sofort erhalten. Kein Angebot, kein Warten. Oder sprecht uns für Projekte mit Sonderanforderungen direkt an.</p>
+        <div class="btn-row">
+          <a href="https://3ddrucklife.com" class="btn btn--white" target="_parent">Preisrechner öffnen</a>
+          <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage GreenTEC PRO" class="btn btn--white-outline">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Direktkontakt</div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.64a16 16 0 0 0 5.55 5.55l.83-.83a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <span><a href="tel:+4917664056860">+49 176 64056860</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 4-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <span><a href="mailto:Info@3ddrucklife.de">Info@3ddrucklife.de</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <span><a href="https://wa.me/4917664056860" target="_parent">WhatsApp schreiben</a></span>
+        </div>
+        <div style="margin-top:8px;padding-top:16px;border-top:1px solid rgba(255,255,255,.2);">
+          <p style="font-size:13px;color:rgba(255,255,255,.7);">Mo–Fr erreichbar · Zweibrücken, Deutschland</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-q').forEach(b => { b.setAttribute('aria-expanded','false'); b.nextElementSibling.style.display='none'; });
+    if (!open) { btn.setAttribute('aria-expanded','true'); btn.nextElementSibling.style.display='block'; }
+  });
+});
+
+// Active TOC
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.toc-link');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.dataset.s === e.target.id));
+  });
+}, { rootMargin: '-50px 0px -60% 0px' });
+secs.forEach(s => obs.observe(s));
+links.forEach(l => l.addEventListener('click', e => { e.preventDefault(); document.getElementById(l.dataset.s)?.scrollIntoView({behavior:'smooth'}); }));
+</script>
+</body>
+</html>

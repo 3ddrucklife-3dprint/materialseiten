@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PA11 (Polyamid 11 / Nylon 11) – 3D-Druck Material | 3D DRUCK LIFE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+/* DEMO BANNER */
+
+/* BREADCRUMB — orange wie alte Vorschau */
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+/* HERO — weiß wie alte Vorschau */
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+/* STICKY TOC */
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+/* SECTION BASE */
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+/* WAS IST PETG */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+/* VERGLEICH */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 24px; font-weight: 900; margin-bottom: 18px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.ccard__row:last-child { border-bottom: none; padding-bottom: 0; }
+.ccard__key { color: var(--ink-soft); }
+.ccard__val { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-g { background: #22c55e; }
+.dot-y { background: #f59e0b; }
+.dot-r { background: #ef4444; }
+
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+
+/* CHEM TABLE */
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+/* TECH TABLE */
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* VARIANTEN */
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ANWENDUNGEN */
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+.ucard__link { font-size: 13px; font-weight: 700; color: var(--orange-dark); text-decoration: none; margin-top: auto; padding-top: 4px; }
+.ucard__link:hover { text-decoration: underline; }
+
+/* NACHBEARBEITUNG */
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__icon { width: 36px; height: 36px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); font-size: 18px; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note--orange { background: var(--orange-soft); border-color: #ffd0a8; color: var(--orange-dark); }
+.post-note strong { font-weight: 700; }
+
+/* FÜLLUNGSGRADE */
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-visual { display: flex; gap: 4px; margin-top: 10px; }
+.fill-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--line); overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 3px; }
+
+/* GRENZEN */
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+/* FAQ */
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.faq-a a { color: var(--orange); text-decoration: underline; }
+
+/* CTA SPLIT — orange links, weiß rechts */
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.contact-row { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-soft); }
+.contact-row a { color: var(--orange); font-weight: 700; }
+.contact-icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); flex-shrink: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { order: -1; }
+  .hero__image img { border-radius: 8px; width: 100%; height: auto; }
+  .intro-grid, .compare-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+  .sec, .sec--alt { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">/</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">/</span>
+    <span class="breadcrumb__current">PA11</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <div class="hero__eyebrow">SLS / MJF Material</div>
+      <h1 class="hero__title">PA11 – <span class="accent">biobasiertes</span> Nylon</h1>
+      <p class="hero__sub">Polyamid 11 aus Rizinusöl: flexibel, schlagzäh und nachhaltig. Die bio-basierte Alternative zu PA12 für anspruchsvolle Funktionsbauteile.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">~50 MPa</span><span class="kstat__lbl">Zugfestigkeit</span></div>
+        <div class="kstat"><span class="kstat__val">~185 °C</span><span class="kstat__lbl">Schmelzpunkt</span></div>
+        <div class="kstat"><span class="kstat__val">biobasiert</span><span class="kstat__lbl">Rizinusöl</span></div>
+        <div class="kstat"><span class="kstat__val">1,03 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+      </div>
+      <div class="btn-row">
+        <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--orange" target="_parent">Preis berechnen</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--outline" target="_parent">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//Z" alt="PA11 Polyamid 11 3D-Druck Bauteil – 3D DRUCK LIFE" loading="eager" width="900" height="900">
+    </div>
+  </div>
+</section>
+
+<!-- STICKY TOC -->
+<nav class="toc-bar">
+  <div class="toc-bar__inner">
+    <a class="toc-link" href="#material">Was ist PA11?</a>
+    <a class="toc-link" href="#eigenschaften">Eigenschaften</a>
+    <a class="toc-link" href="#chemie">Chemie</a>
+    <a class="toc-link" href="#techdaten">Techdaten</a>
+    <a class="toc-link" href="#anwendungen">Anwendungen</a>
+    <a class="toc-link" href="#varianten">Varianten</a>
+    <a class="toc-link" href="#nachbearbeitung">Nachbearbeitung</a>
+    <a class="toc-link" href="#fuellungsgrade">Füllungsgrade</a>
+    <a class="toc-link" href="#grenzen">Grenzen</a>
+    <a class="toc-link" href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST PA11 -->
+<section id="material" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Material-Überblick</div>
+    <h2 class="sec-title">Was ist PA11?</h2>
+    <p class="sec-sub">Polyamid 11 ist ein semi-kristallines Hochleistungspolymer auf Basis nachwachsender Rohstoffe.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>PA11 (Polyamid 11 / Nylon 11) wird aus 11-Aminoundecansäure gewonnen, die aus dem Öl der Rizinuspflanze (<em>Ricinus communis</em>) stammt. Damit ist PA11 eines der wenigen technischen Hochleistungspolymere, das zu nahezu 100 % auf erneuerbaren Rohstoffen basiert.</p>
+        <p>Für den 3D-Druck wird PA11 vor allem im selektiven Lasersintern (SLS) und im Multi-Jet-Fusion-Verfahren (MJF) eingesetzt. Es zeichnet sich durch eine besonders hohe Schlagzähigkeit, gute Flexibilität und eine niedrigere Wasseraufnahme als PA12 aus.</p>
+        <p>Typische Einsatzbereiche sind flexible Kanalelemente, Schnappverbindungen, Sportartikel und medizintechnische Bauteile, bei denen Duktilität und Materialflexibilität entscheidend sind.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact"><div class="fact__icon">🌱</div><div class="fact__body"><strong>Biobasierter Ursprung</strong><span>Gewonnen aus Rizinusöl – ca. 100 % nachwachsender Rohstoff</span></div></div>
+        <div class="fact"><div class="fact__icon">⚡</div><div class="fact__body"><strong>Hohe Schlagzähigkeit</strong><span>Deutlich flexibler und duktiler als PA12 oder PA6</span></div></div>
+        <div class="fact"><div class="fact__icon">💧</div><div class="fact__body"><strong>Geringe Wasseraufnahme</strong><span>Niedriger als PA12 – bessere Dimensionsstabilität</span></div></div>
+        <div class="fact"><div class="fact__icon">🔬</div><div class="fact__body"><strong>SLS- und MJF-geeignet</strong><span>Zertifizierte Pulver für Industrieprozesse verfügbar</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN -->
+<section id="eigenschaften" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialeigenschaften</div>
+    <h2 class="sec-title">Eigenschaften von PA11</h2>
+    <p class="sec-sub">Die wichtigsten Stärken auf einen Blick.</p>
+    <div class="strengths">
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <div><strong>Flexibilität</strong><span>Höhere Bruchdehnung als PA12; ideal für Schnappverbindungen und biegebelastete Teile</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
+        </div>
+        <div><strong>Schlagzähigkeit</strong><span>Ausgezeichnete Energieaufnahme auch bei tiefen Temperaturen</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+        </div>
+        <div><strong>Ermüdungsbeständigkeit</strong><span>Sehr gute Wechselbelastbarkeit für dynamisch beanspruchte Bauteile</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><line x1="12" y1="5" x2="19" y2="12"/><line x1="12" y1="19" x2="19" y2="12"/></svg>
+        </div>
+        <div><strong>Nachhaltigkeit</strong><span>Bio-basierter Rohstoff; geringerer CO₂-Fußabdruck gegenüber petrochemischen Polyamiden</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+        </div>
+        <div><strong>Chemikalienbeständigkeit</strong><span>Beständig gegenüber Ölen, Kraftstoffen und vielen organischen Lösungsmitteln</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <div><strong>Geringe Dichte</strong><span>Mit 1,03 g/cm³ leichter als die meisten technischen Thermoplaste</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE & AUFBAU -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Chemie &amp; Struktur</div>
+    <h2 class="sec-title">Chemischer Aufbau von PA11</h2>
+    <p class="sec-sub">PA11 entsteht durch Polykondensation eines einzigen Monomers aus nachwachsenden Rohstoffen.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>Die Synthese von PA11 beginnt mit Ricinolsäure, dem Hauptbestandteil des Rizinusöls. Durch Pyrolyse und anschließende chemische Umwandlung entsteht 11-Aminoundecansäure, das einzige Monomer für die Polykondensation.</p>
+        <p>Bei der Polykondensation verbinden sich die Aminogruppe (–NH₂) und die Carboxylgruppe (–COOH) jedes Monomers unter Wasserabspaltung zu einer Amidbindung (–CO–NH–). Die entstehende Kette ist die Grundstruktur des Polyamids.</p>
+        <p>PA11 ist semi-kristallin mit einem Schmelzpunkt von ca. 185 °C. Die längere aliphatische Kette zwischen den Amidbindungen (11 C-Atome) sorgt für mehr Flexibilität verglichen mit PA6 (6 C-Atome) oder PA12 (12 C-Atome).</p>
+      </div>
+      <div>
+        <div class="chem-table-wrap">
+          <table class="chem-table">
+            <thead><tr><th>Eigenschaft</th><th>Wert</th><th>Bemerkung</th></tr></thead>
+            <tbody>
+              <tr><td>Monomer</td><td>11-Aminoundecansäure</td><td>Aus Rizinusöl</td></tr>
+              <tr><td>Polymertyp</td><td>Polyamid (PA)</td><td>Semi-kristallin</td></tr>
+              <tr><td>C-Atome zwischen NH</td><td>11</td><td>Höhere Flexibilität</td></tr>
+              <tr><td>Schmelzpunkt</td><td>~185 °C</td><td>DSC-Messung</td></tr>
+              <tr><td>Biobasierter Anteil</td><td>~100 %</td><td>Nachwachsend</td></tr>
+              <tr><td>Bindungstyp</td><td>–CO–NH–</td><td>Amidbindung</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr über Polyamid-Chemie und Herstellungsverfahren in unserem Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNISCHE DATEN -->
+<section id="techdaten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Technische Daten</div>
+    <h2 class="sec-title">Material-Kennwerte im Detail</h2>
+    <p class="sec-sub">Alle Werte beziehen sich auf SLS-gefertigte PA11-Bauteile nach Standardprozess.</p>
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead><tr><th>Kennwert</th><th>Wert</th><th>Norm</th></tr></thead>
+        <tbody>
+          <tr><td>Zugfestigkeit</td><td><span class="tval">~50 MPa</span></td><td>ISO 527</td></tr>
+          <tr><td>E-Modul</td><td><span class="tval">~1.600 MPa</span></td><td>ISO 527</td></tr>
+          <tr><td>Bruchdehnung</td><td><span class="tval">30 bis 50 %</span></td><td>ISO 527</td></tr>
+          <tr><td>Schmelztemperatur</td><td><span class="tval">~185 °C</span></td><td>ISO 11357</td></tr>
+          <tr><td>Dichte</td><td><span class="tval">1,03 g/cm³</span></td><td>ISO 1183</td></tr>
+          <tr><td>Wasseraufnahme (24 h)</td><td><span class="tval">~0,4 %</span></td><td>ISO 62</td></tr>
+          <tr><td>Shore-Härte</td><td><span class="tval">~75 Shore D</span></td><td>ISO 868</td></tr>
+          <tr><td>Biobasierter Anteil</td><td><span class="tval">~100 %</span></td><td>ASTM D6866</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Detaillierte Kennwertvergleiche und Prüfnormen im Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Anwendungsgebiete</div>
+    <h2 class="sec-title">Einsatzgebiete für PA11</h2>
+    <p class="sec-sub">PA11 überzeugt überall dort, wo Flexibilität, Schlagzähigkeit und Nachhaltigkeit gefragt sind.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        </div>
+        <div class="ucard__title">Flexible Kanalelemente</div>
+        <p>Biegsame Schläuche, Leitungsführungen und Wellrohre für Fluid- und Luftführungssysteme in Fahrzeugen und Maschinen.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <div class="ucard__title">Schnappverbindungen</div>
+        <p>Clips, Rastnasen und Snap-Fit-Komponenten mit hoher Ermüdungsbeständigkeit und dauerhafter Rückfederung.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <div class="ucard__title">Sportartikel</div>
+        <p>Skibindungen, Schutzausrüstung, Fahrradkomponenten und andere Sportgeräte mit hohem Energieabsorptionsbedarf.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="ucard__title">Medizintechnik</div>
+        <p>Orthopädische Hilfsmittel, Prothesen-Komponenten und medizinische Einwegteile dank bio-basierter Verträglichkeit.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <div class="ucard__title">Öl &amp; Gas</div>
+        <p>Flexible Steigleitungen und Ummantelungen für raue Offshore-Umgebungen mit hoher Chemikalienbeständigkeit.</p>
+      </div>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Anwendungsbeispiele und Branchenberichte aus der Praxis im Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Material-Varianten</div>
+    <h2 class="sec-title">PA11-Varianten im Überblick</h2>
+    <p class="sec-sub">Je nach Anwendungsfall stehen verschiedene PA11-Pulvertypen zur Verfügung.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Standard</div>
+        <div class="vcard__name">PA11 Natural</div>
+        <p>Der Standardtyp für SLS und MJF. Balanciert Flexibilität und Festigkeit für breite Anwendungen. Naturfarbe (beige bis cremefarben), gut einfärbbar.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Verstärkt</div>
+        <div class="vcard__name">PA11-CF (Kohlefaser)</div>
+        <p>Kohlefaserverstärktes PA11 für deutlich erhöhte Steifigkeit und Festigkeit bei gleichzeitig geringem Gewicht. Geeignet für strukturelle Bauteile.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Flexibel</div>
+        <div class="vcard__name">PA11 Flexible</div>
+        <p>Optimiert für maximale Elastizität und Weichheit. Ideal für Dichtungen, Griffe, ergonomische Polster und Komponenten mit Vibrationsdämpfung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Post-Processing</div>
+    <h2 class="sec-title">Nachbearbeitung von PA11-Bauteilen</h2>
+    <p class="sec-sub">PA11 lässt sich mit verschiedenen Verfahren veredeln und funktionalisieren.</p>
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__icon">⚙️</div>
+        <strong>Trommelgleitstrahlen</strong>
+        <p>Trommeln und Vibrationsfinishing glätten rauhe SLS-Oberflächen schonend und erzeugen eine gleichmäßige Mattoptik.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🎨</div>
+        <strong>Einfärben</strong>
+        <p>PA11 nimmt Textilfarben sehr gut auf. Bad-Färbeverfahren ermöglichen tiefe, gleichmäßige Farben bis in feine Strukturen.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🛡️</div>
+        <strong>Oberflächenbeschichtung</strong>
+        <p>Lackieren, Grundieren oder Gummibeschichten verbessern Optik und Schutzwirkung. Haftung auf PA11 ist mit Vorbehandlung sehr gut.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🌈</div>
+        <strong>MJF-Einfärbung</strong>
+        <p>MJF-gefertigte PA11-Teile können direkt im Prozess in Schwarz hergestellt oder nachträglich in anderen Farben gebeizt werden.</p>
+      </div>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Nachbearbeitungs-Tipps und Verfahrensvergleiche im Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Füllstoffe &amp; Verstärkungen</div>
+    <h2 class="sec-title">PA11 mit Füllstoffen</h2>
+    <p class="sec-sub">Durch Füllstoffe lassen sich die Eigenschaften von PA11 gezielt anpassen.</p>
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">CF</div>
+        <div class="fill-card__name">Kohlefaser (PA11-CF)</div>
+        <p>Kurze Kohlefasern erhöhen E-Modul und Zugfestigkeit erheblich. Deutliche Versteifung bei nur geringem Gewichtszuwachs. Haupteinsatz: Leichtbau, Strukturkomponenten.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:85%"></div></div><div class="fill-bar"><div class="fill-bar__inner" style="width:85%"></div></div><div class="fill-bar"><div class="fill-bar__inner" style="width:20%"></div></div></div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">GF</div>
+        <div class="fill-card__name">Glasfaser (PA11-GF)</div>
+        <p>Glasfasern verbessern Steifigkeit und Wärmeformbeständigkeit. Weniger verbreitet als bei PA12, aber für bestimmte Anwendungen verfügbar. Elektrisch nicht leitend.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:70%"></div></div><div class="fill-bar"><div class="fill-bar__inner" style="width:65%"></div></div><div class="fill-bar"><div class="fill-bar__inner" style="width:30%"></div></div></div>
+      </div>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Füllstoffvarianten und Materialvergleiche im Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Einschränkungen</div>
+    <h2 class="sec-title">Grenzen von PA11</h2>
+    <div class="callout">
+      <div class="callout__title">Wann ist PA11 nicht die beste Wahl?</div>
+      <p>PA11 ist ein vielseitiges Hochleistungspolymer, aber nicht für jeden Einsatz optimal. Die Wärmeformbeständigkeit liegt unter der von PA12 und deutlich unter der von Hochtemperaturpolymeren wie PEEK oder PEI. Bei dauerhaften Temperaturen über 130 °C sollten andere Materialien geprüft werden.</p>
+      <p>Obwohl PA11 im SLS- und MJF-Bereich verfügbar ist, ist die Materialauswahl und Maschinenabdeckung kleiner als bei PA12. Nicht jedes Dienstleistungsunternehmen bietet PA11 an. Durch die bio-basierte Produktion sind die Rohstoffkosten etwas höher, was sich im Bauteilpreis niederschlägt.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/pa12" class="callout__link" target="_parent">PA12</a>
+        <a href="https://www.3ddrucklife.de/peek" class="callout__link" target="_parent">PEEK</a>
+        <a href="https://www.3ddrucklife.de/peba" class="callout__link" target="_parent">PEBA</a>
+        <a href="https://www.3ddrucklife.de/tpu" class="callout__link" target="_parent">TPU</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">FAQ</div>
+    <h2 class="sec-title">Häufige Fragen zu PA11</h2>
+    <div class="faq-list">
+
+      <div class="faq-group-label">Über PA11</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Was unterscheidet PA11 von PA12?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">PA11 hat eine längere aliphatische Kette (11 Kohlenstoffatome) und ist biobasiert aus Rizinusöl. Es ist flexibler, schlagzäher und hat eine geringere Wasseraufnahme als PA12. Allerdings ist die Temperaturbeständigkeit etwas niedriger und PA11 weniger verbreitet als PA12 im SLS-Markt.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Ist PA11 wirklich 100 % biobasiert?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja. Das Monomer 11-Aminoundecansäure wird vollständig aus Rizinusöl gewonnen, einem nachwachsenden Rohstoff aus der Rizinuspflanze. Der biobasierte Kohlenstoffanteil beträgt nach ASTM D6866 nahezu 100 %. Das macht PA11 zu einem der wenigen echten Bio-Hochleistungspolymere.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Für welche 3D-Druckverfahren ist PA11 geeignet?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">PA11 wird hauptsächlich im selektiven Lasersintern (SLS) und im Multi-Jet-Fusion-Verfahren (MJF) eingesetzt. Beide Pulverdruckverfahren erzeugen porenfreie, funktionale Bauteile ohne Stützstrukturen. FDM-Filamente auf PA11-Basis sind verfügbar, aber weniger verbreitet.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Wie hoch ist die Temperaturbeständigkeit von PA11?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Der Schmelzpunkt liegt bei ca. 185 °C. Im Dauerbetrieb ist PA11 bis etwa 120 bis 130 °C formstabil belastbar. Für höhere Temperaturen empfehlen sich Materialien wie PEEK oder PEI.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Eignet sich PA11 für medizinische Anwendungen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">PA11 wird in orthopädischen Anwendungen, Prothesen und medizinischen Einwegprodukten eingesetzt. Für Anwendungen mit direktem Körperkontakt oder Implantate müssen biokompatibilitätsgeprüfte Materialchargen und zugelassene Verarbeitungsprozesse verwendet werden.</div>
+      </div>
+
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Wie erhalte ich einen Preis für mein PA11-Bauteil?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Laden Sie Ihre 3D-Datei (STL, STEP oder OBJ) in unseren <a href="https://www.3ddrucklife.de/preisrechner" target="_parent">Preisrechner</a> hoch, wählen Sie PA11 als Material und erhalten Sie sofort einen Preis. Alternativ können Sie uns über das <a href="https://www.3ddrucklife.de/kontakt" target="_parent">Kontaktformular</a> anfragen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Ist PA11 teurer als PA12?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">In der Regel liegt PA11 etwas über dem Preisniveau von PA12. Die bio-basierte Rohstoffgewinnung ist aufwändiger und das Marktvolumen kleiner. Bei Projekten, bei denen Nachhaltigkeit oder spezifische Eigenschaften wie Flexibilität entscheidend sind, ist der Mehrpreis gut investiert.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Welche Dateiformate werden für den 3D-Druck akzeptiert?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Wir akzeptieren STL, STEP, OBJ und STP. Für SLS- und MJF-Bauteile empfehlen wir STEP-Dateien, da sie die Geometrie präziser beschreiben. Alle Dateien können direkt im Preisrechner hochgeladen werden.</div>
+      </div>
+
+      <div class="faq-group-label">3D-Druck allgemein &amp; Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Brauche ich Stützstrukturen beim SLS-Druck mit PA11?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Nein. Beim SLS-Verfahren fungiert das umgebende Pulverbett als Stützmaterial. Das ermöglicht komplexe Hinterschnitte, ineinander verschachtelte Bauteile und organische Geometrien ohne zusätzliche Stützstrukturen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Kann ich PA11-Bauteile einfärben?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja. PA11 nimmt Textilfarben sehr gut auf. Im Tauchbad-Verfahren werden gleichmäßige, tiefe Farben erzielt, die auch in feine Strukturen eindringen. MJF-Teile können im Prozess direkt in Schwarz hergestellt werden.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Wie glatt ist die Oberfläche von SLS-PA11-Bauteilen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Frisch gefertigte SLS-Bauteile haben eine leicht rauhe, poröse Oberfläche (Ra ca. 10 bis 15 µm). Durch Trommelgleitstrahlen lässt sich Ra auf ca. 4 bis 8 µm reduzieren. Für glattere Oberflächen eignen sich Beschichtungsverfahren oder Vapour Smoothing.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Kann ich PA11-Bauteile mechanisch nachbearbeiten?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja. PA11 kann gebohrt, gefräst, geschliffen und gegewindet werden. Durch die höhere Duktilität ist es etwas zäher im Zerspanungsprozess als PA12. Kühlschmierstoffe auf Wasserbasis sind empfehlenswert.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Wie lagere ich PA11-Pulver und Fertigteile richtig?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">PA11-Pulver sollte trocken und kühl gelagert werden, da Polyamide hygroskopisch sind. Für Fertigteile gilt: bei normalen Innenraumbedingungen lagern, direktes UV-Licht vermeiden. Exponierte Außenanwendungen profitieren von UV-stabilen Beschichtungen.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">PA11-Bauteile jetzt bestellen</div>
+        <p class="cta-left__text">3D-Datei hochladen, Material wählen, Preis sofort erhalten.</p>
+        <div class="btn-row">
+          <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--white" target="_parent">Preisrechner öffnen</a>
+          <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--white-outline" target="_parent">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Direkt Kontakt</div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span>Fragen zum Material? <a href="https://www.3ddrucklife.de/kontakt" target="_parent">Jetzt anfragen</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span>Auch als Einzelstück oder Kleinserie lieferbar</span>
+        </div>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="btn btn--outline" style="margin-top:8px;" target="_parent">Alle Materialien</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleFaq(btn) {
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !expanded);
+  const answer = btn.nextElementSibling;
+  answer.style.display = expanded ? 'none' : 'block';
+}
+
+// TOC active state
+const tocLinks = document.querySelectorAll('.toc-link');
+const sections = document.querySelectorAll('section[id]');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.toc-link[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

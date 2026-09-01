@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Werkzeugstahl 3D-Druck H13 und MS1 – SLM Metallwerkzeuge | 3D DRUCK LIFE</title>
+<meta name="description" content="Werkzeugstahl H13 und Maraging Steel MS1 im SLM-3D-Druck: Eigenschaften, Techdaten, Conformal Cooling, Wärmebehandlung und Anwendungen für Spritzgusswerkzeuge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+/* BREADCRUMB */
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+/* HERO */
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn--white { background: #fff; color: var(--orange-dark); border: none; }
+.btn--white:hover { background: var(--orange-soft); }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.7); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+/* STICKY TOC */
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+/* SECTION BASE */
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+/* INTRO */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+/* VERGLEICH */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 24px; font-weight: 900; margin-bottom: 18px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.ccard__row:last-child { border-bottom: none; padding-bottom: 0; }
+.ccard__key { color: var(--ink-soft); }
+.ccard__val { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-g { background: #22c55e; }
+.dot-y { background: #f59e0b; }
+.dot-r { background: #ef4444; }
+
+/* CHEM TABLE */
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+/* TECH TABLE */
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* VARIANTEN */
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ANWENDUNGEN */
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+
+/* NACHBEARBEITUNG */
+.post-steps { display: flex; flex-direction: column; gap: 12px; }
+.post-step { display: flex; align-items: flex-start; gap: 16px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.post-step__num { width: 34px; height: 34px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 900; font-size: 15px; flex-shrink: 0; }
+.post-step strong { display: block; font-size: 14px; font-weight: 900; margin-bottom: 4px; }
+.post-step p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note strong { font-weight: 700; }
+
+/* FÜLLUNGSGRADE */
+.fill-info { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; }
+.fill-info__title { font-size: 17px; font-weight: 900; margin-bottom: 10px; }
+.fill-info p { font-size: 14px; color: var(--ink-soft); line-height: 1.65; margin-bottom: 10px; }
+.fill-info p:last-child { margin-bottom: 0; }
+.cooling-specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; }
+.cooling-spec { background: var(--orange-soft); border-radius: var(--radius); padding: 14px 16px; }
+.cooling-spec__val { font-size: 20px; font-weight: 900; color: var(--orange-dark); }
+.cooling-spec__lbl { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+
+/* GRENZEN */
+.limits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.limit-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; align-items: flex-start; gap: 12px; }
+.limit-item__icon { width: 34px; height: 34px; background: #fee2e2; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.limit-item strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+.limit-item span { font-size: 13px; color: var(--ink-soft); }
+
+/* FAQ */
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+
+/* CTA BANNER */
+.cta-banner { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); padding: 64px 0; }
+.cta-banner__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; text-align: center; }
+.cta-banner h2 { font-size: clamp(26px, 3.5vw, 40px); font-weight: 900; color: #fff; margin-bottom: 12px; }
+.cta-banner p { font-size: 17px; color: rgba(255,255,255,.75); margin-bottom: 32px; max-width: 560px; margin-left: auto; margin-right: auto; }
+.cta-banner .btn-row { justify-content: center; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { order: -1; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .intro-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">›</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">›</span>
+    <span class="breadcrumb__current">Werkzeugstahl</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow">SLM Metallwerkzeuge &middot; H13 &middot; Maraging Steel MS1</p>
+      <h1 class="hero__title">Werkzeugstahl 3D-Druck: extrem hart, <span class="accent">warmfest</span> und ideal für Spritzgusswerkzeuge.</h1>
+      <p class="hero__sub">H13 und Maraging Steel MS1 per SLM gedruckt. Für Spritzguss-, Druckguss- und Stanzwerkzeuge mit konturnaher Kühlung und Härten bis 56 HRC.</p>
+      <div class="trust-row">
+        <div class="kstat">
+          <span class="kstat__val">~1.800 MPa</span>
+          <span class="kstat__lbl">Zugfestigkeit</span>
+        </div>
+        <div class="kstat">
+          <span class="kstat__val">bis 550 °C</span>
+          <span class="kstat__lbl">Warmfestigkeit</span>
+        </div>
+        <div class="kstat">
+          <span class="kstat__val">52 bis 56 HRC</span>
+          <span class="kstat__lbl">Härte</span>
+        </div>
+        <div class="kstat">
+          <span class="kstat__val">7,8 g/cm³</span>
+          <span class="kstat__lbl">Dichte</span>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a href="https://3ddrucklife.com" class="btn btn--orange" target="_parent">➜ Preis berechnen</a>
+        <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Werkzeugstahl" class="btn btn--outline">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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AVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH/2Q==" alt="Werkzeugstahl H13 im SLM 3D-Druck" width="900" height="900" loading="eager">
+    </div>
+  </div>
+</header>
+
+<!-- STICKY TOC -->
+<nav class="toc-bar" aria-label="Inhaltsverzeichnis">
+  <div class="toc-bar__inner">
+    <a class="toc-link" href="#material">Material</a>
+    <a class="toc-link" href="#eigenschaften">Eigenschaften</a>
+    <a class="toc-link" href="#chemie">Chemie</a>
+    <a class="toc-link" href="#techdaten">Techdaten</a>
+    <a class="toc-link" href="#anwendungen">Anwendungen</a>
+    <a class="toc-link" href="#varianten">Varianten</a>
+    <a class="toc-link" href="#nachbearbeitung">Nachbearbeitung</a>
+    <a class="toc-link" href="#fuellungsgrade">Kühlung</a>
+    <a class="toc-link" href="#grenzen">Grenzen</a>
+    <a class="toc-link" href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- MATERIAL / WAS IST ES -->
+<section id="material" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Was ist Werkzeugstahl im 3D-Druck?</p>
+    <h2 class="sec-title">SLM-Werkzeugstahl: H13 und Maraging Steel MS1</h2>
+    <p class="sec-sub">Zwei hochlegierte Stähle, die per Selective Laser Melting (SLM) zu komplexen Werkzeugeinsätzen werden, die sich konventionell nicht fertigen lassen.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>Werkzeugstähle zählen zu den anspruchsvollsten Materialien im Metallpulverbettdruck. Beim SLM-Verfahren wird Stahlpulver (Korngrösse 10 bis 45 µm) durch einen Hochleistungslaser schichtweise aufgeschmolzen und zu dichten Bauteilen mit über 99,9 % relativer Dichte gefügt.</p>
+        <p>Der wichtigste Typ für Warmarbeit ist <strong>H13 (1.2344)</strong>: ein chromlegierter Warmarbeitsstahl mit hoher Anlassbeständigkeit und Warmhärte bis 550 °C. Nach Härten und zweifachem Anlassen erreicht er 52 bis 56 HRC.</p>
+        <p><strong>Maraging Steel MS1 (18Ni300 / 1.2709)</strong> setzt auf Ausscheidungshärtung statt auf Karbide. Durch Glühen bei 490 °C bilden sich Ni₃Mo- und Ni₃Ti-Ausscheidungen, die Festigkeiten von 1.900 MPa bei guter Zähigkeit liefern. MS1 eignet sich besonders für Formen mit hoher Belastung und engen Toleranzen.</p>
+        <p>Das entscheidende Argument für den 3D-Druck: <strong>Conformal Cooling</strong>. Kühlkanäle folgen exakt der Kontur des Formteils und ermöglichen Zykluszeitzreduzierungen von bis zu 30 % gegenüber gebohren Geradekanälen.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">⚙️</div>
+          <div class="fact__body">
+            <strong>Prozess: SLM (Selective Laser Melting)</strong>
+            <span>Pulverbettbasiertes Schmelzverfahren, Schichtdicke 20 bis 60 µm, Schutzgas (Argon/Stickstoff)</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🔥</div>
+          <div class="fact__body">
+            <strong>Warmarbeitsstahl H13 (1.2344)</strong>
+            <span>Warmhärte bis 550 °C, Anlassbeständigkeit durch Cr-Mo-V-Legierung</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">💪</div>
+          <div class="fact__body">
+            <strong>Maraging Steel MS1 (1.2709)</strong>
+            <span>Ausscheidungshärtung, 1.900 MPa Zugfestigkeit, gut bearbeitbar im Lösungsglühzustand</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">❄️</div>
+          <div class="fact__body">
+            <strong>Conformal Cooling</strong>
+            <span>Konturnahe Kühlkanäle direkt ins CAD-Design integriert, bis 30 % kürzere Zykluszeiten</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🏭</div>
+          <div class="fact__body">
+            <strong>Hauptanwendung: Spritzgusswerkzeuge</strong>
+            <span>Formeinsätze, Schieber, Kerne für Thermoplastspritzguss und Druckguss</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN / VERGLEICH -->
+<section id="eigenschaften" class="sec--alt">
+  <div class="container">
+    <p class="sec-eyebrow">Vergleich</p>
+    <h2 class="sec-title">Werkzeugstahl vs. Edelstahl 316L vs. Maraging Steel</h2>
+    <p class="sec-sub">Wie schneidet H13 im Vergleich zu Standardedelstahl und Maraging Steel MS1 ab?</p>
+    <div class="compare-grid">
+      <div class="ccard">
+        <p class="ccard__label">Referenz</p>
+        <p class="ccard__name">Edelstahl 316L</p>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">530 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Härtbarkeit</span><span class="ccard__val"><span class="dot dot-r"></span>nein</span></div>
+        <div class="ccard__row"><span class="ccard__key">Warmfestigkeit</span><span class="ccard__val">400 °C</span></div>
+        <div class="ccard__row"><span class="ccard__key">Zähigkeit</span><span class="ccard__val"><span class="dot dot-g"></span>sehr hoch</span></div>
+        <div class="ccard__row"><span class="ccard__key">Korrosionsschutz</span><span class="ccard__val"><span class="dot dot-g"></span>sehr gut</span></div>
+      </div>
+      <div class="ccard ccard--center">
+        <p class="ccard__label">Empfohlen für Werkzeuge</p>
+        <p class="ccard__name">H13 Werkzeugstahl</p>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">1.800 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Härtbarkeit</span><span class="ccard__val"><span class="dot dot-g"></span>52 bis 56 HRC</span></div>
+        <div class="ccard__row"><span class="ccard__key">Warmfestigkeit</span><span class="ccard__val">550 °C</span></div>
+        <div class="ccard__row"><span class="ccard__key">Zähigkeit</span><span class="ccard__val"><span class="dot dot-y"></span>mittel</span></div>
+        <div class="ccard__row"><span class="ccard__key">Korrosionsschutz</span><span class="ccard__val"><span class="dot dot-y"></span>begrenzt</span></div>
+      </div>
+      <div class="ccard">
+        <p class="ccard__label">Höchste Festigkeit</p>
+        <p class="ccard__name">Maraging MS1</p>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">1.900 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Härtbarkeit</span><span class="ccard__val"><span class="dot dot-g"></span>54 bis 58 HRC</span></div>
+        <div class="ccard__row"><span class="ccard__key">Warmfestigkeit</span><span class="ccard__val">400 °C</span></div>
+        <div class="ccard__row"><span class="ccard__key">Zähigkeit</span><span class="ccard__val"><span class="dot dot-g"></span>hoch</span></div>
+        <div class="ccard__row"><span class="ccard__key">Korrosionsschutz</span><span class="ccard__val"><span class="dot dot-y"></span>begrenzt</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Legierungszusammensetzung</p>
+    <h2 class="sec-title">Chemie: H13 und Maraging Steel MS1</h2>
+    <p class="sec-sub">Die Legierungselemente bestimmen Warmhärte, Anlassbeständigkeit und Festigkeitsmechanismus beider Stahltypen.</p>
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>H13 (1.2344) Gehalt</th>
+            <th>MS1 (1.2709) Gehalt</th>
+            <th>Funktion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Fe</td><td>Basis</td><td>Basis</td><td>Grundgefüge, martensitische Umwandlung</td></tr>
+          <tr><td>C (Kohlenstoff)</td><td>ca. 0,40 %</td><td>&lt; 0,03 %</td><td>H13: Karbidbildung; MS1: bewusst niedrig, verhindert Sprödigkeit</td></tr>
+          <tr><td>Cr (Chrom)</td><td>ca. 5,0 %</td><td>--</td><td>Warmhärte, Anlassbeständigkeit, Oxidationsschutz</td></tr>
+          <tr><td>Mo (Molybdän)</td><td>ca. 1,5 %</td><td>ca. 5,0 %</td><td>Festigkeitsausscheidungen (MS1: Ni₃Mo), erhöhte Anlassbeständigkeit</td></tr>
+          <tr><td>V (Vanadium)</td><td>ca. 1,0 %</td><td>--</td><td>Feinkornstabilisierung, MC-Karbide, Warmhärte</td></tr>
+          <tr><td>Si (Silizium)</td><td>ca. 1,0 %</td><td>--</td><td>Desoxidation, Anlassbeständigkeit</td></tr>
+          <tr><td>Ni (Nickel)</td><td>--</td><td>ca. 18 %</td><td>Martensitbildung bei Raumtemperatur, Zähigkeit</td></tr>
+          <tr><td>Co (Kobalt)</td><td>--</td><td>ca. 9,0 %</td><td>Erhöht Ausscheidungsdichte, steigert Festigkeit nach Aushärtung</td></tr>
+          <tr><td>Ti (Titan)</td><td>--</td><td>ca. 1,0 %</td><td>Ni₃Ti-Ausscheidungen bei 490 °C Aushärtung</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div style="background: var(--paper-2); border-radius: var(--radius); padding: 20px;">
+        <strong style="display: block; margin-bottom: 8px; font-size: 15px;">H13: Karbidmechanismus</strong>
+        <p style="font-size: 14px; color: var(--ink-soft); line-height: 1.6;">Chrom- und Vanadiumkarbide (Cr₇C₃, MC) bleiben beim Anlassen bei 550 bis 600 °C stabil und verhindern den Härteabfall. Das Ergebnis ist Warmhärte bis 46 HRC bei 500 °C und ein breites Einsatzfenster für Warmarbeit.</p>
+      </div>
+      <div style="background: var(--paper-2); border-radius: var(--radius); padding: 20px;">
+        <strong style="display: block; margin-bottom: 8px; font-size: 15px;">MS1: Ausscheidungshärtung</strong>
+        <p style="font-size: 14px; color: var(--ink-soft); line-height: 1.6;">MS1 ist im Lösungsglühzustand weich (ca. 32 HRC) und daher leicht zu bearbeiten. Erst durch Ausscheidungsglühen bei 490 °C für 6 Stunden bilden sich nanoskopige Ni₃Mo/Ni₃Ti-Teilchen, die die Festigkeit auf 1.900 MPa anheben.</p>
+      </div>
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <p>Mehr zur Metallurgie von Werkzeugstählen: <a href="https://www.3ddrucklife.de/blog/slm-metallpulver" target="_parent">SLM-Metallpulver und Legierungskonzepte im 3D-Druck</a> &mdash; Grundlagen der Pulverbetttechnologie für Stähle und Superlegierungen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TECHDATEN -->
+<section id="techdaten" class="sec--alt">
+  <div class="container">
+    <p class="sec-eyebrow">Technische Daten</p>
+    <h2 class="sec-title">Techdaten: H13 nach SLM und Wärmebehandlung</h2>
+    <p class="sec-sub">Alle Werte für SLM-gefertigtes H13 nach vollständiger Wärmebehandlung (Härten plus doppeltes Anlassen). Normative Basis: ISO 6892-1, ISO 6508.</p>
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead>
+          <tr>
+            <th>Eigenschaft</th>
+            <th>Wert</th>
+            <th>Norm / Methode</th>
+            <th>Hinweis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Zugfestigkeit Rm</td><td><span class="tval">1.700 bis 1.900 MPa</span></td><td>ISO 6892-1</td><td>Nach Härten und 2x Anlassen</td></tr>
+          <tr><td>Streckgrenze Rp0,2</td><td><span class="tval">1.400 bis 1.600 MPa</span></td><td>ISO 6892-1</td><td>Richtungsabhängig (Build-Orientierung)</td></tr>
+          <tr><td>Bruchdehnung A</td><td><span class="tval">3 bis 7 %</span></td><td>ISO 6892-1</td><td>Gering, kein Ersatz für zähe Stähle</td></tr>
+          <tr><td>Härte (gehärtet)</td><td><span class="tval">52 bis 56 HRC</span></td><td>ISO 6508</td><td>2x Anlassen bei 550 bis 600 °C</td></tr>
+          <tr><td>Warmhärte bei 500 °C</td><td><span class="tval">ca. 46 HRC</span></td><td>Warmhärteprüfung</td><td>Charakteristisch für H13</td></tr>
+          <tr><td>Dichte</td><td><span class="tval">7,75 bis 7,85 g/cm³</span></td><td>Archimedes</td><td>Relative Dichte über 99,9 %</td></tr>
+          <tr><td>Wärmeleitfähigkeit</td><td><span class="tval">25 W/(mK)</span></td><td>ISO 22007</td><td>Relevant für Conformal-Cooling-Auslegung</td></tr>
+          <tr><td>Einsatztemperatur</td><td><span class="tval">bis 550 °C</span></td><td>Langzeitversuch</td><td>Warmarbeit, Druckguss</td></tr>
+          <tr><td>Relative Dichte SLM</td><td><span class="tval">&gt; 99,9 %</span></td><td>CT / Archimedisch</td><td>Optimierte Laserparameter vorausgesetzt</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="blog-link-box" style="margin-top: 24px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <p>Tiefgang zu mechanischen Prüfmethoden: <a href="https://www.3ddrucklife.de/blog/metallpruefung-3d-druck" target="_parent">Wie werden SLM-Metallteile geprüft?</a> &mdash; Zugversuch, Härteprüfung und CT-Analyse für additive Metallbauteile.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Einsatzgebiete</p>
+    <h2 class="sec-title">Anwendungen: Wo Werkzeugstahl aus dem 3D-Drucker überzeugt</h2>
+    <p class="sec-sub">Der entscheidende Vorteil ist Designfreiheit: Kühlkanäle, Hinterschnitte und Gitterstrukturen lassen sich ohne Zerspanung realisieren.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <p class="ucard__title">Spritzgusswerkzeuge mit Conformal Cooling</p>
+        <p>Formeinsätze mit konturnahen Kühlkanälen reduzieren Zykluszeiten um bis zu 30 %. Höhere Produktivität bei gleicher Maschinenkapazität.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <p class="ucard__title">Druckgussformen</p>
+        <p>H13 ist der klassische Warmarbeitsstahl für Aluminium- und Zinkdruckguss. SLM ermöglicht komplexe Trennebenen und integrierte Kühlung.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <p class="ucard__title">Reifenformen und Lamellenstrukturen</p>
+        <p>Reifenprofile erfordern Tausende von Lamellen, die konventionell eingepresst werden. SLM druckt diese Geometrien in einem Schritt.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <p class="ucard__title">Stanz- und Schneidwerkzeuge</p>
+        <p>Hochharte Schneidkanten (52 bis 56 HRC) für Blechumformung und Stanzoperationen. MS1 für höchste Schlagzähigkeit.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <p class="ucard__title">Extrusionswerkzeuge</p>
+        <p>Profile und Düsen für Kunststoff- und Metallextrusion. Warmfestigkeit bis 550 °C (H13) deckt alle gängigen Verarbeitungstemperaturen ab.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <p class="ucard__title">Prototypen-Werkzeuge für Kleinserie</p>
+        <p>Schnelle Werkzeugherstellung (1 bis 2 Wochen statt Monate) für Serienerprobung in Kunststoff oder Leichtmetall.</p>
+      </div>
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <p>Praxisbericht Conformal Cooling: <a href="https://www.3ddrucklife.de/blog/conformal-cooling-spritzguss" target="_parent">Wie viel Zeit spart konturnahe Kühlung wirklich?</a> &mdash; Fallstudie mit Zykluszeitmessung und Temperaturverteilung.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec--alt">
+  <div class="container">
+    <p class="sec-eyebrow">Materialvarianten</p>
+    <h2 class="sec-title">Werkzeugstahl-Typen im SLM-3D-Druck</h2>
+    <p class="sec-sub">Je nach Anwendungsfall und thermischer Belastung unterscheiden sich die empfohlenen Legierungen deutlich.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <span class="vcard__badge">Warmarbeit</span>
+        <p class="vcard__name">H13 / 1.2344</p>
+        <p>Klassischer Warmarbeitsstahl. Beste Warmfestigkeit bis 550 °C, hohe Anlassbeständigkeit durch Cr-Mo-V. Ideal für Spritzguss- und Druckgusswerkzeuge. Härtbar auf 52 bis 56 HRC.</p>
+      </div>
+      <div class="vcard">
+        <span class="vcard__badge">Höchste Festigkeit</span>
+        <p class="vcard__name">MS1 / 18Ni300 / 1.2709</p>
+        <p>Maraging Steel mit Ausscheidungshärtung. Zugfestigkeit bis 1.900 MPa, gute Zähigkeit, hervorragende Polierbarkeit. Warmfestigkeit begrenzt auf 400 °C. Für hochbelastete Formen und Präzisionswerkzeuge.</p>
+      </div>
+      <div class="vcard">
+        <span class="vcard__badge">Höhere Temperaturen</span>
+        <p class="vcard__name">1.2367 (X38CrMoV5-3)</p>
+        <p>Weiterentwicklung von H13 mit höherem Mo-Gehalt. Bessere Warmfestigkeit und Anlassbeständigkeit als H13 bei Temperaturen über 550 °C. Für besonders anspruchsvolle Druckgussanwendungen.</p>
+      </div>
+      <div class="vcard">
+        <span class="vcard__badge">Kaltarbeit</span>
+        <p class="vcard__name">D2-ähnlich (1.2379)</p>
+        <p>Kaltarbeitsstahl mit hohem Cr- und C-Gehalt. Sehr hohe Verschleißbeständigkeit für Stanzwerkzeuge und Kaltfließpressen. Eingeschränkte SLM-Verarbeitbarkeit durch hohe C-Gehalte (Rissneigung).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Prozessschritte</p>
+    <h2 class="sec-title">Nachbearbeitung von SLM-Werkzeugstahl</h2>
+    <p class="sec-sub">Ohne Wärmebehandlung ist ein SLM-gedrucktes Werkzeugstahlteil nicht einsatzbereit. Die folgende Prozesskette ist zwingend.</p>
+    <div class="post-steps">
+      <div class="post-step">
+        <div class="post-step__num">1</div>
+        <div>
+          <strong>Stützstrukturen entfernen</strong>
+          <p>Mechanisches Abtrennen mit Drahterodieren (EDM) oder Fräsen mit VHM-Hartmetallwerkzeug. Im unbehandelten Zustand ist der Stahl noch spanbar.</p>
+        </div>
+      </div>
+      <div class="post-step">
+        <div class="post-step__num">2</div>
+        <div>
+          <strong>Spannungsarmglühen</strong>
+          <p>650 bis 700 °C, 2 bis 4 Stunden, langsame Abkühlung im Ofen. Abbau von Eigenspannungen aus dem SLM-Prozess. Pflichtschritt vor dem Härten.</p>
+        </div>
+      </div>
+      <div class="post-step">
+        <div class="post-step__num">3</div>
+        <div>
+          <strong>Wärmebehandlung: Härten und Anlassen</strong>
+          <p>H13: Austenitisieren bei 1.020 bis 1.050 °C, Abschrecken in Stickstoff oder Öl, anschliessend 2x Anlassen bei 550 bis 600 °C für je 2 Stunden. Ergebnis: 52 bis 56 HRC. MS1: Lösungsglühen bei 820 °C, Aushärten bei 490 °C / 6 h.</p>
+        </div>
+      </div>
+      <div class="post-step">
+        <div class="post-step__num">4</div>
+        <div>
+          <strong>CNC-Fräsen der Funktionsflächen</strong>
+          <p>Hartfräsen mit CBN- oder Keramikwerkzeug auf Toleranz IT6. Trennebenen, Angusskanäle und Führungsflächen werden auf Mass gefräst. Kühlschmierung mit Emulsion oder Druckluft.</p>
+        </div>
+      </div>
+      <div class="post-step">
+        <div class="post-step__num">5</div>
+        <div>
+          <strong>Polieren der Formflächen</strong>
+          <p>Handpolieren von Ra 1,6 µm (nach Fräsen) auf Ra unter 0,1 µm für Hochglanz-Spritzguss mit sichtbaren Oberflächen. MS1 lässt sich durch feinkörniges Gefüge besser polieren als H13.</p>
+        </div>
+      </div>
+      <div class="post-step">
+        <div class="post-step__num">6</div>
+        <div>
+          <strong>Nitrieren (optional)</strong>
+          <p>Plasmanitrieren bei 480 bis 520 °C erzeugt eine harte Randschicht (bis 70 HRC oberflächennah) ohne Massverzug. Erhöht Standzeit bei abrasiver Belastung durch glasfaserverstärkte Kunststoffe.</p>
+        </div>
+      </div>
+    </div>
+    <div class="post-note">
+      <strong>Hinweis:</strong> Die Wärmebehandlung ist nicht optional. Unbehandelter SLM-Werkzeugstahl weist inhomogenes Gefüge und Zugresidualspannungen auf, die zum Versagen im Betrieb führen können. Stets beim qualifizierten Wärmebehandler behandeln lassen.
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <p>Detailwissen zur Wärmebehandlung: <a href="https://www.3ddrucklife.de/blog/waermebehandlung-slm-stahl" target="_parent">Härten und Anlassen von SLM-gefertigten Werkzeugstählen</a> &mdash; Parameterempfehlungen, Gefügeentwicklung und typische Fehler.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE / CONFORMAL COOLING -->
+<section id="fuellungsgrade" class="sec--alt">
+  <div class="container">
+    <p class="sec-eyebrow">Wandstärken und Kanalgeometrien</p>
+    <h2 class="sec-title">Conformal Cooling: Kein Füllungsgrad, sondern Vollmaterial mit integrierten Kanälen</h2>
+    <p class="sec-sub">Werkzeugstahl wird im SLM-Druck als Vollmaterial (100 % Füllung) gefertigt. Der additive Vorteil liegt nicht in Infill-Strukturen, sondern in der freien Gestaltung der Kühlkanalgeometrie.</p>
+
+    <div class="fill-info">
+      <p class="fill-info__title">Vollmaterial mit integrierter Kühlung</p>
+      <p>Alle SLM-gefertigten Werkzeugstahl-Bauteile werden als Vollmaterial gedruckt. Porosität ist unerwünscht und wird durch optimierte Laserparameter auf unter 0,1 % minimiert.</p>
+      <p>Der eigentliche Designvorteil: Kühlkanäle werden direkt im CAD-Modell als Freiformgeometrie geplant und mitgedruckt. Kein nachträgliches Bohren, keine Geradekanäle, kein Kompromiss bei der Kanalführung.</p>
+      <div class="cooling-specs">
+        <div class="cooling-spec">
+          <div class="cooling-spec__val">min. 2 mm</div>
+          <div class="cooling-spec__lbl">Minimaler Kanaldurchmesser</div>
+        </div>
+        <div class="cooling-spec">
+          <div class="cooling-spec__val">min. 1,5 mm</div>
+          <div class="cooling-spec__lbl">Kanalwandstärke</div>
+        </div>
+        <div class="cooling-spec">
+          <div class="cooling-spec__val">bis 30 %</div>
+          <div class="cooling-spec__lbl">Zykluszeiteinsparung</div>
+        </div>
+        <div class="cooling-spec">
+          <div class="cooling-spec__val">25 W/(mK)</div>
+          <div class="cooling-spec__lbl">Wärmeleitfähigkeit H13</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; margin-top: 16px;">
+      <strong style="display: block; margin-bottom: 10px; font-size: 15px;">Empfehlungen für die Kanalauslegung</strong>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+        <li style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink-soft);"><span style="color: var(--orange); font-weight: 900; flex-shrink: 0;">+</span>Runde oder D-förmige Kanalquerschnitte (selbsttragend, kein Stützmaterial im Kanal)</li>
+        <li style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink-soft);"><span style="color: var(--orange); font-weight: 900; flex-shrink: 0;">+</span>Gleichmässiger Abstand Kanal zu Formfläche (typisch 2 bis 4 mm, je nach Druckbelastung)</li>
+        <li style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink-soft);"><span style="color: var(--orange); font-weight: 900; flex-shrink: 0;">+</span>Entlüftungsbohrungen an Kanalenden für Luftblasenentfernung</li>
+        <li style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink-soft);"><span style="color: var(--orange); font-weight: 900; flex-shrink: 0;">+</span>Strömungssimulation (CFD) vor der Fertigung empfohlen für optimale Durchflussrate</li>
+      </ul>
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <p>Auslegungsguide für Konforme Kühlung: <a href="https://www.3ddrucklife.de/blog/conformal-cooling-design" target="_parent">Conformal Cooling richtig auslegen</a> &mdash; Kanalgeometrien, Wandstärken und CFD-Simulation für SLM-Werkzeuge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Einschränkungen</p>
+    <h2 class="sec-title">Wo Werkzeugstahl an seine Grenzen stösst</h2>
+    <p class="sec-sub">SLM-Werkzeugstahl ist ein Hochleistungsmaterial, das spezifische Anforderungen an Planung, Nachbearbeitung und Einsatzbedingungen stellt.</p>
+    <div class="limits-grid">
+      <div class="limit-item">
+        <div class="limit-item__icon">💰</div>
+        <div>
+          <strong>Sehr hohe Kosten</strong>
+          <span>10 bis 20 Euro/cm³ Materialkosten plus Maschinenstunden, Wärmebehandlung und Nachbearbeitung. Nur bei komplexen Geometrien wirtschaftlich.</span>
+        </div>
+      </div>
+      <div class="limit-item">
+        <div class="limit-item__icon">🔥</div>
+        <div>
+          <strong>Wärmebehandlung zwingend</strong>
+          <span>Ohne Härten und Anlassen ist das Bauteil nicht einsatzbereit. Verzug durch Wärmebehandlung muss im CAD-Modell als Zugabe berücksichtigt werden.</span>
+        </div>
+      </div>
+      <div class="limit-item">
+        <div class="limit-item__icon">⚡</div>
+        <div>
+          <strong>Geringe Bruchdehnung</strong>
+          <span>3 bis 7 % Bruchdehnung. H13 ist spröder als Edelstahl und toleriert keine Schlagbelastung. Nicht für schlagbelastete Bauteile geeignet.</span>
+        </div>
+      </div>
+      <div class="limit-item">
+        <div class="limit-item__icon">🔧</div>
+        <div>
+          <strong>Aufwendige Nachbearbeitung</strong>
+          <span>Hartdrehen, Hartfräsen und Schleifen nach der Wärmebehandlung. CBN- oder Keramikwerkzeuge erforderlich. Kostenfaktor und Durchlaufzeit erhöhen sich.</span>
+        </div>
+      </div>
+      <div class="limit-item">
+        <div class="limit-item__icon">💧</div>
+        <div>
+          <strong>Korrosionsschutz nötig</strong>
+          <span>H13 und MS1 sind nicht rostfrei. Ohne Oberflächenschutz (Nitrieren, Phosphatieren, Ölen) korrodieren die Werkzeuge bei Feuchtigkeit.</span>
+        </div>
+      </div>
+      <div class="limit-item">
+        <div class="limit-item__icon">🚫</div>
+        <div>
+          <strong>Nicht biokompatibel</strong>
+          <span>Nicht für Medizinprodukte geeignet. Für medizinische Anwendungen stattdessen 316L oder Titanlegierungen (Ti-6Al-4V) verwenden.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec--alt">
+  <div class="container">
+    <p class="sec-eyebrow">Häufige Fragen</p>
+    <h2 class="sec-title">FAQ zu Werkzeugstahl im 3D-Druck</h2>
+    <div class="faq-list">
+
+      <p class="faq-group-label">Über Werkzeugstahl 3D-Druck</p>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Was ist der Unterschied zwischen H13 und Maraging Steel MS1?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">H13 ist ein klassischer Warmarbeitsstahl mit Karbidmechanismus. Er bietet Warmfestigkeit bis 550 °C und wird durch Härten und Anlassen auf 52 bis 56 HRC gehärtet. MS1 (Maraging Steel) nutzt Ausscheidungshärtung bei 490 °C und erreicht 1.900 MPa Zugfestigkeit mit besserer Zähigkeit, ist aber bei Temperaturen über 400 °C nicht mehr optimal. H13 für Warmarbeit, MS1 für höchste Festigkeit und Präzisionsformen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Warum spart Conformal Cooling Zykluszeit?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Bei konventionell gebohrten Geradekanälen ist der Abstand zwischen Kanal und Formkontur ungleichmässig. Bereiche mit grösserem Abstand kühlen langsamer und bilden den Engpass für die Entformzeit. Konturnahe Kühlkanäle halten diesen Abstand gleichmässig und kühlen das Formteil homogen. Kürzere Kühlzeit bedeutet schnellere Entformung und damit höhere Ausstossleistung.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Ist SLM-Werkzeugstahl so gut wie konventionell hergestellter?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Nach vollständiger Wärmebehandlung erreicht SLM-H13 vergleichbare Zugfestigkeit und Härte wie konventionell hergestellter Werkzeugstahl. Die Bruchdehnung liegt leicht unter konventionellem Material und die Ermüdungsfestigkeit kann durch Eigenspannungen beeinflusst sein. Für Spritzgusswerkzeuge sind die Kennwerte in der Praxis ausreichend, was Tausende von Werkzeugprojekten weltweit belegen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Welcher Werkzeugstahl eignet sich für Aluminiumdruckguss?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">H13 (1.2344) ist der Industriestandard für Aluminiumdruckguss. Er verträgt die thermische Wechselbelastung durch abwechselnden Kontakt mit der Aluminiumbadzelle (700 °C) und den Kühlmitteln. Für besonders hohe Temperaturen oder lange Standzeiten bietet 1.2367 noch bessere Anlassbeständigkeit.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Ab welcher Stückzahl lohnt sich ein SLM-Werkzeugstahl-Formeinsatz?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Die Wirtschaftlichkeitsgrenze liegt nicht primär bei der Stückzahl, sondern bei der Geometriekomplexität. Ein SLM-Einsatz ist sinnvoll, wenn Conformal Cooling signifikante Zykluszeiteinsparungen ermöglicht oder wenn die Geometrie konventionell nicht herstellbar ist. Typisch: Werkzeuge ab 500 Schuss mit komplexen Kühlkanälen rechnen sich durch die eingesparte Zykluszeit innerhalb weniger Monate.</div>
+      </div>
+
+      <p class="faq-group-label">Konfiguration und Kosten</p>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Was kostet ein SLM-gedruckter Werkzeugstahl-Formeinsatz?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Die reinen Materialkosten liegen bei 10 bis 20 Euro pro cm³. Für einen typischen Formeinsatz (z.B. 100 x 100 x 80 mm, 600 cm³ Vollmaterial) ergibt sich ein Materialwert von 6.000 bis 12.000 Euro plus Maschinenstunden (SLM ca. 150 bis 300 Euro/h), Wärmebehandlung (800 bis 2.000 Euro) und CNC-Nachbearbeitung. Gesamtkosten kleiner Einsätze: 8.000 bis 25.000 Euro.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Welche Toleranzen sind mit SLM-Werkzeugstahl erreichbar?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Im SLM-Zustand werden typisch plus/minus 0,1 bis 0,2 mm erreicht. Nach CNC-Nachbearbeitung und Schleifen sind IT6-Toleranzen (plus/minus 0,01 bis 0,02 mm) möglich. Für Spritzgussflächen und Trennebenen ist CNC-Finish daher obligatorisch. Innenkanäle (Conformal Cooling) bleiben im SLM-Zustand und werden nicht nachbearbeitet.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Wie lange dauert die Fertigung eines Werkzeugstahl-Einsatzes?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">SLM-Druck: 1 bis 4 Tage je nach Baugrösse. Spannungsarmglühen und Wärmebehandlung: 3 bis 5 Werktage. CNC-Nachbearbeitung und Polieren: 2 bis 5 Werktage. Gesamtdurchlaufzeit: 1 bis 3 Wochen. Deutlich schneller als konventionell gefräste Werkzeuge (4 bis 12 Wochen), aber langsamer als einfache Polymerdruckteile.</div>
+      </div>
+
+      <p class="faq-group-label">3D-Druck allgemein und Nachbearbeitung</p>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Warum ist Spannungsarmglühen vor dem Härten wichtig?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Beim SLM-Prozess entstehen durch die schnelle Abkühlung nach dem Aufschmelzen erhebliche Eigenspannungen im Bauteil. Würde man direkt härten, können diese Spannungen zu Verzug oder sogar zu Rissen führen. Das Spannungsarmglühen bei 650 bis 700 °C entspannt das Gefüge kontrolliert, bevor beim Härten erneut Temperaturen über 1.000 °C wirken.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Kann man SLM-Werkzeugstahl schweissen oder reparieren?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Ja, mit Laserauftragschweissen (Laser Cladding) lassen sich lokale Schäden oder Kavitätsänderungen reparieren. Verwendet werden dabei artgleiche Pulverwerkstoffe (H13 auf H13). Nach der Reparatur ist eine erneute Wärmebehandlung erforderlich. Konventionelles WIG-Schweissen ist bei gehärtetem H13 rissanfällig und sollte vermieden werden.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Welche Oberflächenrauhigkeit hat SLM-Werkzeugstahl direkt nach dem Druck?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Im SLM-Zustand liegt die Oberflächenrauhigkeit typisch bei Ra 6 bis 15 µm (je nach Schichtdicke und Orientierung). Horizontale Flächen sind glatter als Schrägflächen oder Stützflächenbereiche. Für Spritzguss-Formflächen ist nachfolgendes Fräsen auf Ra 1,6 µm und Handpolieren auf Ra unter 0,1 µm erforderlich.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Ist SLM-Werkzeugstahl auch für faserverstärkte Kunststoffe geeignet?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">Ja, gehärteter H13 (52 bis 56 HRC) oder nitrierter H13 eignen sich gut für das Spritzgiessen von GF- und CF-gefüllten Thermoplasten. Glasfasern sind abrasiv und verschleissen weichere Werkzeugstähle schnell. Für besonders abrasive Materialien wie CFK-Compounds empfiehlt sich zusätzliches Plasmanitrieren der Formflächen.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="cta-banner__inner">
+    <h2>Jetzt Werkzeugstahl-Bauteil anfragen</h2>
+    <p>H13 oder Maraging Steel MS1, mit oder ohne Conformal Cooling. Wir berechnen Ihren Formeinsatz und begleiten Sie von der CAD-Optimierung bis zur fertigen Wärmebehandlung.</p>
+    <div class="btn-row">
+      <a href="https://3ddrucklife.com" class="btn btn--white" target="_parent">➜ Preis berechnen</a>
+      <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Werkzeugstahl" class="btn btn--white-outline" target="_parent">Beratung anfragen</a>
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleFaq(btn) {
+  var expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !expanded);
+  var answer = btn.nextElementSibling;
+  answer.style.display = expanded ? 'none' : 'block';
+}
+
+// Sticky TOC active state
+var tocLinks = document.querySelectorAll('.toc-link');
+var sections = Array.from(tocLinks).map(function(l) {
+  return document.querySelector(l.getAttribute('href'));
+}).filter(Boolean);
+
+function onScroll() {
+  var scrollY = window.scrollY + 80;
+  var active = null;
+  sections.forEach(function(sec) {
+    if (sec.offsetTop <= scrollY) active = sec;
+  });
+  tocLinks.forEach(function(l) {
+    l.classList.toggle('active', active && l.getAttribute('href') === '#' + active.id);
+  });
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+</script>
+</body>
+</html>

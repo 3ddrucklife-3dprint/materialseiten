@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEI / Ultem 3D-Druck – Materialseite | 3D DRUCK LIFE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+/* BREADCRUMB */
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+/* HERO */
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+/* STICKY TOC */
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+/* SECTION BASE */
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+/* WAS IST */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+/* CHEM TABLE */
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+/* TECH TABLE */
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* VARIANTEN */
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ANWENDUNGEN */
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+.ucard__link { font-size: 13px; font-weight: 700; color: var(--orange-dark); text-decoration: none; margin-top: auto; padding-top: 4px; }
+.ucard__link:hover { text-decoration: underline; }
+
+/* NACHBEARBEITUNG */
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__icon { width: 36px; height: 36px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); font-size: 18px; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note strong { font-weight: 700; }
+
+/* FÜLLUNGSGRADE */
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-visual { display: flex; gap: 4px; margin-top: 10px; }
+.fill-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--line); overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 3px; }
+
+/* GRENZEN */
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+/* STRENGTHS */
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+
+/* FAQ */
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.faq-a a { color: var(--orange); text-decoration: underline; }
+
+/* CTA */
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.contact-row { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-soft); }
+.contact-row a { color: var(--orange); font-weight: 700; }
+.contact-icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); flex-shrink: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { order: -1; }
+  .hero__image img { border-radius: 8px; width: 100%; height: auto; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+  .sec, .sec--alt { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">/</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">/</span>
+    <span class="breadcrumb__current">PEI / Ultem</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <div class="hero__eyebrow">Hochleistungsthermoplast</div>
+      <h1 class="hero__title">PEI / <span class="accent">Ultem</span></h1>
+      <p class="hero__sub">Polyetherimid für extremste Anforderungen: flammhemmend, dimensionsstabil bis 217 °C, biokompatible Varianten verfügbar. Der Standard in Luft- und Raumfahrt sowie Medizintechnik.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">~105 MPa</span><span class="kstat__lbl">Zugfestigkeit</span></div>
+        <div class="kstat"><span class="kstat__val">bis 217 °C</span><span class="kstat__lbl">Formbeständig</span></div>
+        <div class="kstat"><span class="kstat__val">UL94 V-0</span><span class="kstat__lbl">Flammhemmend</span></div>
+        <div class="kstat"><span class="kstat__val">1,27 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+      </div>
+      <div class="btn-row">
+        <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--orange" target="_parent">Preis berechnen</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--outline" target="_parent">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCAOEA4QDASIAAhEBAxEB/8QAGwABAAIDAQEAAAAAAAAAAAAAAAUGAgMEBwH/xABPEAEAAgECAwQDCQkOBgEFAAAAAQIDBBEFEiEGMUFREyJhBxQycYGRscHRFTQ1NlJzdKHhFyMzQlNUYnKDkpPC0vAmgqKys/FDRFVllKP/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAgMEAQUG/8QALhEBAAICAQMDAwQBBAMAAAAAAAECAxExBBIhE0FRFCIyM0JhcfAjNFKBwdHh/9oADAMBAAIRAxEAPwCLAfMvTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiJmYiImZnuiHZh4dmyRE3mMcT59Z+ZG1orzLsRM8OMS+PhuCvw+a87eM7R+pvjTYIiIjDj6edYUz1FY4TjHKBFjEfqf4d9P+VcE/ODDMzM4sczPfM1hovw7T222i1P6s9/zpR1FfeHJxyhx25eGZa9cdq39ndLjtW1LTW0TWY8JjZbW9bcShMTHL4Am4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOrS6HJm2tfemPznvn4nRotBEVjJqK7zPdSfD40iy5M+vFVtae8tWDT4sEfvdYifG098toMszM+ZWAA6AAAAMMuHHmrtkpFo+hmETrgROq4ffH62He9fL+M4ljcWs0NcsTfFERk75jws1Y8/tZVanwiQmJiZiYmJjviRqVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREzO0Q21xxHwusuTMQ7ETLXFZnuhlGKfGdm0Qm8pxSGEYq+199HXyZCO5S1DH0dfJ8nFHhMsw3JqGmcdo7urGY273QTET3wlF/lGafDnGdscx1jrDBOJ2hMaAHXAAAAAAAAAAAAAAAAAAAAAAAAAAAABJcO0kRWufJG8z1rE+Htc/D9N6bLzWifR16z0758kyy58mvthbSvvIAyrQAAAAAAAAAAAHHr9JGas5KRtkiPD+N+1ELGi+J6blv6akTy2+F07pacGT9sqr194cADWqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH2tZtO0PlYm07Q6KxFY2hG06SrG3ytYrHR9BUsAB0AAAAAAYXpE9Y72Y7E6cmNucbclN43iOrUtidqpjQA64AAAAAAAAAAAAAAAAAAAAAAAAERMzEREzM90QOzheL0mebzG8Ujf5fBG1u2Jl2I3OklpsMYMNaRtvHfPnLaDzZnc7loAB0AAAAAAAAAAAAY5KVyY7Ut3WjZkAr2SlseS1Ld9Z2YpDi2La1MsR3+rb6ke9Glu6sSzWjU6AE3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGWOOazkuw2Y68sbz3yyBVM7WxGgBx0AAAAAAAAAAacldp3julufLRzVmHazqUbRuGgBcqAAAAAAAAAAAAAAAAAAAAAAAAEvwqnLpubpve0zv7O77UQntLERpsW0RHqR9DP1E6rpZjjy2gMa4AAAAAAAAAAAAAAABz6+npNJkjpvEc0b+xCLHMRMTExExPfEq419NPiYU5I8gDSrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG3FG1d/Nqb6dKx8SF+E6cvoCtYAAAAAAAAAAAAAA05I2vPtYtmbviWtbHCmeQBJwAAAAAAAAAAAAAAAAAAAAAAWNXFjZep9luP3AGVaAAAAAAAAAAAAAAAAIDU/fOX+vP0p9Aan75y/15+lo6bmVeThrAbFIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6HO6Fd06ACCwAAAAAAAAAAAAABhm+DHxtTbm+DHxtS2vCq3IAkiAAAAAAAAAAAAAAAAAAAAAAJ/TzM6fFMzMzNI3mfiQCY4Xfm0kRtty2mPj8frZ+oj7YlZjny6wGNcAAAAAAAAAAAAAAAAK5MzMzMzMzPfMpzW35NJlnbf1dvn6INq6aPEyqySANSoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAb6zvWPiaG3FO9dvJC/CdOWYCtYAAAAAAAAAAAAAA15p7oa2WSd7z7GK2vCm3IAk4AAAAAAAAAAAAAAAAAAAAAAO3hOTlzWxzt68dPjj/cuJ9raaWi1Z2mJ3hC9e6sw7E6naxDDBkjNirkr3Wj5mbzpjXhpAAAAAAAAAAAAAAAfLWilZtadoiN5BH8XydKYo2/Kn6vrRrPPknNltkt32n5mD0cde2sQz2nc7AE0QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABlina3xsRyY27E6dAxpbmj2slS0AcdAAAAAAAAAAC07RMjVltvO0eDsRuXJnUMAFykAAAAAAAAAAAAAAAAAAAAAAAAAB28M1Ho8norT6t56dPFLK4luH6uMtIxZLT6SPGf40MufH+6FtLeztAZVoAAAAAAAAAAAAjeKaj/AOCk+2/T5nTrdVXT45iJ/fLR6seXtQszMzMzMzM98y0YMe57pV3t7ADYpAAAAAAAAAAAAAABnjxZMu/osd77d/LWZ2dePhOrvba1K0jbvtaPq3Rm9a8y7ETPDhEtj4Hea/vmetZ37q13+xvpwTBFY58uSbeMxtEK56jHHul2WQQsOPhGkpvzRe+/5Vu75tmf3L0X8j/12+1D6mjvpyrYsn3L0X8j/wBdvtPuXov5H/rt9p9VT4k9OVbE/bgumm0zFssRM90Wjp+pqycDpNv3vPasbd1q7/YlHUY3PTshRJ34Jni08mXHNfCZ3iXLk4dq8dd7YLTG+3q7W+hOMtJ4lyazDmC0TW01tExMTtMT4CxEAAAAAAAAAAAAAAAAAAAAAB9raazvDfExMbw52VLzWfYhau0q203BExMbxIrWgAAAAAAAAMb3ise12I25M6MluWOne0kzMzvIsiNKpnYAk4AAAAAAAAAAAAAAAAAAAAAAAAAAETMTExMxMd0wAJfRa2uasUyzFckfJzftdiuO/S8QtXamfe1fyvGPtZMmD3qtrf2lKDHHkpkrzY7RaPYyZloAAAAAAD5a1aVm1pisR4zOwPrm1erpp6zETFsnhXy+NzariP8AF0/9+Y+pHTMzMzMzMz3zLRjwTPmyu1/h9ve2S83vMzae+XwGtSAOgAAAAAAAADv0vCtRm65I9FTztHX5kbWrWNzLsRM8OBuwaPUZ43xYrTG2+/dE/LKd03DNNgr61Iy226zeN/1O1mv1UfthZGP5Q2Dgk776jLG2/dT7Z+xIYeH6XFXaMNbTtG83jm3+d0jPbLe3MrIrEACpIAAAAAAAAABjkx0y15clK3jffa0buLPwnTZd5pE47dfgz03+L7NneJVvavEuTETygM/BtRSf3qa5Y389p/X9rgyY74rcuSlqTtvtaNluY5MdMteXJSt4332tG7RXqbR+Succeyoic1PBcd5m2nvOOdvgz1j9n60TqdJn0ttstJiN+lo6xPytNMtL8Srmsw0gLUQAAAAAAAAAAAAAAAAAH2tprPRtreLeyWkRmsSlFph0DRW9o8WcZY8Y+ZCaynFobBjF6z4vvNXzj53NS7uH0fOavnD5OSvxmpNwyJnbvapyz4QwmZnvlKKyjNobLZPCvztYJxGkJnYA64AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyx5L47c2O01n2O7DxOYiIzU3/pV+xHiFqVtzDsWmOE3j1unyd2SInbfa3R0RMTETExMT3TCuCmemj2lOMkrGID3xn/AJbJ/ek98Z/5bJ/elD6aflL1IT7RfV6em2+Ws7/k9foQczMzMzMzM98yJR00e8uTkSWXikd2HHPx2+xwZc2TNbfJebT9DAX1x1rxCE2meQBNEAAAAAAAABlix3y5K48dZta07REODF1aLQZtXO9Y5Mf5do6T8XmktDwilIjJqtr2235PCs/WlGXJ1MR4qtrj+XLotBh0kb1jnyfl2jrHxeTqBktabTuVsRrgARdAAAAAAAAAAAAAAAAAAC0Ras1tETExtMT4gCL1nB6ZLTfTWilpnfkn4PyeSGy4smG80y0mtvKYW1hnw49Rj5M1ItXffZpx9Ravi3lXbHE8KkJDXcLyaeJvi3yYojeZ8a/aj22totG4UzExyAJOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO3QcOyaq1b2ia4d+tvP4kbWisbl2ImeGrR6PLq8kRSJim/rXmOkft9iwaPR4tJjiKRE329a8x1n9nsbsWOmLHXHjrFa1jaIhk8/Lmm/j2X1pEAClMAAAAAAAAAAAAAAAAAAAAAAAAAARmv4VXLvk00RS8R8CI2i32JMTpeaTuHJiJ5VC9LY7TW9ZraO+JjaXxZeIaGmsx7xtXLWPVt9U+xXc+HJp8nJmpNbbb7PQxZYvH8s9qzVgAtRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdvDNFOqzRa9Z9DWfWnfbf2I2tFY3LsRudM+GcOnU2jLliYwxP8Ae/YsFYitYrWIiIjaIjwKxFaxWsRERG0RHgPNyZJvO5aK1isACtIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaNbpMerxcl+lo+DaO+st47EzE7hyY2qeowZNNlnHlja0fNMecNa0a7S01eCaWiOeI3pbyn7FZy474slseSs1tWdpiXo4ssZI/lRavaxAXIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMsWO+XJXHjrNrWnaIhwbtDpb6vPFKxPJE73t5R9qzYsdMWOuPHWK1rG0RDTodLTSYIpWI55je9vOfsdDzs2Xvnxw0UrqABSmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLieijVYZtSsemrHqzvtv7HaJVtNZ3DkxuNKfaJraa2iYmJ2mJ8BMcZ0P/1OCntyRH07fT/7Q708d4vXcM9o1OgBNEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATnBdHyY/fOSI5rR6m8dax5/L/vvRvDdJOr1ERP8HXrf2x5fKszJ1OTUdsLcdfcAYlwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABaItWa2iJiY2mJ8VZ4lpJ0momI/g7daeyPL5Fmc+v03vvTWx7xFt96zPhK7Dk7Lfwheu4VcLRNbTW0TExO0xPgPSZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHfwbTem1XPb4GL1p+Pw+35EbWitZmXYjc6S/DdJGk08RP8ACW639k+XyOoHl2tNp3LTEa8ACLoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACC43pIx5I1FPg5J2tHlP7UYtmpw11GC+K3daO/ynwlVL0tS9qXja1Z2mPa9Dp8ndXU+yjJXU7fAGhWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALHwnTxg0dbdObJHNM/RH+/agtDh9Pq8WOdtpt1ifGI6ytTJ1V/EVW449wBiXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA45p4xamMtdojLG8x7Y7/AKv1p9ycVw+m0OTu3pHPG/s/Zutw37bwheNwrQD02cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABL9n8PrZc877bckfTP1JlzcMxRi0OKI23tXmmdtt9+rpeZlt3XmWmsagAVJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKpq8PvfU5MXXatum/l4fqakpx/FFc+PLG296zExt5eP6/wBSLerjt3UiWa0anQAmiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM8OP0ubHj3257RXfy3lg7uC0m+vraNtqVm0/Nt9aN57azLsRuViAeS1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAODjePn0M2325LRb4/D61eW3UUnLgy467b2pNY39sKk3dLO6zCjJHkAalYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAluz9InJmydd61isfL/wCkSneAUrGmyXiPWm+0z7IiPtlT1E6xynT8kmA81oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFS1FIxZ8uOu+1bzWN/ZK2qzxWlacQzRWNo3iflmImWrpZ+6YVZeHKA3KQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYeCY+TQxbffntNvi8PqV5ZOD/g7D/zfTLN1P4LMfLsAYF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAr3G8fJrptvvz1i3xeH1LCgeP/flPzcfTLR035q8n4o0B6CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWTg/4Ow/830yraycH/B2H/m+mWbqvwj+1mPl2AMC8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQPH/vyn5uPplPIHj/AN+U/Nx9MtHTfqK8n4o0B6CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAT/AZmdFaJmZiMkxHs6QgE12fvM482PptW0Wj5f8A0o6iP9NPH+SWAec0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACucYmZ4hkiZmYiIiPZ0hY1X4jecmuz2ttvF5r09nT6mnpY++ZV5OHOA3qAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABJ8AvaNTkpE+rNN5j2xMfbKMdPDLxj1+G1t9pty9PbG31q8sbpMJVnUrOA8tpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQve172ved7WneZ9qz8RvGPQ57W32mk16e3p9artvSx4mVOWQBrVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABWZraLVmYmJ3iY8ABbsV4y46ZK77WrFo39rJwcFzel0cUmfWxzy9Z3nbw+z5He8m9e20w1RO42AIugAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIzj+Xl0+PHEzE3tv07piP/cIJ38azel1k0ifVxxy9J3jfx+z5HA9LBXtpDPed2AFyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACR4Fm5NXOOd9sle72x1+1PqjivOLJTJXbetotG/sWzFeMuOmSu+1qxaN/aw9TXVu5djnxpkAyrQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABjlvGLHfJbfatZtO3sZI3jufk01cUR1yz3+yOv2J0r3WiHJnUbQV72ve17zva07zPtfAeoygDoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJzgOfnw3wWmN6TvXr4T+36UG3aLUTpdTTLG+0TtaI8Y8VWWnfSYSrOpWoKzFqxasxMTG8THiPMaQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABWOJZ/fGsvbeJrWeWu079I/3um+K6n3tpZ5Z2yX9WvnHnP+/YrbZ0tObKck+wA2KgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE5wPVTkx2wXmZtSN67/AJPl8n1pRUsOW2HLXJSfWrO8LVgzU1GGuXHvy2jpuwdRj7bd0cSvx23GmYDMsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARnG9V6PD73pM8+SN59lf9/WnSs3tqHJnUbRfEdVOq1NrRMzjrO1I9nn8rmB6dYisahmmdgCTgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkOEaz3vm9HkmIxZJ6zM/BnzR4jasWjUuxOp2uAjODa30tPe+WYi9I2p/Sj9iTeZek0nUtMTuNgCDoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABaYrWbWmIiI3mZ8AatVnppsFst5jpHSN++fJV82W2bLbJefWtO8ujiWsnV5+m3o6TMU9vtcj0cGLsjc8s97bkAXoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPtL2pet6Ttas7xPtWTh+uprMe07Vy1j1q/XHsVpngzX0+auXHtzVnpuqy4ovH8pVt2yto0aLV49Xi56dLR8Ks99Zb3mzExOpaInYA46AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIPi3EYzROnwTE49/Wt+V8XsbuLcRitbabDMTaY2vby9nxoVswYf3WU3v7QANioAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABs0+fJpssZMU7Wj5pjylZNHrMWrxxNJiL7etSZ6x+z2quyxZL4slcmO01tWd4mFOXFGSP5TrbtW4cWg4jj1Va0tMVzbda+fxO159qzWdSviYngARdAAAAAAAAAAAAAAAAAAAAAAAAAAALTFaza0xERG8zPgAieJ8TitZw6W8TaY9bJWe74va08T4n6as4dNM+jmPWv3c3s+JFtmHB+6ym9/aABsVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFZmtotWZiYneJjwTHDuK/Bw6qfZGWZ+bf7UOIXx1vGpSi0xwuFZi1YtWYmJjeJjxFZ0WvzaSdqzz4/yLT0j4vJPaTW4NXE+itPNEbzW0bTDBkw2p/S6t4l0AKUwAAAAAAAAAAAAAAAAAAAAAAEZrOL48cTXTbZL798/Bj7U60tedQ5MxHLu1OpxabHN8tojp0jxn4lf13EMurtt1pj2+BE9/x+bny5cma83y3m1vOZYN2LBFPM8qLXmQBegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFZmtotWZiYneJjwAEnouL3xxyamJyV8LR3x9qZwajFqK82HJFo8du+PkVN9pe2O0Wpaa2jumJ2lnydPW3mPCyuSY5W8QGm4xnxV5ctYyxEdJmdp+dKYOJaXNH8LFJ232v0/X3Ml8N6+yyLxLrAVJgAAAAAAAAAAAAAAxyZKYq82S9aRvtvadkfqOM4Me0Yazln+7CdaWtxDkzEcpJx6viWn029ebnyR/Fr4fHPghNTxDU6iZ5sk1rMbctOkftczTTpfeyqcnw6dZr8+qtMWtNce/Skd3y+bmBqisVjUK5nYAk4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADKuO0+z42cYo8ZlGbRCUVmWobvR18icdfJzvh3slpGycXlPzsLVmvfCUTEozEw+AOuAAAAAAAAAAAAAAAAAAAAAAAANuDU59PP7zltWN99t+nzO/DxvLWu2XFW87RtMTy/OixC2OluYSi0xwsOPi+kvvzTem35Ve/5t3Zjz4ctuXHlpedt9q2iVSFE9LWeJSjJK4CpY8+bFXlx5b0jffatphvpxLWUrFYzztHnETPzyrnpbe0perCzCvY+L6um/NNL7/lV7vm2Z/drU/kYfmn7Ufpru+pVPCB+7Wp/Iw/NP2n3a1P5GH5p+0+myHqVTwrluK6ybTMZYiJnuisdP1NWTXarJbe2e8Ttt6s8v0Ox0t/eT1IWhz5Ndpcdd7Z6TG+3qzzfQrF72yWm17Ta098zO8viyOlj3lGcqdy8aw13jFjved/HpEx5uHPxbU5d4pMY69fgx12+P7NnALa4KV9kZvaX297ZLTa9ptae+ZneXwFqAA6AAAAAAAAAAAAAABETMxERMzPdENmDBkz25cdd9u+fCEvptJj08bxHNf8qfq8lWTLFP7SrWZcGHh2bJETeYxxPn1n5nbj0Gnp31m87772l1DJbNe3uuikQwpix0nemOlZ84rEMwV72kxvjpk256Vtt3c0btGTQ6fJv6nLM+NZ2/Y6R2LTHEuTESis3DclZmcVovHhE9JcVq2paa2iazHhMbLE1ajTY9RXa8dfC0d8L6dRMfkhOP4QI3anS5NPb1o3rM7RaPFpa4mJjcKpjQA64AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVibTtDg+1rNp6NtaRX4/NlWIrG0CubbWxXQAikAAAA13x+Nfma3QwyU3jeI6p1t8oWr8NQCxWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANmnw2z5Yx16b987d0NcRMzEREzM90Qm9Fp/e+GIn4dutvsVZcnZH8pVruW3DiphxxTHG0R+tmDBM7aAAAAAAAAGN6VyUml4iaz3whdZp502Xl3maz1rKca9RhrnxTjt037p27pWYsnZP8IWruEAPt6Wx3ml4mLR3w+N6gAdAAAAAAAAAAAAAAAAAAAAAAAAAAAABuxV2rv4y1Vje0Q3oXn2TpHuAK1gAAAAAAADTkry26d0sW7JG9J9jStrO4VWjUgCSIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADs4Xi9Jnm8xvFI3+XwS7l4bTk0lZ6xNpm07up5+a3deWikagAVpAAAAAAAAAAIzi2La1MsR3+rb6kentXT0mmyV6zPLvER5x1QLbgtuuvhRkjUgC9AAAAAAAAAAAAAAAAAAAAAAAAAAAABnhjrMtrXh8WxVblbXgARSAAAAAAAAHPMbTs6Gi3wp+NOiF3wBYrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWDDWaYqUnbetYidmYPLny1AAAAAAAAAAAACu3rNL2pO29ZmJ2WJAan75y/15+lp6bmVWRrAa1QAAAAAAAAAAAAAAAAAAAAAAAAAAADPDPWYbWik7WhvVW5WV4AEUwAAAAAAABzzO8zLfedqy0LKK7gCaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACw4r+kx0vttzVidmTm4fk9JpKbzvNfVn/fxbOl5lo1Mw0xO4AHHQAAAAAAAAABXst/SZL3225rTOyd1OT0WDJffaYr0n2+CAaumjmVWSQBqVAAAAAAAAAAAAAAAAAAAAAAAAAAAADdjtzV9sNL7W01neEbRuEqzqW8ImJjeBUtAAAAAAAY5LcsdO92I25M6YZbbzt5MAWxGlUzsAdcAAAAAAAAAAAdnB+G5uL8Rw6HTWx1y5d+WckzFY2iZ67RPkREzOoJnXlxi5fub8Z/nOg/xL/6WNvc54zWN4z6G0+UZLfXVf8ATZv+KHq0+VPEjxfgXEuDWiNfprY62nauSJ5qz8sNXB+G5uL8Rw6HTWx1y5d+WckzFY2iZ67RPkq7Ld3bryluNbcYuX7m/Gf5zoP8S/8ApP3N+M/znQf4l/8ASt+mzf8AFH1afKmib7Q9mNb2fx4cmsy6e8ZrTWvobWnbbz3iGHZ3s3rO0Hvj3llwU9By83prTG/NvtttE+Uq/Sv3dmvLvdXW9+EOJvtD2Y1vZ/HhvrMunvGaZivobWnbbz3iPNCOWpak6tHl2JiY3AAi6Cd4N2U1/F+G5OIYcumw6fHNomc1rRPSN5npE9EElalqxEzHLkTE8AJ/s/2T1/HtHfVaPNpqUpknHMZbWid4iJ8Kz5lKWvOqwTMRG5QAlO0HAdVwDUYsGsyYb2yU54nFaZjbfbxiHJwzQ5eJ6/DosFqVyZrctZvMxEfHsTS0W7ZjybiY25haeIdg+K8P0OfWZtRorY8NJvaKXvMzEeXqoDhOi+6PEtNo/Sej9PkinPy78u/js7bFesxW0eZci0TG4couvGuwP3L4XqNd90/S+hrzcnvfl5uu3fzSqGi0mfXarHpdLT0mbJO1K7xG8/HPR2+G+OYraPJW9bRuGkTOv7K8a4dpMmr1mi9Hgx7c1/S0nbedo6RO/fKGQtS1Z1aNOxMTwAOOgAAAAAAAAAAAAAO7hWXly2xTPS0bxHtSqu1tNLRas7TE7wndLnjUYYvHf3Wjylj6imp7l2OfZtAZ1gAAAAAAAADDLkrix2yX35Y8iI2OHi2XatMUT3+tb6kayy5LZclsl9uafJi9HHXtrpntO52AJogAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPtbzX4m6totHRoInbuRmu0otp0DVXLPjG7OMlZ8dkJrMJxaJZD5zV84+cm1Y8Yc07t9GE5Iju6sLXm3sh2KzLk2iGd8kR0jrLVMzM7yCcRpXM7AEnAAAAAAAAAAAABYOwH43aD+0/wDHZX1g7AfjdoP7T/x2WYP1a/3CN/xl6n2i1+XhfBdVrdPWlsuGsTWLxM1nrEddpjzUfh3uj622rx14hpNNOC1oi04YtW1Y8+szuvnG+H/dXhWo0PpfRemrEc/LzbdYnu3jyVPh3ucafT6vHm1fELajHS0W9HXDyc23hM7z0etnrnm8enwyY5x9s9y48S0WHiOhzaTU1i2PLWaz07vKY9sPJewtJx9stFjt31tkrPyUs9T45xXT8G4dl1epvEcsT6Okz1vbwiHlnYO037YaG9p3tackzP8AyWV9VNfWx/O//KWLfZZ6j2i1+XhfBdVrdPWlsuGsTWLxM1nrEddpjzeffukcZ/m2g/w7/wCp6ZrvevvXJ7/9D722/fPT7cm3t36IX/g7/wDA/wD8V2euSbR230hjmsR5jbzbtD2n1vaDHhx6zFp6RhtNq+hraN9/PeZWf3Je/iv9l/nRPuhfcn33pPuP7y5PR25/enJtvv48qW9yXv4r/Zf52HD3R1URadz/APF99el4jTb7rH3rw785f6IecPR/dY+9eHfnL/RDzhX1v68/57JYfwgBL9ktB90u0OiwTG9Iyekv/Vr1n59tvlZq1m1orHusmdRteOOf8Pe59i0UermzUrimP6VvWv8Aq5oeYLx7qev9LxLTaCk+rgx894/pW/ZEfOo7R1donJ2xxHhXhj7dz7j1L3K/wBqf0u3/AGUeWvUvcr/AGp/S7f8AZRLof1nM/wCCE91b8LaP9H/zSguxf408O/O/VKd91b8LaP8AR/8ANKC7F/jTw7879UmX/df9wU/Seq9rPxa4l+j2+h5L2T/GXhv6RT6XrXaz8WuJfo9voeS9k/xl4b+kU+lo6z9an+e6GH8Jeq9tfxW4j+a+uFH7BdndZqNXpOM0yYI02LLMWrNp552jwjbbx8147a/itxH819cKP2C7RazT6vScGpjwTpsuWZtaazzxvHhO+3h5J5+z6ivf/k7Rx79OdL/2m4dm4twPVaHTWx1y5YryzkmYrG1onrtE+TzPjHYniXCOHZtdqc+ktixbc0Y72m07zEdN6x5vTO03Ec3CeB6rXaauO2XFFeWMkTNZ3tEddpjzeZ8Y7bcS4vw7NodTg0lcWXbmnHS0WjaYnpvafJzrfR39/wCWvBh79eOERwjhGt4zqfQaDDN7R1taelaR5zPgt+D3M9RakTqOJ4qX8qYZtHzzMLT2H4dj4f2c0k0rHpNRSM2S3jM2jePmjaEB2i03bTXcUy20FM2DSUtMYYw6mlOaseM+tvO/f1Qr01KY4tas2mfhKctrW1E6QPHOwvE+F4LajDamrwUje044mLVjzmvl8W6rPcezc8UnhWOvG8fJq6TNZnmrPPHhPqzt/wCnlfbbh2PhvaPU4cFYrivtlpWPCLR1j591XU9PWlYvTxE+yeLJNpmspDTe57xfUafFnpqNDFclIvETe++0xv8AksuDdgOIa/F6bVZ6aTHMzyb1m1rR57dOj0vhH4K0X6Pj/wC2HnfGO3nE8fG8tdHeldHhyzSMc0ifSRE7TMzPXr7Nl2TB0+KItbflXXJkvMxDg7RditdwbB75x5K6rTxMRa1KzW1fjjr0+V28K9zvXavT1za3U00c2jeMfJz2j4+sbPUOlq+cS8wt294lk49WcNqRoPTRWMPJHrU323me/fZ3L0/T4rRNuJ9iuTJeNQjO0vZDW8BxRqLZKajSzO05KRtNZ8N48Fde69oMFNTwPX4ckbxbT3+eImYn53hTN1eCuK0dvErcN5vHkAZFoAAAA3aTUTp8sW6zWfhRHi0jkxExqXYnSw0vXJSL0mJrPdLJB6XVZNNM8u01nvrKYwZ8eevNjtvt3x4wwZMU0/pdW0S2AK0wAAAAGGXLTFTmyWitSI2M5mIiZmYiI75lDa/Ve+Mm1Jn0de72z5mr1t9RvWPVx793jPxuVsw4e3zPKm99+IAGhWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALB2A/G7Qf2n/jsr6U7McSw8I47pddqa5LYsXNzRjiJtO9ZjpvMeaeKYjJWZ+YRvG6y9c7U6zPoOAazVaTJ6PNjpE0ttE7dYjuno8vt217RWjaeIz8mHHH0VWHtF254ZxTguq0WnwayuXNWIrN6VisdYnrtafJ582dX1EzePTt417KsOPUfdDfrddq9fl9LrdRlz38JyWmdvi8kz2A/G7Qf2n/jsr6U7McSw8I47pddqa5LYsXNzRjiJtO9ZjpvMebJit/qVtb5hbaPtmIesdsMOXUdmtdi0+K+XLakRWlKza0+tHdEPI/uDxn/AO06/wD/AFr/AGPQ/wB0jg3821/+HT/UfukcG/m2v/w6f6no54wZrRabs+P1KRrTzbV8N1+ipGTWaLU4KTO0Wy4rUiZ8t5hePcl7+K/2X+dH9te1eg49w7DptHh1NL480XmctaxG20x4Wnzc3YftJo+z86337iz39PycvoaxO3Lzb77zHnDNi9PF1Eat4+f+llu62OfHlPe6x968O/OX+iHnC2dt+0+i7QYdJTR4tRScNrTb01axvvEd20z5Kmr6q9b5Zms+EsUTFIiR6B7lWhiJ1vEskbRWIw0tP963+V5+9Pv/AMO+5xEfBz58W3t5sn1xWf1JdJEd83nisbczT47Y93n3HddPE+MavWTO8ZcszX+r3V/VEOEGaZmZ3K2I1Gh6P7lGrpOl12imYjJXJGWI84mNp+iPnecOrhnENTwvWY9Xosk48tO6e+JjxiY8YWYMvpZIshkr3V09D90jgOs4j711mgw2z2xVmmSlI3tt3xMR4+KG7C9m+JV45h1us0mXT4NPvbfNWazadpiIiJ6+O/yJPQ+6VgnHEcQ0GSt477YLRMT8k7bfPLdqPdK4fWk+9tDqr28IyTWkfqmW+fprZPV7lEepFe3SX7e6ymk7MauLTEWzRGKkeczPX9W8/I8w7J/jLw39Ip9L72h7Qa3j2prk1cxXHT+DxU+DT7Z9rm4JrMfD+L6TWZotbHhy1vaKRvMxHkzZs8Zc0WjiFtKTWkw9d7a/itxH819cPLuxtor2o4dMzt++7fqlae0PbnhfE+C6vRYMGsrkzU5azelYiOsd+1pUHT5smm1GPPhty5MV4vS3lMTvCfVZaTlras71/wC0cVJikxL2ftjpc+t7Na7T6XHbJltWs1pXvna0TO3yQ8f1XC+IaPF6XV6DVYMe+3Plw2rG/wAcwv8AovdJ0c4a+/8ARZ65Yj1vQctqzPyzGyM7YdsOH8c4R7z0mHVUyelrffLSsRtG/laVnVThyx3xbzpHFF6fbpdex2sx63s3oL45iZx4q4rx5WrG31b/ACq12i7WdoeC8RzYL6HSegi0+hyzivtevh15tt/NT+zvaLW8Az2tpZi+G/8ACYb/AAbe32T7V3we6Vw61InUaHVUt4xj5bx88zCVeprkxxXu7Zhycc1tvW4cGg7YdquI3imi4Tpsu/8AGjDeKx8czbaFZ7XavXavjeX7p0wU1OKsY7Rg35enXxmfNcNV7pelrWfenD817eHpbxWP1bqBxXXZOJ8Rz63LStL5rc01r3Qz9ReJp2xfulZjrO99unuHCPwVov0fH/2w8L1337qPztvpejaH3QuEafRafBfT66bY8VaTMUptvEbflPN9TkjLqMuSu8Re82jf2yn1mWl61is7cw1mszt77H3v/wAn1PBNF9+YPzlfpelfui8H9Fye9tfvy7fwdP8AU8y094x58eS2+1bxadvZJ1uWl5r2zv8AyHMNZrvb3ji34L1n5i//AGy8Eema33QuEajRajDTT66LZMdqRM0ptvMbflPM3OuyUvNe2du4KzWJ2AMK8AAAAAAfaXtjvF6TMWjul8HBIYeJzERGam/9Kv2O7HqcGT4GWu++20ztP60CKbYKzx4Ti8wsYrtL2pO9LWrPnE7M/fGf+Wyf3pV/TT8peon2vJqMOLfnyViY7436/Mgr5L5Nue9rbd3NO7F2Om+ZJyJLNxOImYw03/pW+xH5ct8t+bJabWYi+uOteEJtM8gCaIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6dVxLX6zHXHq9bqc+Os7xTLltaInz2mXMG5g0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//9k=" alt="PEI Ultem 3D-Druck Bauteil – 3D DRUCK LIFE" loading="eager" width="900" height="900">
+    </div>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc-bar">
+  <div class="toc-bar__inner">
+    <a class="toc-link" href="#material">Was ist PEI?</a>
+    <a class="toc-link" href="#eigenschaften">Eigenschaften</a>
+    <a class="toc-link" href="#chemie">Chemie</a>
+    <a class="toc-link" href="#techdaten">Techdaten</a>
+    <a class="toc-link" href="#anwendungen">Anwendungen</a>
+    <a class="toc-link" href="#varianten">Varianten</a>
+    <a class="toc-link" href="#nachbearbeitung">Nachbearbeitung</a>
+    <a class="toc-link" href="#fuellungsgrade">Füllungsgrade</a>
+    <a class="toc-link" href="#grenzen">Grenzen</a>
+    <a class="toc-link" href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST PEI -->
+<section id="material" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Überblick</div>
+    <h2 class="sec-title">Was ist Polyetherimid (PEI / Ultem)?</h2>
+    <p class="sec-sub">Ein amorpher Hochleistungsthermoplast mit herausragenden thermischen und mechanischen Eigenschaften.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>Polyetherimid (PEI) ist ein amorpher Hochleistungsthermoplast der Sonderklasse. Bekannt unter dem Markennamen Ultem (SABIC), vereint PEI hohe Festigkeit, exzellente Dimensionsstabilität und eine außergewöhnliche Wärmeformbeständigkeit bis 217 °C. Damit gehört es zu den anspruchsvollsten FDM-Materialien am Markt.</p>
+        <p>PEI ist von Natur aus flammhemmend und erfüllt die UL94 V-0-Klassifizierung ohne zusätzliche Additive. Biokompatible Grades sind für den Einsatz in der Medizintechnik und Sterilisationsanwendungen geeignet. In der Luft- und Raumfahrt ist Ultem 9085 als FST-zertifiziertes Material (Flame, Smoke, Toxicity) fest etabliert.</p>
+        <p>Der Verarbeitungsprozess per FDM erfordert Extrusionstemperaturen von 350 °C bis 420 °C sowie eine vollständig beheizte Druckkammer. Das macht PEI zu einem Material für spezialisierte High-Temp-Drucker, liefert dafür aber Bauteile auf dem Niveau von Spritzgussprodukten.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact"><div class="fact__icon">🔥</div><div class="fact__body"><strong>Flammhemmend ohne Additive</strong><span>UL94 V-0 von Haus aus, kein Verzicht auf mechanische Kennwerte</span></div></div>
+        <div class="fact"><div class="fact__icon">✈️</div><div class="fact__body"><strong>Luft- und Raumfahrt</strong><span>Ultem 9085 ist FST-zertifiziert und in Airbus/Boeing-Prozessen qualifiziert</span></div></div>
+        <div class="fact"><div class="fact__icon">🏥</div><div class="fact__body"><strong>Medizintechnik</strong><span>Ultem 1010 ist biokompatibel und autoclavierbar (134 °C, 3 bar)</span></div></div>
+        <div class="fact"><div class="fact__icon">⚡</div><div class="fact__body"><strong>Elektrisch stabil</strong><span>Hervorragende dielektrische Eigenschaften über breiten Temperaturbereich</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN -->
+<section id="eigenschaften" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialprofil</div>
+    <h2 class="sec-title">Eigenschaften von PEI / Ultem</h2>
+    <p class="sec-sub">Hochtemperaturbeständig, flammhemmend und dimensionsstabil. PEI ist eines der vielseitigsten Hochleistungspolymere im FDM-Druck.</p>
+    <div class="strengths">
+      <div class="sitem"><div class="sitem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div><strong>Hohe Wärmeformbeständigkeit</strong><span>HDT bis 217 °C, ideal für thermisch hochbelastete Umgebungen</span></div></div>
+      <div class="sitem"><div class="sitem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div><strong>UL94 V-0 Flammschutz</strong><span>Ohne Flammschutzmittel, erfüllt höchste Brandschutzklassen</span></div></div>
+      <div class="sitem"><div class="sitem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div><strong>Hohe Zugfestigkeit</strong><span>Bis 105 MPa, vergleichbar mit faserverstärkten Standardpolymeren</span></div></div>
+      <div class="sitem"><div class="sitem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div><strong>Dimensionsstabilität</strong><span>Sehr geringe Kriechneigung, präzise Bauteile auch unter Last</span></div></div>
+      <div class="sitem"><div class="sitem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div><strong>Chemikalienbeständigkeit</strong><span>Beständig gegen viele Öle, Kraftstoffe und Reinigungsmittel</span></div></div>
+      <div class="sitem"><div class="sitem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div><strong>Biokompatible Grades</strong><span>Ultem 1010 erfüllt ISO 10993, geeignet für Medizinprodukte</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Materialwissenschaft</div>
+    <h2 class="sec-title">Chemie und Aufbau von PEI</h2>
+    <p class="sec-sub">Amorpher Thermoplast mit Imid- und Ethergruppen, der seine außergewöhnliche Leistung aus der Molekülstruktur zieht.</p>
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead><tr><th>Eigenschaft</th><th>Wert / Charakteristik</th><th>Bedeutung für die Praxis</th></tr></thead>
+        <tbody>
+          <tr><td>Polymerklasse</td><td>Amorpher Thermoplast</td><td>Keine definierte Schmelztemperatur, transparenter Charakter</td></tr>
+          <tr><td>Chemische Gruppen</td><td>Imid + Ether-Bindungen</td><td>Imidgruppen verleihen Hitzeresistenz, Ethergruppen Flexibilität</td></tr>
+          <tr><td>Glasübergangstemperatur Tg</td><td>~217 °C</td><td>Oberhalb verliert das Material Steifigkeit, daher Grenze der Formbeständigkeit</td></tr>
+          <tr><td>Schmelzbereich (FDM)</td><td>340 °C (Onset), Drucktemp. 350 bis 420 °C</td><td>Erfordert Hochtemperatur-Drucker und beheizten Bauraum</td></tr>
+          <tr><td>Grade</td><td>Ultem 1010, Ultem 9085</td><td>1010: max. Festigkeit + food/biocompatible. 9085: FST-zertifiziert für Luft-/Raumfahrt</td></tr>
+          <tr><td>Sauerstoffindex LOI</td><td>&gt; 47 %</td><td>Selbstverlöschend ohne Zusätze, V-0 klassifiziert</td></tr>
+          <tr><td>Wasseraufnahme</td><td>~0,25 % (24h)</td><td>Trocknung vor dem Druck erforderlich (80 bis 90 °C, min. 4h)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr zu Hochleistungspolymeren und ihrer Chemie im 3D DRUCK LIFE Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHDATEN -->
+<section id="techdaten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Kennwerte</div>
+    <h2 class="sec-title">Technische Daten PEI / Ultem</h2>
+    <p class="sec-sub">Alle Werte beziehen sich auf unverarbeitetes Filament-Material (Ultem 1010). Werte nach dem Druck können abweichen.</p>
+    <h3 style="font-size:16px;font-weight:900;margin-bottom:14px;">Material-Kennwerte im Detail</h3>
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead><tr><th>Eigenschaft</th><th>Wert</th><th>Norm</th></tr></thead>
+        <tbody>
+          <tr><td>Zugfestigkeit</td><td><span class="tval">~105 MPa</span></td><td>ISO 527</td></tr>
+          <tr><td>E-Modul</td><td><span class="tval">~3.400 MPa</span></td><td>ISO 527</td></tr>
+          <tr><td>Streckgrenze</td><td><span class="tval">~91 MPa</span></td><td>ISO 527</td></tr>
+          <tr><td>Schlagzähigkeit (Charpy, ungek.)</td><td><span class="tval">~50 kJ/m²</span></td><td>ISO 179</td></tr>
+          <tr><td>HDT bei 0,45 MPa</td><td><span class="tval">~217 °C</span></td><td>ISO 75</td></tr>
+          <tr><td>HDT bei 1,8 MPa</td><td><span class="tval">~200 °C</span></td><td>ISO 75</td></tr>
+          <tr><td>Glasübergangstemperatur Tg</td><td><span class="tval">~217 °C</span></td><td>DSC</td></tr>
+          <tr><td>Dichte</td><td><span class="tval">1,27 g/cm³</span></td><td>ISO 1183</td></tr>
+          <tr><td>Wasseraufnahme (24h)</td><td><span class="tval">~0,25 %</span></td><td>ISO 62</td></tr>
+          <tr><td>Flammschutzklasse</td><td><span class="tval">UL94 V-0</span></td><td>UL94</td></tr>
+          <tr><td>Dielektrizitätskonstante (1 MHz)</td><td><span class="tval">~3,15</span></td><td>IEC 60250</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Materialdatenvergleiche und Werkstoffauswahl: mehr im 3D DRUCK LIFE Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Einsatzbereiche</div>
+    <h2 class="sec-title">Anwendungen von PEI / Ultem</h2>
+    <p class="sec-sub">Überall dort wo Hitze, Brandschutz und Präzision zusammentreffen, ist PEI erste Wahl.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg></div>
+        <div class="ucard__title">Luft- und Raumfahrt</div>
+        <p>Strukturbauteile, Kabelkanäle, Innenverkleidungen und Halterungen, die FST-Anforderungen (Flame, Smoke, Toxicity) nach FAR 25.853 erfüllen.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="ucard__title">Medizintechnik</div>
+        <p>Sterilisierbare Instrumente, OP-Werkzeuge und Gerätegehäuse. Ultem 1010 übersteht Autoklavierzyklen bei 134 °C und erfüllt ISO 10993.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
+        <div class="ucard__title">Automotive Under-Hood</div>
+        <p>Bauteile im Motorraum, Sensorhalter, Klemmen und Leitungshalterungen, die dauerhaft Temperaturen über 150 °C standhalten müssen.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="ucard__title">Elektrische Steckverbinder</div>
+        <p>Hochpräzise Gehäuse, Kontaktträger und Isolatoren in der Leistungselektronik und Hochspannungstechnik dank exzellenter Dielektrizität.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg></div>
+        <div class="ucard__title">Halbleiter / Semiconductor</div>
+        <p>Wafer-Carrier, Testsockel und Prozesskomponenten in der Chip-Fertigung, die Reinraumbedingungen und chemische Beständigkeit fordern.</p>
+      </div>
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Inspiration und Praxisbeispiele aus der Industrie finden Sie im 3D DRUCK LIFE Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialgrade</div>
+    <h2 class="sec-title">PEI-Varianten im Überblick</h2>
+    <p class="sec-sub">Zwei etablierte Ultem-Grades decken den Großteil industrieller Anwendungen ab.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Ultem 1010</div>
+        <div class="vcard__name">Ultem 1010</div>
+        <p>Der festeste Standard-Grade. Biokompatibel nach ISO 10993, beständig gegen Sterilisation im Autoklav. Ideal für Medizintechnik, Lebensmittelkontakt-Applikationen und Hochtemperatur-Industriebauteile. Höchste mechanische Kennwerte der Ultem-Familie.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Ultem 9085</div>
+        <div class="vcard__name">Ultem 9085</div>
+        <p>FST-zertifizierter Grade (Flame, Smoke, Toxicity) nach FAR 25.853 und BSS 7239. Qualifiziert für Airbus- und Boeing-Innenausstattungen. Leicht geringere Festigkeit als 1010, dafür höchste Brandschutzqualifikation. Pflichtmaterial für Luftfahrt-Strukturbauteile im FDM-Druck.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">CF-PEI</div>
+        <div class="vcard__name">Carbon Fiber PEI (20 % CF)</div>
+        <p>Mit 20 % Kurzfaser-Carbon verstärktes PEI für maximale Steifigkeit bei niedrigem Gewicht. Bis zu 50 % höherer E-Modul gegenüber reinem PEI. Geeignet für ultrapräzise Strukturbauteile, bei denen Gewichtseinsparung und Formtreue kritisch sind.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">GF-PEI</div>
+        <div class="vcard__name">Glass Fiber PEI</div>
+        <p>Glasfaserverstärktes PEI bietet verbesserte Steifigkeit und Dimensionsstabilität bei geringerer Kostenanforderung als CF-Varianten. Gut geeignet für elektrische Bauteile, da nicht leitfähig. Hervorragende Oberflächengüte nach dem Druck.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Post-Processing</div>
+    <h2 class="sec-title">Nachbearbeitung von PEI-Bauteilen</h2>
+    <p class="sec-sub">PEI ist hart und schwer zerspanbar. Die Möglichkeiten sind jedoch vielfältig und reichen bis zur Metallisierung.</p>
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__icon">🔩</div>
+        <strong>Stützstruktur entfernen</strong>
+        <p>PEI benötigt lösliche Stützen (z.B. HIPS oder PVA-ähnliche High-Temp-Materialien) oder brechbare Stützen. Die Entfernung ist aufwändig, da PEI sehr hart ist.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🔧</div>
+        <strong>Mechanische Bearbeitung</strong>
+        <p>Fräsen, Bohren und Schleifen sind möglich. Durch die hohe Härte von PEI sind scharfe Werkzeuge und niedrige Vorschübe erforderlich, um Risse zu vermeiden.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">💧</div>
+        <strong>Dampfglätten</strong>
+        <p>Vapor Polishing mit geeigneten Lösungsmitteln (z.B. Methylenchlorid) ist möglich und erzeugt eine hochglänzende, dichte Oberfläche. Nur unter Abzug und mit Schutzausrüstung.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🪛</div>
+        <strong>Schleifen und Polieren</strong>
+        <p>Aufgrund der hohen Härte ist Schleifen deutlich aufwändiger als bei Standardpolymeren. Nassschliff mit feiner Körnung (400 bis 2000) erzielt gute Ergebnisse.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">⚡</div>
+        <strong>Galvanisieren / Metallisieren</strong>
+        <p>PEI lässt sich nach entsprechender Vorbehandlung galvanisch beschichten. Metallisierte PEI-Bauteile kombinieren Leichtbau mit elektromagnetischer Abschirmung (EMI).</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🧴</div>
+        <strong>Kleben und Verbinden</strong>
+        <p>Strukturklebstoffe auf Epoxid- oder Acrylatbasis erzielen hohe Verbundfestigkeiten. Lösungsmittelkleben ist mit geeigneten Chemikalien ebenfalls möglich.</p>
+      </div>
+    </div>
+    <div class="post-note">
+      <strong>Hinweis Trocknung:</strong> PEI ist hygroskopisch. Filament vor dem Druck mindestens 4 Stunden bei 80 bis 90 °C trocknen. Feuchtes Material führt zu Blasenbildung und stark reduzierten mechanischen Kennwerten.
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Tipps zur Nachbearbeitung von Hochleistungspolymeren im 3D DRUCK LIFE Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Verstärkungen</div>
+    <h2 class="sec-title">Füllungsgrade und Verstärkungen</h2>
+    <p class="sec-sub">Kurzfaserverstärktes PEI hebt die mechanischen Eigenschaften auf ein noch höheres Niveau.</p>
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">20 %</div>
+        <div class="fill-card__name">Carbon Fiber (CF-PEI)</div>
+        <p>20 % Kohlenstofffasern erhöhen den E-Modul auf bis zu 5.000 MPa und reduzieren gleichzeitig das Gewicht. Ideal für Luft- und Raumfahrt-Strukturbauteile. Material ist elektrisch leitfähig.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:90%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:85%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:80%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:75%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:70%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">GF</div>
+        <div class="fill-card__name">Glasfaser (GF-PEI)</div>
+        <p>Glasfaserverstärktes PEI verbessert Steifigkeit und Dimensionsstabilität. Elektrisch nicht leitend, ideal für Elektronik-Bauteile. Gute Oberfläche und einfacher zu verarbeiten als CF-Grade.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:75%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:70%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:68%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:65%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:60%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Faserverstärkte Hochleistungsmaterialien im Vergleich: mehr im 3D DRUCK LIFE Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Einschränkungen</div>
+    <h2 class="sec-title">Grenzen von PEI / Ultem</h2>
+    <p class="sec-sub">PEI ist ein Spezialmaterial und nicht für jeden Anwendungsfall geeignet. Die wichtigsten Einschränkungen im Überblick.</p>
+    <div class="callout">
+      <div class="callout__title">Was Sie wissen sollten</div>
+      <p>PEI erfordert zwingend einen Hochtemperaturdrucker mit beheiztem Bauraum. Extrusionstemperaturen von 350 bis 420 °C überschreiten die Möglichkeiten normaler Desktop-FDM-Drucker. Die Investition in geeignete Hardware ist erheblich.</p>
+      <p>Trotz der hohen Steifigkeit ist PEI im Vergleich zu PEEK eher spröde. Bei Schlagbelastung oder starker Biegebelastung sind PEEK oder PA-basierte Materialien oft besser geeignet. Die Farbauswahl ist auf wenige Töne (zumeist bernsteinfarben/amber) beschränkt.</p>
+      <p>Das Material ist kostspielig: Filamentpreise liegen je nach Grade zwischen 200 und 600 Euro pro Kilogramm. Auch die Verarbeitung erfordert erhöhten Aufwand bei Stützstruktur und Nachbearbeitung.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/peek" class="callout__link" target="_parent">PEEK als Alternative</a>
+        <a href="https://www.3ddrucklife.de/pa12" class="callout__link" target="_parent">PA12 entdecken</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="callout__link" target="_parent">Materialberatung</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Häufige Fragen</div>
+    <h2 class="sec-title">FAQ zu PEI / Ultem</h2>
+    <div class="faq-list">
+
+      <!-- Gruppe 1 -->
+      <div class="faq-group-label">Über PEI / Ultem</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Was ist der Unterschied zwischen Ultem 1010 und Ultem 9085?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ultem 1010 bietet die höchsten mechanischen Kennwerte, ist biokompatibel (ISO 10993) und autoclavierbar. Ultem 9085 ist dagegen auf Brandschutz optimiert (FST-Zertifizierung nach FAR 25.853) und für Luft- und Raumfahrtanwendungen qualifiziert. 9085 ist geringfügig weicher, dafür das einzige FDM-Material mit dieser Luftfahrt-Brandschutzzertifizierung.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Kann ich PEI / Ultem auf einem Standard-FDM-Drucker drucken?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Nein. PEI benötigt Düsentemperaturen von 350 bis 420 °C und einen vollständig beheizten Bauraum (mindestens 130 bis 160 °C). Standard-Desktop-Drucker wie Prusa oder Bambu P1S sind dafür nicht ausgelegt. Geeignete Systeme sind z.B. Stratasys Fortus, Ultimaker S7 Pro oder spezialisierte Open-Source-Builds mit All-Metal-Hotend und Enclosure.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Ist PEI wirklich biokompatibel und autoclavierbar?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ultem 1010 ist nach ISO 10993 biokompatibel und übersteht Autoklav-Sterilisationszyklen bei 134 °C (3 bar Dampf). Dies macht es zur ersten Wahl für wiederverwendbare chirurgische Instrumente und Medizingeräte. Wichtig: Diese Eigenschaften gelten nur für Ultem 1010, nicht für Ultem 9085.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Wie unterscheidet sich PEI von PEEK?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">PEEK ist teilkristallin und besitzt eine definierte Schmelztemperatur von ca. 343 °C, was höhere chemische Beständigkeit und Dauereinsatztemperatur (bis 250 °C) bedeutet. PEI ist amorpher und hat einen Tg von 217 °C. PEEK ist zäher, PEI ist kostengünstiger, leichter zu drucken und von Haus aus flammhemmend (UL94 V-0). Für reine Brandschutzanforderungen ist PEI die bessere Wahl, für chemische Beständigkeit und maximale Dauertemperatur PEEK.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Warum ist PEI bernsteinfarben / amber?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Die charakteristische bernstein- bis goldgelbe Farbe von PEI entsteht durch die aromatischen Imidgruppen in der Molekülkette, die bestimmte Wellenlängen des sichtbaren Lichts absorbieren. Das ist ein inhärentes Merkmal der Chemie, kein Farbzusatz. Schwarze Varianten (mit Rußpartikeln) und einige pigmentierte Grades sind verfügbar, aber die Farbauswahl bleibt deutlich eingeschränkter als bei Standardpolymeren.</div>
+      </div>
+
+      <!-- Gruppe 2 -->
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Was kostet ein 3D-Druck in PEI / Ultem?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">PEI-Druck gehört zu den teuersten FDM-Verfahren. Filamentkosten liegen bei 200 bis 600 Euro/kg. Dazu kommen Maschinenkosten für High-Temp-Drucker und erhöhter Aufwand für Stützstruktur und Nachbearbeitung. Nutzen Sie unseren <a href="https://www.3ddrucklife.de/preisrechner" target="_parent">Preisrechner</a> für eine konkrete Kalkulation.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Welche Schichthöhe und Infill-Dichte sind für PEI-Bauteile typisch?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Übliche Schichthöhen liegen bei 0,1 bis 0,2 mm. Für Strukturbauteile empfehlen sich Infill-Dichten von 50 bis 100 %. Da PEI teuer ist, wird der Infill sorgfältig auf die mechanische Anforderung abgestimmt. Wir beraten Sie gerne zu optimaler Konfiguration vor dem Druck.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Ab welcher Stückzahl lohnt sich PEI-Druck gegenüber Spritzguss?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">3D-Druck in PEI ist für Kleinserien bis ca. 50 bis 200 Teile wirtschaftlich, da keine Werkzeugkosten anfallen. Bei komplexer Geometrie, kurzen Lieferzeiten oder Zertifizierungsanforderungen (z.B. FST) ist PEI-Druck auch bei kleineren Stückzahlen konkurrenzlos. Für große Serien wird Spritzguss mit PEI-Granulat günstiger.</div>
+      </div>
+
+      <!-- Gruppe 3 -->
+      <div class="faq-group-label">3D-Druck allgemein und Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Warum verzieht PEI beim Drucken (Warping) und wie verhindere ich es?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Warping entsteht durch thermische Spannungen beim raschen Abkühlen. Bei PEI sind die Eigenspannungen durch den hohen Verarbeitungstemperaturbereich besonders groß. Gegenmaßnahmen: beheizter Bauraum (130 bis 160 °C), beheizte Druckplatte mit geeigneter Haftbeschichtung, langsame Abkühlrampe nach dem Druck, keine Zugluft im Druckraum.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Welche Stützstrukturen eignen sich für PEI?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Lösliche High-Temp-Stützen (z.B. HIPS-ähnliche Materialien, die bei hohen Temperaturen stabil sind, oder spezielle PEI-kompatible Lösemittelstützen) sind ideal. Brechbare PEI-Eigenstützen funktionieren ebenfalls, hinterlassen aber rauere Oberflächen. Standard-PVA ist bei PEI-Drucktemperaturen nicht einsetzbar.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Wie sieht die Oberflächenqualität von gedrucktem PEI aus?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Frisch gedruckte PEI-Bauteile zeigen typische FDM-Schichtlinien. Die Oberfläche ist glatter als bei Standardpolymeren durch den gleichmäßigeren Schmelzfluss. Durch Schleifen (400 bis 2000er Körnung), Dampfglätten oder maschinelle Nachbearbeitung lassen sich spiegelglatte Oberflächen erzielen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Kann man PEI-Bauteile kleben?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja. Epoxid- und Acrylatbasierte Strukturklebstoffe erzielen hohe Scherfestigkeiten auf PEI. Oberflächen vorher aufrauen und entfetten. Lösungsmittelkleben mit Methylenchlorid ist möglich, aber nur mit geeigneter Schutzausrüstung und Abzugsanlage durchzuführen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Was ist der Unterschied zwischen FDM und SLS bei PEI?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">FDM/FFF mit PEI-Filament ist das etabliertere und zugänglichere Verfahren. SLS-PEI-Pulver ermöglicht stützstrukturfreie Bauteile mit isotropen Eigenschaften, ist aber deutlich teurer und nur bei spezialisierten Dienstleistern verfügbar. FDM-PEI ist für die meisten industriellen Anwendungen ausreichend und wirtschaftlicher.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">PEI-Bauteile jetzt bestellen</div>
+        <p class="cta-left__text">3D-Datei hochladen, Material wählen, Preis sofort erhalten. Qualifizierte PEI-Fertigung vom Spezialisten.</p>
+        <div class="btn-row">
+          <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--white" target="_parent">Preisrechner öffnen</a>
+          <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--white-outline" target="_parent">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Direkter Kontakt</div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="16.92" x2="16.92" y2="16.92"/><line x1="16.92" y1="22" x2="16.92" y2="16.92"/></svg></div>
+          <span>Fragen zu PEI? Wir beraten Sie kostenlos und unverbindlich zu Materialauswahl, Druckparametern und Kosten.</span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="20" y2="4"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="20" x2="20" y2="20"/></svg></div>
+          <span>Besuchen Sie die <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialübersicht</a> für alle verfügbaren Werkstoffe.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleFaq(btn) {
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !expanded);
+  const answer = btn.nextElementSibling;
+  answer.style.display = expanded ? 'none' : 'block';
+}
+
+// TOC active state
+const tocLinks = document.querySelectorAll('.toc-link');
+const sections = document.querySelectorAll('section[id]');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector('.toc-link[href="#' + entry.target.id + '"]');
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

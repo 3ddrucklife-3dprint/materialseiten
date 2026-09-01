@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PE / HDPE – Polyethylen im 3D-Druck | 3D DRUCK LIFE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+/* DEMO BANNER */
+
+/* BREADCRUMB — orange wie alte Vorschau */
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+/* HERO — weiß wie alte Vorschau */
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+/* STICKY TOC */
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+/* SECTION BASE */
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+/* WAS IST PETG */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+/* VERGLEICH */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 24px; font-weight: 900; margin-bottom: 18px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.ccard__row:last-child { border-bottom: none; padding-bottom: 0; }
+.ccard__key { color: var(--ink-soft); }
+.ccard__val { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-g { background: #22c55e; }
+.dot-y { background: #f59e0b; }
+.dot-r { background: #ef4444; }
+
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+
+/* CHEM TABLE */
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+/* TECH TABLE */
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* VARIANTEN */
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ANWENDUNGEN */
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+.ucard__link { font-size: 13px; font-weight: 700; color: var(--orange-dark); text-decoration: none; margin-top: auto; padding-top: 4px; }
+.ucard__link:hover { text-decoration: underline; }
+
+/* NACHBEARBEITUNG */
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__icon { width: 36px; height: 36px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); font-size: 18px; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note--orange { background: var(--orange-soft); border-color: #ffd0a8; color: var(--orange-dark); }
+.post-note strong { font-weight: 700; }
+
+/* FÜLLUNGSGRADE */
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-visual { display: flex; gap: 4px; margin-top: 10px; }
+.fill-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--line); overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 3px; }
+
+/* GRENZEN */
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+/* FAQ */
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.faq-a a { color: var(--orange); text-decoration: underline; }
+
+/* CTA SPLIT — orange links, weiß rechts */
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.contact-row { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-soft); }
+.contact-row a { color: var(--orange); font-weight: 700; }
+.contact-icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); flex-shrink: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { order: -1; }
+  .hero__image img { border-radius: 8px; width: 100%; height: auto; }
+  .intro-grid, .compare-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+  .sec, .sec--alt { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">/</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">/</span>
+    <span class="breadcrumb__current">PE / HDPE</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__eyebrow">FDM / Recycling-Forschung</div>
+      <h1 class="hero__title">Polyethylen<br><span class="accent">PE / HDPE</span></h1>
+      <p class="hero__sub">Einer der meistproduzierten Kunststoffe weltweit. Chemikalienresistent, lebensmittelecht und extrem zaeh. Im 3D-Druck experimentell, aber fuer Recycling-Projekte hochrelevant.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">~30 MPa</span><span class="kstat__lbl">Zugfestigkeit</span></div>
+        <div class="kstat"><span class="kstat__val">Universal</span><span class="kstat__lbl">Chem. resistent</span></div>
+        <div class="kstat"><span class="kstat__val">0,95 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+        <div class="kstat"><span class="kstat__val">Food Safe</span><span class="kstat__lbl">Lebensmittelecht</span></div>
+      </div>
+      <div class="btn-row">
+        <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--orange" target="_parent">Preis berechnen</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--outline" target="_parent">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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" alt="PE HDPE Polyethylen 3D-Druck Bauteil – 3D DRUCK LIFE" loading="eager" width="900" height="900">
+    </div>
+  </div>
+</section>
+
+<!-- TOC -->
+<nav class="toc-bar">
+  <div class="toc-bar__inner">
+    <a href="#material" class="toc-link">Was ist PE?</a>
+    <a href="#eigenschaften" class="toc-link">Eigenschaften</a>
+    <a href="#chemie" class="toc-link">Chemie</a>
+    <a href="#techdaten" class="toc-link">Techdaten</a>
+    <a href="#anwendungen" class="toc-link">Anwendungen</a>
+    <a href="#varianten" class="toc-link">Varianten</a>
+    <a href="#nachbearbeitung" class="toc-link">Nachbearbeitung</a>
+    <a href="#fuellungsgrade" class="toc-link">Fuellungsgrade</a>
+    <a href="#grenzen" class="toc-link">Grenzen</a>
+    <a href="#faq" class="toc-link">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST PE -->
+<section class="sec" id="material">
+  <div class="container">
+    <div class="sec-eyebrow">Ueberblick</div>
+    <h2 class="sec-title">Was ist Polyethylen (PE / HDPE)?</h2>
+    <p class="sec-sub">Der Massenkunststoff mit aussergewoehnlichen Eigenschaften.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>Polyethylen (PE) ist einer der weltweit am haeufigsten verwendeten Kunststoffe. Von Lebensmittelverpackungen bis hin zu Kraftstofftanks ist PE ueberall. Hochdichtes Polyethylen (HDPE) ist die technisch interessantere Variante: halbkristallin, steifer und mit hoeherer Waermeformbestaendigkeit.</p>
+        <p>Im 3D-Druck ist PE/HDPE ein sehr schwieriges Material. Die niedrige Oberflaechenenergie fuehrt zu extremem Warping und schlechter Haftung auf dem Druckbett. Dennoch gewinnt es in der Recycling-Forschung an Bedeutung, da HDPE-Granulat aus Alltagsgegenstaenden (Flaschen, Behaelter) direkt verarbeitet werden kann.</p>
+        <p>HDPE traegt den Recycling-Code Typ 2 und ist damit eines der best-recyclingfaehigen Kunststoffe ueberhaupt.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">♻</div>
+          <div class="fact__body"><strong>Recycling-Code Typ 2</strong><span>HDPE ist eines der am besten recyclingfaehigen Standardmaterialien weltweit.</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🧪</div>
+          <div class="fact__body"><strong>Nahezu universelle Chemikalienresistenz</strong><span>Bestaendig gegen Saeure, Laugen, Alkohole und die meisten Loesemittel.</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🍽</div>
+          <div class="fact__body"><strong>Lebensmittelecht</strong><span>FDA-konformes HDPE wird in der Lebensmittelindustrie seit Jahrzehnten eingesetzt.</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">⚗</div>
+          <div class="fact__body"><strong>Experimenteller 3D-Druck</strong><span>FDM mit PE/HDPE ist moeglich, aber technisch sehr anspruchsvoll und aktuell vor allem Forschungsgebiet.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN -->
+<section class="sec--alt" id="eigenschaften">
+  <div class="container">
+    <div class="sec-eyebrow">Materialeigenschaften</div>
+    <h2 class="sec-title">Eigenschaften von PE / HDPE</h2>
+    <p class="sec-sub">Einzigartige Kombination aus Chemikalienresistenz, Zaehigkeit und Lebensmittelsicherheit.</p>
+    <div class="strengths">
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div><strong>Sehr geringe Reibung</strong><span>Niedrigstes Reibungskoeffizient unter Standardkunststoffen.</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div><strong>Chemikalienresistent</strong><span>Bestaendig gegen fast alle Chemikalien bei Raumtemperatur.</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        </div>
+        <div><strong>Lebensmittelecht</strong><span>FDA-zugelassene Spezifikationen fuer Lebensmittelkontakt verfuegbar.</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+        </div>
+        <div><strong>Recyclingfaehig (Typ 2)</strong><span>Einer der weltweit am besten recyclingfaehigen Kunststoffe.</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/></svg>
+        </div>
+        <div><strong>Sehr zaeh bei Kaelte</strong><span>Behaelt Schlagzaehigkeit auch bei tiefen Temperaturen unter 0 °C.</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <div><strong>Feuchtigkeitsresistent</strong><span>Praktisch keine Wasseraufnahme, ideal fuer Aussenbereich und Nassbereich.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section class="sec" id="chemie">
+  <div class="container">
+    <div class="sec-eyebrow">Chemie und Aufbau</div>
+    <h2 class="sec-title">Chemie und Struktur von PE / HDPE</h2>
+    <p class="sec-sub">Einfache Monomereinheit, komplexe Morphologie.</p>
+    <div class="intro-text">
+      <p>Polyethylen besteht aus langen Ketten der einfachsten Monomereinheit: Ethylen (CH2=CH2). Die Polymerisation erzeugt unverzweigte (HDPE) oder verzweigte (LDPE) Ketten. Die Kettenmorphologie bestimmt entscheidend die Materialeigenschaften.</p>
+      <p>HDPE ist semikristallin mit einem Kristallinitaetsgrad von 60-80%. Die hohe Kristallinitaet erklaert den hoeheren Schmelzpunkt (~130 °C), die hoeherer Steifigkeit und Dichte (0,95-0,97 g/cm³) im Vergleich zu LDPE (0,91-0,93 g/cm³). LDPE hingegen ist durch Verzweigungen amorpher und weicher.</p>
+      <p>Die sehr niedrige Oberflaechenenergie von PE (~31 mN/m) ist verantwortlich fuer die herausragende Chemikalienbestaendigkeit, macht aber Kleben und Lackieren ohne Vorbehandlung praktisch unmoeglich. Fuer den 3D-Druck bedeutet dies extreme Haftungsprobleme auf Druckbetten.</p>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr zur Chemie und Verarbeitung von Polyethylen im 3D-Druck in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHDATEN -->
+<section class="sec--alt" id="techdaten">
+  <div class="container">
+    <div class="sec-eyebrow">Technische Daten</div>
+    <h2 class="sec-title">Material-Kennwerte im Detail</h2>
+    <p class="sec-sub">Mechanische und thermische Eigenschaften von HDPE.</p>
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead>
+          <tr><th>Eigenschaft</th><th>Wert (HDPE)</th><th>Norm</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Zugfestigkeit</td><td><span class="tval">~30 MPa</span></td><td>ISO 527</td></tr>
+          <tr><td>E-Modul</td><td><span class="tval">~1.000 MPa</span></td><td>ISO 527</td></tr>
+          <tr><td>Bruchdehnung</td><td><span class="tval">&gt;500 %</span></td><td>ISO 527</td></tr>
+          <tr><td>Dichte</td><td><span class="tval">0,95-0,97 g/cm³</span></td><td>ISO 1183</td></tr>
+          <tr><td>Schmelzpunkt</td><td><span class="tval">~130 °C</span></td><td>DSC</td></tr>
+          <tr><td>Wasseraufnahme (24h)</td><td><span class="tval">&lt;0,01 %</span></td><td>ISO 62</td></tr>
+          <tr><td>Oberflaechenenergie</td><td><span class="tval">~31 mN/m</span></td><td>ASTM D2578</td></tr>
+          <tr><td>Kaelteschlagzaehigkeit</td><td><span class="tval">sehr hoch</span></td><td>ISO 179</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Detaillierte Vergleichsdaten zu Polyethylen und anderen Materialien finden Sie in unserem Materialblog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Materialvergleich lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section class="sec" id="anwendungen">
+  <div class="container">
+    <div class="sec-eyebrow">Anwendungsbereiche</div>
+    <h2 class="sec-title">Anwendungen von PE / HDPE im 3D-Druck</h2>
+    <p class="sec-sub">Vor allem in Forschung, Recycling-Projekten und chemischen Umgebungen.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+        </div>
+        <div class="ucard__title">Recycling-Projekte</div>
+        <p>Verarbeitung von HDPE-Granulat aus Altmaterial (PET-Flaschen, Kanister). Ideal fuer Upcycling-Forschung und Schulprojekte mit eigenem Extruder.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="ucard__title">Schneidbretter-Prototypen</div>
+        <p>HDPE ist das klassische Material fuer professionelle Schneidebretter. Prototypen-Geometrien fuer Kuechen- und Industrieanwendungen.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="ucard__title">Behaelter und Tanks</div>
+        <p>Chemikalienbestaendige Behaelter und Tanks fuer Laborumgebungen. Gedruckte Prototypen zur Geometriepruefung vor Serienfertigung.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div class="ucard__title">Chemikalienbestaendige Schalen</div>
+        <p>Auffangwannen und Schalen fuer den Umgang mit Saeure, Lauge und aggressiven Medien in Forschung und Industrie.</p>
+      </div>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr zu Recycling-Projekten und innovativen HDPE-Anwendungen im 3D-Druck in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Anwendungsbeispiele lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section class="sec--alt" id="varianten">
+  <div class="container">
+    <div class="sec-eyebrow">Varianten</div>
+    <h2 class="sec-title">PE-Varianten im Ueberblick</h2>
+    <p class="sec-sub">Von Standard-PE bis zum Hochleistungspolymer UHMWPE.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <span class="vcard__badge">Hochdicht</span>
+        <div class="vcard__name">HDPE</div>
+        <p>Hochdichtes Polyethylen (0,95-0,97 g/cm³). Semikristallin, steifer und waermeformbestaendiger als LDPE. Schmelzpunkt ~130 °C. Typ 2 Recycling. Die fuer den 3D-Druck relevanteste PE-Variante.</p>
+      </div>
+      <div class="vcard">
+        <span class="vcard__badge">Niedrigdicht</span>
+        <div class="vcard__name">LDPE</div>
+        <p>Niedrigdichtes Polyethylen (0,91-0,93 g/cm³). Mehr verzweigte Ketten, daher weicher, flexibler und transparenter. Schmelzpunkt ~110 °C. Typ 4 Recycling. Schwieriger zu drucken als HDPE.</p>
+      </div>
+      <div class="vcard">
+        <span class="vcard__badge">Ultra-hochmolekular</span>
+        <div class="vcard__name">UHMWPE</div>
+        <p>Ultra-hochmolekulares Polyethylen mit extrem langen Ketten (Molekulargewicht >3,5 Mio. g/mol). Hoecharster Verschleisswiderstand, self-lubricating. Im FDM kaum verarbeitbar, aber in Sinterverfahren einsetzbar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section class="sec" id="nachbearbeitung">
+  <div class="container">
+    <div class="sec-eyebrow">Nachbearbeitung</div>
+    <h2 class="sec-title">Nachbearbeitung von PE / HDPE-Drucken</h2>
+    <p class="sec-sub">Mechanisch gut bearbeitbar, aber Kleben und Lackieren sind sehr herausfordernd.</p>
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__icon">🔧</div>
+        <strong>Mechanische Bearbeitung</strong>
+        <p>Faesen, Bohren, Saegen und Drehen funktionieren gut. HDPE laesst sich praezise spanend bearbeiten.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🔥</div>
+        <strong>Flammbehandlung</strong>
+        <p>Kurze Flammbehandlung erhoht die Oberflaechenenergie und ermoeglicht anschliessende Lackhaftung. Praezise Kontrolle noetig.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">⚡</div>
+        <strong>Plasmabehandlung</strong>
+        <p>Coronaentladung oder Plasmabehandlung aktiviert die Oberflaeche fuer Klebe- und Beschichtungsanwendungen in industrieller Fertigung.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🚫</div>
+        <strong>Kleben sehr schwer</strong>
+        <p>Standardklebstoffe haften kaum. Nur Spezialprimer (z.B. chloriertes PP-Haftmittel) oder Schweissen funktioniert zuverlaessig.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">♨</div>
+        <strong>Heissgas-Schweissen</strong>
+        <p>PE laesst sich hervorragend mit Heissgas schweissen. Fuer Risse oder Verbindungen die bevorzugte Fuegemetode.</p>
+      </div>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr zu Oberflaechenbehandlung und Nachbearbeitung von Kunststoffdrucken im Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Nachbearbeitung-Guide lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUELLUNGSGRADE -->
+<section class="sec--alt" id="fuellungsgrade">
+  <div class="container">
+    <div class="sec-eyebrow">Fuellungsgrade</div>
+    <h2 class="sec-title">Fuellungsgrade bei PE / HDPE</h2>
+    <p class="sec-sub">PE wird im 3D-Druck selten gefuellt. Die Hauptanwendung ist Recycling-Forschung mit Standardgranulat.</p>
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">15%</div>
+        <div class="fill-card__name">Standardfuellung</div>
+        <p>Typische Wandstaerke bei Schutz- und Behaelterbauteilen. Prueft Geometrie ohne Material zu verschwenden.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:15%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">20%</div>
+        <div class="fill-card__name">Recycling-Standard</div>
+        <p>Haeufig verwendete Fuellung bei Recycling-Projekten. Gutes Verhaeltnis von Materialverbrauch und Stabilitaet.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:20%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">100%</div>
+        <div class="fill-card__name">Vollmaterial</div>
+        <p>Fuer chemikalienbestaendige Behaelter und Funktionsteile, die Dichtigkeit oder maximale Stabilitaet erfordern.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="post-note">
+      <strong>Hinweis Recycling:</strong> HDPE-Granulat aus recyceltem Material kann in Fuell- und Wandstaerkenempfehlungen variieren. Materialqualitaet und Korngroe beeinflussen Druckergebnis stark.
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Alles zu Fuellmustern und Infill-Einstellungen beim FDM-Druck in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Infill-Guide lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section class="sec" id="grenzen">
+  <div class="container">
+    <div class="sec-eyebrow">Grenzen und Einschraenkungen</div>
+    <h2 class="sec-title">Wo stoesst PE / HDPE im 3D-Druck an Grenzen?</h2>
+    <div class="callout">
+      <div class="callout__title">Verarbeitbarkeit im FDM: Extrem herausfordernd</div>
+      <p>PE/HDPE gilt als eines der schwierigsten FDM-Materialien ueberhaupt. Hohes Warping durch die grosse Schwindung beim Abkuehlen, sehr schlechte Haftung auf gaengigen Druckbetten (Glas, PEI, Kapton), Drucktemperatur ~220-260 °C und die Notwendigkeit eines vollstaendig geschlossenen Gehaeuses machen erfolgreiche Drucke zur Ausnahme.</p>
+      <p>Fuer kommerzielle FDM-Anwendungen ist PE derzeit nicht wirtschaftlich einsetzbar. Alternativen wie PP bieten aehnliche Chemikalienbestaendigkeit bei etwas besserer Druckbarkeit. HDPE ist im 3D-Druck aktuell vor allem ein Thema der Recycling-Forschung und experimenteller Maker-Projekte.</p>
+      <p>Wer Chemikalienbestaendigkeit benoetigt, sollte PP, PETG oder bei hoeheren Anforderungen PFA/PVDF in Betracht ziehen.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/pp" class="callout__link" target="_parent">PP ansehen</a>
+        <a href="https://www.3ddrucklife.de/petg" class="callout__link" target="_parent">PETG ansehen</a>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="callout__link" target="_parent">Alle Materialien</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec--alt" id="faq">
+  <div class="container">
+    <div class="sec-eyebrow">Haeufige Fragen</div>
+    <h2 class="sec-title">FAQ zu PE / HDPE</h2>
+    <div class="faq-list">
+
+      <div class="faq-group-label">Ueber PE / HDPE</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Kann ich HDPE im normalen FDM-Drucker drucken?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a" style="display:none">HDPE ist technisch druckbar, aber extrem schwierig. Sie benoetigen einen voll geschlossenen Drucker, ein beheiztes Kammersystem und ein speziell vorbereitetes Druckbett (HDPE-Folie als Unterlage funktioniert am besten). Fuer die meisten Anwender ist es kein alltagstaugliches Material.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Ist HDPE wirklich lebensmittelecht?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a" style="display:none">HDPE selbst ist lebensmittelecht und FDA-zugelassen. Allerdings koennen im 3D-Druck verwendete Additive oder Verunreinigungen im Recycling-Granulat die Lebensmitteltauglichkeit beeintraechtigen. Nur zertifiziertes Lebensmittel-HDPE-Filament/Granulat verwenden und immer die Herstellerangaben pruefen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Was ist der Unterschied zwischen HDPE und LDPE?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a" style="display:none">HDPE (High-Density Polyethylene) hat geringe Kettenverzweigungen, ist dadurch dichter (0,95-0,97 g/cm³), steifer und waermeformbestaendiger. LDPE (Low-Density) ist staerker verzweigt, weicher, flexibler und hat eine niedrigere Dichte (0,91-0,93 g/cm³). Fuer 3D-Druck ist HDPE die praxisrelevantere Variante.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Welche Chemikalien greifen HDPE an?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a" style="display:none">HDPE ist gegen die meisten Saeure, Laugen, Alkohole und Salze bei Raumtemperatur bestaendig. Konzentrierte oxidierende Saeure (z.B. Salpetersaeure), halogenierte Kohlenwasserstoffe und aromatische Loesemittel (z.B. Toluol, Xylol) koennen HDPE bei erhoehter Temperatur angreifen oder zum Quellen bringen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Warum warpt HDPE so stark beim Drucken?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a" style="display:none">HDPE hat einen sehr hohen Kristallinitaetsgrad (60-80%). Beim Abkuehlen kristallisiert das Material und zieht sich dabei stark zusammen (lineare Schwindung bis zu 3%). Diese ungleichmaessige Schwindung erzeugt innere Spannungen, die das Bauteil vom Druckbett abloesen. Nur vollstaendig geschlossene, beheizte Druckerkammern reduzieren das Warping merklich.</div>
+      </div>
+
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Was kostet ein HDPE-3D-Druck?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a" style="display:none">HDPE ist als Rohmaterial guenstig, aber der Druckaufwand ist hoch. Aufgrund der Schwierigkeit und der hohen Ausschussrate sind Dienstleister fuer HDPE-Drucke selten und entsprechend teuer. Fuer kommerzielle Zwecke empfehlen wir PP oder PETG als wirtschaftlichere Alternative.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.getAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Wie berechne ich den Preis fuer mein Bauteil?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a" style="display:none">Nutzen Sie unseren Online-Preisrechner auf 3ddrucklife.de. Datei hochladen, Material und Menge waehlen, Preis sofort erhalten. Alternativ koennen Sie uns Ihre Anforderungen direkt mitteilen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Gibt es Mindestbestellmengen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a" style="display:none">Wir fertigen auch Einzelstuecke und Kleinstserien. Sprechen Sie uns an, wir finden eine Loesung fuer Ihre Anforderungen.</div>
+      </div>
+
+      <div class="faq-group-label">3D-Druck allgemein und Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Welche Dateiformate akzeptieren Sie?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a" style="display:none">Wir akzeptieren STL, STEP, OBJ und 3MF. Fuer beste Ergebnisse empfehlen wir STEP fuer technische Bauteile oder STL mit einer Aufloesungen unter 0,1 mm.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Kann ich HDPE-Drucke kleben?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a" style="display:none">Standardklebstoffe haften kaum auf HDPE. Vor dem Kleben muss die Oberflaeche aktiviert werden, z.B. durch Flammbehandlung, Coronaentladung oder Spezialprimer fuer Polyolefine. Heissgasschweissen ist die zuverlaessigste Fuegemetode fuer PE-Bauteile.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Wie lange dauert die Lieferung?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a" style="display:none">Standardlieferzeit sind 3-7 Werktage. Expresslieferung in 24-48 Stunden ist auf Anfrage moeglich. Grosse Serien oder komplexe Geometrien koennen mehr Zeit benoetigen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Welche Oberflaechenguete ist beim FDM-Druck erreichbar?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a" style="display:none">FDM-Drucke zeigen typisch Schichtlinien. Mit Schichthoehen von 0,1-0,2 mm und anschliessender mechanischer Nachbearbeitung (Schleifen ab Koernung 120) sind sehr glatte Oberflaechen erreichbar. HDPE laesst sich gut schleifen und polieren.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Kann PE / HDPE fuer Aussenanwendungen genutzt werden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a" style="display:none">PE ist feuchtigkeitsresistent und auch bei tiefen Temperaturen zaeh. Ohne UV-Stabilisierung versprodert es bei Langzeit-UV-Exposition. Fuer Aussenanwendungen sollte UV-stabilisiertes HDPE (HDPE-UV) gewaehlt werden. Gedruckte Bauteile sind aufgrund der Schichtstruktur weniger UV-bestaendig als spritzgegossene Teile.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">PE / HDPE-Bauteile anfragen</div>
+        <p class="cta-left__text">3D-Datei hochladen, Material waehlen, Preis sofort erhalten. Oder direkt Beratung anfragen.</p>
+        <div class="btn-row">
+          <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--white" target="_parent">Preisrechner oeffnen</a>
+          <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--white-outline" target="_parent">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Kontakt</div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span>E-Mail: <a href="mailto:3ddrucklife@gmail.com">3ddrucklife@gmail.com</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <span>Materialberatung und Projektanfragen</span>
+        </div>
+        <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--outline" style="margin-top:8px;" target="_parent">Kontaktformular oeffnen</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// TOC active state on scroll
+(function(){
+  var ids=['material','eigenschaften','chemie','techdaten','anwendungen','varianten','nachbearbeitung','fuellungsgrade','grenzen','faq'];
+  var links=document.querySelectorAll('.toc-link');
+  function onScroll(){
+    var scrollY=window.scrollY+80;
+    var active='';
+    ids.forEach(function(id){
+      var el=document.getElementById(id);
+      if(el&&el.offsetTop<=scrollY)active=id;
+    });
+    links.forEach(function(l){
+      l.classList.toggle('active',l.getAttribute('href')==='#'+active);
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TPU/TPE: Materialeigenschaften und Anwendungen | 3D DRUCK LIFE</title>
+<meta name="description" content="TPU und TPE sind flexible Thermoplaste mit hoher Dehnung, Abriebfestigkeit und Chemikalienbeständigkeit. Eigenschaften, Varianten, Vergleich und Anwendungen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn--white { background: #fff; color: var(--orange-dark); border: none; font-weight: 700; }
+.btn--white:hover { background: var(--orange-soft); }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.55); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 24px; font-weight: 900; margin-bottom: 18px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.ccard__row:last-child { border-bottom: none; padding-bottom: 0; }
+.ccard__key { color: var(--ink-soft); }
+.ccard__val { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-g { background: #22c55e; }
+.dot-y { background: #f59e0b; }
+.dot-r { background: #ef4444; }
+
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 10px 14px; text-align: left; font-size: 12px; letter-spacing: .05em; font-weight: 700; }
+.chem-table td { padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:nth-child(even) td { background: var(--paper-2); }
+.chem-table code { background: var(--paper-2); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+
+.data-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.data-table th { background: var(--ink); color: #fff; padding: 10px 14px; text-align: left; font-size: 12px; letter-spacing: .05em; font-weight: 700; }
+.data-table td { padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:nth-child(even) td { background: var(--paper-2); }
+.data-table td:first-child { font-weight: 700; color: var(--ink); }
+
+.app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.acard { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.acard__icon { font-size: 26px; margin-bottom: 10px; }
+.acard__title { font-size: 15px; font-weight: 900; margin-bottom: 6px; }
+.acard__text { font-size: 13px; color: var(--ink-soft); }
+
+.variant-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.vcard { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
+.vcard--highlight { border-color: var(--orange); background: var(--orange-soft); }
+.vcard__name { font-size: 16px; font-weight: 900; margin-bottom: 6px; }
+.vcard__tag { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--orange-dark); background: rgba(255,120,0,.1); border-radius: 4px; padding: 2px 7px; margin-bottom: 8px; }
+.vcard__desc { font-size: 13px; color: var(--ink-soft); }
+
+.post-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.pstep { display: flex; align-items: flex-start; gap: 16px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.pstep__num { width: 32px; height: 32px; background: var(--orange); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; flex-shrink: 0; }
+.pstep__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+.pstep__body span { font-size: 13px; color: var(--ink-soft); }
+
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.fcard { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
+.fcard__val { font-size: 22px; font-weight: 900; color: var(--orange-dark); margin-bottom: 4px; }
+.fcard__label { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.fcard__desc { font-size: 12px; color: var(--ink-soft); }
+
+.limit-list { display: flex; flex-direction: column; gap: 10px; }
+.litem { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-left: 3px solid #ef4444; border-radius: var(--radius); padding: 14px 16px; }
+.litem__icon { font-size: 18px; flex-shrink: 0; }
+.litem__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.litem__body span { font-size: 13px; color: var(--ink-soft); }
+
+.blog-link-box { display: flex; align-items: flex-start; gap: 14px; background: var(--paper-2); border: 1px solid var(--line); border-left: 3px solid var(--orange); border-radius: var(--radius); padding: 16px 20px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--orange-dark); margin-top: 2px; }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); margin-bottom: 0; }
+
+.faq-group { margin-bottom: 40px; }
+.faq-group__title { font-size: 16px; font-weight: 900; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--line); }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 8px; overflow: hidden; }
+.faq-item summary { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; cursor: pointer; font-weight: 700; font-size: 15px; list-style: none; gap: 12px; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { background: var(--paper-2); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; color: var(--orange); }
+.faq-item[open] .faq-icon { transform: rotate(45deg); }
+.faq-body { padding: 0 20px 18px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.faq-body p { margin-bottom: 10px; }
+.faq-body p:last-child { margin-bottom: 0; }
+
+.cta-wrap { background: var(--orange); padding: 64px 0; margin-top: 0; }
+.cta-split { display: grid; grid-template-columns: 1fr; gap: 32px; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.75); margin-bottom: 10px; }
+.cta-left__title { font-size: clamp(22px, 3vw, 34px); font-weight: 900; color: #fff; margin-bottom: 12px; line-height: 1.1; }
+.cta-left__text { color: rgba(255,255,255,.85); font-size: 16px; margin-bottom: 24px; }
+
+@media (max-width: 768px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 32px; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">/</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">/</span>
+    <span class="breadcrumb__current">TPU / TPE</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__eyebrow">Flexibler Thermoplast</div>
+      <h1 class="hero__title">TPU/TPE: flexibel, <span class="accent">schlagabsorbierend</span> und chemikalienbeständig.</h1>
+      <p class="hero__sub">Thermoplastisches Polyurethan (TPU) verbindet Gummielastizität mit thermoplastischer Verarbeitbarkeit. Ideal für Dichtungen, Dämpfer, Griffe und Schutzhüllen.</p>
+
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">Shore 95A</span><span class="kstat__lbl">Härte</span></div>
+        <div class="kstat"><span class="kstat__val">bis 600 %</span><span class="kstat__lbl">Bruchdehnung</span></div>
+        <div class="kstat"><span class="kstat__val">bis 80 °C</span><span class="kstat__lbl">Formstabil</span></div>
+        <div class="kstat"><span class="kstat__val">1,20 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+      </div>
+
+      <div class="btn-row">
+        <a href="https://3ddrucklife.com" class="btn btn--orange" target="_parent">➜ Preis berechnen</a>
+        <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage TPU" class="btn btn--outline">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABADIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgYZSIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIASIAAGWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH/9k=" alt="TPU 3D-Druck Bauteil flexible Dichtung – 3D DRUCK LIFE" loading="eager" width="900" height="900">
+    </div>
+  </div>
+</div>
+
+<!-- STICKY TOC -->
+<nav class="toc-bar">
+  <div class="toc-bar__inner">
+    <a href="#material" class="toc-link">Was ist TPU?</a>
+    <a href="#eigenschaften" class="toc-link">Eigenschaften</a>
+    <a href="#chemie" class="toc-link">Chemie</a>
+    <a href="#techdaten" class="toc-link">Techdaten</a>
+    <a href="#anwendungen" class="toc-link">Anwendungen</a>
+    <a href="#varianten" class="toc-link">Varianten</a>
+    <a href="#nachbearbeitung" class="toc-link">Nachbearbeitung</a>
+    <a href="#fuellungsgrade" class="toc-link">Füllungsgrade</a>
+    <a href="#grenzen" class="toc-link">Grenzen</a>
+    <a href="#faq" class="toc-link">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST TPU -->
+<section id="material" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Material</div>
+    <h2 class="sec-title">Was ist TPU / TPE?</h2>
+    <p class="sec-sub">TPU steht für Thermoplastisches Polyurethan, eine Untergruppe der Thermoplastischen Elastomere (TPE). Es kombiniert die Verarbeitbarkeit von Thermoplasten mit der Elastizität von Gummi.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>TPU gehört zur Familie der Thermoplastischen Elastomere (TPE) und ist das am häufigsten verwendete flexible Material im FDM-3D-Druck. Anders als klassische Gummimaterialien lässt sich TPU schmelzen, durch eine Düse extrudieren und nach dem Erkalten erneut aufschmelzen. Das macht es recyclingfähig und hervorragend für additive Fertigung geeignet.</p>
+        <p>Die mechanischen Eigenschaften reichen von weichem Schaumgummi-Charakter (Shore 60A) bis hin zu semi-rigid (Shore 98A). Für den industriellen 3D-Druck ist Shore 85A bis 95A der gängige Standard. TPE ist der Oberbegriff und umfasst neben TPU auch styrolbasierte Typen wie TPC, SEBS und TPS. Im Alltag werden die Begriffe oft synonym verwendet.</p>
+        <p>Im Vergleich zu starren Thermoplasten wie ABS oder PLA zeichnet sich TPU durch seine Rückfederung (Elastizität), hohe Abriebfestigkeit und gute Chemikalienbeständigkeit aus. Bei Temperaturen zwischen minus 40 und plus 80 Grad Celsius bleibt es formstabil und flexibel.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">🔄</div>
+          <div class="fact__body"><strong>Gummielastizität</strong><span>Rückfederung bis 100 % Dehnung ohne bleibende Verformung</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🛡️</div>
+          <div class="fact__body"><strong>Hohe Abriebfestigkeit</strong><span>Besser als die meisten Standardthermoplaste; ideal für bewegliche Teile</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🧪</div>
+          <div class="fact__body"><strong>Chemikalienbeständig</strong><span>Beständig gegen Öle, Fette, Kraftstoffe und viele Lösungsmittel</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">❄️</div>
+          <div class="fact__body"><strong>Kälteschlagzähigkeit</strong><span>Flexibel bis minus 40 °C; kein Verspröden wie PLA oder ABS</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">♻️</div>
+          <div class="fact__body"><strong>Thermoplastisch</strong><span>Wiederaufschmelzbar und rezyklierbar; keine Vernetzung wie bei Gummi</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN -->
+<section id="eigenschaften" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Eigenschaften</div>
+    <h2 class="sec-title">TPU im Vergleich</h2>
+    <p class="sec-sub">TPU im Vergleich mit PLA (steif) und PEBA (high-performance flexibel).</p>
+    <div class="compare-grid">
+      <div class="ccard">
+        <div class="ccard__label">Starr</div>
+        <div class="ccard__name">PLA</div>
+        <div class="ccard__row"><span class="ccard__key">Flexibilität</span><span class="ccard__val"><span class="dot dot-r"></span>Keine</span></div>
+        <div class="ccard__row"><span class="ccard__key">Abriebfestigkeit</span><span class="ccard__val"><span class="dot dot-r"></span>Gering</span></div>
+        <div class="ccard__row"><span class="ccard__key">Chemikalienbeständig</span><span class="ccard__val"><span class="dot dot-y"></span>Eingeschränkt</span></div>
+        <div class="ccard__row"><span class="ccard__key">Druckbarkeit FDM</span><span class="ccard__val"><span class="dot dot-g"></span>Sehr einfach</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis (ca.)</span><span class="ccard__val">15 bis 30 €/kg</span></div>
+      </div>
+      <div class="ccard ccard--center">
+        <div class="ccard__label">Flexibel ★ Empfohlen</div>
+        <div class="ccard__name">TPU 95A</div>
+        <div class="ccard__row"><span class="ccard__key">Flexibilität</span><span class="ccard__val"><span class="dot dot-g"></span>Hoch</span></div>
+        <div class="ccard__row"><span class="ccard__key">Abriebfestigkeit</span><span class="ccard__val"><span class="dot dot-g"></span>Sehr hoch</span></div>
+        <div class="ccard__row"><span class="ccard__key">Chemikalienbeständig</span><span class="ccard__val"><span class="dot dot-g"></span>Gut</span></div>
+        <div class="ccard__row"><span class="ccard__key">Druckbarkeit FDM</span><span class="ccard__val"><span class="dot dot-y"></span>Mittel</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis (ca.)</span><span class="ccard__val">25 bis 55 €/kg</span></div>
+      </div>
+      <div class="ccard">
+        <div class="ccard__label">High-Performance Flexibel</div>
+        <div class="ccard__name">PEBA</div>
+        <div class="ccard__row"><span class="ccard__key">Flexibilität</span><span class="ccard__val"><span class="dot dot-g"></span>Sehr hoch</span></div>
+        <div class="ccard__row"><span class="ccard__key">Abriebfestigkeit</span><span class="ccard__val"><span class="dot dot-g"></span>Hoch</span></div>
+        <div class="ccard__row"><span class="ccard__key">Chemikalienbeständig</span><span class="ccard__val"><span class="dot dot-g"></span>Sehr gut</span></div>
+        <div class="ccard__row"><span class="ccard__key">Druckbarkeit FDM</span><span class="ccard__val"><span class="dot dot-r"></span>Anspruchsvoll</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis (ca.)</span><span class="ccard__val">80 bis 200 €/kg</span></div>
+      </div>
+    </div>
+
+    <div class="strengths">
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div><strong>Elastische Rückfederung</strong><span>Bauteile kehren nach Verformung in die Ausgangsform zurück</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div><strong>Schlagabsorption</strong><span>Dämpfende Wirkung bei Stößen und Vibrationen</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div><strong>Öl- und Fettbeständig</strong><span>Geeignet für den Einsatz in der Nähe von Hydraulik und Schmierstoffen</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div><strong>Kälteflexibilität</strong><span>Bleibt geschmeidig bis minus 40 °C ohne zu verspröden</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div><strong>Abriebbeständigkeit</strong><span>Sehr guter Verschleißwiderstand; übertrifft viele Hartkunststoffe</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div><strong>Haftung an Substraten</strong><span>Haftet gut auf Textilien, Metall und anderen Kunststoffen</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE & AUFBAU -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Chemie &amp; Aufbau</div>
+    <h2 class="sec-title">Molekulare Struktur von TPU</h2>
+    <p class="sec-sub">TPU ist ein Blockcopolymer aus harten (Diisocyanat/Diol) und weichen (Polyol) Segmenten. Das Verhältnis dieser Blöcke bestimmt die Härte.</p>
+
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead><tr><th>Strukturelement</th><th>Chemie</th><th>Funktion</th></tr></thead>
+        <tbody>
+          <tr><td>Hartes Segment</td><td>MDI (Methylendiphenyldiisocyanat) + Kettenverlängerer</td><td>Steifigkeit, Wärmestabilität</td></tr>
+          <tr><td>Weiches Segment</td><td>Polyester-Polyol oder Polyether-Polyol</td><td>Elastizität, Tieftemperaturflexibilität</td></tr>
+          <tr><td>Polyester-TPU</td><td>Adipinsäure-basiert</td><td>Höhere Festigkeit, bessere Öl-/Fettbeständigkeit</td></tr>
+          <tr><td>Polyether-TPU</td><td>THF-Polyol (PTMEG)</td><td>Bessere Hydrolysebeständigkeit, gute Tieftemperatureigenschaften</td></tr>
+          <tr><td>Urethangruppe</td><td>–NH–CO–O–</td><td>Vernetzungspunkte zwischen Hart- und Weichsegmenten</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:20px; color:var(--ink-soft); font-size:14px;">Polyester-TPU bietet höhere mechanische Festigkeit und bessere Beständigkeit gegen aliphatische Kohlenwasserstoffe. Polyether-TPU ist hydrolysestabiler und bevorzugt für Feuchtigkeits- und Medizinapplikationen.</p>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Welches Material passt zu Ihrem Projekt? In unserem Ratgeber vergleichen wir flexible Materialien im 3D-Druck und zeigen, wann TPU die richtige Wahl ist.</p>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Materialübersicht ansehen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHDATEN -->
+<section id="techdaten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Technische Daten</div>
+    <h2 class="sec-title">TPU Material-Kennwerte</h2>
+    <p class="sec-sub">Typische Kennwerte für TPU 95A (Standard FDM-Qualität). Werte variieren je nach Hersteller und Formulierung.</p>
+
+    <h3 style="font-size:17px;font-weight:900;margin-bottom:14px;">Material-Kennwerte im Detail</h3>
+    <div class="data-table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Eigenschaft</th><th>Wert</th><th>Norm</th></tr></thead>
+        <tbody>
+          <tr><td>Shore-Härte</td><td>95A (ca. 45D)</td><td>ISO 7619</td></tr>
+          <tr><td>Zugfestigkeit</td><td>25 bis 50 MPa</td><td>ISO 527</td></tr>
+          <tr><td>Bruchdehnung</td><td>400 bis 600 %</td><td>ISO 527</td></tr>
+          <tr><td>E-Modul</td><td>10 bis 80 MPa</td><td>ISO 527</td></tr>
+          <tr><td>Abriebbeständigkeit (Taber)</td><td>bis 30 mg/1000 Umdrehungen</td><td>ISO 4649</td></tr>
+          <tr><td>Wärmeformbeständigkeit (HDT)</td><td>ca. 70 bis 80 °C</td><td>ISO 75</td></tr>
+          <tr><td>Kälteflexibilität</td><td>bis minus 40 °C</td><td>ISO 812</td></tr>
+          <tr><td>Dichte</td><td>1,18 bis 1,25 g/cm³</td><td>ISO 1183</td></tr>
+          <tr><td>Wasseraufnahme (24h)</td><td>0,5 bis 1,0 %</td><td>ISO 62</td></tr>
+          <tr><td>Reißfestigkeit</td><td>60 bis 90 kN/m</td><td>ISO 34-1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Sie benötigen Kennwertblätter oder technische Datenblätter für Ihre Konstruktion? Unser Team stellt Ihnen materialspezifische Dokumentation zur Verfügung.</p>
+        <a href="mailto:info@3ddrucklife.de?subject=TPU Datenblatt Anfrage" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;">Datenblatt anfordern</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Anwendungen</div>
+    <h2 class="sec-title">Einsatzgebiete von TPU im 3D-Druck</h2>
+    <p class="sec-sub">TPU ist das go-to-Material wenn Bauteile flexibel, stoßabsorbierend oder abriebfest sein müssen.</p>
+    <div class="app-grid">
+      <div class="acard">
+        <div class="acard__icon">🔩</div>
+        <div class="acard__title">Dichtungen und O-Ringe</div>
+        <div class="acard__text">Statische und dynamische Dichtungen für Gehäuse, Flansche und Rohrverschraubungen. Ersatz für Gummidichtungen in Kleinserien.</div>
+      </div>
+      <div class="acard">
+        <div class="acard__icon">🤲</div>
+        <div class="acard__title">Griffe und Ummantelungen</div>
+        <div class="acard__text">Soft-Touch-Griffe, Griffschalen für Werkzeuge, Kabelschutzschläuche und Steckerschutzcover mit rutschfester Oberfläche.</div>
+      </div>
+      <div class="acard">
+        <div class="acard__icon">👟</div>
+        <div class="acard__title">Schuhsohlen und Einlagen</div>
+        <div class="acard__text">Individuelle Schuhsohlen, orthopädische Einlegesohlen und Fersenkeile. TPU-SLS bietet isotrope Eigenschaften ohne Stützstrukturen.</div>
+      </div>
+      <div class="acard">
+        <div class="acard__icon">🚗</div>
+        <div class="acard__title">Automotive Dämpfer</div>
+        <div class="acard__text">Schwingungsdämpfer, Motorlager-Prototypen, Halter für Sensoren und flexible Kabelführungen im Fahrzeuginnenraum.</div>
+      </div>
+      <div class="acard">
+        <div class="acard__icon">🏭</div>
+        <div class="acard__title">Fördertechnik</div>
+        <div class="acard__text">Förderbandelemente, Andrückrollen, Laufringe und Puffer für automatisierte Produktionslinien. Hohe Abriebfestigkeit entscheidend.</div>
+      </div>
+      <div class="acard">
+        <div class="acard__icon">⚕️</div>
+        <div class="acard__title">Medizin und Prothetik</div>
+        <div class="acard__text">Orthesen-Schäfte, Handgelenkstützen, weiche Socken für Prothesen. Hautverträgliche Varianten (Shore 80A) verfügbar.</div>
+      </div>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Kunden aus Automotive, Medizintechnik und Konsumgütern setzen auf unsere TPU-Bauteile. Sehen Sie sich unsere Materialübersicht an oder fragen Sie direkt an.</p>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Alle Materialien ansehen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Varianten</div>
+    <h2 class="sec-title">TPU und TPE: Varianten im Überblick</h2>
+    <p class="sec-sub">Vom weichen Shore 60A bis zum semi-rigiden Shore 98A. Spezialtypen für Leitfähigkeit, Verstärkung und extreme Kältebeständigkeit.</p>
+    <div class="variant-grid">
+      <div class="vcard">
+        <div class="vcard__name">TPU 85A</div>
+        <div class="vcard__tag">Weich</div>
+        <div class="vcard__desc">Sehr weicher, gummiartiger Charakter. Für Griffe, Schutzkappen und Polster. Anspruchsvoller im Direktdruck wegen Fadenzug.</div>
+      </div>
+      <div class="vcard vcard--highlight">
+        <div class="vcard__name">TPU 95A</div>
+        <div class="vcard__tag">Standard</div>
+        <div class="vcard__desc">Häufigste FDM-Variante. Gutes Gleichgewicht aus Flexibilität und Druckbarkeit. Geeignet für die meisten Anwendungen.</div>
+      </div>
+      <div class="vcard">
+        <div class="vcard__name">TPU-CF</div>
+        <div class="vcard__tag">Verstärkt</div>
+        <div class="vcard__desc">Carbonfaser-verstärkt für erhöhte Steifigkeit bei gleichzeitiger Restflexibilität. Deutlich höherer E-Modul als Standard-TPU.</div>
+      </div>
+      <div class="vcard">
+        <div class="vcard__name">TPU ESD</div>
+        <div class="vcard__tag">Leitfähig</div>
+        <div class="vcard__desc">Elektrostatisch ableitendes TPU (10^6 bis 10^9 Ohm) für elektronische Bauteile, Verpackungen und Halbleiter-Umgebungen.</div>
+      </div>
+      <div class="vcard">
+        <div class="vcard__name">TPE / SEBS</div>
+        <div class="vcard__tag">Styrolbasiert</div>
+        <div class="vcard__desc">Styrol-Ethylen-Butylen-Styrol. Günstigere Alternative zu TPU. Weniger Öl-beständig, aber einfacher zu verarbeiten.</div>
+      </div>
+      <div class="vcard">
+        <div class="vcard__name">PEBA</div>
+        <div class="vcard__tag">High-End</div>
+        <div class="vcard__desc">Polyether-Block-Amid. Deutlich leichter als TPU (1,01 g/cm³), höhere Rückfederenergie. Standard für Sportschuhsohlen (z. B. Puma, Adidas).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Nachbearbeitung</div>
+    <h2 class="sec-title">Nachbearbeitung von TPU-Bauteilen</h2>
+    <p class="sec-sub">TPU lässt sich gut nachbearbeiten, erfordert aber spezielle Werkzeuge für das flexible Material.</p>
+    <div class="post-steps">
+      <div class="pstep">
+        <div class="pstep__num">1</div>
+        <div class="pstep__body"><strong>Stützstrukturen entfernen</strong><span>Supports bei TPU schwer zu entfernen. Wo möglich selbsttragende Designs verwenden oder wasserlösliche PVA-Supports im Dual-Extruder einsetzen.</span></div>
+      </div>
+      <div class="pstep">
+        <div class="pstep__num">2</div>
+        <div class="pstep__body"><strong>Schleifen und Trimmen</strong><span>Scharfe Schere oder Skalpell zum Entfernen von Stringing-Fäden. Feinschliff mit 400 bis 600 Körnung möglich, aber Material federt zurück.</span></div>
+      </div>
+      <div class="pstep">
+        <div class="pstep__num">3</div>
+        <div class="pstep__body"><strong>Lackieren und Färben</strong><span>Flexibler Klarlack oder gummierter Sprühlack haftet gut auf TPU. Standard-Acryllacke können nach Biegen abplatzen. Elastische Lacke bevorzugen.</span></div>
+      </div>
+      <div class="pstep">
+        <div class="pstep__num">4</div>
+        <div class="pstep__body"><strong>Kleben</strong><span>TPU klebt gut mit Kontaktkleber auf Neoprenbasis, Cyanoacrylat (Sekundenkleber) oder zweikomponentigen PU-Klebstoffen. Oberfläche vorher anschleifen.</span></div>
+      </div>
+      <div class="pstep">
+        <div class="pstep__num">5</div>
+        <div class="pstep__body"><strong>Trocknen vor Verarbeitung</strong><span>TPU ist hygroskopisch. Vor dem Druck 4 bis 6 Stunden bei 60 bis 70 °C trocknen. Feuchtes Filament verursacht Blasen und schlechte Schichtanbindung.</span></div>
+      </div>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Professionelle Nachbearbeitung ist bei TPU oft aufwendiger als bei Hartkunststoffen. Unser Team übernimmt die gesamte Prozesskette von Druck bis Finish.</p>
+        <a href="https://3ddrucklife.com" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Anfrage stellen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Füllungsgrade</div>
+    <h2 class="sec-title">Infill-Strategie bei TPU</h2>
+    <p class="sec-sub">Der Füllungsgrad beeinflusst bei TPU nicht nur Gewicht und Materialverbrauch, sondern maßgeblich die effektive Steifigkeit und Dämpfungseigenschaft.</p>
+    <div class="fill-grid">
+      <div class="fcard">
+        <div class="fcard__val">10 bis 20 %</div>
+        <div class="fcard__label">Maximal Flexibel</div>
+        <div class="fcard__desc">Für Polster, Dämpfer und Schutzumhüllungen. Sehr hohe Komprimierbarkeit; fast schaumartiger Charakter.</div>
+      </div>
+      <div class="fcard">
+        <div class="fcard__val">30 bis 50 %</div>
+        <div class="fcard__label">Ausgewogen</div>
+        <div class="fcard__desc">Griffe, Dichtungsrahmen, weiche Halterungen. Gutes Verhältnis aus Stabilität und Flexibilität.</div>
+      </div>
+      <div class="fcard">
+        <div class="fcard__val">60 bis 80 %</div>
+        <div class="fcard__label">Semi-rigid</div>
+        <div class="fcard__desc">Schuhsohlen, Laufrollen, dynamisch belastete Teile. Hohe Abriebfestigkeit bei kontrollierter Restflexibilität.</div>
+      </div>
+      <div class="fcard">
+        <div class="fcard__val">100 %</div>
+        <div class="fcard__label">Vollmaterial</div>
+        <div class="fcard__desc">O-Ring-ähnliche Dichtungen, Druckknöpfe, hochbelastete Dichtlippen. Maximale Dichte und Zugfestigkeit.</div>
+      </div>
+    </div>
+    <p style="margin-top:20px; color:var(--ink-soft); font-size:14px;">Gyroid- und Wabenmuster (Honeycomb) eignen sich besonders gut für TPU, da sie isotropes Verformungsverhalten ermöglichen. Linieninfill erzeugt anisotrope Steifigkeit und ist bei Flexiblen weniger empfehlenswert.</p>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Unsicher welcher Füllungsgrad für Ihren Anwendungsfall passt? In unserer Materialübersicht finden Sie weitere Vergleiche und Empfehlungen.</p>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Materialübersicht</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Grenzen</div>
+    <h2 class="sec-title">Wo stößt TPU an seine Grenzen?</h2>
+    <p class="sec-sub">TPU ist kein Universalmaterial. Für bestimmte Anforderungen gibt es besser geeignete Alternativen.</p>
+    <div class="limit-list">
+      <div class="litem">
+        <div class="litem__icon">🌡️</div>
+        <div class="litem__body"><strong>Begrenzte Wärmebeständigkeit</strong><span>Einsatztemperatur max. 80 °C. Bei höheren Temperaturen verliert TPU Steifigkeit. Alternativen: Silikonkautschuk, PEBA oder PEEK für Hochtemperatur-Dichtungen.</span></div>
+      </div>
+      <div class="litem">
+        <div class="litem__icon">💧</div>
+        <div class="litem__body"><strong>Hydrolyseempfindlichkeit (Polyester-Typ)</strong><span>Polyester-TPU kann bei Dauerkontakt mit Wasser oder Wasserdampf hydrolytisch abgebaut werden. Für Nassumgebungen Polyether-TPU verwenden.</span></div>
+      </div>
+      <div class="litem">
+        <div class="litem__icon">☀️</div>
+        <div class="litem__body"><strong>UV-Beständigkeit eingeschränkt</strong><span>Standard-TPU vergilbt und versprödet bei dauerhafter UV-Exposition. Für Außenanwendungen UV-stabilisiertes TPU oder ASA wählen.</span></div>
+      </div>
+      <div class="litem">
+        <div class="litem__icon">🖨️</div>
+        <div class="litem__body"><strong>Druckschwierigkeiten im Bowden-Setup</strong><span>Weiches TPU (unter Shore 90A) erfordert Direct-Drive-Extruder. Bowden-Systeme neigen zu Fadenstau und unkontrollierter Flexion im Führungsschlauch.</span></div>
+      </div>
+      <div class="litem">
+        <div class="litem__icon">🧪</div>
+        <div class="litem__body"><strong>Eingeschränkte Chemikalienbeständigkeit</strong><span>Ketone (Aceton, MEK), konzentrierte Säuren und Laugen greifen TPU an. Für aggressive Chemikalien PTFE oder PEEK bevorzugen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">FAQ</div>
+    <h2 class="sec-title">Häufige Fragen zu TPU</h2>
+
+    <div class="faq-group">
+      <div class="faq-group__title">Über TPU / TPE</div>
+
+      <details class="faq-item">
+        <summary>Was ist der Unterschied zwischen TPU und TPE?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <div class="faq-body"><p>TPE (Thermoplastisches Elastomer) ist der Oberbegriff für alle gummielastischen Thermoplaste. TPU (Thermoplastisches Polyurethan) ist eine Untergruppe davon. Weitere TPE-Typen sind SEBS, TPS, TPC und PEBA. Im Alltag werden TPU und TPE häufig synonym verwendet, gemeint ist meist TPU.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Was bedeutet Shore-Härte bei TPU?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <div class="faq-body"><p>Shore A misst die Härte weicher Materialien von 0 (sehr weich) bis 100 (sehr hart). Shore 85A entspricht etwa einer Gummisohle, Shore 95A einem festen Autoreifen. Oberhalb Shore 98A wechselt die Skala zu Shore D. Für FDM-Druck empfiehlt sich Shore 90A bis 95A als Kompromiss aus Flexibilität und Druckbarkeit.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Ist TPU lebensmittelecht?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <div class="faq-body"><p>Manche TPU-Formulierungen sind nach FDA 21 CFR oder EU 10/2011 für Lebensmittelkontakt zugelassen. Im 3D-Druck gilt jedoch: Die Schichtstruktur birgt Hygienemängel (Keimwachstum in Lücken). Für lebensmittelkonforme Dichtungen und Teile empfehlen wir zertifiziertes Silikon oder TPU-Spritzgussteile.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Welche Shore-Härte ist für Dichtungen am besten?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <div class="faq-body"><p>Für statische Dichtungen (Flansche, Deckel): Shore 80A bis 90A. Für dynamische Dichtungen (bewegliche Teile): Shore 70A bis 85A. Für Kabelklemmen und Knickschutz: Shore 95A. Höhere Shore-Werte ergeben bessere Formstabilität, geringere Shore-Werte bessere Abdichtung bei niedrigem Anpressdruck.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Wie beständig ist TPU gegen Öle und Kraftstoffe?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <div class="faq-body"><p>Polyester-TPU zeigt sehr gute Beständigkeit gegen Mineralöle, Schmierfette und aliphatische Kraftstoffe (Diesel). Aromatenreiche Kraftstoffe (Benzin) und Ketone greifen TPU an. Polyether-TPU ist schlechter ölbeständig, aber besser bei Hydrolyse. Für hochbeanspruchte Kraftstoff-Dichtungen Spritzguss-PTFE oder FKM bevorzugen.</p></div>
+      </details>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-group__title">Konfiguration und Kosten</div>
+
+      <details class="faq-item">
+        <summary>Was kostet ein TPU-Bauteil im 3D-Druck?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <div class="faq-body"><p>Die Kosten hängen von Bauteilvolumen, Infill, Druckverfahren und Losgröße ab. Als Richtwert: Kleine FDM-Bauteile unter 50 cm³ starten oft bei 10 bis 30 Euro. SLS-Teile aus TPU-Pulver sind teurer, bieten aber isotrope Eigenschaften und kein Stützstruktur-Problem. Nutzen Sie unseren Preisrechner für eine individuelle Kalkulation.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Welches Druckverfahren eignet sich für TPU?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <div class="faq-body"><p>FDM/FFF ist die häufigste und günstigste Methode. Direct-Drive-Extruder ist Pflicht für weiche Typen (unter Shore 90A). SLS (Selektives Lasersintern) aus TPU-Pulver liefert isotrope Teile ohne Schichtlinien, ideal für Schuhsohlen und komplexe Geometrien. Multi-Jet-Fusion (MJF) mit TPU ist ebenfalls möglich.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Wie lange dauert ein TPU-Druckauftrag?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <div class="faq-body"><p>TPU wird im FDM deutlich langsamer gedruckt als Hartplastik (20 bis 30 mm/s statt 60 bis 100 mm/s). Ein kleines Bauteil dauert 1 bis 4 Stunden, große Teile entsprechend länger. Nach Bestellung liefern wir je nach Kapazität und Bauteilgröße in 2 bis 5 Werktagen.</p></div>
+      </details>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-group__title">3D-Druck allgemein und Nachbearbeitung</div>
+
+      <details class="faq-item">
+        <summary>Warum verursacht TPU im Druck so viele Fäden (Stringing)?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <div class="faq-body"><p>TPU ist sehr viskos und elastisch im Schmelzzustand. Die Kombination aus fehlender Retraction-Kontrolle (bei Bowden) und der "Gummiwirkung" beim Rückzug erzeugt Fäden. Empfehlung: Retraction auf 1 bis 2 mm reduzieren, Druckgeschwindigkeit auf 20 bis 30 mm/s senken, Direct-Drive-Extruder verwenden.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Muss TPU vor dem Druck getrocknet werden?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <div class="faq-body"><p>Ja, unbedingt. TPU nimmt Feuchtigkeit auf und muss vor dem Druck mindestens 4 bis 6 Stunden bei 60 bis 70 °C getrocknet werden. Feuchtes Filament blasenbildet, erzeugt Poren im Bauteil und verschlechtert die Zugfestigkeit erheblich. Trockene Lagerung in versiegelten Behältern mit Silicagel empfohlen.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Kann TPU mit anderen Materialien kombiniert werden?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <div class="faq-body"><p>Ja. TPU haftet gut an PLA und PETG (Co-Extrusion im Dual-Druck). Typische Kombination: starrer PLA-Kern mit flexibler TPU-Schicht als Stoßschutz. Für Supports empfiehlt sich PVA (lösbar in Wasser), da normale PLA-Supports bei TPU schwer zu entfernen sind.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Wie lässt sich TPU schleifen oder glätten?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <div class="faq-body"><p>Schleifen mit 400 bis 800 Körnung ist möglich, aber das Material federt zurück. Für glatte Oberflächen eignet sich eine vibrationelle Trowalisierung (Gleitschleifen) oder Dampfglätten mit DMF (Dimethylformamid) bei Polyester-TPU. Lösungsmittelglätten ist deutlich schwieriger als bei ABS.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Welche Schichthöhe empfiehlt sich für TPU?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <div class="faq-body"><p>0,2 bis 0,3 mm Schichthöhe sind bewährt. Dünnere Schichten (0,1 mm) verbessern Oberflächenqualität, erhöhen aber die Druckzeit erheblich. Dickere Schichten (0,4 mm) beschleunigen den Druck, verringern aber die interlaminare Haftung. Bei Dichtungen möglichst hohe Wandstärke (4 bis 6 Perimeter) wählen.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">TPU-Bauteile jetzt bestellen</div>
+        <p class="cta-left__text">3D-Datei hochladen, Material wählen, Preis sofort erhalten. Vom Einzelteil bis zur Kleinserie.</p>
+        <div class="btn-row">
+          <a href="https://3ddrucklife.com" class="btn btn--white" target="_parent">Preisrechner öffnen</a>
+          <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage TPU" class="btn btn--white-outline">Beratung anfragen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const links = document.querySelectorAll('.toc-link');
+const sections = document.querySelectorAll('section[id]');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, { rootMargin: '-55px 0px -60% 0px', threshold: 0 });
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inconel 3D-Druck – Superlegierung IN625 & IN718 | 3D DRUCK LIFE</title>
+<meta name="description" content="Inconel im 3D-Druck: IN625 und IN718 Superlegierungen für Aerospace, Turbinen und Raumfahrt. Eigenschaften, Techdaten, Anwendungen und Nachbearbeitung.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+/* BREADCRUMB */
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+/* HERO */
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(36px, 5.5vw, 58px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+/* STICKY TOC */
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+/* SECTION BASE */
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+/* INTRO */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+/* VERGLEICH */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 24px; font-weight: 900; margin-bottom: 18px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.ccard__row:last-child { border-bottom: none; padding-bottom: 0; }
+.ccard__key { color: var(--ink-soft); }
+.ccard__val { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-g { background: #22c55e; }
+.dot-y { background: #f59e0b; }
+.dot-r { background: #ef4444; }
+
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+
+/* CHEM TABLE */
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+/* TECH TABLE */
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* VARIANTEN */
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ANWENDUNGEN */
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+
+/* NACHBEARBEITUNG */
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__num { width: 36px; height: 36px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); font-size: 16px; font-weight: 900; flex-shrink: 0; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note strong { font-weight: 700; }
+
+/* FÜLLUNGSGRADE */
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+
+/* GRENZEN */
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+/* FAQ */
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+
+/* CTA */
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.cta-right__title { font-size: 20px; font-weight: 900; }
+.cta-right p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 32px; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">›</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">›</span>
+    <span class="breadcrumb__current">Inconel</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="material" class="hero">
+  <div class="hero__inner">
+    <div>
+      <div class="hero__eyebrow">Nickel-Superlegierung · SLM · IN625 / IN718</div>
+      <h1 class="hero__title">Inconel: extrem hitzebeständig, <span class="accent">korrosionsfest</span> und hochfest bis 980 °C.</h1>
+      <p class="hero__sub">Inconel IN625 und IN718 sind die Materialwahl für Turbinen, Raumfahrt und chemische Verfahrenstechnik, wo andere Metalle versagen.</p>
+      <div class="trust-row">
+        <div class="kstat">
+          <span class="kstat__val">~930 MPa</span>
+          <span class="kstat__lbl">Zugfestigkeit</span>
+        </div>
+        <div class="kstat">
+          <span class="kstat__val">bis 980 °C</span>
+          <span class="kstat__lbl">Einsatztemp.</span>
+        </div>
+        <div class="kstat">
+          <span class="kstat__val">8,44 g/cm³</span>
+          <span class="kstat__lbl">Dichte</span>
+        </div>
+        <div class="kstat">
+          <span class="kstat__val">UNS N06625</span>
+          <span class="kstat__lbl">Norm</span>
+        </div>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
+        <span class="chip chip--orange">Hochtemperatur</span>
+        <span class="chip chip--orange">Aerospace</span>
+        <span class="chip chip--orange">Korrosionsfest</span>
+        <span class="chip chip--blue">SLM / LPBF</span>
+        <span class="chip chip--blue">IN625 / IN718</span>
+      </div>
+      <div class="btn-row">
+        <a href="https://3ddrucklife.com" class="btn btn--orange" target="_parent">&#10154; Preis berechnen</a>
+        <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Inconel" class="btn btn--outline">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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" alt="Inconel IN625 Superlegierung 3D-Druck" width="900" height="900">
+    </div>
+  </div>
+</section>
+
+<!-- STICKY TOC -->
+<nav class="toc-bar" aria-label="Seitennavigation">
+  <div class="toc-bar__inner">
+    <a class="toc-link" data-s="material" href="#material">Material</a>
+    <a class="toc-link" data-s="eigenschaften" href="#eigenschaften">Eigenschaften</a>
+    <a class="toc-link" data-s="chemie" href="#chemie">Chemie</a>
+    <a class="toc-link" data-s="techdaten" href="#techdaten">Techdaten</a>
+    <a class="toc-link" data-s="anwendungen" href="#anwendungen">Anwendungen</a>
+    <a class="toc-link" data-s="varianten" href="#varianten">Varianten</a>
+    <a class="toc-link" data-s="nachbearbeitung" href="#nachbearbeitung">Nachbearbeitung</a>
+    <a class="toc-link" data-s="fuellungsgrade" href="#fuellungsgrade">Geometrie</a>
+    <a class="toc-link" data-s="grenzen" href="#grenzen">Grenzen</a>
+    <a class="toc-link" data-s="faq" href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST INCONEL -->
+<section id="eigenschaften" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Uebersicht</div>
+    <h2 class="sec-title">Was ist Inconel?</h2>
+    <p class="sec-sub">Markenname fuer Nickel-Chrom-Superlegierungen mit einzigartiger Kombination aus Hitze- und Korrosionsbestaendigkeit.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>Inconel ist ein eingetragener Markenname von Special Metals Corporation fuer eine Familie von Nickel-Chrom-Superlegierungen. Im industriellen 3D-Druck kommen vor allem die Legierungen <strong>IN625</strong> (Inconel 625) und <strong>IN718</strong> (Inconel 718) per Selektivem Lasermelting (SLM/LPBF) zum Einsatz.</p>
+        <p>Die einzigartige Kombination aus <strong>Hochtemperaturfestigkeit bis 980 °C Dauerbetrieb</strong>, exzellenter Korrosionsbestaendigkeit gegen aggressive Medien und hoher statischer sowie dynamischer Festigkeit macht Inconel zur Materialwahl in Bereichen, wo Edelstahl oder Titan versagen.</p>
+        <p>Typische Einsatzfelder sind Turbinen- und Triebwerkskomponenten in Aerospace, Raketentriebwerk-Injektoren, Waermetauscher fuer aggressive chemische Medien sowie Unterwasserstrukturen mit Meerwasserkontakt.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">🔥</div>
+          <div class="fact__body">
+            <strong>Hochtemperaturfestigkeit</strong>
+            <span>Behaelt mechanische Eigenschaften bis 980 °C Dauerbetrieb. Weit ueberlegen gegenueber Edelstahl (max. 400 °C) und Titan (max. 350 °C).</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🛡</div>
+          <div class="fact__body">
+            <strong>Exzellente Korrosionsbestaendigkeit</strong>
+            <span>Bestaendig gegen Salzwasser, Saeure, Oxidation und Wasserstoffversproedem. Ideal fuer Offshore- und Chemieanlagen.</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">💪</div>
+          <div class="fact__body">
+            <strong>Hohe Zugfestigkeit</strong>
+            <span>IN625 erreicht bis 950 MPa im SLM-Zustand. IN718 nach Auslagern sogar bis 1.400 MPa Streckgrenze.</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🚀</div>
+          <div class="fact__body">
+            <strong>Aerospace-Qualitaet</strong>
+            <span>Flugzeug- und Raumfahrtzertifizierungen (AMS 5666, NACE MR0175). Langjahrige Bewaeserung in extremen Umgebungen.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VERGLEICH -->
+    <h3 style="font-size:20px;font-weight:900;margin:48px 0 20px;">Inconel im Materialvergleich</h3>
+    <div class="compare-grid">
+      <div class="ccard">
+        <div class="ccard__label">Vergleich</div>
+        <div class="ccard__name">Edelstahl 316L</div>
+        <div class="ccard__row"><span class="ccard__key">Max. Einsatztemp.</span><span class="ccard__val">400 °C</span></div>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">530 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Korrosion</span><span class="ccard__val"><span class="dot dot-g"></span>Sehr gut</span></div>
+        <div class="ccard__row"><span class="ccard__key">Dichte</span><span class="ccard__val">7,9 g/cm³</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis</span><span class="ccard__val"><span class="dot dot-y"></span>Mittel</span></div>
+      </div>
+      <div class="ccard ccard--center">
+        <div class="ccard__label">Empfohlen</div>
+        <div class="ccard__name">Inconel 625</div>
+        <div class="ccard__row"><span class="ccard__key">Max. Einsatztemp.</span><span class="ccard__val" style="color:var(--orange-dark);font-size:15px;">980 °C</span></div>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">930 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Korrosion</span><span class="ccard__val"><span class="dot dot-g"></span>Exzellent</span></div>
+        <div class="ccard__row"><span class="ccard__key">Dichte</span><span class="ccard__val">8,44 g/cm³</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis</span><span class="ccard__val"><span class="dot dot-r"></span>Sehr hoch</span></div>
+      </div>
+      <div class="ccard">
+        <div class="ccard__label">Vergleich</div>
+        <div class="ccard__name">Titan Ti6Al4V</div>
+        <div class="ccard__row"><span class="ccard__key">Max. Einsatztemp.</span><span class="ccard__val">350 °C</span></div>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">1.100 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Korrosion</span><span class="ccard__val"><span class="dot dot-g"></span>Exzellent</span></div>
+        <div class="ccard__row"><span class="ccard__key">Dichte</span><span class="ccard__val">4,43 g/cm³</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis</span><span class="ccard__val"><span class="dot dot-y"></span>Hoch</span></div>
+      </div>
+    </div>
+
+    <div class="strengths">
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div>
+          <strong>Kriechbestaendigkeit</strong>
+          <span>Kein Formverlust unter Dauerlast bei Hochtemperatur</span>
+        </div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div>
+          <strong>Ermuedungsbestaendigkeit</strong>
+          <span>Hohe Schwingfestigkeit fuer zyklisch belastete Bauteile</span>
+        </div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <div>
+          <strong>Oxidationsbestaendigkeit</strong>
+          <span>Bildet schuetzende Cr2O3-Schicht an Luft</span>
+        </div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div>
+          <strong>Schweissbarkeit</strong>
+          <span>IN625 laesst sich gut schweissen und auftragsschweissen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section id="chemie" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialwissenschaft</div>
+    <h2 class="sec-title">Chemische Zusammensetzung &amp; Metallurgie</h2>
+    <p class="sec-sub">Nickel-Basis-Legierungen mit gezielter Mischkristall- und Ausscheidungshaertung fuer extreme Betriebsbedingungen.</p>
+
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>IN625 (Gew.-%)</th>
+            <th>IN718 (Gew.-%)</th>
+            <th>Funktion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nickel (Ni)</td>
+            <td><span class="badge-g">ca. 60 %</span></td>
+            <td><span class="badge-g">50 bis 55 %</span></td>
+            <td>Basis-Matrix, Duktilitaet, Oxidationsbestaendigkeit</td>
+          </tr>
+          <tr>
+            <td>Chrom (Cr)</td>
+            <td>20 bis 23 %</td>
+            <td>17 bis 21 %</td>
+            <td>Korrosions- und Oxidationsschutz (Cr2O3-Schicht)</td>
+          </tr>
+          <tr>
+            <td>Molybdaen (Mo)</td>
+            <td>8 bis 10 %</td>
+            <td>2,8 bis 3,3 %</td>
+            <td>Mischkristallhaertung, Bestaendigkeit Reduktionsmedien</td>
+          </tr>
+          <tr>
+            <td>Niob (Nb)</td>
+            <td>3,15 bis 4,15 %</td>
+            <td>4,75 bis 5,5 %</td>
+            <td>Mischkristallhaertung (IN625); Gamma-Prime-Ausscheidung (IN718)</td>
+          </tr>
+          <tr>
+            <td>Eisen (Fe)</td>
+            <td>max. 5 %</td>
+            <td>17 bis 21 %</td>
+            <td>Kostenreduktion, geringfuegige Festigkeitssteigerung</td>
+          </tr>
+          <tr>
+            <td>Aluminium (Al)</td>
+            <td>max. 0,4 %</td>
+            <td>0,2 bis 0,8 %</td>
+            <td>Gamma-Prime-Bildung (Ni3Al) fuer Ausscheidungshaertung</td>
+          </tr>
+          <tr>
+            <td>Titan (Ti)</td>
+            <td>max. 0,4 %</td>
+            <td>0,65 bis 1,15 %</td>
+            <td>Gamma-Prime Ni3(Al,Ti) Haertungsphase</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:28px;">
+      <h3 style="font-size:17px;font-weight:900;margin-bottom:12px;">Haertungsmechanismen im Vergleich</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:20px;">
+          <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--orange-dark);margin-bottom:8px;">IN625</div>
+          <div style="font-size:15px;font-weight:900;margin-bottom:10px;">Mischkristallhaertung</div>
+          <p style="font-size:14px;color:var(--ink-soft);">Mo und Nb losen sich vollstaendig in der Ni-Matrix auf und erzeugen Gitterspannungen. Keine Warbehandlung zur Festigkeitssteigerung noetig. Lediglich Loesungsglueher bei ca. 1.150 °C fuer optimale Eigenschaften.</p>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:20px;">
+          <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-dark);margin-bottom:8px;">IN718</div>
+          <div style="font-size:15px;font-weight:900;margin-bottom:10px;">Ausscheidungshaertung</div>
+          <p style="font-size:14px;color:var(--ink-soft);">Gamma-Prime-Phase Ni3(Nb, Al) scheidet bei gezieltem Auslagern (720 °C/620 °C) aus der Ni-Matrix aus. Streckgrenze steigt auf bis zu 1.400 MPa. Aufwendige zweistufige Waermebehandlung zwingend erforderlich.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <p>Mehr zur Metallurgie von Superlegierungen: <a href="https://www.3ddrucklife.de/blog" target="_parent">Unser Materialblog</a> erklaert Ausscheidungshaertung, Oxidation und Versagensanalysen verstaendlich.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TECHDATEN -->
+<section id="techdaten" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Mechanische &amp; Thermische Kennwerte</div>
+    <h2 class="sec-title">Technische Daten Inconel IN625 (SLM)</h2>
+    <p class="sec-sub">Alle Angaben fuer lösungsgeglühten Zustand nach SLM-Prozess. Pruefnormen ISO 6892-1.</p>
+
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead>
+          <tr>
+            <th>Eigenschaft</th>
+            <th>Wert</th>
+            <th>Norm / Bemerkung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Zugfestigkeit (Rm)</td>
+            <td><span class="tval">900 bis 950 MPa</span></td>
+            <td>ISO 6892-1, loesungsgeglueht</td>
+          </tr>
+          <tr>
+            <td>Streckgrenze (Rp0,2)</td>
+            <td><span class="tval">540 bis 620 MPa</span></td>
+            <td>ISO 6892-1</td>
+          </tr>
+          <tr>
+            <td>Bruchdehnung (A)</td>
+            <td><span class="tval">35 bis 45 %</span></td>
+            <td>ISO 6892-1, gute Duktilitaet</td>
+          </tr>
+          <tr>
+            <td>E-Modul</td>
+            <td>ca. 205 GPa</td>
+            <td>Raumtemperatur</td>
+          </tr>
+          <tr>
+            <td>Dichte</td>
+            <td>8,44 g/cm³</td>
+            <td>Vollmaterial</td>
+          </tr>
+          <tr>
+            <td>Schmelzbereich</td>
+            <td>1.290 bis 1.350 °C</td>
+            <td>Legierungsabhaengig</td>
+          </tr>
+          <tr>
+            <td>Max. Dauerbetrieb</td>
+            <td><span class="tval">980 °C</span></td>
+            <td>Luft, oxidierendes Milieu</td>
+          </tr>
+          <tr>
+            <td>Waermeleitfaehigkeit</td>
+            <td>9,8 W/(m·K)</td>
+            <td>bei 20 °C (gering)</td>
+          </tr>
+          <tr>
+            <td>Waermeausdehnung</td>
+            <td>12,8 x 10⁻⁶/K</td>
+            <td>20 bis 100 °C</td>
+          </tr>
+          <tr>
+            <td>Haerte</td>
+            <td>ca. 200 bis 240 HV</td>
+            <td>Vickers, loesungsgeglueht</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:24px;background:var(--paper-2);border-radius:var(--radius);padding:18px 22px;">
+      <p style="font-size:13px;color:var(--ink-soft);"><strong>Hinweis IN718:</strong> Nach Standardwaermebehandlung (Loesungsglueher 980 °C + zweistufiges Auslagern 720/620 °C) erreicht IN718 eine Streckgrenze von 1.100 bis 1.400 MPa und eine Zugfestigkeit von 1.250 bis 1.450 MPa bei gleichzeitig reduzierter Bruchdehnung von 12 bis 20 %.</p>
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <p>Technische Daten im Kontext verstehen: In unserem <a href="https://www.3ddrucklife.de/blog" target="_parent">Materialblog</a> erklaeren wir, warum SLM-Bauteile oft andere Kennwerte als Walzware aufweisen und wie Bauteilausrichtung die Festigkeit beeinflusst.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Einsatzgebiete</div>
+    <h2 class="sec-title">Anwendungen von Inconel im 3D-Druck</h2>
+    <p class="sec-sub">Ueberall dort, wo extreme Temperaturen, korrosive Medien oder hohe mechanische Lasten kombiniert auftreten.</p>
+
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="ucard__title">Turbinenkomponenten</div>
+        <p>Brennkammern, Laufschaufeln und Diffusoren fuer Flugtriebwerke und stationaere Gasturbinen. Dauerbetrieb bei bis zu 980 °C ohne Kriechverformung.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div class="ucard__title">Raumfahrt</div>
+        <p>Raketentriebwerk-Injektoren, Duesen und Druckkammern. Bestaendigkeit gegen kryogene Treibstoffe und extremen Waermeschock.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="ucard__title">Waermetauscher</div>
+        <p>Waermetauscher fuer aggressive Medien wie Chloride, Saeure und Meerwasser. Keine Lochkorrosion durch hohen Mo-Gehalt in IN625.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0H5m4 0h10m-10 0v4m0 0H5a2 2 0 0 1-2-2v-4m14 4h4a2 2 0 0 0 2-2v-4"/></svg>
+        </div>
+        <div class="ucard__title">Chemische Verfahrenstechnik</div>
+        <p>Reaktorbauteile, Ruehrwerke und Leitungen fuer stark korrosive Prozesse. Bestaendigkeit gegen Salz-, Salpeter- und Schwefelsaeure.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l3-8 4 5 3-3 4 6"/><path d="M21 21H3"/></svg>
+        </div>
+        <div class="ucard__title">Offshore &amp; Subsea</div>
+        <p>Unterwasserstrukturen, Bohrausruestungen und Ventile im Meerwasser-Dauerbetrieb. Kein Chlorid-Stress-Risskorrosion auch bei hohem Druck.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8l4 4-4 4"/></svg>
+        </div>
+        <div class="ucard__title">Motorsport &amp; Abgasanlage</div>
+        <p>Abgaskruemmer, Turboladergehaeusen und Hitzeschilde fuer Hochleistungsmotoren. Kombination aus Hitze- und Schwingbestaendigkeit.</p>
+      </div>
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <p>Inconel in der Raumfahrt: Unser <a href="https://www.3ddrucklife.de/blog" target="_parent">Blog-Artikel zu Hochtemperaturanwendungen</a> zeigt konkrete Beispiele aus Triebwerksentwicklung und Satellitenbau.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Legierungsfamilie</div>
+    <h2 class="sec-title">Inconel-Varianten und verwandte Superlegierungen</h2>
+    <p class="sec-sub">Die Wahl der richtigen Legierung haengt vom konkreten Temperatur-Korrosions-Festigkeitsprofil des Bauteils ab.</p>
+
+    <div class="variants-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Standard</div>
+        <div class="vcard__name">Inconel 625 (IN625)</div>
+        <p>Mischkristallgehaertet, kein Auslagern noetig. Beste Schweissbarkeit, exzellente Korrosionsbestaendigkeit. Standard fuer chemische Industrie, Offshore und Aerospace-Schweissnahtsanierungen.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Hoechste Festigkeit</div>
+        <div class="vcard__name">Inconel 718 (IN718)</div>
+        <p>Ausscheidungsgehaertet nach Loesungsglueher und zweistufigem Auslagern. Streckgrenze bis 1.400 MPa. Bevorzugt fuer rotierende Triebwerksteile, Verdichterradscheiben und hochbelastete Strukturen.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Kriechfestigkeit</div>
+        <div class="vcard__name">Haynes 282</div>
+        <p>Optimiert fuer ueberlegene Kriechbestaendigkeit bei 700 bis 900 °C. Gute Schweissbarkeit. Eingesetzt in fortschrittlichen stationaeren Gasturbinen und zukuenftigen Flugzeugantrieben.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Oxidation</div>
+        <div class="vcard__name">Hastelloy X</div>
+        <p>Hoeher Cr-Gehalt fuer maximale Oxidationsbestaendigkeit bei sehr hohen Temperaturen. Gut schweissbar. Einsatz in Brennkammern, Nachbrennerrohren und Waermebehandlungsoefen.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Raumfahrt</div>
+        <div class="vcard__name">Waspaloy</div>
+        <p>Ausscheidungsgehaertete Ni-Superlegierung fuer Hochdruckturbinen in Flugzeugtriebwerken. AS9100-zertifiziert. Hoehere Temperaturbestaendigkeit als IN718 im aushegaerteten Zustand.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Variant</div>
+        <div class="vcard__name">Inconel 939 (IN939)</div>
+        <p>Gamma-Prime-gehaertete Legierung mit sehr hoher Hochtemperaturfestigkeit oberhalb von 900 °C. Fuer stationaere Turbinen ohne die strengen Gewichtsrestriktionen der Luftfahrt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Post-Processing</div>
+    <h2 class="sec-title">Nachbearbeitung von Inconel-Bauteilen</h2>
+    <p class="sec-sub">Inconel ist einer der schwierigsten Werkstoffe in der spanenden Bearbeitung. Jeder Schritt erfordert Spezialwerkzeug und Erfahrung.</p>
+
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__num">1</div>
+        <strong>Stuetzstrukturen entfernen</strong>
+        <p>Sehr schwierig durch hohe Haerte und Zaehigkeit. EDM (Funkenerodieren) bevorzugt fuer praezise Trennung ohne Beschaedigung des Bauteils. Saegen und Fraesen mit Hartmetallwerkzeug moeglich.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">2</div>
+        <strong>Waermebehandlung</strong>
+        <p>IN625: Loesungsglueher bei 1.150 °C fuer optimale Duktilitaet und Korrosionsbestaendigkeit. IN718: Loesungsglueher 980 °C + Auslagern 720 °C (8h) + 620 °C (8h) fuer Maximalfestigkeit.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">3</div>
+        <strong>Kugelstrahlen (Peening)</strong>
+        <p>Druckeigenspannungen an der Bauteiloberflaeche verbessern Dauerfestigkeit und Ermuedungsbestaendigkeit erheblich. Besonders wichtig fuer rotierende oder zyklisch belastete Komponenten.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">4</div>
+        <strong>Schleifen &amp; Honen</strong>
+        <p>Sehr aufwendig. Erfordert CBN- oder Diamantwerkzeug, niedrige Schnittgeschwindigkeiten und intensive Kuehlung. Inconel neigt zur Kaltverfestigung und zum Zusetzen von Werkzeug.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__num">5</div>
+        <strong>Elektropolieren</strong>
+        <p>Fuer Innenkanale, Kuehlbohrungen und medienberuehrte Flaechen unverzichtbar. Beseitigt Rauheitsspitzen, verbessert Korrosionsbestaendigkeit und reduziert Druckverluste in Stroemungskanalen.</p>
+      </div>
+    </div>
+
+    <div class="post-note" style="margin-top:20px;">
+      <strong>Wichtig:</strong> Inconel weist ausgepraegten Kaltverfestigungseffekt auf. Bei spanender Bearbeitung immer mit scharfem Werkzeug, geringem Vorschub und guter Kuehlung arbeiten. Verschlissene Werkzeuge reiben statt zu schneiden und erzeugen Waerme und Risse.
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <p>Waermebehandlung von Superlegierungen: Unser <a href="https://www.3ddrucklife.de/blog" target="_parent">Blog-Artikel</a> erklaert Loesungsglueher, Auslagern und den Einfluss auf Gefuege und Eigenschaften Schritt fuer Schritt.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FUELLUNGSGRADE / GEOMETRIE -->
+<section id="fuellungsgrade" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Geometrie &amp; Konstruktion</div>
+    <h2 class="sec-title">Geometrieregeln und Bauteildesign fuer Inconel</h2>
+    <p class="sec-sub">Inconel wird grundsaetzlich als Vollmaterial gedruckt. Komplexe Innengeometrien erfordern besondere konstruktive Massnahmen.</p>
+
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">100 %</div>
+        <div class="fill-card__name">Vollmaterial</div>
+        <p>Inconel wird ausschliesslich als vollstaendig gefuelltes Bauteil gedruckt. Kein Infill-Konzept wie bei Kunststoffen. Maximale Dichte und Festigkeit.</p>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">0,5 mm</div>
+        <div class="fill-card__name">Min. Wandstaerke</div>
+        <p>Mindestwandstaerke fuer stabile SLM-Bauteile aus Inconel. Duennere Waende koennen durch Eigenspannungen verziehen oder brechen.</p>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">45°</div>
+        <div class="fill-card__name">Ueberhangwinkel</div>
+        <p>Ueberhang unter 45° zur Bauplattform benoetigt Stuetzstrukturen. Konsequente Bauteilorientierung reduziert Stuetzbedarf und Nachbearbeitungsaufwand.</p>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">Drain</div>
+        <div class="fill-card__name">Pulverentfernung</div>
+        <p>Geschlossene Innenvolumina muessen durch Drain-Holes (min. 5 mm Durchmesser) zugaenglich sein. Eingeschlossenes Pulver ist sicherheitsrelevant und kostenintensiv.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--paper-2);border-radius:var(--radius);padding:22px 26px;margin-top:24px;">
+      <h3 style="font-size:16px;font-weight:900;margin-bottom:14px;">Kuehlkanalgeometrien</h3>
+      <p style="font-size:14px;color:var(--ink-soft);line-height:1.65;">Inconel erlaubt hochkomplexe Kuehlkanalgeometrien direkt aus dem Druck, die konventionell unmoetlich herstellbar waeren. Beim Entwurf sind folgende Punkte zu beachten: Kreisfoermige oder elliptische Querschnitte (keine rechteckigen Ecken), Durchmesser ab 0,8 mm, Ausreichend Drain-Holes fuer Restpulverentfernung nach dem Druck, sowie elektrolytische Polierbarkeit der Kanalinnenwand einplanen.</p>
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <p>Design-fuer-SLM: In unserem <a href="https://www.3ddrucklife.de/blog" target="_parent">Konstruktionsleitfaden</a> erklaeren wir Overhang-Regeln, Stuetzstruktur-Strategien und Kanaldesign fuer metallische SLM-Bauteile.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Einschraenkungen</div>
+    <h2 class="sec-title">Grenzen und Nachteile von Inconel</h2>
+    <p class="sec-sub">Inconel ist das richtige Material fuer Extremanforderungen, aber es kommt mit erheblichen Einschraenkungen in Preis, Bearbeitbarkeit und Gewicht.</p>
+    <div class="callout">
+      <div class="callout__title">Was Inconel nicht kann</div>
+      <p><strong>Sehr hohe Kosten:</strong> Inconel-Pulver kostet 80 bis 200 €/kg. Im fertigen Bauteil entstehen Gesamtkosten von 15 bis 30 €/cm³ und mehr. Nur gerechtfertigt wenn technische Anforderungen keine guenstigere Alternative erlauben.</p>
+      <p><strong>Schwer zerspanbar:</strong> Ausgepraegter Kaltverfestigungseffekt, geringe Waermeleitfaehigkeit (9,8 W/mK) und hohe Festigkeit machen spanende Nachbearbeitung extrem aufwendig und werkzeugverschleissend.</p>
+      <p><strong>Hohe Dichte:</strong> 8,44 g/cm³ ist deutlich schwerer als Titan (4,43 g/cm³) oder Aluminium (2,7 g/cm³). Fuer gewichtskritische Anwendungen oft keine erste Wahl.</p>
+      <p><strong>Schlechte Waermeleitfaehigkeit:</strong> 9,8 W/(m·K) ist niedrig fuer ein Metall. Inconel eignet sich nicht als Kuehlkoerper oder Waermeleitelement.</p>
+      <p><strong>Sehr lange Druckzeiten:</strong> Geringe SLM-Baurate durch hohen Schmelzpunkt und enge Prozessfenster. Komplexe Bauteile koennen mehrere Tage Druckzeit benoetigen.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="callout__link" target="_parent">Alle Materialien vergleichen</a>
+        <a href="https://www.3ddrucklife.de/titan" class="callout__link" target="_parent">Titan Ti6Al4V</a>
+        <a href="https://www.3ddrucklife.de/edelstahl" class="callout__link" target="_parent">Edelstahl 316L</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Haeufige Fragen</div>
+    <h2 class="sec-title">FAQ zu Inconel im 3D-Druck</h2>
+    <p class="sec-sub">Antworten auf die wichtigsten Fragen rund um Inconel, Kosten, Konfiguration und Nachbearbeitung.</p>
+
+    <div class="faq-list">
+
+      <!-- Gruppe 1 -->
+      <div class="faq-group-label">Ueber Inconel</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist Inconel und warum wird es im 3D-Druck verwendet?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Inconel ist ein Markenname fuer Nickel-Chrom-Superlegierungen von Special Metals. Im 3D-Druck (SLM/LPBF) werden vor allem IN625 und IN718 eingesetzt. Der Hauptvorteil: Inconel behaelt seine mechanischen Eigenschaften bei Temperaturen bis 980 °C, waehrend Stahl ab ca. 400 °C und Titan ab ca. 350 °C nachgeben. In Kombination mit exzellenter Korrosionsbestaendigkeit ist Inconel das Standardmaterial fuer Turbinen, Triebwerke und chemische Hochleistungsanwendungen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist der Unterschied zwischen IN625 und IN718?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">IN625 haertet durch Mischkristallmechanismus (Molybdaen und Niob loesen sich in der Nickelmatrix auf) und benoetigt keine Waermebehandlung zur Festigkeitssteigerung. Es ist besser schweissbar und korrosionsbestaendiger. IN718 wird durch Ausscheidungshaertung nach gezieltem Auslagern deutlich fester (Streckgrenze bis 1.400 MPa). Es erfordert eine zweistufige Waermebehandlung, wird dafuer aber fuer hochbelastete rotierende Bauteile bevorzugt.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie korrosionsbestaendig ist Inconel wirklich?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ausgezeichnet in fast allen korrosiven Umgebungen. IN625 zeigt exzellente Bestaendigkeit gegen Chloride (kein Chlorid-Stress-Risskorrosion), Salz- und Schwefelsaeure, Meerwasser, Oxidation bis 980 °C sowie Reduktionsmedien durch den hohen Molybdaengehalt. In stark salpetersaurem Milieu und in bestimmten Hochtemperatur-Schwefelatmosphaeren gibt es jedoch Grenzen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Warum ist Inconel so teuer?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Mehrere Faktoren treiben den Preis: Rohstoffkosten fuer Nickel und Niob sind hoch und volatil. Die Pulverherstellung fuer SLM erfordert enge Korngroessenverteilung und hohe Reinheit. Der SLM-Prozess selbst laeuft langsamer als bei anderen Metallen (enges Prozessfenster, hoher Schmelzpunkt). Die Nachbearbeitung ist extrem aufwendig durch schlechte Zerspanbarkeit. Und schliesslich erfordern viele Anwendungen aufwendige Zertifizierungen und Qualitaetsnachweise.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Zertifizierungen hat 3D-gedrucktes Inconel?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Relevante Normen sind AMS 5666 (IN625 Knetlegierung), AMS 5662/5664 (IN718), NACE MR0175 fuer Sauergasanwendungen sowie AS9100 fuer Aerospace. Fuer Flugzeugzulassungen (EASA/FAA) ist ein vollstaendiger Qualification-Prozess inkl. Pruefkoupon-Kampagnen und DED/SLM-spezifischer Prozessqualifizierung erforderlich. Bitte klaerender Zertifizierungsbedarf vor Projektbeginn mit uns ab.</div>
+      </div>
+
+      <!-- Gruppe 2 -->
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was kostet ein Inconel-Bauteil im 3D-Druck?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Die Kosten haengen stark vom Bauteilvolumen, der Komplexitaet und dem Nachbearbeitungsaufwand ab. Als Richtwert: 15 bis 30 Euro pro cm³ und mehr fuer einfache Geometrien ohne aufwendige Nachbearbeitung. Hochkomplexe Teile mit vielen Kuehlkanaelen, EDM-Trennung und Waermebehandlung koennen ein Vielfaches kosten. Nutzen Sie unseren Preisrechner fuer Ihr konkretes Bauteil oder kontaktieren Sie uns direkt fuer ein individuelles Angebot.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welches Dateiformat wird fuer Inconel-Bestellung benoetigt?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Wir akzeptieren STL, STEP (bevorzugt fuer Praezisionsteile), OBJ und 3MF. Fuer Bauteile mit engen Toleranzen empfehlen wir STEP, da die Modellkernelgraph erhalten bleibt. Bitte alle Toleranzen, Oberflaechengueteforderungen und Waermebehandlungsvorgaben als PDF-Zeichnung beifuegen. Wandstaerken unter 0,5 mm und scharfe Innenecken bitte vor dem Upload pruefen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lange dauert die Lieferung von Inconel-Teilen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Durch lange Druckzeiten, mehrstufige Waermebehandlung und aufwendige Nachbearbeitung ist die Lieferzeit fuer Inconel-Bauteile typischerweise laenger als bei anderen Metallen. Rechnen Sie mit 2 bis 4 Wochen fuer Standardbauteile, bei komplexen Teilen mit Zertifizierungsanforderungen auch laenger. Fuer genaue Lieferzeiten fragen Sie uns bitte per Mail oder ueber das Anfrageformular an.</div>
+      </div>
+
+      <!-- Gruppe 3 -->
+      <div class="faq-group-label">3D-Druck allgemein &amp; Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welches 3D-Druckverfahren wird fuer Inconel eingesetzt?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Fast ausschliesslich SLM (Selective Laser Melting) bzw. LPBF (Laser Powder Bed Fusion). Dabei wird Inconel-Pulver (Korngrösse ca. 15 bis 45 Mikrometer) schichtweise durch einen Hochleistungslaser vollstaendig aufgeschmolzen. Alternativ gibt es DED (Directed Energy Deposition) fuer grosse Bauteile oder Reparaturen. Binder Jetting gefolgt von Sintern ist ebenfalls moeglich, liefert aber geringere Dichte und Festigkeit.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist eine Waermebehandlung nach dem 3D-Druck zwingend?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Fuer IN625 ist Loesungsglueher bei ca. 1.150 °C empfohlen, um Eigenspannungen abzubauen und optimale Korrosionsbestaendigkeit sicherzustellen. Fuer IN718 ist eine zweistufige Waermebehandlung (Loesungsglueher + Auslagern) zwingend, um die Gamma-Prime-Ausscheidungen zu bilden und die vollen Festigkeitseigenschaften zu erzielen. Ohne Auslagern hat IN718 im SLM-Zustand keine Vorteile gegenueber IN625, aber hoehere Kosten.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann Inconel nach dem Drucken noch geschweisst werden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">IN625 ist sehr gut schweissbar mit ER625-Zusatzwerkstoff. Reparatur und Fuegen durch WIG/TIG oder Laserauftragschweissen ist moeglich. IN718 ist eingeschraenkt schweissbar, neigt zur Rissbildung in der Waermeeinflusszone, besonders im ausgehaerteten Zustand. Generell: Schweisskonstruktionen muessen mit Fachleuten geplant werden. Nach dem Schweissen ist eine erneute Waermebehandlung zur Spannungsarmgluehung empfohlen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Oberflaechenguete ist direkt aus dem SLM-Prozess zu erwarten?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Direkt aus dem SLM-Prozess liegt Ra typischerweise bei 6 bis 16 Mikrometer, abhaengig von Bauteilorientierung (Z-Flaechen besser als schraegeFlaechen) und Prozessparametern. Fuer Stroemungskanaele oder dichtende Flaechen ist Nachbearbeitung durch Elektropolieren (Ra bis 0,5 Mikrometer) oder Schleifen erforderlich. Fuer rein strukturelle Bauteile ist der As-built-Zustand nach Waermebehandlung oft ausreichend.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie verhaelt sich Inconel bei kryogenen Temperaturen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ausgezeichnet. Inconel (kubisch-flaechenzentriertes Kristallgitter, kfz) zeigt keine Spröd-Duktil-Uebergangstemperatur wie bei kfz-Staehlen bekannt. Duktilitaet und Zaehigkeit bleiben auch bei kryogenen Temperaturen (bis ca. minus 270 °C) erhalten. Deshalb ist Inconel auch fuer Raketentriebwerke relevant, die mit fluessigem Sauerstoff oder Stickstoff arbeiten und gleichzeitig extreme Heissgastemperaturen aushalten muessen.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">Inconel-Bauteile jetzt fertigen lassen</div>
+        <p class="cta-left__text">3D-Datei hochladen, Material waehlen, Preis sofort erhalten. Kein Angebot, kein Warten. Oder sprechen Sie uns direkt an fuer Projekte mit Hochtemperatur- oder Zertifizierungsanforderungen.</p>
+        <div class="btn-row">
+          <a href="https://3ddrucklife.com" class="btn btn--white" target="_parent">Preisrechner oeffnen</a>
+          <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Inconel" class="btn btn--white-outline">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Direktkontakt</div>
+        <div class="cta-right__title">Experten fuer Superlegierungen</div>
+        <p>Inconel-Projekte erfordern spezifisches Know-how in Prozessparametern, Waermebehandlung und Zertifizierung. Sprechen Sie uns fruehzeitig an.</p>
+        <div class="btn-row">
+          <a href="mailto:info@3ddrucklife.de?subject=Inconel Projektanfrage" class="btn btn--orange" target="_parent">Projekt anfragen</a>
+        </div>
+        <p style="font-size:13px;color:var(--ink-soft);">info@3ddrucklife.de &bull; Antwort in 24h</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-q').forEach(b => { b.setAttribute('aria-expanded','false'); b.nextElementSibling.style.display='none'; });
+    if (!open) { btn.setAttribute('aria-expanded','true'); btn.nextElementSibling.style.display='block'; }
+  });
+});
+
+// Active TOC
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.toc-link');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.dataset.s === e.target.id));
+  });
+}, { rootMargin: '-50px 0px -60% 0px' });
+secs.forEach(s => obs.observe(s));
+links.forEach(l => l.addEventListener('click', e => { e.preventDefault(); document.getElementById(l.dataset.s)?.scrollIntoView({behavior:'smooth'}); }));
+</script>
+</body>
+</html>

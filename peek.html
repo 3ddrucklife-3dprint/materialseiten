@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEEK – Hochtemperatur-Kunststoff für anspruchsvolle Bauteile | 3D DRUCK LIFE</title>
+<meta name="description" content="PEEK (Polyetheretherketon) für den 3D-Druck: Eigenschaften, technische Daten, Anwendungen und Varianten. Formstabil bis 250 °C, UL94 V-0, biokompatibel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+/* BREADCRUMB */
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+/* HERO */
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+/* STICKY TOC */
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+/* SECTIONS */
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+/* WAS IST */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+/* VERGLEICH */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 24px; font-weight: 900; margin-bottom: 18px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.ccard__row:last-child { border-bottom: none; padding-bottom: 0; }
+.ccard__key { color: var(--ink-soft); }
+.ccard__val { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-g { background: #22c55e; }
+.dot-y { background: #f59e0b; }
+.dot-r { background: #ef4444; }
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+
+/* BLOG LINK BOX */
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+/* CHEM TABLE */
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* TECH TABLE */
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* VARIANTEN */
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ANWENDUNGEN */
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+
+/* NACHBEARBEITUNG */
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__icon { width: 36px; height: 36px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); font-size: 18px; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note strong { font-weight: 700; }
+
+/* FÜLLUNGSGRADE */
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-visual { display: flex; gap: 4px; margin-top: 10px; }
+.fill-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--line); overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 3px; }
+
+/* GRENZEN */
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+/* FAQ */
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.faq-a a { color: var(--orange); text-decoration: underline; }
+
+/* CTA */
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.contact-row { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-soft); }
+.contact-row a { color: var(--orange); font-weight: 700; }
+.contact-icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); flex-shrink: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { order: -1; }
+  .hero__image img { border-radius: 8px; width: 100%; height: auto; }
+  .intro-grid, .compare-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+  .sec, .sec--alt { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">/</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">/</span>
+    <span class="breadcrumb__current">PEEK</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__inner">
+    <div>
+      <div class="hero__eyebrow">Material · Hochleistungsthermoplast · PAEK-Familie</div>
+      <h1 class="hero__title">PEEK: hochtemperaturbeständig, <span class="accent">chemikalienresistent</span> und biokompatibel.</h1>
+      <p class="hero__sub">Polyetheretherketon hält bis 250 °C stand, ist inherent flammhemmend (UL94 V-0) und biokompatibel nach ISO 10993. Der anspruchsvollste Standardkunststoff im FDM-3D-Druck.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">~100 MPa</span><span class="kstat__lbl">Zugfestigkeit</span></div>
+        <div class="kstat"><span class="kstat__val">bis 250 °C</span><span class="kstat__lbl">Formstabil</span></div>
+        <div class="kstat"><span class="kstat__val">UL94 V-0</span><span class="kstat__lbl">Flammschutz</span></div>
+        <div class="kstat"><span class="kstat__val">1,30 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+      </div>
+      <div class="btn-row">
+        <a href="https://3ddrucklife.com" class="btn btn--orange" target="_parent">➜ Preis berechnen</a>
+        <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage PEEK" class="btn btn--outline">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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" alt="PEEK 3D-Druck Bauteil – 3D DRUCK LIFE" loading="eager" width="900" height="900">
+    </div>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc-bar" aria-label="Inhaltsverzeichnis">
+  <div class="toc-bar__inner">
+    <a href="#material" class="toc-link">Was ist PEEK?</a>
+    <a href="#eigenschaften" class="toc-link">Eigenschaften</a>
+    <a href="#chemie" class="toc-link">Chemie</a>
+    <a href="#techdaten" class="toc-link">Technische Daten</a>
+    <a href="#anwendungen" class="toc-link">Anwendungen</a>
+    <a href="#varianten" class="toc-link">Varianten</a>
+    <a href="#nachbearbeitung" class="toc-link">Nachbearbeitung</a>
+    <a href="#fuellungsgrade" class="toc-link">Füllungsgrade</a>
+    <a href="#grenzen" class="toc-link">Grenzen</a>
+    <a href="#faq" class="toc-link">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST PEEK? -->
+<section id="material" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Materialübersicht</div>
+    <h2 class="sec-title">Was ist PEEK?</h2>
+    <p class="sec-sub">Ein teilkristalliner Hochleistungsthermoplast der PAEK-Familie mit außergewöhnlichen thermischen, mechanischen und chemischen Eigenschaften.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>PEEK (Polyetheretherketon) gehört zur Familie der PAEK-Polymere (Polyaryletherketone) und zählt zu den leistungsfähigsten technischen Kunststoffen überhaupt. Die Kombination aus hoher Einsatztemperatur bis 250 °C, exzellenter Chemikalienbeständigkeit und Biokompatibilität macht PEEK zum Werkstoff der Wahl, wenn andere Hochleistungspolymere an ihre Grenzen stoßen.</p>
+        <p>Im FDM-3D-Druck erfordert PEEK Drucktemperaturen von 360 bis 400 °C und ein beheiztes Bett von 120 bis 160 °C. Ein spezielles Hochtemperatur-Hotend und eine geschlossene Bauraum-Einhausung (Enclosure) sind zwingend erforderlich. Der Materialpreis liegt bei 400 bis 800 Euro pro Kilogramm, was PEEK zum teuersten gängigen FDM-Kunststoff macht.</p>
+        <p>Trotz des hohen Aufwands lohnt sich PEEK überall dort, wo andere Materialien scheitern: in medizinischen Implantaten, Luft- und Raumfahrtstrukturen sowie chemischen Prozessanlagen.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">🌡️</div>
+          <div class="fact__body">
+            <strong>Einsatztemperatur bis 250 °C</strong>
+            <span>Kristallines PEEK behält seine mechanischen Eigenschaften bei dauerhafter thermischer Belastung.</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🧪</div>
+          <div class="fact__body">
+            <strong>Exzellente Chemikalienbeständigkeit</strong>
+            <span>Beständig gegenüber fast allen organischen Lösemitteln, Säuren und Basen bei Raumtemperatur.</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🏥</div>
+          <div class="fact__body">
+            <strong>Biokompatibel nach ISO 10993</strong>
+            <span>Geeignet für Langzeitimplantate. PEEK-OPTIMA wird in Wirbelsäulen- und Schädelchirurgie eingesetzt.</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🔥</div>
+          <div class="fact__body">
+            <strong>UL94 V-0 ohne Additive</strong>
+            <span>Inhärenter Flammschutz auf höchster Stufe, ohne flammhemmende Zusätze.</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">☢️</div>
+          <div class="fact__body">
+            <strong>Strahlungsbeständig bis 1.000 kGy</strong>
+            <span>Geeignet für Gamma- und Röntgenstrahlungsumgebungen in der Nuklear- und Medizintechnik.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN -->
+<section id="eigenschaften" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialvergleich</div>
+    <h2 class="sec-title">PEEK im Vergleich</h2>
+    <p class="sec-sub">PEEK positioniert sich zwischen PPS und PEKK. Gegenüber PPS bietet PEEK höhere Temperaturfestigkeit und Biokompatibilität; PEKK übertrifft PEEK bei Steifigkeit und Einsatztemperatur.</p>
+    <div class="compare-grid">
+      <div class="ccard">
+        <div class="ccard__label">Vergleich</div>
+        <div class="ccard__name">PPS</div>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">90 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Einsatztemp.</span><span class="ccard__val">220 °C</span></div>
+        <div class="ccard__row"><span class="ccard__key">Chemikalienbest.</span><span class="ccard__val"><span class="dot dot-g"></span>sehr gut</span></div>
+        <div class="ccard__row"><span class="ccard__key">Biokompatibel</span><span class="ccard__val"><span class="dot dot-r"></span>nein</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis/kg</span><span class="ccard__val">200 bis 400 €</span></div>
+      </div>
+      <div class="ccard ccard--center">
+        <div class="ccard__label">Unser Material</div>
+        <div class="ccard__name">PEEK</div>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">100 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Einsatztemp.</span><span class="ccard__val">250 °C</span></div>
+        <div class="ccard__row"><span class="ccard__key">Chemikalienbest.</span><span class="ccard__val"><span class="dot dot-g"></span>exzellent</span></div>
+        <div class="ccard__row"><span class="ccard__key">Biokompatibel</span><span class="ccard__val"><span class="dot dot-g"></span>ja (ISO 10993)</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis/kg</span><span class="ccard__val">400 bis 800 €</span></div>
+      </div>
+      <div class="ccard">
+        <div class="ccard__label">Alternative</div>
+        <div class="ccard__name">PEKK</div>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">110 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Einsatztemp.</span><span class="ccard__val">260 °C</span></div>
+        <div class="ccard__row"><span class="ccard__key">Chemikalienbest.</span><span class="ccard__val"><span class="dot dot-g"></span>exzellent</span></div>
+        <div class="ccard__row"><span class="ccard__key">Biokompatibel</span><span class="ccard__val"><span class="dot dot-g"></span>ja</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis/kg</span><span class="ccard__val">500 bis 1.000 €</span></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:18px;font-weight:900;margin-bottom:16px;">Stärken auf einen Blick</h3>
+    <div class="strengths">
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div><strong>Hochtemperaturfest</strong><span>Dauerhafte Last bis 250 °C im kristallinen Zustand</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div><strong>Chemikalienresistent</strong><span>Beständig gegenüber fast allen industriellen Lösemitteln</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div><strong>Biokompatibel</strong><span>ISO 10993 zertifizierbar für Medizinprodukte</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div><strong>UL94 V-0</strong><span>Inherenter Flammschutz ohne Additive</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div><strong>Sterilisierbar</strong><span>Autoklav, Gammastrahlung und EtO möglich</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div><strong>Strahlungsbeständig</strong><span>Bis 1.000 kGy für Nuklear- und Medizintechnik</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE & AUFBAU -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Molekulare Struktur</div>
+    <h2 class="sec-title">Chemie &amp; Aufbau</h2>
+    <p class="sec-sub">Die aromatische Ether-Keton-Wiederholungseinheit verleiht PEEK seine charakteristische Kombination aus Steifigkeit, Zähigkeit und thermischer Stabilität.</p>
+
+    <p style="color:var(--ink-soft);margin-bottom:24px;">PEEK besteht aus einer aromatischen Ether-Keton-Ether-Keton-Ether-Keton-Wiederholungseinheit. Die Kombination aus aromatischen Ringen, Etherbrücken und Ketongruppen erzeugt ein Polymer mit außergewöhnlicher thermischer und chemischer Stabilität.</p>
+
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead><tr><th>Eigenschaft</th><th>Wert</th><th>Anmerkung</th></tr></thead>
+        <tbody>
+          <tr><td>Kristallinität</td><td><span class="badge-g">teilkristallin</span></td><td>Kristallisationsgrad 20 bis 35 %</td></tr>
+          <tr><td>Glasübergang Tg</td><td>ca. 143 °C</td><td>Amorpher Anteil erweicht ab hier</td></tr>
+          <tr><td>Schmelzpunkt Tm</td><td>ca. 343 °C</td><td>Drucktemperatur 360 bis 400 °C</td></tr>
+          <tr><td>Amorpher Zustand</td><td><span class="badge-y">transparent, weniger fest</span></td><td>Entsteht bei schneller Abkühlung</td></tr>
+          <tr><td>Kristalliner Zustand</td><td><span class="badge-g">opak, optimale Eigenschaften</span></td><td>Durch langsame Abkühlung oder Tempern</td></tr>
+          <tr><td>Monomere</td><td>Difluorbenzophenon + Hydrochinon</td><td>Elektrophile aromatische Substitution</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:24px;">
+      <p style="color:var(--ink-soft);font-size:15px;line-height:1.7;">Der Kristallisationsgrad beeinflusst die Endeigenschaften erheblich. Amorphes PEEK (schnelle Abkühlung) ist zäher, transparenter und weniger steif. Kristallines PEEK (langsame Abkühlung oder Tempern bei ca. 200 °C) erreicht die volle Wärmeformbeständigkeit bis 250 °C und maximale Festigkeit. Im FDM-Druck entsteht zunächst ein teilkristallines Bauteil; gezieltes Nachtemperinng optimiert den Kristallisationsgrad.</p>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Alle Hochleistungsthermoplaste im Überblick: PEEK, PEKK, PPS, PEI und mehr im Materialvergleich auf 3D DRUCK LIFE.</p>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Materialübersicht</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNISCHE DATEN -->
+<section id="techdaten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialkennwerte</div>
+    <h2 class="sec-title">Technische Daten</h2>
+    <p class="sec-sub">Alle Kennwerte beziehen sich auf PEEK im Reinzustand nach ISO-Normen. Gefüllte Varianten wie PEEK CF30 weichen deutlich ab.</p>
+
+    <h3 style="font-size:17px;font-weight:900;margin-bottom:14px;">Material-Kennwerte im Detail</h3>
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead><tr><th>Eigenschaft</th><th>Wert</th><th>Norm</th></tr></thead>
+        <tbody>
+          <tr><td>Zugfestigkeit</td><td><span class="tval">95 bis 105 MPa</span></td><td>ISO 527</td></tr>
+          <tr><td>E-Modul</td><td><span class="tval">3.600 bis 4.100 MPa</span></td><td>ISO 527</td></tr>
+          <tr><td>Bruchdehnung (amorph)</td><td>30 bis 50 %</td><td>ISO 527</td></tr>
+          <tr><td>Bruchdehnung (kristallin)</td><td>3 bis 5 %</td><td>ISO 527</td></tr>
+          <tr><td>Schlagzähigkeit</td><td>70 bis 85 kJ/m²</td><td>ISO 179</td></tr>
+          <tr><td>HDT (1,8 MPa) amorph</td><td>140 bis 160 °C</td><td>ISO 75</td></tr>
+          <tr><td>HDT (1,8 MPa) kristallin</td><td><span class="tval">bis 250 °C</span></td><td>ISO 75</td></tr>
+          <tr><td>Dichte</td><td>1,30 g/cm³</td><td>ISO 1183</td></tr>
+          <tr><td>Wasseraufnahme (24 h)</td><td>&lt; 0,1 %</td><td>ISO 62</td></tr>
+          <tr><td>Flammschutzklasse</td><td><span class="tval">UL94 V-0</span></td><td>UL94</td></tr>
+          <tr><td>Strahlungsbeständigkeit</td><td>bis 1.000 kGy</td><td>ASTM D7764</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Welches Hochtemperaturmaterial passt zu Ihrem Projekt? Alle Materialien mit Kennwerten im Vergleich auf unserer Übersichtsseite.</p>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Materialübersicht</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Einsatzgebiete</div>
+    <h2 class="sec-title">Anwendungen</h2>
+    <p class="sec-sub">PEEK wird eingesetzt, wo andere Kunststoffe scheitern: extreme Temperaturen, aggressive Chemikalien, sterile Umgebungen und höchste mechanische Anforderungen.</p>
+
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="ucard__title">Medizinische Implantate</div>
+        <p>Wirbelsäulenkäfige, Schädelrekonstruktionen und Knochenersatz. PEEK-OPTIMA ist der Standard in der orthopädischen Chirurgie.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="ucard__title">Luft- und Raumfahrt</div>
+        <p>Strukturbauteile, Halterungen und Gehäuse in Bereichen mit dauerhafter thermischer Last und Anforderungen an Flammschutz.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="ucard__title">Chemische Prozessanlagen</div>
+        <p>Pumpengehäuse, Ventile und Leitungsbauteile für aggressive Medien. PEEK widersteht konzentrierten Säuren und Laugen.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="ucard__title">Halbleitertechnik</div>
+        <p>Vakuumkammern, Wafer-Handling-Komponenten und Prozessausrüstung. PEEK ist reinraumgeeignet und ausgasungsarm.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div class="ucard__title">Hochtemperatur-Lager</div>
+        <p>Zahnräder, Gleitlager und Führungselemente unter der Motorhaube. Selbstschmierend, verschleißfest und beständig bis 250 °C.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="ucard__title">Motorsport</div>
+        <p>Bauteile im Motorraum mit kombinierten Anforderungen aus Temperatur, Vibration und Kraftstoffbeständigkeit.</p>
+      </div>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Suchen Sie das richtige Hochleistungsmaterial für Ihre Anwendung? Auf unserer Materialübersicht finden Sie alle Werkstoffe mit Anwendungsfeldern im Vergleich.</p>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Materialübersicht</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialvarianten</div>
+    <h2 class="sec-title">PEEK-Varianten</h2>
+    <p class="sec-sub">Von medizinischem Implantatgrad bis zum carbonfaserverstärkten Hochsteifigkeitstyp: Die PEEK-Familie deckt ein breites Anforderungsspektrum ab.</p>
+
+    <div class="variants-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Standard</div>
+        <div class="vcard__name">PEEK Natur</div>
+        <p>Beige, unverstärkt. Ausgangspunkt der PEEK-Familie. Hohe Zähigkeit, gute Biokompatibilität. Einsatztemperatur bis 250 °C (kristallin). Universell für Prototypen und Funktionsbauteile.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Verstärkt</div>
+        <div class="vcard__name">PEEK CF30</div>
+        <p>30 % Kurzkohlefaser. E-Modul bis 20 GPa, erheblich gesteigerte Steifigkeit und Druckfestigkeit. Reduzierter thermischer Ausdehnungskoeffizient. Optimal für strukturtragende Hochtemperaturbauteile.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Wirtschaftlich</div>
+        <div class="vcard__name">PEEK GF30</div>
+        <p>30 % Glasfaser. Günstiger als PEEK CF30 bei vergleichbar gesteigerter Steifigkeit. Elektrisch nicht leitfähig. Geringere Abrasion am Hotend als CF-Varianten.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Medizin</div>
+        <div class="vcard__name">PEEK-OPTIMA</div>
+        <p>Implantatqualität nach ISO 10993. Zertifiziert für Langzeitkontakt mit Körpergewebe. Einsatz in Wirbelsäulen-, Schädel- und orthopädischer Chirurgie. Radiologisch transparent (MRT-kompatibel).</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Hochkristallin</div>
+        <div class="vcard__name">PEEK-HPV</div>
+        <p>Optimierte Heizplatten-Variante mit erhöhter Kristallinität direkt nach dem Druck. Reduzierter Temperaufwand. Verbesserte Wärmeformbeständigkeit für Hochtemperaturanwendungen ohne Nachbearbeitung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Finishing</div>
+    <h2 class="sec-title">Nachbearbeitung</h2>
+    <p class="sec-sub">PEEK ist gut zerspanbar und polierfähig. Tempern nach dem Druck ist der wichtigste Schritt für optimale mechanische Eigenschaften.</p>
+
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__icon">🔥</div>
+        <strong>Tempern</strong>
+        <p>200 °C, 2 bis 4 Stunden in einem Ofen. Erhöht Kristallisationsgrad, steigert HDT auf bis 250 °C und verbessert Zugfestigkeit. Mit Stützstruktur empfohlen, um Verzug zu verhindern.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">⚙️</div>
+        <strong>CNC-Fräsen</strong>
+        <p>PEEK ist sehr gut zerspanbar. Enge Toleranzen von IT7 und besser erreichbar. Gedruckte Rohlinge können anschließend präzisionsgefräst werden.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🪚</div>
+        <strong>Schleifen</strong>
+        <p>400 bis 1.200 Körnung für glatte Oberflächen. PEEK schleift sauber ohne Aufschmelzen. Nassschliff vermeidet Wärmeentwicklung.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">✨</div>
+        <strong>Polieren</strong>
+        <p>Rauheit Ra unter 0,4 µm erreichbar durch mechanisches Feinpolieren. Relevant für Dichtflächen, Gleitlager und medizinische Komponenten.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🏥</div>
+        <strong>Sterilisation</strong>
+        <p>Autoklav bei 134 °C, Gammastrahlung bis 1.000 kGy und Ethylenoxid (EtO) sind alle möglich. PEEK übersteht wiederholte Sterilisationszyklen ohne Eigenschaftsverlust.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🔩</div>
+        <strong>Gewindeschneiden</strong>
+        <p>PEEK nimmt Gewinde sehr sauber an. Formschneiden oder Zerspanen möglich. Gewindeinserts aus Metall für Hochlastverbindungen empfohlen.</p>
+      </div>
+    </div>
+
+    <div class="post-note" style="margin-top:16px;">
+      <strong>Tempern-Tipp:</strong> Bauteile auf einer ebenen, hitzebeständigen Unterlage im Ofen legen und langsam abkühlen lassen (Ofen ausschalten, Tür geschlossen halten). Schnelle Abkühlung reduziert den Kristallisationsgrad und damit die erreichbare HDT.
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Nachbearbeitungsoptionen für alle 3D-Druck-Materialien im Überblick. Welche Verfahren sich für Ihr Projekt eignen, zeigt unsere Materialübersicht.</p>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Materialübersicht</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Druckstrategie</div>
+    <h2 class="sec-title">Füllungsgrade</h2>
+    <p class="sec-sub">Bei PEEK ist ein höherer Infill als bei Standardmaterialien empfehlenswert. Dünnwandige Strukturen können durch den hohen Kristallinationsgrad rissempfindlich werden.</p>
+
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">40 bis 60 %</div>
+        <div class="fill-card__name">Strukturbauteile</div>
+        <p>Standard für mechanisch belastete Teile. Gute Kombination aus Festigkeit und Druckzeit.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:50%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:50%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:50%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:50%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">80 %</div>
+        <div class="fill-card__name">Hochtemperatur</div>
+        <p>Für Bauteile mit dauerhafter thermischer Last. In Kombination mit 4 bis 6 Perimeter-Wänden für maximale Formstabilität.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:80%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:80%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:80%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:80%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:80%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">100 %</div>
+        <div class="fill-card__name">Dichtungen &amp; Lager</div>
+        <p>Vollmassiv für Dichtungsringe, Gleitlager und Bauteile mit definierten Oberflächen. Höchste Dichte und Festigkeit.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-note">
+      <strong>Empfehlung:</strong> Tempern grundsätzlich mit einer Stützstruktur durchführen. PEEK neigt bei schneller Erwärmung und Abkühlung zu Verzug. Eine Schichthöhe von 0,1 bis 0,2 mm und 4 bis 6 Perimeter-Wände verbessern die Interschichtfestigkeit erheblich.
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Alle Materialien und ihre typischen Druckstrategien auf unserer Materialübersichtsseite. Direkt vergleichen und das passende Material finden.</p>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Materialübersicht</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Einschränkungen</div>
+    <h2 class="sec-title">Grenzen von PEEK</h2>
+    <p class="sec-sub">PEEK ist kein Universalmaterial. Kennen Sie die Einschränkungen, um das richtige Material für Ihre Anwendung zu wählen.</p>
+
+    <div class="callout">
+      <div class="callout__title">Wo PEEK an seine Grenzen stößt</div>
+      <p>PEEK erfordert eine spezielle Druckerumgebung: Hochtemperatur-Hotend (bis 450 °C ausgelegt), beheiztes Bett bei 120 bis 160 °C und zwingend eine geschlossene Einhausung. Standard-FDM-Drucker sind nicht geeignet. Der Materialpreis von 400 bis 800 Euro pro Kilogramm macht PEEK zur teuersten gängigen FDM-Option.</p>
+      <p>Ohne Enclosure tritt starker Verzug auf. Die hohe Drucktemperatur (360 bis 400 °C) erfordert außerdem ein abriebfestes Hardened-Steel-Nozzle, da Standard-Messing-Düsen zu schnell verschleißen. Für maximale Steifigkeit bei gleichem Gewicht ist PEEK CF30 oder PEKK CF überlegen.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/pekk" class="callout__link" target="_parent">PEKK</a>
+        <a href="https://www.3ddrucklife.de/pps" class="callout__link" target="_parent">PPS</a>
+        <a href="https://www.3ddrucklife.de/pei" class="callout__link" target="_parent">PEI (Ultem)</a>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="callout__link" target="_parent">Alle Materialien</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Häufige Fragen</div>
+    <h2 class="sec-title">FAQ zu PEEK</h2>
+    <p class="sec-sub">Antworten auf die häufigsten Fragen rund um PEEK im 3D-Druck.</p>
+
+    <div class="faq-list">
+
+      <!-- Gruppe 1 -->
+      <div class="faq-group-label">Über PEEK</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was bedeutet PEEK und wozu wird es verwendet?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">
+          <p>PEEK steht für Polyetheretherketon, ein teilkristalliner Hochleistungsthermoplast der PAEK-Familie. Es wird überall dort eingesetzt, wo hohe Temperaturen (bis 250 °C), aggressive Chemikalien und höchste mechanische Anforderungen zusammentreffen: medizinische Implantate, Luft- und Raumfahrt, Halbleitertechnik und chemische Prozessanlagen.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist PEEK biokompatibel und für medizinische Implantate geeignet?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">
+          <p>Ja. PEEK ist nach ISO 10993 biokompatibel und wird in der Medizintechnik als Implantatwerkstoff eingesetzt. Besonders PEEK-OPTIMA (von Invibio) ist speziell für Langzeitimplantate entwickelt und in der Wirbelsäulen- und Schädelchirurgie etabliert. PEEK ist zudem MRT-kompatibel und radiologisch transparent.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Bis zu welcher Temperatur ist PEEK formstabil?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">
+          <p>Kristallines PEEK bleibt bis ca. 250 °C formstabil (HDT bei 1,8 MPa nach ISO 75). Amorphes PEEK, das bei schneller Abkühlung entsteht, hat eine deutlich niedrigere HDT von 140 bis 160 °C. Durch Tempern (200 °C, 2 bis 4 Stunden) wird der Kristallisationsgrad erhöht und die volle Wärmeformbeständigkeit erreicht.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie verhält sich PEEK gegenüber Chemikalien?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">
+          <p>PEEK ist exzellent chemikalienbeständig. Es widersteht fast allen organischen Lösemitteln, konzentrierten Säuren und Basen bei Raumtemperatur sowie vielen aggressiven Medien bei erhöhter Temperatur. Einschränkungen bestehen bei rauchenden Schwefelsäure und einigen halogenierten Lösemitteln bei hohen Temperaturen.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist der Unterschied zwischen PEEK und PEKK?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">
+          <p>PEKK (Polyetherketonketon) ist ein eng verwandtes PAEK-Polymer mit höherer Zugfestigkeit (bis 110 MPa), höherer Einsatztemperatur (bis 260 °C) und einem günstigeren amorph-zu-kristallin-Verhältnis beim 3D-Druck. PEKK lässt sich bei etwas niedrigeren Temperaturen drucken und zeigt weniger Verzug. Es ist teurer als PEEK, bietet aber in vielen Anwendungen einen echten Leistungsvorsprung. Mehr dazu auf unserer <a href="https://www.3ddrucklife.de/pekk" target="_parent">PEKK-Materialseite</a>.</p>
+        </div>
+      </div>
+
+      <!-- Gruppe 2 -->
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welchen Drucker brauche ich für PEEK?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">
+          <p>PEEK erfordert ein Hochtemperatur-Hotend mit mindestens 400 °C Drucktemperatur, ein beheiztes Bett (120 bis 160 °C) und eine geschlossene Einhausung (Enclosure) mit beheiztem Bauraum. Ein abriebfestes Hardened-Steel-Nozzle ist wegen der hohen Schmelztemperatur und ggf. Faserverstärkung notwendig. Geeignete Systeme: Intamsys FUNMAT HT/PRO, 3DGence INDUSTRY F421, Aon3D Aon-M2+.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie viel kostet PEEK-Filament?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">
+          <p>PEEK-Filament kostet je nach Hersteller und Qualität 400 bis 800 Euro pro Kilogramm. PEEK CF30 und medizinische Qualitäten wie PEEK-OPTIMA liegen am oberen Ende oder darüber. Das macht PEEK zum teuersten gängigen FDM-Material. Günstigere Alternativen mit ähnlichem Anwendungsprofil sind PPS (200 bis 400 €/kg) oder PEI/Ultem (150 bis 400 €/kg).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie erhalte ich ein Angebot für PEEK-Bauteile?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">
+          <p>Laden Sie Ihre 3D-Datei auf <a href="https://3ddrucklife.com" target="_parent">3ddrucklife.com</a> hoch, wählen Sie PEEK als Material und erhalten Sie sofort einen Preis. Für spezielle Anforderungen wie medizinische Qualität, Zertifizierungen oder größere Stückzahlen wenden Sie sich direkt an uns: <a href="mailto:info@3ddrucklife.de">info@3ddrucklife.de</a></p>
+        </div>
+      </div>
+
+      <!-- Gruppe 3 -->
+      <div class="faq-group-label">3D-Druck allgemein &amp; Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Warum ist Tempern bei PEEK so wichtig?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">
+          <p>Direkt nach dem FDM-Druck enthält PEEK einen hohen amorphen Anteil mit niedrigerer HDT (140 bis 160 °C). Durch Tempern bei 200 °C über 2 bis 4 Stunden erhöht sich der Kristallisationsgrad auf 20 bis 35 %, was die HDT auf bis zu 250 °C steigert und die Zugfestigkeit verbessert. Ohne Tempern wird das volle Materialpotenzial nicht ausgeschöpft.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann PEEK sterilisiert werden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">
+          <p>Ja. PEEK kann mit allen gängigen Sterilisationsmethoden behandelt werden: Autoklav bei 134 °C, Gammastrahlung bis 1.000 kGy und Ethylenoxid (EtO). Das Material behält nach wiederholter Sterilisation seine Eigenschaften, was es ideal für wiederverwendbare medizinische Instrumente und Implantate macht.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Oberflächenqualität ist mit PEEK erreichbar?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">
+          <p>PEEK-Bauteile aus dem FDM-Druck haben eine typische Schichtstruktur mit Ra 10 bis 30 µm. Durch Schleifen (400 bis 1.200 Körnung) und mechanisches Polieren lässt sich Ra unter 0,4 µm erreichen. Durch CNC-Fräsen der Druckrohlinge sind Toleranzen bis IT7 und besser erreichbar.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie unterscheidet sich FDM-PEEK von CNC-gefrästem PEEK?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">
+          <p>CNC-gefrästes PEEK aus Vollmaterial erreicht isotrope Eigenschaften, engere Toleranzen und eine dichtere Struktur. FDM-gedrucktes PEEK ist anisotrop (Schichtrichtung schwächer als X/Y) und hat eine geringere Dichte durch Schichtstruktur. Der Vorteil des 3D-Drucks liegt in der Geometriefreiheit: komplexe Innengeometrien, Hohlräume und individualisierte Formen sind nur additiv fertigbar.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Alternativen zu PEEK gibt es im Hochtemperaturbereich?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <div class="faq-a">
+          <p>Abhängig vom Anforderungsprofil: <a href="https://www.3ddrucklife.de/pekk" target="_parent">PEKK</a> bietet höhere Steifigkeit und Einsatztemperatur. <a href="https://www.3ddrucklife.de/pei" target="_parent">PEI (Ultem)</a> ist günstiger und einfacher zu drucken bei etwas niedrigerer HDT. <a href="https://www.3ddrucklife.de/pps" target="_parent">PPS</a> ist die wirtschaftliche Alternative für chemische Anwendungen ohne Biokompatibilitätsanforderung. <a href="https://www.3ddrucklife.de/ppsu" target="_parent">PPSU</a> für Sterilisierbarkeit bei niedrigerer Temperaturanforderung.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">PEEK-Bauteile jetzt bestellen</div>
+        <p class="cta-left__text">3D-Datei hochladen, PEEK als Material wählen, Preis sofort erhalten. Schnelle Lieferung, zertifizierte Qualität.</p>
+        <div class="btn-row">
+          <a href="https://3ddrucklife.com" class="btn btn--white" target="_parent">Preisrechner öffnen</a>
+          <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage PEEK" class="btn btn--white-outline">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Direkter Kontakt</div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>Haben Sie Fragen? <a href="mailto:info@3ddrucklife.de">info@3ddrucklife.de</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>Antwort innerhalb von 24 Stunden an Werktagen</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>3D DRUCK LIFE – Made in Germany</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// TOC active state
+(function() {
+  const links = document.querySelectorAll('.toc-link');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+  function update() {
+    let current = 0;
+    sections.forEach((s, i) => {
+      if (s && window.scrollY + 80 >= s.offsetTop) current = i;
+    });
+    links.forEach((l, i) => l.classList.toggle('active', i === current));
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const expanded = this.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-q').forEach(b => {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.style.display = 'none';
+    });
+    if (!expanded) {
+      this.setAttribute('aria-expanded', 'true');
+      this.nextElementSibling.style.display = 'block';
+    }
+  });
+});
+</script>
+</body>
+</html>

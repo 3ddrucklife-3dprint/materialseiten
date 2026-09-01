@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glas / Fused Silica 3D-Druck – Materialseite | 3D DRUCK LIFE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 24px; font-weight: 900; margin-bottom: 18px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.ccard__row:last-child { border-bottom: none; padding-bottom: 0; }
+.ccard__key { color: var(--ink-soft); }
+.ccard__val { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-g { background: #22c55e; }
+.dot-y { background: #f59e0b; }
+.dot-r { background: #ef4444; }
+
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+.ucard__link { font-size: 13px; font-weight: 700; color: var(--orange-dark); text-decoration: none; margin-top: auto; padding-top: 4px; }
+.ucard__link:hover { text-decoration: underline; }
+
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__icon { width: 36px; height: 36px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); font-size: 18px; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note strong { font-weight: 700; }
+
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-visual { display: flex; gap: 4px; margin-top: 10px; }
+.fill-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--line); overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 3px; }
+
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.faq-a a { color: var(--orange); text-decoration: underline; }
+
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.contact-row { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-soft); }
+.contact-row a { color: var(--orange); font-weight: 700; }
+.contact-icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); flex-shrink: 0; }
+
+@media (max-width: 800px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { order: -1; }
+  .hero__image img { border-radius: 8px; width: 100%; height: auto; }
+  .intro-grid, .compare-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+  .sec, .sec--alt { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">/</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">/</span>
+    <span class="breadcrumb__current">Glas / Fused Silica</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__eyebrow">3D DRUCK LIFE &mdash; Materialseite</div>
+      <h1 class="hero__title">Glas / <span class="accent">Fused Silica</span></h1>
+      <p class="hero__sub">Borosilikatglas und Quarzglas im 3D-Druck: optische Transparenz, UV-Durchlässigkeit und Chemikalienbeständigkeit direkt aus dem Drucker.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">Optisch klar</span><span class="kstat__lbl">Transparent</span></div>
+        <div class="kstat"><span class="kstat__val">UV-durch&shy;lässig</span><span class="kstat__lbl">bis 180 nm</span></div>
+        <div class="kstat"><span class="kstat__val">bis 1000 °C</span><span class="kstat__lbl">Beständig</span></div>
+        <div class="kstat"><span class="kstat__val">2,20 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+      </div>
+      <div class="btn-row">
+        <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--orange" target="_parent">Preis berechnen</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--outline" target="_parent">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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" alt="Glas / Fused Silica 3D-Druck Bauteil – 3D DRUCK LIFE" loading="eager" width="900" height="900">
+    </div>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc-bar" aria-label="Inhaltsverzeichnis">
+  <div class="toc-bar__inner">
+    <a href="#material" class="toc-link">Was ist Glas?</a>
+    <a href="#eigenschaften" class="toc-link">Eigenschaften</a>
+    <a href="#chemie" class="toc-link">Chemie</a>
+    <a href="#techdaten" class="toc-link">Techdaten</a>
+    <a href="#anwendungen" class="toc-link">Anwendungen</a>
+    <a href="#varianten" class="toc-link">Varianten</a>
+    <a href="#nachbearbeitung" class="toc-link">Nachbearbeitung</a>
+    <a href="#fuellungsgrade" class="toc-link">Fuellungsgrade</a>
+    <a href="#grenzen" class="toc-link">Grenzen</a>
+    <a href="#faq" class="toc-link">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST GLAS -->
+<section id="material" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Material</div>
+    <h2 class="sec-title">Was ist Glas / Fused Silica im 3D-Druck?</h2>
+    <p class="sec-sub">Glas gehört zu den anspruchsvollsten Materialien im additiven Fertigungsbereich. Moderne Verfahren ermöglichen erstmals die direkte Herstellung optischer Glaskomponenten.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>Glas (Fused Silica / Quarzglas) im 3D-Druck ist eine der jüngsten Entwicklungen in der additiven Fertigung. Anders als Kunststoffe oder Metalle stellt Glas extreme Anforderungen an Prozesstemperaturen und Kontrolle. Dennoch haben mehrere Forschungsgruppen und Unternehmen Wege gefunden, echte Glasstrukturen dreidimensional aufzubauen.</p>
+        <p>Der bekannteste Ansatz ist das Glassomer-Verfahren: Ein Feedstock aus feinen Glaspartikeln (55 bis 65 Vol.-%) in einem Kunstharzbinder wird per SLA oder DLP verarbeitet und anschliessend bei 900 bis 1200 °C gesintert. Das Ergebnis ist ein monolithisches, vollständig transparentes Glasbauteil.</p>
+        <p>Daneben existieren Schmelzverfahren wie das Micron3DP-Verfahren (Extrusion von geschmolzenem Glas bei uber 1000 °C) und laserbasierte Ansatze fur Fused Silica. Allen Verfahren gemein ist die Schwierigkeit: Glas ist spröd, schrumpft beim Sintern um rund 15 % und erfordert sehr prazise thermische Kontrolle.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">🔬</div>
+          <div class="fact__body">
+            <strong>Glassomer-Verfahren</strong>
+            <span>SLA/DLP mit Glaspartikel-Slurry, anschliessend thermisches Sintern zu vollwertigem Glas</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🌡️</div>
+          <div class="fact__body">
+            <strong>Schmelzextrusion</strong>
+            <span>Micron3DP und MIT Mediated Matter: geschmolzenes Glas uber 1000 °C direkt extrudiert</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">💡</div>
+          <div class="fact__body">
+            <strong>Optische Reinheit</strong>
+            <span>Nach Polieren vollständige optische Transparenz, keine sichtbaren Schichtgrenzen</span>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🧪</div>
+          <div class="fact__body">
+            <strong>Forschungsstand</strong>
+            <span>Die meisten Verfahren befinden sich noch in der Forschungs- und Prototypingphase</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN -->
+<section id="eigenschaften" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Eigenschaften</div>
+    <h2 class="sec-title">Eigenschaften von 3D-gedrucktem Glas</h2>
+    <p class="sec-sub">Glas bietet eine einzigartige Kombination aus optischer Transparenz, chemischer Inertheit und thermischer Stabilitat.</p>
+    <div class="strengths">
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg>
+        </div>
+        <div><strong>Optisch transparent</strong><span>Nach Polieren vollständig klar, keine sichtbaren Schichtlinien</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg>
+        </div>
+        <div><strong>UV-durchlässig</strong><span>Quarzglas transmittiert UV-Licht bis 180 nm, einzigartig unter Glastypen</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg>
+        </div>
+        <div><strong>Chemisch inert</strong><span>Beständig gegen Säuren, Laugen und nahezu alle organischen Lösungsmittel</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg>
+        </div>
+        <div><strong>Geringe Wärmedehnung</strong><span>Sehr niedriger thermischer Ausdehnungskoeffizient, ideal für Präzisionsoptik</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg>
+        </div>
+        <div><strong>Biokompatibel</strong><span>Geeignet für medizinische und pharmazeutische Anwendungen</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg>
+        </div>
+        <div><strong>Hochtemperaturstabil</strong><span>Einsatz bis uber 1000 °C (Quarzglas), Schmelzpunkt ca. 1720 °C</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Chemie und Aufbau</div>
+    <h2 class="sec-title">Chemische Zusammensetzung</h2>
+    <p class="sec-sub">Glas ist ein amorphes Silikatmaterial. Je nach Zusammensetzung ergeben sich unterschiedliche optische und thermische Eigenschaften.</p>
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead>
+          <tr><th>Eigenschaft</th><th>Quarzglas (Fused Silica)</th><th>Borosilikatglas</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Hauptkomponente</td><td>SiO2 (nahezu 100 %)</td><td>SiO2 + B2O3 + Na2O</td></tr>
+          <tr><td>Struktur</td><td>Amorph (kein Kristallgitter)</td><td>Amorph</td></tr>
+          <tr><td>Schmelzpunkt</td><td>~1720 °C</td><td>~820 °C (Erweichung)</td></tr>
+          <tr><td>Brechungsindex</td><td>1,458</td><td>1,472</td></tr>
+          <tr><td>UV-Transparenz</td><td><span class="badge-g">bis 180 nm</span></td><td><span class="badge-y">ab ca. 300 nm</span></td></tr>
+          <tr><td>Chemikalienbeständigkeit</td><td><span class="badge-g">Sehr hoch</span></td><td><span class="badge-g">Hoch</span></td></tr>
+          <tr><td>Thermoschockbeständigkeit</td><td>Mittel</td><td><span class="badge-g">Sehr gut</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr zur Chemie und Materialwissenschaft im 3D-Druck findest du in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNISCHE DATEN -->
+<section id="techdaten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Technische Daten</div>
+    <h2 class="sec-title">Technische Kennwerte</h2>
+    <p class="sec-sub">Materialwerte fur gesintertes Glas (Glassomer-Verfahren, Quarzglas wenn nicht anders angegeben).</p>
+    <h3>Material-Kennwerte im Detail</h3>
+    <div class="tech-table-wrap" style="margin-top:12px;">
+      <table class="tech-table">
+        <thead>
+          <tr><th>Eigenschaft</th><th>Wert</th><th>Norm / Hinweis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Zugfestigkeit</td><td><span class="tval">50-70 MPa</span></td><td>Typisch fur Quarzglas</td></tr>
+          <tr><td>E-Modul</td><td><span class="tval">~73 GPa</span></td><td>Quarzglas</td></tr>
+          <tr><td>Dichte</td><td><span class="tval">2,20 g/cm³</span></td><td>Quarzglas (ISO 1183)</td></tr>
+          <tr><td>Brechungsindex</td><td><span class="tval">1,46-1,47</span></td><td>Wellenlängenabhängig</td></tr>
+          <tr><td>UV-Transmission</td><td><span class="tval">bis 180 nm</span></td><td>Fused Silica / Quarzglas</td></tr>
+          <tr><td>Max. Einsatztemperatur</td><td><span class="tval">bis 1000 °C</span></td><td>Quarzglas (Dauerbetrieb)</td></tr>
+          <tr><td>Sinterschrumpfung</td><td><span class="tval">~15 %</span></td><td>Glassomer-Verfahren</td></tr>
+          <tr><td>Thermoschockbeständigkeit</td><td><span class="tval">Gut (Borosilikat)</span></td><td>ΔT bis 160 K</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Detaillierte Vergleiche zwischen Glastypen und anderen transparenten Materialien im 3D-Druck findest du in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Anwendungen</div>
+    <h2 class="sec-title">Typische Anwendungsgebiete</h2>
+    <p class="sec-sub">3D-gedrucktes Glas erschliesst vollig neue Möglichkeiten in der Optik, Analytik und im Laborbereich.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="ucard__title">Optische Komponenten</div>
+        <p>Linsen, Prismen und Lichtleiter mit komplexen Geometrien, die konventionell nur schwer herstellbar sind.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <div class="ucard__title">Mikrofluidik-Chips</div>
+        <p>Praezise Kanalstrukturen im Glas fur Lab-on-Chip-Anwendungen, Blutanalyse und chemische Synthese.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+        </div>
+        <div class="ucard__title">Laborgefässe</div>
+        <p>Reaktoren, Kuhlschlangen und individuelle Laborgeräte mit massgeschneiderten Geometrien.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="ucard__title">UV-Optik</div>
+        <p>Quarzglasbauteile fur UV-Sterilisation, Spektroskopie und UV-Laser-Anwendungen.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="ucard__title">Kunst und Design</div>
+        <p>Skulpturen, Designobjekte und Schmuck mit vollständig freier Formgebung in echtem Glas.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="ucard__title">Schmuck</div>
+        <p>Individuelle Glasschmuckstucke und Dekorationsobjekte mit organischen Formen.</p>
+      </div>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr Anwendungsbeispiele und Fallstudien zum 3D-Druck mit Spezialmaterialien in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Varianten</div>
+    <h2 class="sec-title">Glasvarianten im 3D-Druck</h2>
+    <p class="sec-sub">Je nach Anwendungsfall gibt es unterschiedliche Glastypen mit spezifischen Eigenschaften.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Reinst-SiO2</div>
+        <div class="vcard__name">Fused Silica (Quarzglas)</div>
+        <p>Nahezu reines SiO2, maximale UV-Transparenz bis 180 nm, extrem geringe Wärmedehnung und chemische Inertheit. Hochster Reinheitsgrad. Einsatz in UV-Optik, Spektroskopie und Hochtemperaturanwendungen.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">SiO2 + B2O3</div>
+        <div class="vcard__name">Borosilikatglas</div>
+        <p>Klassisches Laborglas (ähnlich Duran / Pyrex). Hervorragende Thermoschockbeständigkeit, labortauglich, günstiger als reines Quarzglas. Ideal fur Laborgeräte, Reaktoren und Alltagsoptik.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Günstig</div>
+        <div class="vcard__name">Soda-Lime-Glas</div>
+        <p>Gewöhnliches Fensterglas (SiO2 + Na2O + CaO). Günstigste Option, geringe Thermoschockbeständigkeit. Geeignet fur Designobjekte und dekorative Anwendungen ohne extreme Anforderungen.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">SLA-verarbeitbar</div>
+        <div class="vcard__name">Glassomer-Feedstock</div>
+        <p>Speziell aufbereitetes Glaspartikel-Kunstharzsystem fur die SLA/DLP-Verarbeitung. Wird nach dem Druck thermisch entbindert und gesintert. Ermöglicht komplexe Geometrien mit hoher Auflösung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Nachbearbeitung</div>
+    <h2 class="sec-title">Nachbearbeitung von 3D-gedrucktem Glas</h2>
+    <p class="sec-sub">Glasbauteile aus dem 3D-Drucker durchlaufen mehrere Nachbearbeitungsschritte, um ihre finalen Eigenschaften zu erreichen.</p>
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__icon">🔥</div>
+        <strong>Sintern (Pflicht)</strong>
+        <p>Alle Glassomer-Bauteile werden bei 900 bis 1200 °C gesintert. Dabei verbrennt der Binder und die Glaspartikel verschmelzen zu monolithischem Glas. Sinterschrumpfung ca. 15 % einplanen.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">✨</div>
+        <strong>Polieren</strong>
+        <p>Mechanisches oder chemisches Polieren fur optische Qualität. Entfernt Oberflächenrauheit und stellt volle Transparenz sicher. Standard fur Linsen und optische Elemente.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🕯️</div>
+        <strong>Fire Polishing</strong>
+        <p>Kurzes Erhitzen mit einer Flamme oder im Ofen glättet die Oberfläche durch kurzzeitiges Anschmelzen. Schnellere Alternative zum mechanischen Polieren fur einfachere Geometrien.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🪞</div>
+        <strong>Beschichtungen</strong>
+        <p>Antireflexbeschichtungen (AR-Coating), metallische Spiegelschichten oder Harteschichten können aufgebracht werden. Standard in der Optikfertigung.</p>
+      </div>
+    </div>
+    <div class="post-note">
+      <strong>Hinweis:</strong> Die Sinterschrumpfung von ca. 15 % muss beim Design berücksichtigt werden. Bauteile sind im Grünteil (vor dem Sintern) entsprechend größer auszulegen.
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Nachbearbeitungsverfahren fur Spezialmaterialien im 3D-Druck: Mehr dazu im Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Füllungsgrade</div>
+    <h2 class="sec-title">Glaspartikelgehalt und Füllungsgrade</h2>
+    <p class="sec-sub">Im Glassomer-Verfahren bestimmt der Glaspartikelanteil im Feedstock die Qualität des gesinterten Endprodukts.</p>
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">55 %</div>
+        <div class="fill-card__name">Mindestfüllgrad</div>
+        <p>Untergrenze fur verarbeitbaren Feedstock. Ausreichende Partikelvernetzung beim Sintern notwendig.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:55%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">60 %</div>
+        <div class="fill-card__name">Typischer Arbeitsbereich</div>
+        <p>Optimaler Kompromiss zwischen Verarbeitbarkeit und Dichte des gesinterten Glasteils.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:60%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">65 %</div>
+        <div class="fill-card__name">Maximaler Füllgrad</div>
+        <p>Höchste Glasdichte, minimale Restporosität nach dem Sintern. Bestes optisches Ergebnis.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:65%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">100 %</div>
+        <div class="fill-card__name">Nach dem Sintern</div>
+        <p>Monolithisches Glas ohne Partikelstruktur, vollständig dicht und optisch klar.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr zu Sinterverfahren und Materialverarbeitung im 3D-Druck-Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Grenzen und Einschränkungen</div>
+    <h2 class="sec-title">Wo stößt Glas-3D-Druck an Grenzen?</h2>
+    <div class="callout">
+      <div class="callout__title">Fruhes Technologiestadium mit klaren Einschränkungen</div>
+      <p>Glas-3D-Druck ist eine faszinierende, aber noch sehr junge Technologie. Die kommerzielle Verfügbarkeit ist stark begrenzt. Nur wenige spezialisierte Anbieter und Forschungseinrichtungen weltweit beherrschen diese Verfahren zuverlässig.</p>
+      <p>Die Sinterschrumpfung von ca. 15 % erfordert Erfahrung und CAD-Kompensation. Toleranzen sind schwerer vorherzusagen als bei konventionell gefertigtem Glas. Durch die Sprödigkeit von Glas können komplexe Stützstrukturen und dünne Wandbereiche beim Handling vor dem Sintern brechen. Ausserdem sind die Kosten pro Bauteil im Vergleich zu Kunststoff-3D-Druck extrem hoch. Die meisten Anwendungen bleiben Prototypen und Einzelstücke.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/resin-klar" class="callout__link" target="_parent">Resin Klar als Alternative</a>
+        <a href="https://www.3ddrucklife.de/pmma" class="callout__link" target="_parent">PMMA (Acrylglas)</a>
+        <a href="https://www.3ddrucklife.de/keramik" class="callout__link" target="_parent">Keramik 3D-Druck</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="callout__link" target="_parent">Beratung anfragen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">FAQ</div>
+    <h2 class="sec-title">Häufige Fragen zu Glas / Fused Silica</h2>
+    <div class="faq-list">
+
+      <div class="faq-group-label">Über Glas / Fused Silica</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist 3D-gedrucktes Glas wirklich echtes Glas?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Ja, beim Glassomer-Verfahren entsteht nach dem Sintern echtes, monolithisches Glas. Der gedruckte Grunteil besteht noch aus Glaspartikeln in einem Kunstharzbinder. Erst nach dem thermischen Sintern bei 900 bis 1200 °C verschmelzen die Glaspartikel zu vollwertigem, monolithischem Glas mit allen typischen Eigenschaften wie Transparenz, chemische Inertheit und UV-Durchlässigkeit.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Warum ist Glas-3D-Druck so selten verfügbar?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Die Technologie ist extrem anspruchsvoll. Das Sintern erfordert spezialisierte Hochtemperaturöfen und Erfahrung mit thermischer Prozessführung. Die Sinterschrumpfung von ca. 15 % muss kompensiert werden. Dazu kommt die Sprödigkeit von Glas, die das Handling vor dem Sintern schwierig macht. Die meisten Anbieter sind Forschungseinrichtungen oder sehr spezialisierte Dienstleister.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Glastypen eignen sich fur UV-Anwendungen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Fur UV-Optik und UV-Durchlässigkeit ist ausschliesslich Fused Silica (Quarzglas) geeignet. Es transmittiert UV-Licht bis hinunter zu 180 nm Wellenlänge. Borosilikatglas und Soda-Lime-Glas blockieren UV-Licht unterhalb von ca. 300 nm und eignen sich daher nicht fur UV-Sterilisation, UV-Spektroskopie oder UV-Laser-Anwendungen.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann ich Mikrofluidik-Chips aus Glas drucken lassen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Ja, Mikrofluidik ist eine der vielversprechendsten Anwendungen fur Glas-3D-Druck. Die Kombination aus chemischer Inertheit, optischer Transparenz und praezisen Kanalstrukturen macht Glas ideal fur Lab-on-Chip-Anwendungen. Allerdings sind die Kosten und Entwicklungszeiten noch hoch, da das Verfahren stark spezialisiert ist. Kontaktiere uns fur eine individuelle Beratung.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie transparent ist 3D-gedrucktes Glas?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Nach dem Sintern und Polieren erreicht 3D-gedrucktes Glas optische Transparenz vergleichbar mit konventionell hergestelltem Glas. Schichtlinien aus dem Druckprozess sind nach dem Polieren nicht mehr sichtbar. Ohne Polieren kann die Oberfläche noch leicht trüb sein, was durch Fire Polishing oder mechanisches Polieren behoben wird.</p>
+        </div>
+      </div>
+
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was kostet ein Bauteil aus 3D-gedrucktem Glas?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Glas-3D-Druck gehört zu den teuersten additiven Fertigungsverfahren. Die Kosten variieren stark je nach Bauteilgrösse, Komplexität und geforderter Genauigkeit. Aufgrund des aufwendigen Sinterprozesses und der spezialisierten Anlagen sind Einzelteile deutlich teurer als vergleichbare Kunststoff- oder Metallbauteile. Nutze unseren Preisrechner fur eine erste Einschätzung oder kontaktiere uns direkt.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lade ich eine 3D-Datei fur Glas hoch?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Lade deine 3D-Datei (STL, STEP oder OBJ) in unserem Preisrechner hoch und wähle Glas als Material. Fur Glasanwendungen empfehlen wir zusätzlich eine direkte Beratung, da Sinterschrumpfung und Designrichtlinien individuell berücksichtigt werden müssen. Wir prüfen die Datei auf Druckbarkeit und melden uns mit einem konkreten Angebot.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lange dauert die Fertigung?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Die Fertigung von Glasteilen dauert länger als bei Standard-3D-Druckmaterialien. Druck, Entbinderung und Sintern zusammen können mehrere Tage in Anspruch nehmen. Zusätzliche Nachbearbeitung wie Polieren verlängert die Lieferzeit weiter. Plane fur Glasbauteile typischerweise 2 bis 4 Wochen ein. Bei eiligen Projekten spreche uns gerne direkt an.</p>
+        </div>
+      </div>
+
+      <div class="faq-group-label">3D-Druck allgemein und Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann ich Glasteile bemalen oder beschichten?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Ja. 3D-gedruckte Glasbauteile können wie konventionelles Glas beschichtet werden. Ubliche Beschichtungen sind Antireflexschichten (AR-Coating) fur Optiken, metallische Spiegelschichten, hydrophobe Beschichtungen oder Harteschichten. Die Beschichtungsverfahren sind dieselben wie in der klassischen Glasoptik.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist 3D-gedrucktes Glas lebensmittelecht?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Gesintertes Glas ist an sich chemisch inert und lebensmittelecht. Allerdings muss sichergestellt sein, dass der Sinterprozess vollständig abgeschlossen ist und keine Binder-Reste mehr vorhanden sind. Die Oberflächenrauheit spielt fur Lebensmittelkontakt eine Rolle: Polierte Glasteile sind besser geeignet als unpolierte. Bei spezifischen Anforderungen ist eine Zertifizierung notwendig.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Alternativen gibt es zu echtem Glas im 3D-Druck?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Fur transparente Bauteile ohne UV-Anforderungen sind klares Resin (<a href="https://www.3ddrucklife.de/resin-klar" target="_parent">Resin Klar</a>) oder PMMA (<a href="https://www.3ddrucklife.de/pmma" target="_parent">Acrylglas</a>) deutlich zugänglichere Alternativen mit viel niedrigeren Kosten. Fur Hochtemperatur- oder Chemikalienpflichten ohne Optik-Anforderungen kann auch <a href="https://www.3ddrucklife.de/keramik" target="_parent">Keramik</a> interessant sein. Glas ist nur dann erste Wahl, wenn UV-Transparenz oder echte Glasinertheit unbedingt erforderlich ist.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie verhalte ich mich beim Umgang mit Grünteilen (vor dem Sintern)?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Grünteile sind das Bauteil vor dem Sintern, also der noch binderhaltige Rohling. Sie sind mechanisch sehr empfindlich und brechen leicht. Grünteile dürfen nicht fallen gelassen werden und sollten nur mit Handschuhen angefasst werden, um Verunreinigungen zu vermeiden. Transport und Lagerung vor dem Sintern erfordern besondere Sorgfalt. Der Sinterprozess selbst findet beim Dienstleister statt.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann man Stützstrukturen bei Glas-3D-Druck verwenden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Stützstrukturen sind beim Glassomer-SLA-Verfahren möglich, aber problematisch. Sie müssen nach dem Druck entfernt werden, was bei dem fragilen Grünteil heikel ist. Deshalb ist design-for-manufacturing besonders wichtig: Möglichst selbststützende Geometrien und Vermeidung grosser Uberhänge reduzieren den Bedarf an Stützstrukturen erheblich.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">Glas-Bauteile anfragen</div>
+        <p class="cta-left__text">Lade deine 3D-Datei hoch, wähle Glas als Material und erhalte ein Angebot. Oder kontaktiere uns direkt fur eine Beratung.</p>
+        <div class="btn-row">
+          <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--white" target="_parent">Preisrechner öffnen</a>
+          <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--white-outline" target="_parent">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Kontakt</div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span>Schreib uns: <a href="mailto:info@3ddrucklife.de">info@3ddrucklife.de</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <span>Werktags 9 bis 17 Uhr erreichbar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// FAQ toggle
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+    const answer = btn.nextElementSibling;
+    answer.style.display = expanded ? 'none' : 'block';
+  });
+});
+
+// TOC active state
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc-link');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector('.toc-link[href="#' + entry.target.id + '"]');
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PP Polypropylen – Materialeigenschaften & 3D-Druck | 3D DRUCK LIFE</title>
+<meta name="description" content="Polypropylen (PP) im 3D-Druck: leichtestes Standardpolymer, lebensmittelecht, chemikalienbeständig. Eigenschaften, technische Daten, Anwendungen und Nachbearbeitung.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn--white { background: #fff; color: var(--orange-dark); border: none; }
+.btn--white:hover { background: var(--orange-soft); }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.6); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 24px; font-weight: 900; margin-bottom: 18px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.ccard__row:last-child { border-bottom: none; padding-bottom: 0; }
+.ccard__key { color: var(--ink-soft); }
+.ccard__val { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-g { background: #22c55e; }
+.dot-y { background: #f59e0b; }
+.dot-r { background: #ef4444; }
+
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__icon { width: 36px; height: 36px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); font-size: 18px; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note strong { font-weight: 700; }
+
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-visual { display: flex; gap: 4px; margin-top: 10px; }
+.fill-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--line); overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 3px; }
+
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.faq-a a { color: var(--orange); text-decoration: underline; }
+
+.cta-wrap { padding: 64px 0; background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { padding: 48px; background: transparent; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 10px; }
+.cta-left__title { font-size: clamp(24px, 3vw, 36px); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 12px; }
+.cta-left__text { color: rgba(255,255,255,.85); font-size: 16px; margin-bottom: 0; }
+
+@media (max-width: 768px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 32px; }
+  .intro-grid { grid-template-columns: 1fr; gap: 28px; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">/</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">/</span>
+    <span class="breadcrumb__current">PP</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__eyebrow">3D-Druck Material</div>
+      <h1 class="hero__title">PP <span class="accent">Polypropylen</span></h1>
+      <p class="hero__sub">Das leichteste Standardpolymer. Lebensmittelecht, chemikalienbeständig und für Scharniergeometrien prädestiniert.</p>
+
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">~35 MPa</span><span class="kstat__lbl">Zugfestigkeit</span></div>
+        <div class="kstat"><span class="kstat__val">✓</span><span class="kstat__lbl">Lebensmittelecht</span></div>
+        <div class="kstat"><span class="kstat__val">0,91 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+        <div class="kstat"><span class="kstat__val">Sehr gut</span><span class="kstat__lbl">Chemikalienresist.</span></div>
+      </div>
+
+      <div class="btn-row">
+        <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--orange" target="_parent">➜ Preis berechnen</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--outline" target="_parent">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,PLACEHOLDER_B64" alt="PP Polypropylen 3D-Druck Bauteil – 3D DRUCK LIFE" loading="eager" width="900" height="900">
+    </div>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc-bar">
+  <div class="toc-bar__inner">
+    <a class="toc-link" href="#material">Was ist PP?</a>
+    <a class="toc-link" href="#eigenschaften">Eigenschaften</a>
+    <a class="toc-link" href="#chemie">Chemie</a>
+    <a class="toc-link" href="#techdaten">Techdaten</a>
+    <a class="toc-link" href="#anwendungen">Anwendungen</a>
+    <a class="toc-link" href="#varianten">Varianten</a>
+    <a class="toc-link" href="#nachbearbeitung">Nachbearbeitung</a>
+    <a class="toc-link" href="#fuellungsgrade">Füllungsgrade</a>
+    <a class="toc-link" href="#grenzen">Grenzen</a>
+    <a class="toc-link" href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST PP -->
+<section id="material" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Material</div>
+    <h2 class="sec-title">Was ist Polypropylen (PP)?</h2>
+    <p class="sec-sub">PP ist ein semikristallines Thermoplast und gehört zu den meistverwendeten Kunststoffen weltweit.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>Polypropylen (PP) ist ein semikristalliner Thermoplast auf Basis von Propylen-Monomeren. Mit einer Dichte von nur 0,91 g/cm³ ist PP das leichteste der gängigen Standardpolymere. Es kombiniert gute mechanische Eigenschaften mit hervorragender Chemikalienbeständigkeit und eignet sich für den Kontakt mit Lebensmitteln.</p>
+        <p>Im 3D-Druck wird PP vor allem per SLS (Selektivem Lasersintern) verarbeitet, da FDM durch die sehr niedrige Oberflächenenergie und starkes Warping erhebliche Herausforderungen mit sich bringt. SLS-Bauteile aus PP überzeugen durch ihre Leichtigkeit, Flexibilität und chemische Beständigkeit.</p>
+        <p>Besonders bekannt ist PP für seine Eignung als Scharniermaterial: Dünne PP-Stege halten tausende Biegezyklen ohne zu brechen (Living Hinge). Das macht es zur ersten Wahl für Klappverpackungen, Verschlüsse und Schnappverbindungen.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">⚖️</div>
+          <div class="fact__body"><strong>Leichtestes Standardpolymer</strong><span>Dichte nur 0,91 g/cm³ – leichter als Wasser</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🍽️</div>
+          <div class="fact__body"><strong>Lebensmittelecht</strong><span>Geeignet für Kontakt mit Lebensmitteln (Food-Contact-konform)</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🔄</div>
+          <div class="fact__body"><strong>Living Hinge</strong><span>Tausende Biegezyklen ohne Materialversagen</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🧪</div>
+          <div class="fact__body"><strong>Chemikalienbeständig</strong><span>Beständig gegen Säuren, Laugen und viele Lösungsmittel</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN -->
+<section id="eigenschaften" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Eigenschaften</div>
+    <h2 class="sec-title">Stärken von PP auf einen Blick</h2>
+    <p class="sec-sub">PP vereint Leichtigkeit, Chemikalienresistenz und Flexibilität in einem Material.</p>
+    <div class="strengths">
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <div><strong>Sehr leicht</strong><span>0,91 g/cm³ – schwimmt auf Wasser</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <div><strong>Lebensmittelecht</strong><span>Zugelassen für Food-Contact-Anwendungen</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <div><strong>Chemikalienresistenz</strong><span>Beständig gegen Säuren, Laugen, Alkohole</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <div><strong>Living Hinge</strong><span>Ideal für integrierte Scharniere und Schnappverbindungen</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <div><strong>Hohe Bruchdehnung</strong><span>Über 100 % – sehr zäh und biegsam</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <div><strong>Ermüdungsbeständig</strong><span>Sehr gutes Verhalten unter Wechselbelastung</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Chemie &amp; Aufbau</div>
+    <h2 class="sec-title">Wie ist PP aufgebaut?</h2>
+    <p class="sec-sub">Polypropylen ist ein semikristallines Polymer auf Basis von Propylen-Monomeren mit sehr niedriger Oberflächenenergie.</p>
+
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead><tr><th>Eigenschaft</th><th>Wert</th><th>Hinweis</th></tr></thead>
+        <tbody>
+          <tr><td>Chemische Bezeichnung</td><td>Poly(propylen)</td><td>Monomer: Propylen (CH₂=CHCH₃)</td></tr>
+          <tr><td>Taktizität</td><td>Isotaktisch / Syndiotaktisch</td><td>Bestimmt Kristallinität und Eigenschaften</td></tr>
+          <tr><td>Kristallinität</td><td>Semikristallin</td><td>Höhere Steifigkeit durch Kristallbereiche</td></tr>
+          <tr><td>Schmelzpunkt</td><td>160 bis 165 °C</td><td>Abhängig von Taktizität</td></tr>
+          <tr><td>Oberflächenenergie</td><td>sehr niedrig (~30 mN/m)</td><td>Erschwert Kleben und Lackieren</td></tr>
+          <tr><td>Wasseraufnahme</td><td>&lt; 0,1 %</td><td>Praktisch wasserabweisend</td></tr>
+          <tr><td>UV-Beständigkeit</td><td><span class="badge-r">Gering</span></td><td>Stabilisatoren nötig für Außeneinsatz</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr zur Chemie und dem Aufbau von PP in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNISCHE DATEN -->
+<section id="techdaten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Technische Daten</div>
+    <h2 class="sec-title">PP Material-Kennwerte im Detail</h2>
+    <p class="sec-sub">Alle Werte beziehen sich auf SLS-gefertigte PP-Bauteile. Werte können je nach Verarbeitung und Hersteller abweichen.</p>
+
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead><tr><th>Eigenschaft</th><th>Wert</th><th>Norm</th></tr></thead>
+        <tbody>
+          <tr><td>Zugfestigkeit</td><td><span class="tval">~35 MPa</span></td><td>ISO 527</td></tr>
+          <tr><td>E-Modul</td><td><span class="tval">~1.300 MPa</span></td><td>ISO 527</td></tr>
+          <tr><td>Bruchdehnung</td><td><span class="tval">&gt; 100 %</span></td><td>ISO 527</td></tr>
+          <tr><td>Biegefestigkeit</td><td><span class="tval">~40 MPa</span></td><td>ISO 178</td></tr>
+          <tr><td>Biegesteifigkeit (E)</td><td><span class="tval">~1.200 MPa</span></td><td>ISO 178</td></tr>
+          <tr><td>Schmelztemperatur</td><td><span class="tval">~160 °C</span></td><td>ISO 11357</td></tr>
+          <tr><td>HDT (0,45 MPa)</td><td><span class="tval">~100 °C</span></td><td>ISO 75</td></tr>
+          <tr><td>Dichte</td><td><span class="tval">0,91 g/cm³</span></td><td>ISO 1183</td></tr>
+          <tr><td>Wasseraufnahme (24 h)</td><td><span class="tval">&lt; 0,1 %</span></td><td>ISO 62</td></tr>
+          <tr><td>Kerbschlagzähigkeit</td><td><span class="tval">hoch</span></td><td>ISO 179</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Weiterführende Infos zu PP-Kennwerten und Vergleichsmaterialien finden Sie in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Anwendungen</div>
+    <h2 class="sec-title">Wofür wird PP eingesetzt?</h2>
+    <p class="sec-sub">PP punktet überall dort, wo Leichtigkeit, Chemikalienresistenz und Food-Contact gefragt sind.</p>
+
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <div class="ucard__title">Lebensmittelverpackung</div>
+        <p>Behälter, Deckel und Schalen mit Food-Contact-Zulassung für die Lebensmittel- und Pharmaindustrie.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <div class="ucard__title">Living Hinge Bauteile</div>
+        <p>Integrierte Scharniere, die tausende Biegezyklen standhalten. Ideal für Klappverpackungen und Verschlüsse.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+        </div>
+        <div class="ucard__title">Chemische Behälter</div>
+        <p>Tanks, Flaschen und Rohrleitungskomponenten für Säuren, Laugen und Lösungsmittel.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <div class="ucard__title">Laborausstattung</div>
+        <p>Laborequipment, Pipettenständer und Probenträger mit hoher Chemikalienbeständigkeit.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="22" height="18" rx="2"/><path d="M1 9h22"/></svg>
+        </div>
+        <div class="ucard__title">Automobilinnenraum</div>
+        <p>Verkleidungen, Abdeckungen und Halterungen im Fahrzeuginnenraum dank gutem Preis-Leistungs-Verhältnis.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="ucard__title">Snap-fit Verbindungen</div>
+        <p>Formschlüssige Schnappverbindungen, die wiederholt geöffnet und geschlossen werden können.</p>
+      </div>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr Anwendungsbeispiele für PP und andere Materialien in unserem 3D-Druck Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Varianten</div>
+    <h2 class="sec-title">PP Varianten im Überblick</h2>
+    <p class="sec-sub">Von Natural bis glasfaserverstärkt: PP ist in verschiedenen Ausführungen erhältlich.</p>
+
+    <div class="variants-grid">
+      <div class="vcard">
+        <span class="vcard__badge">Standard</span>
+        <div class="vcard__name">PP Natural</div>
+        <p>Ungefülltes Polypropylen in naturfarben. Ideal für Food-Contact, Laboreinsatz und Living-Hinge-Anwendungen. Optimale Biegezähigkeit.</p>
+      </div>
+      <div class="vcard">
+        <span class="vcard__badge">Verstärkt</span>
+        <div class="vcard__name">PP GF30</div>
+        <p>PP mit 30 % Glasfaseranteil. Deutlich erhöhte Steifigkeit und Wärmeformbeständigkeit. Weniger flexibel, aber belastbarer.</p>
+      </div>
+      <div class="vcard">
+        <span class="vcard__badge">Flexibel</span>
+        <div class="vcard__name">PP Flex</div>
+        <p>Weicheres PP für elastische Anwendungen. Besonders geeignet für Dichtungen, weiche Griffe und flexible Verbindungselemente.</p>
+      </div>
+      <div class="vcard">
+        <span class="vcard__badge">SLS</span>
+        <div class="vcard__name">PP für SLS</div>
+        <p>Speziell für das selektive Lasersintern optimiertes PP-Pulver. Ermöglicht komplexe Geometrien ohne Stützstrukturen und hervorragende Maßhaltigkeit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Nachbearbeitung</div>
+    <h2 class="sec-title">Nachbearbeitung von PP-Bauteilen</h2>
+    <p class="sec-sub">PP ist schwierig zu kleben und zu lackieren. Die niedrige Oberflächenenergie erfordert spezielle Vorbehandlungen.</p>
+
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__icon">⚙️</div>
+        <strong>Mechanische Bearbeitung</strong>
+        <p>Fräsen, Bohren und Drehen sind gut möglich. PP neigt jedoch zur Erwärmung, daher mit ausreichend Vorschub arbeiten.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🌀</div>
+        <strong>Tumbling / Gleitschleifen</strong>
+        <p>Gleitschleifen glättet raue SLS-Oberflächen effektiv und verbessert die Optik ohne Chemikalieneinsatz.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🔥</div>
+        <strong>Flammenbehandlung</strong>
+        <p>Kurze Flammbehandlung erhöht die Oberflächenenergie und verbessert Haftung für Kleber und Lacke erheblich.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">⚡</div>
+        <strong>Plasmabehandlung</strong>
+        <p>Plasmavorbehandlung aktiviert die PP-Oberfläche für zuverlässiges Kleben und Bedrucken. Industriestandard.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🖌️</div>
+        <strong>Lackieren</strong>
+        <p>Nur nach Oberflächenaktivierung (Plasma, Flamme) oder mit PP-Haftvermittler möglich. Spezialprimer erforderlich.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🔗</div>
+        <strong>Kleben</strong>
+        <p>PP-spezifische Klebstoffe oder Oberflächenaktivierung nötig. Standard-Cyanacrylat haftet ohne Vorbehandlung nicht.</p>
+      </div>
+    </div>
+
+    <div class="post-note" style="margin-top:16px;">
+      <strong>Hinweis:</strong> Aufgrund der sehr niedrigen Oberflächenenergie von PP sind Klebeprozesse ohne Vorbehandlung nicht zuverlässig. Für tragende Klebeverbindungen immer Plasma- oder Flammenbehandlung einplanen.
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Tipps zur Nachbearbeitung von SLS-Bauteilen finden Sie in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Füllungsgrade</div>
+    <h2 class="sec-title">PP mit Füllstoffen</h2>
+    <p class="sec-sub">Durch Zugabe von Füllstoffen lassen sich die Eigenschaften von PP gezielt anpassen.</p>
+
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">15 bis 30 %</div>
+        <div class="fill-card__name">Glasfaser (GF)</div>
+        <p>Erhöht Zugfestigkeit auf bis zu 70 MPa und E-Modul auf über 4 GPa. Verbessert Wärmeformbeständigkeit deutlich.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:80%"></div></div></div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">10 bis 20 %</div>
+        <div class="fill-card__name">Talk-gefüllt</div>
+        <p>Talkum verbessert Steifigkeit und Wärmeformbeständigkeit bei reduzierten Kosten. Häufig in Automobilanwendungen.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:50%"></div></div></div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">Additiv</div>
+        <div class="fill-card__name">Schlagzähmodifiziert</div>
+        <p>Elastomermodifikation (z. B. EPR/EPDM) verbessert die Tieftemperaturzähigkeit und Schlagfestigkeit erheblich.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:60%"></div></div></div>
+      </div>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Welche PP-Variante passt zu Ihrer Anwendung? Unser Blog hilft bei der Materialwahl.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Blog lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Grenzen</div>
+    <h2 class="sec-title">Wo stößt PP an seine Grenzen?</h2>
+    <p class="sec-sub">PP ist kein Allrounder. Für bestimmte Anwendungen gibt es bessere Alternativen.</p>
+
+    <div class="callout">
+      <div class="callout__title">Einschränkungen von Polypropylen</div>
+      <p>Im FDM-3D-Druck ist PP extrem schwierig zu verarbeiten. Starkes Warping, schlechte Haftung auf dem Druckbett und hohe Schrumpfung führen zu häufigem Ausschuss. SLS ist für PP die deutlich geeignetere Fertigungsmethode.</p>
+      <p>Die geringe Wärmeformbeständigkeit von etwa 100 °C (HDT) schließt PP für Hochtemperaturanwendungen aus. Für solche Einsatzbereiche empfehlen sich PEEK, PPS oder PEI. Zudem ist PP UV-empfindlich und vergilbt ohne Stabilisatoren schnell.</p>
+      <p>Das Lackieren und Kleben ohne Oberflächenvorbehandlung ist aufgrund der sehr niedrigen Oberflächenenergie nicht zuverlässig möglich.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/peek" class="callout__link" target="_parent">PEEK</a>
+        <a href="https://www.3ddrucklife.de/pps" class="callout__link" target="_parent">PPS</a>
+        <a href="https://www.3ddrucklife.de/pei" class="callout__link" target="_parent">PEI</a>
+        <a href="https://www.3ddrucklife.de/pa12" class="callout__link" target="_parent">PA12</a>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="callout__link" target="_parent">Alle Materialien</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">FAQ</div>
+    <h2 class="sec-title">Häufige Fragen zu PP</h2>
+    <p class="sec-sub">Antworten auf die wichtigsten Fragen rund um Polypropylen im 3D-Druck.</p>
+
+    <div class="faq-list">
+
+      <!-- Gruppe 1 -->
+      <div class="faq-group-label">Über PP</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist PP lebensmittelecht?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">PP ist grundsätzlich lebensmittelecht und für den Kontakt mit Lebensmitteln zugelassen (z. B. nach FDA, EU 10/2011). Im 3D-Druck hängt die tatsächliche Lebensmittelsicherheit jedoch vom verwendeten Material, dem Druckverfahren und der Oberflächenqualität ab. Für kritische Anwendungen immer die Spezifikation des Materialherstellers prüfen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Warum ist PP so schwierig im FDM-Druck?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">PP hat eine sehr niedrige Oberflächenenergie und haftet kaum auf Standard-Druckbettmaterialien. Zusätzlich schrumpft PP beim Abkühlen stark, was zu Warping führt. Spezielle PP-Druckbettfolien oder Kleber können helfen, dennoch ist SLS die empfohlene Methode für zuverlässige PP-Bauteile.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist ein Living Hinge und warum eignet sich PP dafür?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ein Living Hinge ist ein dünner, einteiliger Steg aus Kunststoff, der als Scharnier funktioniert. PP ist das ideale Material dafür, weil es eine sehr hohe Ermüdungsbeständigkeit und Bruchdehnung besitzt. PP-Scharniere halten problemlos tausende Biegezyklen ohne zu brechen, was bei den meisten anderen Kunststoffen nicht möglich ist.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie gut ist PP gegen Chemikalien beständig?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">PP ist sehr gut beständig gegen Säuren (auch konzentrierte), Laugen, Alkohole, Fette und die meisten wässrigen Lösungen. Nicht beständig ist PP gegen aromatische und chlorierte Kohlenwasserstoffe (z. B. Benzol, Toluol, Trichlorethylen). Für sehr aggressive Medien sollte die Beständigkeit im Einzelfall geprüft werden.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann man PP kleben und lackieren?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Kleben und Lackieren ist aufgrund der niedrigen Oberflächenenergie von PP ohne Vorbehandlung kaum möglich. Durch Flammen- oder Plasmabehandlung wird die Oberflächenenergie erhöht, sodass Kleber und Lacke haften können. Spezielle PP-Primer und PP-Kleber sind ebenfalls erhältlich.</div>
+      </div>
+
+      <!-- Gruppe 2 -->
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was kostet 3D-Druck mit PP?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Die Kosten hängen vom Verfahren (SLS ist teurer als FDM), dem Volumen, der Komplexität und der Stückzahl ab. SLS-PP liegt preislich etwas höher als SLS-PA12, da das Pulver spezieller ist. Für ein genaues Angebot nutzen Sie unseren <a href="https://www.3ddrucklife.de/preisrechner" target="_parent">Preisrechner</a> oder kontaktieren Sie uns direkt.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Wandstärken sind bei PP-SLS empfohlen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Bei SLS-PP sollten Wandstärken mindestens 0,8 bis 1,0 mm betragen, für stabile Strukturen empfehlen wir 1,5 mm oder mehr. Living-Hinge-Stege können bei PP sehr dünn (0,3 bis 0,5 mm) ausgeführt werden, benötigen dann aber eine sorgfältige Gestaltung.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lange dauert die Fertigung von PP-Bauteilen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">SLS-Bauteile aus PP sind in der Regel innerhalb von 3 bis 7 Werktagen fertig, inklusive Druckzeit und Nachbearbeitung. Bei Expressproduktion oder größeren Stückzahlen fragen Sie uns bitte direkt über unser <a href="https://www.3ddrucklife.de/kontakt" target="_parent">Kontaktformular</a>.</div>
+      </div>
+
+      <!-- Gruppe 3 -->
+      <div class="faq-group-label">3D-Druck allgemein &amp; Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welches Dateiformat wird für den 3D-Druck benötigt?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Wir akzeptieren STL, STEP und 3MF. Für SLS-Druck mit PP empfehlen wir STEP oder 3MF, da diese Formate Maßhaltigkeit besser bewahren. Das Modell sollte wasserdicht (manifold) und in der richtigen Einheit (mm) vorliegen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann PP eingefärbt oder bedruckt werden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">PP lässt sich mit speziellen PP-Lacken und nach Oberflächenaktivierung einfärben. Pad-Printing und Tampondruck sind ebenfalls möglich. Wegen der niedrigen Oberflächenenergie sind Standard-Lacke ohne Vorbehandlung nicht geeignet.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie werden SLS-PP-Bauteile gereinigt?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Überschüssiges Pulver wird zunächst mit Druckluft entfernt. Anschließend können die Bauteile mit Wasser oder Isopropanol gereinigt werden. PP ist gegenüber diesen Reinigungsmitteln vollständig beständig. Für Lebensmittelkontaktteile gelten besondere Hygienevorschriften.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lagere ich PP-Bauteile korrekt?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">PP-Bauteile sollten lichtgeschützt und bei Raumtemperatur gelagert werden, da UV-Strahlung zur Degradation führt. PP nimmt praktisch keine Feuchtigkeit auf, daher ist keine spezielle Trockenlagerung nötig. Temperaturen über 100 °C dauerhaft vermeiden.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist PP recyclebar?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja, PP ist gut recyclierbar und gehört zu den häufig recycelten Kunststoffen (Recyclingsymbol 5). Als Thermoplast lässt es sich einschmelzen und wiederverwenden. Für SLS-Pulverreste gibt es spezifische Recyclingprogramme mancher Materialhersteller.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">PP-Bauteile jetzt bestellen</div>
+        <p class="cta-left__text">3D-Datei hochladen, Material wählen, Preis sofort erhalten.</p>
+        <div class="btn-row">
+          <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--white" target="_parent">Preisrechner öffnen</a>
+          <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--white-outline" target="_parent">Beratung anfragen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-q').forEach(b => {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.style.display = 'none';
+    });
+    if (!expanded) {
+      btn.setAttribute('aria-expanded', 'true');
+      btn.nextElementSibling.style.display = 'block';
+    }
+  });
+});
+
+// Active TOC
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc-link');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

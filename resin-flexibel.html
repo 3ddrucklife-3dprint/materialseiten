@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resin Flexibel – Elastisches Photopolymer für SLA/DLP | 3D DRUCK LIFE</title>
+<meta name="description" content="Resin Flexibel kombiniert SLA/DLP-Präzision mit gummiartiger Elastizität. Eigenschaften, Techdaten, Anwendungen und Nachbearbeitung im Überblick.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn--white { background: #fff; color: var(--orange-dark); border: none; font-weight: 900; }
+.btn--white:hover { background: var(--orange-soft); }
+.btn--white-outline { border: 2px solid #fff; color: #fff; background: transparent; }
+.btn--white-outline:hover { background: rgba(255,255,255,.15); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 24px; font-weight: 900; margin-bottom: 18px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.ccard__row:last-child { border-bottom: none; padding-bottom: 0; }
+.ccard__key { color: var(--ink-soft); }
+.ccard__val { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-g { background: #22c55e; }
+.dot-y { background: #f59e0b; }
+.dot-r { background: #ef4444; }
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__icon { width: 36px; height: 36px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); font-size: 18px; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note--orange { background: var(--orange-soft); border-color: #ffd0a8; color: var(--orange-dark); }
+.post-note strong { font-weight: 700; }
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-visual { display: flex; gap: 4px; margin-top: 10px; }
+.fill-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--line); overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 3px; }
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.cta-band { background: var(--orange); padding: 56px 0; }
+.cta-band__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.cta-band__text h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 900; color: #fff; margin-bottom: 8px; }
+.cta-band__text p { font-size: 16px; color: rgba(255,255,255,.85); }
+.cta-band__btns { display: flex; gap: 12px; flex-wrap: wrap; }
+@media (max-width: 768px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .cta-band__inner { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">›</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">›</span>
+    <span class="breadcrumb__current">Resin Flexibel</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="material" class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__eyebrow">Photopolymerharz · SLA / DLP / MSLA</div>
+      <h1 class="hero__title">Resin Flexibel: detailgenau, <span class="accent">gummielastisch</span> und hochauflösend.</h1>
+      <p class="hero__sub">Elastisches Photopolymerharz vereint die Präzision der Stereolithographie mit echter Gummielastizität. Ideal für Prototypen, die biegen, dehnen und zurückfedern sollen.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">Shore 60A</span><span class="kstat__lbl">Härte</span></div>
+        <div class="kstat"><span class="kstat__val">bis 160 %</span><span class="kstat__lbl">Bruchdehnung</span></div>
+        <div class="kstat"><span class="kstat__val">0,35 MPa</span><span class="kstat__lbl">E-Modul</span></div>
+        <div class="kstat"><span class="kstat__val">1,09 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+        <span class="chip chip--orange">⚡ SLA/DLP</span>
+        <span class="chip chip--orange">🦾 Gummielastisch</span>
+        <span class="chip chip--blue">25 µm Auflösung</span>
+        <span class="chip chip--blue">Shore 40A-80A</span>
+      </div>
+      <div class="btn-row">
+        <a href="https://3ddrucklife.com" class="btn btn--orange" target="_parent">➜ Preis berechnen</a>
+        <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Resin Flexibel" class="btn btn--outline">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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" alt="Resin Flexibel - elastisches Photopolymerharz in Grün" width="900" height="900">
+    </div>
+  </div>
+</section>
+
+<!-- STICKY TOC -->
+<nav class="toc-bar" aria-label="Inhaltsverzeichnis">
+  <div class="toc-bar__inner">
+    <a class="toc-link" href="#material">Material</a>
+    <a class="toc-link" href="#eigenschaften">Eigenschaften</a>
+    <a class="toc-link" href="#chemie">Chemie</a>
+    <a class="toc-link" href="#techdaten">Techdaten</a>
+    <a class="toc-link" href="#anwendungen">Anwendungen</a>
+    <a class="toc-link" href="#varianten">Varianten</a>
+    <a class="toc-link" href="#nachbearbeitung">Nachbearbeitung</a>
+    <a class="toc-link" href="#fuellungsgrade">Füllungsgrade</a>
+    <a class="toc-link" href="#grenzen">Grenzen</a>
+    <a class="toc-link" href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- EIGENSCHAFTEN -->
+<section id="eigenschaften" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Warum Resin Flexibel?</div>
+    <h2 class="sec-title">Detailauflösung trifft Elastizität</h2>
+    <p class="sec-sub">Flex-Resin füllt die Lücke zwischen starren Photopolymerharzen und weichen FDM-Filamenten. Das Ergebnis: Gummiweiche Bauteile mit SLA-Präzision.</p>
+
+    <div class="compare-grid">
+      <div class="ccard">
+        <div class="ccard__label">Vergleich</div>
+        <div class="ccard__name">TPU FDM</div>
+        <div class="ccard__row"><span class="ccard__key">Auflösung</span><span class="ccard__val">100-200 µm</span></div>
+        <div class="ccard__row"><span class="ccard__key">Geometriefreiheit</span><span class="ccard__val"><span class="dot dot-y"></span>gut</span></div>
+        <div class="ccard__row"><span class="ccard__key">Flexibilität</span><span class="ccard__val"><span class="dot dot-g"></span>sehr hoch</span></div>
+        <div class="ccard__row"><span class="ccard__key">Biokompatibel</span><span class="ccard__val"><span class="dot dot-y"></span>bedingt</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis</span><span class="ccard__val"><span class="dot dot-g"></span>günstig</span></div>
+      </div>
+      <div class="ccard ccard--center">
+        <div class="ccard__label">Empfohlen</div>
+        <div class="ccard__name">Resin Flexibel</div>
+        <div class="ccard__row"><span class="ccard__key">Auflösung</span><span class="ccard__val">25-50 µm</span></div>
+        <div class="ccard__row"><span class="ccard__key">Geometriefreiheit</span><span class="ccard__val"><span class="dot dot-g"></span>sehr hoch</span></div>
+        <div class="ccard__row"><span class="ccard__key">Flexibilität</span><span class="ccard__val"><span class="dot dot-g"></span>hoch</span></div>
+        <div class="ccard__row"><span class="ccard__key">Biokompatibel</span><span class="ccard__val"><span class="dot dot-y"></span>bedingt</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis</span><span class="ccard__val"><span class="dot dot-y"></span>mittel</span></div>
+      </div>
+      <div class="ccard">
+        <div class="ccard__label">Alternative</div>
+        <div class="ccard__name">Silikon Guss</div>
+        <div class="ccard__row"><span class="ccard__key">Auflösung</span><span class="ccard__val">variabel</span></div>
+        <div class="ccard__row"><span class="ccard__key">Geometriefreiheit</span><span class="ccard__val"><span class="dot dot-r"></span>begrenzt</span></div>
+        <div class="ccard__row"><span class="ccard__key">Flexibilität</span><span class="ccard__val"><span class="dot dot-g"></span>sehr hoch</span></div>
+        <div class="ccard__row"><span class="ccard__key">Biokompatibel</span><span class="ccard__val"><span class="dot dot-g"></span>ja</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis</span><span class="ccard__val"><span class="dot dot-y"></span>variabel</span></div>
+      </div>
+    </div>
+
+    <div class="strengths">
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+        </div>
+        <div><strong>25-50 µm Schichtdicke</strong><span>Feinste Details und glatte Oberflächen direkt aus dem Drucker</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z"/></svg>
+        </div>
+        <div><strong>Shore 40A bis 80A</strong><span>Von weich-gummiartig bis semi-rigid in einer Materialkategorie</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div><strong>Komplexe Geometrien</strong><span>Hinterschnitte, feine Kanäle, Gitterstrukturen ohne Einschränkung</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div><strong>Biokompatible Varianten</strong><span>Dental- und Medizinversionen mit entsprechenden Zertifizierungen</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section id="chemie" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Chemischer Aufbau</div>
+    <h2 class="sec-title">Urethan-Acrylat-Chemie mit Weichsegmenten</h2>
+    <p class="sec-sub">Flex-Resins basieren auf der gleichen Polyurethan-Chemie wie TPU, sind aber photochemisch vernetzt statt thermoplastisch.</p>
+
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead>
+          <tr><th>Komponente</th><th>Funktion</th><th>Eigenschaft</th><th>Hinweis</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aliphat. Urethan-Diacrylat-Oligomer</td>
+            <td>Basispolymer</td>
+            <td><span class="badge-g">Flexibilität</span></td>
+            <td>Verantwortlich für elastisches Verhalten nach UV-Curing</td>
+          </tr>
+          <tr>
+            <td>Polyether-Weichsegmente</td>
+            <td>Elastizitätsmodifikator</td>
+            <td><span class="badge-g">Dehnung</span></td>
+            <td>Erhöhen Bruchdehnung auf bis zu 180 %</td>
+          </tr>
+          <tr>
+            <td>2-Ethylhexylacrylat (Comonomer)</td>
+            <td>Verdünner / Weichmacher</td>
+            <td><span class="badge-y">Viskosität</span></td>
+            <td>Senkt Shore-Härte, reaktives Verdünnungsmittel</td>
+          </tr>
+          <tr>
+            <td>Photoinitiator (405 nm)</td>
+            <td>Polymerisationsstart</td>
+            <td><span class="badge-g">UV-Curing</span></td>
+            <td>Abgestimmt auf SLA/DLP/MSLA-Wellenlänge</td>
+          </tr>
+          <tr>
+            <td>Vernetztes Elastomernetzwerk</td>
+            <td>Duromer-Struktur</td>
+            <td><span class="badge-r">Nicht recyclebar</span></td>
+            <td>Über-Curing versprödet das Material</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:24px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <p>Mehr zur Chemie von Photopolymerharzen: <a href="https://www.3ddrucklife.de/blog/resin-chemie" target="_parent">SLA/DLP-Harze verstehen: Photopolymer-Grundlagen</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- TECHDATEN -->
+<section id="techdaten" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Technische Daten</div>
+    <h2 class="sec-title">Kennwerte im Detail</h2>
+    <p class="sec-sub">Typische Werte nach ISO-Norm. Abweichungen je nach Hersteller, Druckparameter und Curing-Dauer möglich.</p>
+
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead>
+          <tr><th>Eigenschaft</th><th>Wert</th><th>Norm</th><th>Bemerkung</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Shore-Härte</td><td><span class="tval">50A bis 70A</span></td><td>ISO 7619</td><td>Je nach Curing-Grad variierend</td></tr>
+          <tr><td>Zugfestigkeit</td><td><span class="tval">3 bis 8 MPa</span></td><td>ISO 527</td><td>Deutlich niedriger als Hartresins</td></tr>
+          <tr><td>E-Modul</td><td><span class="tval">0,3 bis 1,0 MPa</span></td><td>ISO 527</td><td>Typisch 0,35 MPa bei Shore 60A</td></tr>
+          <tr><td>Bruchdehnung</td><td><span class="tval">80 bis 180 %</span></td><td>ISO 527</td><td>Bis zu 300 % bei High-Flex-Varianten</td></tr>
+          <tr><td>Dichte</td><td><span class="tval">1,07 bis 1,12 g/cm³</span></td><td>ISO 1183</td><td>Typisch 1,09 g/cm³</td></tr>
+          <tr><td>Schichtauflösung</td><td><span class="tval">25 bis 50 µm</span></td><td>druckerabhängig</td><td>SLA besser als DLP bei gleicher Belichtung</td></tr>
+          <tr><td>Temperaturbeständigkeit</td><td><span class="tval">bis 50 °C</span></td><td>HDT</td><td>Niedriger Vernetzungsgrad limitiert Hitzebeständigkeit</td></tr>
+          <tr><td>Wasseraufnahme</td><td><span class="tval">0,5 bis 1,2 %</span></td><td>ISO 62</td><td>Leicht hygroskopisch, Langzeitlagerung beachten</td></tr>
+          <tr><td>Belichtungswellenlänge</td><td><span class="tval">385 / 405 nm</span></td><td>herstellerspezifisch</td><td>Abhängig von Drucker und Photoinitiator</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <p>Vergleich aller Resin-Typen und ihre Kennwerte: <a href="https://www.3ddrucklife.de/blog/resin-vergleich" target="_parent">Resin-Übersicht: Standard, ABS-Like, Flex und Engineering</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Einsatzgebiete</div>
+    <h2 class="sec-title">Wofür eignet sich Resin Flexibel?</h2>
+    <p class="sec-sub">Überall dort, wo Präzision auf Elastizität trifft: von Medizintechnik-Prototypen bis zu weichen Konsumgüterkomponenten.</p>
+
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div class="ucard__title">Dichtungen</div>
+        <p>Komplexe Dichtungsgeometrien mit Hinterschnitten und feinen Kanälen, die im Spritzguss nicht realisierbar wären.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l1.5-1.5M12 3v3M21 17l-1.5-1.5M6.34 6.34L4.93 4.93M17.66 6.34l1.41-1.41M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/></svg>
+        </div>
+        <div class="ucard__title">Schuhsohlen-Prototypen</div>
+        <p>Gitterstrukturen und Dämpfungszonen direkt im Druck. Iterationszyklen in Stunden statt Wochen.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+        </div>
+        <div class="ucard__title">Ohrpassstücke &amp; In-Ear</div>
+        <p>Individuelle Passformen mit exakter Anatomie. Shore-Härte passend zu Tragekomfort-Anforderungen wählbar.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6M12 9v6"/></svg>
+        </div>
+        <div class="ucard__title">Soft-Touch-Griffe</div>
+        <p>Weiche Umhüllungen für Werkzeuge, Controller oder Medizinprodukte. Direkt druckfertig ohne Overmolding.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="ucard__title">Medizinische Schienen</div>
+        <p>Prototypen für Orthesen und Schienen mit anatomischer Passgenauigkeit und wählbarer Flexibilität.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="ucard__title">Spielzeug-Prototypen</div>
+        <p>Weiche Elemente, Gummifiguren und Dämpfungskomponenten. Sicherheitsrelevante Freigaben mit biokompatiblen Varianten.</p>
+      </div>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:24px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <p>Weitere Einsatzmöglichkeiten elastischer Resins: <a href="https://www.3ddrucklife.de/blog/flex-resin-anwendungen" target="_parent">Flex-Resin in der Praxis: 10 Anwendungsbeispiele</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Produktvarianten</div>
+    <h2 class="sec-title">Flex-Resin: die richtige Shore-Härte wählen</h2>
+    <p class="sec-sub">Von ultra-weich bis semi-rigid. Je nach Anwendung gibt es die passende Flex-Variante.</p>
+
+    <div class="variants-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Shore 40A</div>
+        <div class="vcard__name">Sehr weich</div>
+        <p>Vergleichbar mit weichem Gummi. Ideal für Dichtlippen, weiche Griffe und anatomische Passformen. Hohe Rückfederung, sehr geringe Steifigkeit.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Shore 60A · Standard</div>
+        <div class="vcard__name">Gummiartig</div>
+        <p>Der meistgenutzte Flex-Resin-Typ. Ausgewogenes Verhältnis aus Detailtreue, Flexibilität und Druckbarkeit. Empfohlen für Einsteiger.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Shore 80A</div>
+        <div class="vcard__name">Semi-Rigid</div>
+        <p>Ähnlich wie harter Radiergummi. Für biegsame Strukturbauteile, federnde Clips und Scharniere mit definierten Rückstellkräften.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Klar / Transparent</div>
+        <div class="vcard__name">Flex-Resin klar</div>
+        <p>Transparente Variante für Lichtleiter, Displays und ästhetische Prototypen. Gleiche Elastizitätswerte wie Standard Shore 60A.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Biokompatibel</div>
+        <div class="vcard__name">Dental / Medizin</div>
+        <p>ISO-10993-zertifiziert. Für Aufbissschienen, Dentalschienen und Medizinprototypen mit Hautkontaktfreigabe.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">High-Flex</div>
+        <div class="vcard__name">Bis 300 % Dehnung</div>
+        <p>Spezialisierte Formulierung mit erhöhtem Weichsegment-Anteil. Maximale Dehnbarkeit für Membranen und Stretchbauteile.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Post-Processing</div>
+    <h2 class="sec-title">Nachbearbeitung von Flex-Resin</h2>
+    <p class="sec-sub">Flex-Resins erfordern besondere Sorgfalt beim Waschen und Curing. Über-Curing ist der häufigste Fehler.</p>
+
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__icon">🧴</div>
+        <strong>IPA-Doppelwaschbad</strong>
+        <p>Zweifaches Waschen in Isopropanol unbedingt empfohlen. Flex-Resin haftet hartnäckiger an der Oberfläche als Standardharze.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">✂️</div>
+        <strong>Supports entfernen</strong>
+        <p>Stützstrukturen sehr vorsichtig entfernen. Flex-Resin reißt an Supportansätzen leicht. Vor dem finalen Curing entfernen, wenn möglich.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">☀️</div>
+        <strong>UV-Nachcuring (kurz!)</strong>
+        <p>Nur 5 bis 10 Minuten bei 405 nm. Zu langes Curing macht das Bauteil spröde. Curing-Temperatur maximal 40 °C.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">💧</div>
+        <strong>Trocknung</strong>
+        <p>Nach dem Waschen vollständig trocknen lassen vor dem UV-Curing. Restfeuchte beeinflusst Oberflächenqualität und Haftung.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🖌️</div>
+        <strong>Oberflächenbehandlung</strong>
+        <p>Flex-Resins lassen sich schlecht schleifen. Für glattere Oberflächen: direkt bessere Druckparameter nutzen oder Monomer-Nachbehandlung.</p>
+      </div>
+    </div>
+
+    <div class="post-note post-note--orange" style="margin-top:16px;">
+      <strong>Wichtig:</strong> Ungecurtes Flex-Resin ist als Gefahrstoff einzustufen. Schutzhandschuhe und ausreichende Belüftung beim Waschen und Handling sind Pflicht.
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <p>Schritt-für-Schritt-Anleitung: <a href="https://www.3ddrucklife.de/blog/resin-nachbearbeitung" target="_parent">Resin richtig waschen und curen: Anleitung für SLA und DLP</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Struktur &amp; Wandstärke</div>
+    <h2 class="sec-title">Füllungsgrad und Bauteildesign</h2>
+    <p class="sec-sub">Resins werden grundsätzlich als Vollmaterial gedruckt. Für Flex-Bauteile gelten besondere Designregeln.</p>
+
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">100 %</div>
+        <div class="fill-card__name">Vollmaterial</div>
+        <p>Standard für alle Resins. Maximale Detailtreue und gleichmäßige mechanische Eigenschaften. Für kleine Bauteile optimal.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:100%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">Lattice</div>
+        <div class="fill-card__name">Gitterstruktur</div>
+        <p>Für polsterartige Dämpfungseigenschaften. Bei großen Bauteilen Resinverbrauch reduzieren und Gewicht senken ohne Steifigkeitseinbuße.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:60%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:40%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:60%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:40%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:60%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">Hohl</div>
+        <div class="fill-card__name">Hohlkörper</div>
+        <p>Min. 1,5 mm Wandstärke für elastische Flex-Teile zwingend erforderlich. Drain-Holes bei geschlossenen Hohlkörpern nicht vergessen.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:20%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:0%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:0%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:0%"></div></div>
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:20%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-note">
+      <strong>Designregel:</strong> Wandstärke bei Flex-Resin mindestens 1,5 mm. Dünnere Wände reißen beim Supportentfernen oder bei mechanischer Belastung. Drain-Holes bei Hohlkörpern sind Pflicht, da ungecurtes Resin im Innern eingeschlossen werden kann.
+    </div>
+
+    <div class="blog-link-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <p>Design-Tipps für SLA/DLP-Druck: <a href="https://www.3ddrucklife.de/blog/resin-design-regeln" target="_parent">Resin-Druck optimieren: Wandstärken, Supports und Orientierung</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Einschränkungen</div>
+    <h2 class="sec-title">Wo Resin Flexibel an seine Grenzen stößt</h2>
+    <p class="sec-sub">Kein Material kann alles. Diese Punkte sind bei der Materialwahl zu berücksichtigen.</p>
+
+    <div class="callout">
+      <div class="callout__title">Bekannte Einschränkungen</div>
+      <p>Sehr niedriger E-Modul macht Flex-Resin für formstabile Strukturbauteile ungeeignet. Die Temperaturbeständigkeit ist auf maximal 50 °C begrenzt, da der Vernetzungsgrad den HDT-Wert direkt beeinflusst. UV-Degradation setzt schneller ein als bei Hartresins, Bauteile sollten nicht dauerhaft direkter Sonneneinstrahlung ausgesetzt werden.</p>
+      <p>Flex-Resins sind nicht öl- und kraftstoffbeständig. Für Dichtungen in der Fahrzeugtechnik oder chemischer Industrie sind geeignetere Elastomere zu wählen. Restmonomere im ungewaschenen Zustand sind als giftig einzustufen und erfordern Schutzmaßnahmen.</p>
+      <p>Auf Standard-FEP-Folien kann die hohe Adhäsion zu Druckfehlern führen. Spezielle Anti-Adhäsions-FEP oder nFEP-Folie empfohlen.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial/tpu" class="callout__link" target="_parent">TPU (FDM-Alternative)</a>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial/resin-standard" class="callout__link" target="_parent">Standard-Resin</a>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial/resin-tough" class="callout__link" target="_parent">Tough Resin</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Häufige Fragen</div>
+    <h2 class="sec-title">FAQ zu Resin Flexibel</h2>
+
+    <div class="faq-list">
+
+      <!-- Gruppe 1 -->
+      <div class="faq-group-label">Über Resin Flexibel</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist der Unterschied zwischen Flex-Resin und TPU?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">TPU ist ein thermoplastisches Elastomer für FDM-Drucker mit Auflösungen von 100 bis 200 µm. Flex-Resin wird photochemisch vernetzt (Duromer) und erreicht 25 bis 50 µm Schichtdicke. TPU ist etwas flexibler und günstiger, Flex-Resin bietet deutlich feinere Details und komplexere Geometrien.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Shore-Härte ist die richtige für mein Projekt?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Shore 40A: sehr weich, vergleichbar mit Radiergummi. Shore 60A: Standard, wie ein normales Gummibauteil. Shore 80A: halbsteif, federnd. Für Dichtungen und Griffe empfehlen wir Shore 60A als Ausgangspunkt. Für Dental und Medizin je nach Anwendung 40A bis 60A.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann Flex-Resin für Lebensmittelkontakt oder Medizinprodukte eingesetzt werden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Nur mit speziellen biokompatiblen Varianten (ISO-10993-zertifiziert). Standard-Flex-Resin enthält Restmonomere, die nicht für direkten Lebensmittel- oder Schleimhautkontakt zugelassen sind. Dental- und Medizin-Varianten werden mit entsprechenden Zertifikaten geliefert.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie ist die Langzeitbeständigkeit von Flex-Resin?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Flex-Resins degradieren unter UV-Licht schneller als Hartresins. Für Außenanwendungen oder langfristigen Betrieb sollte das Bauteil UV-geschützt gelagert oder beschichtet werden. Bei Innenanwendungen ohne direkte Sonneneinstrahlung sind Standzeiten von mehreren Jahren realistisch.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Warum wird Flex-Resin spröde nach dem Curing?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Über-Curing ist die häufigste Ursache für Versprödung. Das vernetzte Elastomernetzwerk verliert bei zu langer oder zu intensiver UV-Belichtung seine Flexibilität. Maximal 5 bis 10 Minuten bei 405 nm und Curing-Temperatur unter 40 °C einhalten.</div>
+      </div>
+
+      <!-- Gruppe 2 -->
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was kostet Resin Flexibel im Vergleich zu TPU?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Flex-Resin kostet je nach Hersteller und Variante 40 bis 120 EUR pro Liter. TPU-Filament ist mit 20 bis 50 EUR pro kg günstiger. Durch die deutlich höhere Detailauflösung und die mögliche Komplexität der Geometrien amortisiert sich der Mehrpreis bei vielen Anwendungen schnell. Genaue Preise auf Anfrage über unseren Preiskalkulator.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Drucker und Slicer unterstützen Flex-Resin?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Alle SLA-, DLP- und MSLA-Drucker (405-nm-Wellenlänge) sind grundsätzlich geeignet. Empfohlen werden Drucker mit nFEP-Folie oder Release-Liner für bessere Ablösung. Slicer wie Chitubox, Lychee oder Formware 3D unterstützen Flex-Profile. Wichtig: Belichtungszeit und Liftgeschwindigkeit anpassen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ab welcher Mindestmenge kann ich Flex-Resin bei euch bestellen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Wir berechnen auf Basis von Bauteilvolumen, nicht von Materialmengen. Einzelbauteile ab 1 cm³ sind bestellbar. Für Serien und größere Projekte bieten wir Mengenrabatte. Am besten direkt über den Preiskalkulator ein Angebot anfordern oder per E-Mail anfragen.</div>
+      </div>
+
+      <!-- Gruppe 3 -->
+      <div class="faq-group-label">3D-Druck allgemein &amp; Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie erkenne ich, ob mein Flex-Resin-Bauteil korrekt gewaschen ist?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ein korrekt gewaschenes Bauteil fühlt sich trocken an, klebt nicht und hinterlässt keine feuchte Spur auf Papier. Flex-Resin trocknet langsamer als Standardharz. Im Zweifelsfall zweiten Waschgang mit frischem IPA durchführen. Vor dem Curing vollständig trocknen lassen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was mache ich mit ungebrauchtem Flex-Resin?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ungecurtes Resin ist als Sondermüll zu entsorgen. Keinesfalls in den Abfluss gießen. Kleinmengen können durch UV-Curing in der Sonne ausgehärtet und dann als fester Abfall entsorgt werden. IPA-Waschbad ebenfalls aushärten und als Sondermüll abgeben.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann ich Flex-Resin mit anderen Resins mischen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Nur mit gleicher Wellenlänge und kompatiblem Photoinitiator-System. Mischungen aus Flex-Resin und Standard-Resin können Shore-Härte und Dehnung anpassen, aber die Ergebnisse sind schlecht reproduzierbar. Professionelle Anwendungen: immer Single-Material-Druck bevorzugen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lassen sich Supports bei Flex-Resin vermeiden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Druckausrichtung optimieren: Flache Überhänge (unter 45 Grad) vermeiden oder durch Rotation minimieren. Selbsttragende Bögen nutzen. Supports möglichst an nicht-funktionalen Flächen platzieren. Dünnere Supports (0,3 bis 0,4 mm) reißen sauberer ab als dicke, hinterlassen aber mehr Narben.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Warum delaminiert mein Flex-Resin-Druck?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Delaminierung entsteht durch zu kurze Belichtungszeit oder zu schnelle Liftbewegung. Flex-Resin benötigt meist 10 bis 20 % längere Belichtungszeiten als Standardharz. Liftgeschwindigkeit reduzieren und Anti-Aliasing deaktivieren. FEP-Folie auf Abnutzung prüfen. Hohes Vakuum beim Ablösen zerreißt flexible Schichten.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="cta-band__inner">
+    <div class="cta-band__text">
+      <h2>Resin Flexibel jetzt berechnen</h2>
+      <p>Hochpräzise Elastomerbauteile. Einfach Daten hochladen und Sofortpreis erhalten.</p>
+    </div>
+    <div class="cta-band__btns">
+      <a href="https://3ddrucklife.com" class="btn btn--white" target="_parent">➜ Preis berechnen</a>
+      <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Resin Flexibel" class="btn btn--white-outline" target="_parent">Beratung anfragen</a>
+    </div>
+  </div>
+</section>
+
+<script>
+// TOC active state
+const sections = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.toc-link');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => obs.observe(s));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+    const ans = btn.nextElementSibling;
+    ans.style.display = expanded ? 'none' : 'block';
+  });
+});
+</script>
+</body>
+</html>

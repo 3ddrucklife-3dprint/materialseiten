@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PVA Filament – Wasserlösliches Stützmaterial | 3D DRUCK LIFE</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+.ucard__link { font-size: 13px; font-weight: 700; color: var(--orange-dark); text-decoration: none; margin-top: auto; padding-top: 4px; }
+.ucard__link:hover { text-decoration: underline; }
+
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__icon { width: 36px; height: 36px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); font-size: 18px; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note--orange { background: var(--orange-soft); border-color: #ffd0a8; color: var(--orange-dark); }
+.post-note strong { font-weight: 700; }
+
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-visual { display: flex; gap: 4px; margin-top: 10px; }
+.fill-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--line); overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 3px; }
+
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.faq-a a { color: var(--orange); text-decoration: underline; }
+
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.contact-row { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-soft); }
+.contact-row a { color: var(--orange); font-weight: 700; }
+.contact-icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); flex-shrink: 0; }
+
+@media (max-width: 800px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { order: -1; }
+  .hero__image img { border-radius: 8px; width: 100%; height: auto; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+  .sec, .sec--alt { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">/</span>
+    <a href="https://www.3ddrucklife.de/pva" target="_parent" class="breadcrumb__current">PVA</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="material" class="hero">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <div class="hero__eyebrow">FDM Supportmaterial</div>
+      <h1 class="hero__title">PVA <span class="accent">wasserlöslich</span></h1>
+      <p class="hero__sub">Polyvinylalkohol (PVA) ist das ideale Stützmaterial für komplexe FDM-Drucke: Es loest sich einfach in Wasser auf und ermoeglicht Ueberhänge und Geometrien, die sonst nicht druckbar wären.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">wasserlöslich</span><span class="kstat__lbl">wasserlöslich</span></div>
+        <div class="kstat"><span class="kstat__val">Dual-Extrusion</span><span class="kstat__lbl">Dual-Extrusion</span></div>
+        <div class="kstat"><span class="kstat__val">~35 MPa</span><span class="kstat__lbl">Zugfestigkeit</span></div>
+        <div class="kstat"><span class="kstat__val">1,23 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+        <span class="chip chip--orange">FDM</span>
+        <span class="chip chip--blue">Dual-Extrusion</span>
+        <span class="chip chip--orange">Supportmaterial</span>
+      </div>
+      <div class="btn-row">
+        <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--orange" target="_parent">Preis berechnen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH/9k=" alt="PVA wasserlösliches Stützmaterial Filament" width="900" height="900">
+    </div>
+  </div>
+</section>
+
+<!-- STICKY TOC -->
+<nav class="toc-bar" aria-label="Seitennavigation">
+  <div class="toc-bar__inner">
+    <a class="toc-link" href="#material">Übersicht</a>
+    <a class="toc-link" href="#eigenschaften">Eigenschaften</a>
+    <a class="toc-link" href="#chemie">Chemie</a>
+    <a class="toc-link" href="#techdaten">Techdaten</a>
+    <a class="toc-link" href="#anwendungen">Anwendungen</a>
+    <a class="toc-link" href="#varianten">Varianten</a>
+    <a class="toc-link" href="#nachbearbeitung">Nachbearbeitung</a>
+    <a class="toc-link" href="#fuellungsgrade">Füllungsgrade</a>
+    <a class="toc-link" href="#grenzen">Grenzen</a>
+    <a class="toc-link" href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- EIGENSCHAFTEN -->
+<section id="eigenschaften" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Was ist PVA?</div>
+    <h2 class="sec-title">Eigenschaften von Polyvinylalkohol</h2>
+    <p class="sec-sub">PVA ist ein wasserlösliches Polymer, das speziell als Supportmaterial in der Dual-Extrusion eingesetzt wird.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>Polyvinylalkohol (PVA) ist das meistgenutzte wasserlösliche Supportmaterial im FDM-Druck. Es wird als zweites Material zusammen mit PLA gedruckt und übernimmt die Stützstruktur bei komplexen Ueberhängen und Hohlräumen.</p>
+        <p>Nach dem Druck wird das fertige Teil einfach in Wasser eingelegt. Das PVA loest sich vollständig auf, ohne mechanisches Entfernen oder Nachbearbeitung. Je nach Wandstärke und Wassertemperatur dauert der Prozess 30 Minuten bis mehrere Stunden.</p>
+        <p>PVA ist biologisch abbaubar und kann nach dem Aufloesen problemlos über den Abfluss entsorgt werden. Es ist besonders für Geometrien geeignet, die mit herkömmlichen Supportmethoden nicht realisierbar wären.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">💧</div>
+          <div class="fact__body"><strong>Vollständig wasserlöslich</strong><span>Loest sich in Wasser bei Raumtemperatur auf, schneller in warmem Wasser</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🖨️</div>
+          <div class="fact__body"><strong>Dual-Extrusion</strong><span>Wird parallel zu PLA als Stützmaterial gedruckt</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">📐</div>
+          <div class="fact__body"><strong>Komplexe Geometrien</strong><span>Ermöglicht Ueberhänge und Hohlräume ohne mechanische Nacharbeit</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">♻️</div>
+          <div class="fact__body"><strong>Biologisch abbaubar</strong><span>PVA-Wasser-Lösung ist unbedenklich und kann abgeleitet werden</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section id="chemie" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Chemischer Aufbau</div>
+    <h2 class="sec-title">Chemie von PVA</h2>
+    <p class="sec-sub">Polyvinylalkohol entsteht durch Hydrolyse von Polyvinylacetat und zeichnet sich durch seine ausgepraegten Hydroxylgruppen aus.</p>
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead>
+          <tr><th>Eigenschaft</th><th>Wert</th><th>Bedeutung</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Herstellung</td><td><span class="badge-y">Hydrolyse von PVAc</span></td><td>Polyvinylacetat wird mit Wasser zu PVA hydrolysiert</td></tr>
+          <tr><td>Funktionelle Gruppe</td><td>Hydroxylgruppen (-OH)</td><td>Machen PVA hydrophil und damit wasserlöslich</td></tr>
+          <tr><td>Struktur</td><td>Amorph</td><td>Keine kristalline Ordnung, daher gute Löslichkeit</td></tr>
+          <tr><td>Schmelzpunkt</td><td>~180 °C</td><td>Liegt nah an der Zersetzungstemperatur, daher vorsichtiges Drucken nötig</td></tr>
+          <tr><td>Löslichkeit</td><td><span class="badge-g">Vollständig in Wasser</span></td><td>Vollständig und rückstandslos</td></tr>
+          <tr><td>Biologische Abbaubarkeit</td><td><span class="badge-g">Hoch</span></td><td>Umweltfreundliche Entsorgung möglich</td></tr>
+          <tr><td>Hygroskopizität</td><td><span class="badge-r">Sehr hoch</span></td><td>Zieht Feuchtigkeit aus der Luft, daher trockene Lagerung Pflicht</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box">
+      <p>Mehr dazu in unserem Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- TECHDATEN -->
+<section id="techdaten" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Technische Daten</div>
+    <h2 class="sec-title">PVA Technische Kennwerte</h2>
+    <p class="sec-sub">Die wichtigsten Materialkennwerte von Standard-PVA-Filament im Überblick.</p>
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead>
+          <tr><th>Kennwert</th><th>Wert</th><th>Hinweis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Zugfestigkeit</td><td><span class="tval">~35 MPa</span></td><td>Ausreichend als Supportmaterial, keine Strukturanforderungen</td></tr>
+          <tr><td>Dichte</td><td><span class="tval">1,23 g/cm³</span></td><td>Aehnlich wie PLA, gute Verarbeitungskompatibilität</td></tr>
+          <tr><td>Schmelztemperatur</td><td><span class="tval">~180 °C</span></td><td>Nah an Zersetzungstemperatur, präzise Temperaturkontrolle erforderlich</td></tr>
+          <tr><td>Drucktemperatur</td><td><span class="tval">190 bis 220 °C</span></td><td>Je nach Hersteller und Feuchtegehalt anpassen</td></tr>
+          <tr><td>Löslichkeit</td><td><span class="tval">Vollständig in Wasser</span></td><td>Raumtemperatur reicht, warmes Wasser beschleunigt den Prozess</td></tr>
+          <tr><td>Wasseraufnahme</td><td><span class="tval">Sehr hoch</span></td><td>Hygroskopisch, vakuumversiegelter Lagerung empfohlen</td></tr>
+          <tr><td>Haftungspartner</td><td><span class="tval">PLA</span></td><td>Beste Kombination ist PVA mit PLA in Dual-Extrusion</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box">
+      <p>Mehr dazu in unserem Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Einsatzgebiete</div>
+    <h2 class="sec-title">Anwendungen von PVA</h2>
+    <p class="sec-sub">PVA als Supportmaterial öffnet neue Möglichkeiten für komplexe Geometrien in vielen Bereichen.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/>
+          </svg>
+        </div>
+        <div class="ucard__title">Komplexe PLA-Drucke</div>
+        <p>Supportstrukturen für Ueberhänge und Brücken bei PLA-Drucken, die ohne Stütze nicht machbar sind.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/>
+          </svg>
+        </div>
+        <div class="ucard__title">Architekturmodelle</div>
+        <p>Fein detaillierte Architekturmodelle mit inneren Hohlräumen und freitragenden Elementen.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="20" y2="12"/>
+          </svg>
+        </div>
+        <div class="ucard__title">Schmuck und Gussformen</div>
+        <p>Wasserlösliche Gussformen für Schmuckproduktion und Verlorene-Wachs-Verfahren.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="2" y1="2" x2="22" y2="22"/><line x1="22" y1="2" x2="2" y2="22"/>
+          </svg>
+        </div>
+        <div class="ucard__title">Bildungsmodelle</div>
+        <p>Lehrmodelle mit komplexen inneren Strukturen für Schulen, Universitäten und Ausbildung.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </div>
+        <div class="ucard__title">Medizinische Modelle</div>
+        <p>Anatomische Modelle mit Hohlräumen und internen Strukturen für Trainings- und Planungszwecke.</p>
+      </div>
+    </div>
+    <div class="blog-link-box">
+      <p>Mehr dazu in unserem Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Materialvarianten</div>
+    <h2 class="sec-title">PVA-Varianten im Überblick</h2>
+    <p class="sec-sub">Je nach Hauptmaterial und Drucktemperatur gibt es verschiedene wasserlösliche Stützwerkstoffe.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <span class="vcard__badge">Standard</span>
+        <div class="vcard__name">PVA Standard</div>
+        <p>Die klassische Variante für den Einsatz mit PLA. Drucktemperatur zwischen 190 und 210 °C, sehr gute Haftung an PLA, loest sich zuverlässig in Wasser auf.</p>
+      </div>
+      <div class="vcard">
+        <span class="vcard__badge">High-Temp</span>
+        <div class="vcard__name">PVA High-Temp</div>
+        <p>Für den Einsatz mit PETG optimiert. Höhere Drucktemperatur bis 230 °C, bessere Temperaturstabilität waehrend des Drucks, weniger Warping bei höheren Temperaturen.</p>
+      </div>
+      <div class="vcard">
+        <span class="vcard__badge">Alternative</span>
+        <div class="vcard__name">BVOH</div>
+        <p>Butanediol Vinyl Alcohol Copolymer: bessere Kompatibilität mit PETG und anderen technischen Filamenten, loest sich schneller auf als Standard-PVA, geringere Hygroskopizität.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Nachbearbeitung</div>
+    <h2 class="sec-title">PVA auflösen: Schritt für Schritt</h2>
+    <p class="sec-sub">Das Auflösen von PVA ist der einfachste Nachbearbeitungsschritt im FDM-Druck.</p>
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__icon">1</div>
+        <strong>Druck entnehmen</strong>
+        <p>Teil vom Druckbett nehmen und grobe Supportbereiche ggf. vorab vorsichtig lösen.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">💧</div>
+        <strong>In Wasser einlegen</strong>
+        <p>Teil in lauwarmes Wasser (20 bis 40 °C) legen. Warmes Wasser beschleunigt die Auflösung deutlich.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🔄</div>
+        <strong>Wasser bewegen</strong>
+        <p>Leichte Bewegung oder ein Ultraschallbad beschleunigt den Prozess auf 30 bis 60 Minuten.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">⏱️</div>
+        <strong>Zeit geben</strong>
+        <p>Dünne Supports: 30 bis 60 Minuten. Dicke Bereiche: mehrere Stunden. Wasser zwischendurch wechseln.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🚿</div>
+        <strong>Abspülen und trocknen</strong>
+        <p>Teil unter fliessendem Wasser abspülen und trocknen lassen. Keine weiteren Schritte notwendig.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">♻️</div>
+        <strong>Entsorgung</strong>
+        <p>PVA-Wasser-Lösung ist biologisch abbaubar und kann über den Abfluss entsorgt werden.</p>
+      </div>
+    </div>
+    <div class="post-note post-note--orange">
+      <strong>Tipp:</strong> Wasser nach dem ersten Auflösevorgang wechseln, da gesättigte Lösung langsamer wirkt. Ein Wasserbehälter mit leichter Umwälzung ist ideal.
+    </div>
+    <div class="blog-link-box">
+      <p>Mehr dazu in unserem Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Füllungsgrade</div>
+    <h2 class="sec-title">Infill bei PVA-Supportmaterial</h2>
+    <p class="sec-sub">Als Supportmaterial unterliegt PVA anderen Anforderungen als Strukturmaterial.</p>
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">0 bis 15%</div>
+        <div class="fill-card__name">Typischer Supportinfill</div>
+        <p>PVA-Supports werden mit sehr niedrigem Infill gedruckt. Weniger Material bedeutet schnellere Auflösung im Wasser.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:15%"></div></div></div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">Keine Strukturfunktion</div>
+        <div class="fill-card__name">Keine Strukturanforderungen</div>
+        <p>Da PVA ausschliesslich als temporäres Stützmaterial dient, sind hohe Füllgrade weder sinnvoll noch nötig.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:5%"></div></div></div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">Slicer-Einstellung</div>
+        <div class="fill-card__name">Automatische Zuweisung</div>
+        <p>Moderne Slicer wie PrusaSlicer oder Cura weisen PVA automatisch als Supportmaterial zu und optimieren die Einstellungen.</p>
+        <div class="fill-visual"><div class="fill-bar"><div class="fill-bar__inner" style="width:30%"></div></div></div>
+      </div>
+    </div>
+    <div class="blog-link-box">
+      <p>Mehr dazu in unserem Blog: <a href="https://www.3ddrucklife.de/blog" target="_parent">3D-Druck Blog</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Grenzen und Einschränkungen</div>
+    <h2 class="sec-title">Wann stösst PVA an seine Grenzen?</h2>
+    <p class="sec-sub">PVA ist nicht für jeden Anwendungsfall geeignet.</p>
+    <div class="callout">
+      <div class="callout__title">Einschränkungen von PVA</div>
+      <p>PVA ist extrem hygroskopisch. Bereits kurze Lagerung ohne Schutz führt zu Feuchtigkeitsaufnahme, die das Filament unbrauchbar macht: Blasen, Zischen und Verstopfungen sind die Folge. Trockene Lagerung in versiegelten Beuteln oder Vakuumboxen mit Trockenmittel ist Pflicht.</p>
+      <p>PVA kann nur mit PLA (Standard) oder PETG (High-Temp-Varianten) kombiniert werden. Hochtemperaturmaterialien wie ABS, ASA, PA oder PEEK übersteigen die Verarbeitungstemperatur von PVA bei weitem.</p>
+      <p>Der Preis pro Kilogramm ist deutlich höher als bei Standardfilamenten. Bei dicken Supportstrukturen kann die Auflösung viele Stunden dauern. Verstopfte Düsen durch feuchtes PVA sind der häufigste Fehler.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="callout__link" target="_parent">Alle Materialien</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="callout__link" target="_parent">Beratung anfragen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Häufige Fragen</div>
+    <h2 class="sec-title">FAQ zu PVA</h2>
+    <div class="faq-list">
+
+      <div class="faq-group-label">Über PVA</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist PVA und wofür wird es verwendet?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/>
+          </svg>
+        </button>
+        <div class="faq-a">PVA (Polyvinylalkohol) ist ein wasserlösliches Filament, das als Stützmaterial in der Dual-Extrusion verwendet wird. Es wird gemeinsam mit PLA gedruckt, stützt Ueberhänge und Hohlräume und loest sich nach dem Druck einfach in Wasser auf.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lange dauert das Auflösen von PVA?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/>
+          </svg>
+        </button>
+        <div class="faq-a">Dünne PVA-Supports lösen sich in 30 bis 60 Minuten auf. Bei dickeren Supportbereichen kann es mehrere Stunden dauern. Warmes Wasser und leichte Bewegung (z.B. durch ein Ultraschallbad) beschleunigen den Prozess deutlich.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie muss PVA gelagert werden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/>
+          </svg>
+        </button>
+        <div class="faq-a">PVA muss absolut trocken gelagert werden. Am besten in vakuumversiegelten Beuteln oder Trockenboxen mit Silicagel. Feuchtes PVA verursacht Blasen, Verstopfungen und mindert die Druckqualität erheblich. Vor dem Druck ggf. 4 bis 8 Stunden bei 45 °C trocknen.</div>
+      </div>
+
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Mit welchen Materialien kann PVA kombiniert werden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/>
+          </svg>
+        </button>
+        <div class="faq-a">Standard-PVA funktioniert am besten mit PLA. Für PETG gibt es PVA High-Temp-Varianten oder BVOH (Butanediol Vinyl Alcohol Copolymer). Hochtemperaturmaterialien wie ABS, ASA, PA oder PEEK sind mit PVA nicht kompatibel.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was kostet PVA-Filament?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/>
+          </svg>
+        </button>
+        <div class="faq-a">PVA ist deutlich teurer als Standardmaterialien. Der Preis liegt je nach Hersteller zwischen 40 und 80 Euro pro Kilogramm. Da PVA nur als Stützmaterial eingesetzt wird und der Infill gering ist, ist der tatsächliche Mehrverbrauch pro Druck oft überschaubar. Mit unserem <a href="https://www.3ddrucklife.de/preisrechner" target="_parent">Preisrechner</a> kannst du die genauen Kosten berechnen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welchen Drucker benötige ich für PVA?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/>
+          </svg>
+        </button>
+        <div class="faq-a">Du benötigst einen FDM-Drucker mit Dual-Extrusion. Bekannte Modelle sind der Prusa MK4S mit MMU, Bambu Lab X1C oder Ultimaker-Drucker. Das zweite Extruder-System druckt gleichzeitig PVA als Support neben dem Hauptmaterial.</div>
+      </div>
+
+      <div class="faq-group-label">3D-Druck allgemein &amp; Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist die PVA-Wasser-Lösung gefährlich?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/>
+          </svg>
+        </button>
+        <div class="faq-a">Nein. PVA ist biologisch abbaubar und ungiftig. Die Wasser-PVA-Lösung nach dem Auflösen kann unbedenklich über den Abfluss entsorgt werden. PVA wird auch in Lebensmittelverpackungen und Medizinprodukten eingesetzt.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Mein PVA verstopft die Düse. Was tun?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/>
+          </svg>
+        </button>
+        <div class="faq-a">Verstopfungen bei PVA entstehen fast immer durch Feuchtigkeitsaufnahme. Das Filament vor dem Druck trocknen (45 °C, 4 bis 8 Stunden) und danach sofort trocken lagern. Nasse Düsen können mit warmem Wasser oder einem Cold-Pull gereinigt werden.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann ich PVA auch als Strukturmaterial verwenden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="9" y1="3" x2="9" y2="15"/><line x1="3" y1="9" x2="15" y2="9"/>
+          </svg>
+        </button>
+        <div class="faq-a">PVA ist aufgrund seiner Wasserlöslichkeit und geringen mechanischen Festigkeit nicht als Strukturmaterial geeignet. Es quillt bei Feuchtigkeit auf und verliert seine Form. Fuer Strukturteile gibt es geeignetere Materialien wie <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">PLA, PETG oder ABS</a>.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">Jetzt loslegen</div>
+        <div class="cta-left__title">PVA-Druck Kosten berechnen</div>
+        <div class="cta-left__text">Berechne den genauen Preis für deinen PVA-Dual-Extrusion-Druck. Schnell, einfach, transparent.</div>
+        <div>
+          <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--white" target="_parent">Zum Preisrechner</a>
+        </div>
+        <div>
+          <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--white-outline" target="_parent">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Direkt Kontakt aufnehmen</div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" y1="4" x2="20" y2="4"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="20" x2="14" y2="20"/>
+            </svg>
+          </div>
+          <span>Wir beraten dich bei der Materialwahl und helfen dir, das beste Setup für deinen Dual-Extrusion-Druck zu finden.</span>
+        </div>
+        <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--orange" target="_parent">Jetzt anfragen</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+    const answer = btn.nextElementSibling;
+    answer.style.display = expanded ? 'none' : 'block';
+  });
+});
+
+// TOC active state
+const tocLinks = document.querySelectorAll('.toc-link');
+const sections = document.querySelectorAll('section[id]');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector('.toc-link[href="#' + entry.target.id + '"]');
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

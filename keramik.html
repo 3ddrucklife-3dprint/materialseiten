@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keramik 3D-Druck – Eigenschaften, Verfahren & Anwendungen | 3D DRUCK LIFE</title>
+<meta name="description" content="Technische Keramik im 3D-Druck: bis 1600 °C Einsatztemperatur, biokompatibel, elektrisch isolierend. Al2O3, ZrO2, SiC im Binder Jetting, DLP und FDM. Eigenschaften, Varianten, Anwendungen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+/* BREADCRUMB */
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+/* HERO */
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--blue { background: var(--blue-soft); border: 1px solid #c0cffe; color: var(--blue-dark); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+/* STICKY TOC */
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+/* SECTION BASE */
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+/* WAS IST */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+/* STRENGTHS */
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.sitem { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.sitem__icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+.sitem strong { display: block; font-size: 14px; font-weight: 700; }
+.sitem span { font-size: 13px; color: var(--ink-soft); }
+
+/* CHEM TABLE */
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+/* TECH TABLE */
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* VARIANTEN */
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ANWENDUNGEN */
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+.ucard__link { font-size: 13px; font-weight: 700; color: var(--orange-dark); text-decoration: none; margin-top: auto; padding-top: 4px; }
+.ucard__link:hover { text-decoration: underline; }
+
+/* NACHBEARBEITUNG */
+.post-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.post-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; flex-direction: column; gap: 8px; }
+.post-item__icon { width: 36px; height: 36px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); font-size: 18px; }
+.post-item strong { font-size: 14px; font-weight: 900; }
+.post-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note strong { font-weight: 700; }
+
+/* FÜLLUNGSGRADE */
+.fill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.fill-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+.fill-card__pct { font-size: 32px; font-weight: 900; color: var(--orange); margin-bottom: 4px; }
+.fill-card__name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.fill-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fill-visual { display: flex; gap: 4px; margin-top: 10px; }
+.fill-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--line); overflow: hidden; }
+.fill-bar__inner { height: 100%; background: var(--orange); border-radius: 3px; }
+
+/* GRENZEN */
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue-dark); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px; }
+.callout__title { font-size: 17px; font-weight: 900; color: var(--blue-dark); margin-bottom: 10px; }
+.callout p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 14px; }
+.callout__links { display: flex; flex-wrap: wrap; gap: 8px; }
+.callout__link { display: inline-block; padding: 7px 15px; background: var(--white); border: 1.5px solid var(--blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue-dark); transition: background .12s; }
+.callout__link:hover { background: var(--blue-soft); }
+
+/* FAQ */
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.faq-a a { color: var(--orange); text-decoration: underline; }
+
+/* CTA SPLIT */
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.contact-row { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-soft); }
+.contact-row a { color: var(--orange); font-weight: 700; }
+.contact-icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); flex-shrink: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { order: -1; }
+  .hero__image img { border-radius: 8px; width: 100%; height: auto; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+  .sec, .sec--alt { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">/</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">/</span>
+    <span class="breadcrumb__current">Keramik</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__inner">
+    <div>
+      <div class="hero__eyebrow">Material · Technische Keramik · Technical Ceramics</div>
+      <h1 class="hero__title">Keramik<br><span class="accent">3D-Druck</span></h1>
+      <p class="hero__sub">Extreme Hitzebestandigkeit, elektrische Isolation und Biokompatibilitat: Technische Keramik eroffnet im additiven Fertigungsverfahren vollig neue Moglichkeiten fur Hochleistungsbauteile.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">bis 1600 °C</span><span class="kstat__lbl">Einsatztemp.</span></div>
+        <div class="kstat"><span class="kstat__val">biokompatibel</span><span class="kstat__lbl">Al2O3, ZrO2</span></div>
+        <div class="kstat"><span class="kstat__val">3,9 g/cm³</span><span class="kstat__lbl">Dichte (Al2O3)</span></div>
+        <div class="kstat"><span class="kstat__val">isolierend</span><span class="kstat__lbl">Elektr. Eigensch.</span></div>
+      </div>
+      <div class="btn-row">
+        <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--orange" target="_parent">Preis berechnen</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--outline" target="_parent">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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" alt="Keramik 3D-Druck Bauteil – Technische Keramik | 3D DRUCK LIFE" loading="eager" width="900" height="900">
+    </div>
+  </div>
+</header>
+
+<!-- STICKY TOC -->
+<nav class="toc-bar">
+  <div class="toc-bar__inner">
+    <a href="#material" class="toc-link">Was ist Keramik?</a>
+    <a href="#eigenschaften" class="toc-link">Eigenschaften</a>
+    <a href="#chemie" class="toc-link">Chemie</a>
+    <a href="#techdaten" class="toc-link">Techdaten</a>
+    <a href="#anwendungen" class="toc-link">Anwendungen</a>
+    <a href="#varianten" class="toc-link">Varianten</a>
+    <a href="#nachbearbeitung" class="toc-link">Nachbearbeitung</a>
+    <a href="#fuellungsgrade" class="toc-link">Fuellungsgrade</a>
+    <a href="#grenzen" class="toc-link">Grenzen</a>
+    <a href="#faq" class="toc-link">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST KERAMIK -->
+<section id="material" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Uberblick</div>
+    <h2 class="sec-title">Was ist Keramik im 3D-Druck?</h2>
+    <p class="sec-sub">Technische Keramik (Technical Ceramics) ist eine Materialklasse anorganischer, nichtmetallischer Werkstoffe mit herausragenden Hochtemperatur- und Isolationseigenschaften.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>Keramische Werkstoffe werden seit Jahrtausenden eingesetzt. Im 3D-Druck eroffnen sie vollig neue konstruktive Freiheiten: Komplexe Innengeometrien, Gitterstrukturen und individualisierte Implantate sind jetzt moglich, die mit klassischer Bearbeitung kaum realisierbar waren.</p>
+        <p>Beim additiven Fertigungsprozess wird die Keramik zunachst als Grunkorper gedruckt, der Keramikpulver in einem Bindersystem enthalt. Erst durch einen anschliessenden Sinterprozess bei 1200 bis 1600 °C wird der Binder ausgebrannt und das Teil zu einem dichten, hochfesten Keramikkorper verdichtet.</p>
+        <p>Eingesetzte Verfahren sind Binder Jetting, DLP/SLA mit keramischer Suspension (Slurry), FDM mit keramikgefullten Filamenten sowie Robocasting (Direktextrusion keramischer Pasten). Jedes Verfahren bietet andere Starken bei Aufloesung, Materialauswahl und Bauteilgrosse.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">🔥</div>
+          <div class="fact__body"><strong>Hochtemperaturfest</strong><span>Einsatz bis 1600 °C kontinuierlich moglich</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">⚡</div>
+          <div class="fact__body"><strong>Elektrisch isolierend</strong><span>Idealer Werkstoff fur elektronische Anwendungen</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🦷</div>
+          <div class="fact__body"><strong>Biokompatibel</strong><span>Al2O3 und ZrO2 fur Implantate zugelassen</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🔬</div>
+          <div class="fact__body"><strong>Chemisch inert</strong><span>Widerstandsfahig gegen Sauren, Laugen und Losemittel</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🏭</div>
+          <div class="fact__body"><strong>Sinterprozess erforderlich</strong><span>Grunkorper wird bei 1200-1600 °C verdichtet</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN -->
+<section id="eigenschaften" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialeigenschaften</div>
+    <h2 class="sec-title">Starken von technischer Keramik</h2>
+    <p class="sec-sub">Technische Keramik vereint Eigenschaften, die kein Kunststoff und kaum ein Metall in dieser Kombination erreicht.</p>
+    <div class="strengths">
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div><strong>Extreme Hitzebestandigkeit</strong><span>Dauerhafter Einsatz bis 1600 °C, z.B. in Ofenkomponenten und Turbinenteilen</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg>
+        </div>
+        <div><strong>Elektrische Isolation</strong><span>Hervorragende dielektrische Eigenschaften bis in Hochfrequenzbereiche</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div><strong>Biokompatibilitat</strong><span>Al2O3 und ZrO2 als medizinisch zugelassene Werkstoffe fur Implantate</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div><strong>Extreme Harte</strong><span>Harte ubertrifft Stahl deutlich, ideal fur Verschleissschutz und Schneidwerkzeuge</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div><strong>Chemische Inertheit</strong><span>Bestandig gegenuber aggressiven Medien wie Sauren, Laugen und Losemitteln</span></div>
+      </div>
+      <div class="sitem">
+        <div class="sitem__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div><strong>Geringer Warmeausdehnungskoeffizient</strong><span>Masshaltig auch bei grossen Temperaturschwankungen</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Chemie &amp; Aufbau</div>
+    <h2 class="sec-title">Keramikwerkstoffe im Detail</h2>
+    <p class="sec-sub">Technische Keramiken gliedern sich in Oxidkeramiken und Nichtoxidkeramiken. Beide Gruppen durchlaufen nach dem Druck einen Sinterprozess.</p>
+
+    <h3 style="margin-bottom:12px;font-size:17px;">Oxidkeramiken</h3>
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead><tr><th>Material</th><th>Formel</th><th>Klasse</th><th>Besonderheit</th></tr></thead>
+        <tbody>
+          <tr><td>Aluminiumoxid</td><td>Al2O3</td><td><span class="badge-g">Oxidkeramik</span></td><td>Haufigste technische Keramik, hohe Harte und Biokompatibilitat</td></tr>
+          <tr><td>Zirkonoxid</td><td>ZrO2</td><td><span class="badge-g">Oxidkeramik</span></td><td>Hohe Zahigkeit, weiss, Zahnersatz und Implantate</td></tr>
+          <tr><td>Siliziumdioxid</td><td>SiO2</td><td><span class="badge-g">Oxidkeramik</span></td><td>Sehr niedriger Warmeausdehnungskoeffizient, optisch transparent</td></tr>
+          <tr><td>Hydroxylapatit</td><td>Ca10(PO4)6(OH)2</td><td><span class="badge-g">Oxidkeramik</span></td><td>Chemisch identisch mit menschlichem Knochen, Knochenersatz</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:28px;margin-bottom:12px;font-size:17px;">Nichtoxidkeramiken</h3>
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead><tr><th>Material</th><th>Formel</th><th>Klasse</th><th>Besonderheit</th></tr></thead>
+        <tbody>
+          <tr><td>Siliziumkarbid</td><td>SiC</td><td><span class="badge-y">Nichtoxid</span></td><td>Hochste Temperatur- und Verschleissbestandigkeit, Halbleitereigenschaft</td></tr>
+          <tr><td>Siliziumnitrid</td><td>Si3N4</td><td><span class="badge-y">Nichtoxid</span></td><td>Hohe Bruchzahigkeit, Turboladerrotoren und Lager</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:24px;padding:18px 20px;background:var(--orange-soft);border-radius:var(--radius);border:1px solid #ffd0a8;">
+      <strong style="font-size:14px;color:var(--orange-dark);">Prozesskette:</strong>
+      <p style="font-size:14px;color:var(--ink-soft);margin-top:6px;">Keramik wird als Suspension (Slurry) oder Pulver-Binder-Gemisch verarbeitet. Der Grunkorper enthalt 50-60 Vol.-% Keramikanteil. Beim Sintern (1200-1600 °C) verdampft der Binder (Entbinderung), gefolgt von der Verdichtung auf mehr als 95 % theoretischer Dichte. Der Schrumpf betragt dabei 15-20 %.</p>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr zur Chemie und zu Keramikwerkstoffen in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Ratgeber lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHDATEN -->
+<section id="techdaten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Technische Daten</div>
+    <h2 class="sec-title">Material-Kennwerte im Detail</h2>
+    <p class="sec-sub">Alle Werte beziehen sich auf gesinterte Bauteile. Rohwerte im Grunkorper sind deutlich geringer.</p>
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead>
+          <tr><th>Eigenschaft</th><th>Wert</th><th>Norm / Hinweis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Druckfestigkeit</td><td><span class="tval">bis 4000 MPa</span></td><td>Al2O3 ca. 2000-3000 MPa, ZrO2 bis 4000 MPa</td></tr>
+          <tr><td>E-Modul</td><td><span class="tval">150-400 GPa</span></td><td>Al2O3: ca. 380 GPa</td></tr>
+          <tr><td>Dichte (Al2O3)</td><td><span class="tval">3,9 g/cm³</span></td><td>Nach Sintern, theoretische Dichte</td></tr>
+          <tr><td>Dichte (ZrO2)</td><td><span class="tval">6,0 g/cm³</span></td><td>Nach Sintern, theoretische Dichte</td></tr>
+          <tr><td>Einsatztemperatur</td><td><span class="tval">bis 1600 °C</span></td><td>Al2O3 bis 1600 °C, SiC noch hoher</td></tr>
+          <tr><td>Warmeleitfahigkeit</td><td><span class="tval">20-30 W/(mK)</span></td><td>Al2O3; SiC deutlich hoher (120 W/mK)</td></tr>
+          <tr><td>Warmeausdehnung</td><td><span class="tval">ca. 8 ppm/K</span></td><td>Al2O3; SiO2 extrem niedrig (0,5 ppm/K)</td></tr>
+          <tr><td>Vickers-Harte</td><td><span class="tval">1400-1800 HV</span></td><td>Al2O3; SiC bis 2500 HV</td></tr>
+          <tr><td>Elektrischer Widerstand</td><td><span class="tval">&gt; 10^12 Ohm cm</span></td><td>Sehr guter Isolator bei Raumtemperatur</td></tr>
+          <tr><td>Schrumpf beim Sintern</td><td><span class="tval">15-20 %</span></td><td>Masshaltigkeit erfordert Kompensation</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Detaillierte Kennwerte und Materialdatenblatter finden Sie in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Datenblatter im Blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Anwendungen</div>
+    <h2 class="sec-title">Wo wird Keramik eingesetzt?</h2>
+    <p class="sec-sub">Technische Keramik ist uberall dort erste Wahl, wo extreme Temperaturen, aggressive Medien oder biomedizinische Anforderungen gelten.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="ucard__title">Ofenkomponenten</div>
+        <p>Strahlungsrohre, Brennerdusen, Tiegelschalen und Ofenmobel fur Temperaturprozesse bis 1600 °C in der Industrie.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="ucard__title">Medizinische Implantate</div>
+        <p>ZrO2-Zahnkronen und -bruecken, Knochenscaffolds aus Hydroxylapatit, Huftgelenkkopfe aus Al2O3 fur langfristige Biokompatibilitat.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="ucard__title">Elektrische Isolatoren</div>
+        <p>Hochspannungsisolatoren, Substrattrager fur Leistungselektronik und Zundkerzengehause mit definierter dielektrischer Konstante.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="ucard__title">Labortiegel und Schiffchen</div>
+        <p>Al2O3-Tiegel fur Schmelzanalysen, Veraschungsschalen und Aufschlussbehalter in der Analytik- und Forschungschemie.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="ucard__title">Luft- und Raumfahrt</div>
+        <p>Thermische Schutzschichten (TBC) fur Turbinenschaufeln, Hitzeschilde und Bremsscheiben fur Hochgeschwindigkeitsanwendungen.</p>
+      </div>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Weitere Anwendungsbeispiele und Fallstudien zu Keramik 3D-Druck in unserem Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Fallstudien lesen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Materialvarianten</div>
+    <h2 class="sec-title">Keramikwerkstoffe im Uberblick</h2>
+    <p class="sec-sub">Jede Keramiksorte bringt ein eigenes Eigenschaftsprofil mit. Die Wahl des richtigen Werkstoffs entscheidet uber den Anwendungserfolg.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Oxidkeramik</div>
+        <div class="vcard__name">Aluminiumoxid (Al2O3)</div>
+        <p>Bekannteste technische Keramik. Sehr hohe Harte (1500-1800 HV), gute chemische Bestandigkeit, biokompatibel, elektrisch isolierend. Einsatz bis 1600 °C. Gunstiger als ZrO2 und SiC.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Oxidkeramik</div>
+        <div class="vcard__name">Zirkonoxid (ZrO2)</div>
+        <p>Auch bekannt als weisse Zahnkeramik. Hohere Bruchzahigkeit als Al2O3, sehr gute Biegefestigkeit, exzellente Biokompatibilitat. Bevorzugt fur Zahnkronen, Bruecken und chirurgische Implantate.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Nichtoxid</div>
+        <div class="vcard__name">Siliziumkarbid (SiC)</div>
+        <p>Extremste Temperaturbestandigkeit (uber 1600 °C), sehr hohe Warmeleitfahigkeit und Harte. Einsatz in Brennerdosen, Schleifscheiben, Wuarmetauscher und Halbleiteranwendungen.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Biokeramik</div>
+        <div class="vcard__name">Hydroxylapatit (HA)</div>
+        <p>Chemisch identisch mit dem mineralischen Anteil menschlicher Knochen und Zahne. Exzellente Osseointegration. Einsatz als Knochenersatz, Scaffolds und Beschichtung fur Implantate.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Glaskeramik</div>
+        <div class="vcard__name">Fused Silica (SiO2)</div>
+        <p>Extrem niedriger Warmeausdehnungskoeffizient (0,5 ppm/K), optisch durchsichtig in bestimmten Spektralbereichen. Einsatz in Praezisionsoptik, Spiegelsubstraten und Hochtemperaturverglasungen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Nachbearbeitung</div>
+    <h2 class="sec-title">Nachbearbeitungsschritte fur Keramikbauteile</h2>
+    <p class="sec-sub">Keramikteile erfordern nach dem Druck mehrere Prozessschritte, bevor sie einsatzbereit sind. Das Sintern ist dabei zwingend notwendig.</p>
+    <div class="post-grid">
+      <div class="post-item">
+        <div class="post-item__icon">🔥</div>
+        <strong>Sintern (Pflichtschritt)</strong>
+        <p>Entbinderung und Verdichtung bei 1200-1600 °C. Dauer je nach Material 8-24 Stunden. Ergebnis: dichtes, hochfestes Keramikbauteil mit mehr als 95 % theoretischer Dichte. Schrumpf von 15-20 % muss konstruktiv eingeplant werden.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">💎</div>
+        <strong>Schleifen und Polieren</strong>
+        <p>Nur mit Diamantwerkzeugen moglich. Rauigkeiten Ra unter 0,1 µm erreichbar. Notwendig fur Dichtflachen, Lagerflachen und optische Anwendungen. Zeitaufwendig und kostenintensiv.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">🏺</div>
+        <strong>Glasieren</strong>
+        <p>Aufbringen einer Glasurschicht fur dekorative Zwecke oder zur Verbesserung der Oberflachenguete. Verbessert chemische Bestandigkeit und Reinigungsfahigkeit. Einsatz bei Dentalkeramik und Dekorteilen.</p>
+      </div>
+      <div class="post-item">
+        <div class="post-item__icon">⚙️</div>
+        <strong>HIP (Heissisostatisches Pressen)</strong>
+        <p>Nachverdichtung bei hohem Druck und Temperatur fur maximale Dichte (nahezu 100 %). Eliminiert Restporen und erhoht Festigkeit um bis zu 30 %. Einsatz fur sicherheitskritische Bauteile in Luft- und Raumfahrt.</p>
+      </div>
+    </div>
+    <div class="post-note">
+      <strong>Wichtig:</strong> Die Schwindung beim Sintern muss bereits in der CAD-Konstruktion kompensiert werden. Ubliche Skalierungsfaktoren liegen zwischen 1,15 und 1,25 je nach Material und Geometrie.
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr zu Sinterprozessen und Nachbearbeitung von Keramikbauteilen im Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Sintern im Blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Fuellungsgrade</div>
+    <h2 class="sec-title">Keramikanteil im Grunkorper und nach dem Sintern</h2>
+    <p class="sec-sub">Der Keramikanteil im frisch gedruckten Grunkorper bestimmt die spatere Dichte und die mechanischen Eigenschaften des Sinterbauteils.</p>
+    <div class="fill-grid">
+      <div class="fill-card">
+        <div class="fill-card__pct">50-60%</div>
+        <div class="fill-card__name">Keramikanteil Grunkorper</div>
+        <p>Vol.-% Keramikpulver im frisch gedruckten Bauteil. Der Rest ist organischer Binder, der beim Sintern ausgebrannt wird.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:55%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">&gt;95%</div>
+        <div class="fill-card__name">Dichte nach Sintern</div>
+        <p>Prozent der theoretischen Dichte nach vollstandigem Sinterprozess. Mit HIP-Nachbehandlung naherungsweise 100 % erreichbar.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:95%"></div></div>
+        </div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card__pct">15-20%</div>
+        <div class="fill-card__name">Linearer Schrumpf</div>
+        <p>Massreduktion beim Sintern je Achse. Muss im CAD vorab skaliert werden. Homogene Geometrien sintern gleichmassiger als komplexe Teile.</p>
+        <div class="fill-visual">
+          <div class="fill-bar"><div class="fill-bar__inner" style="width:18%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:20px;padding:16px 20px;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);">
+      <strong style="font-size:14px;">Verfahrensvergleich Fuellungsgrade:</strong>
+      <p style="font-size:13px;color:var(--ink-soft);margin-top:8px;">Binder Jetting erreicht typisch 55-60 Vol.-% Keramikanteil im Grunkorper. DLP/SLA mit keramischer Suspension liegt bei 45-55 Vol.-%. FDM mit keramikgefulltem Filament bei 40-50 Vol.-%. Robocasting kann bis zu 60 Vol.-% erreichen. Alle Verfahren sintern auf vergleichbare Enddichte.</p>
+    </div>
+
+    <div class="blog-link-box" style="margin-top:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      <div>
+        <p>Mehr zu Fuellungsgraden, Sinterdichte und Prozessparametern im 3D DRUCK LIFE Blog.</p>
+        <a href="https://www.3ddrucklife.de/blog" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_parent">Sinterdichte im Blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Einschrankungen</div>
+    <h2 class="sec-title">Grenzen und Herausforderungen</h2>
+    <p class="sec-sub">Keramik 3D-Druck ist ein anspruchsvoller Prozess mit spezifischen Einschrankungen, die bei der Bauteilplanung beachtet werden mussen.</p>
+    <div class="callout">
+      <div class="callout__title">Wichtige Grenzen im Uberblick</div>
+      <p>Der Sinterschrumpf von 15-20 % macht praezise Masshaltigkeit schwierig. Eng tolerierte Passungen erfordern aufwendiges Schleifen nach dem Sintern. Sehr komplexe oder asymmetrische Geometrien konnen beim Sintern verziehen, wenn die Sinterfixtur nicht korrekt ausgelegt ist.</p>
+      <p>Keramik ist sehr sprode: hohe Druckfestigkeit, aber geringe Bruchzahigkeit und Schlagzahigkeit. Kerbempfindlichkeit ist ausgepragter als bei Metallen. Thermoschocks (schnelle Temperaturwechsel) konnen zu Rissbildung fuhren, besonders bei dickwandigen Bauteilen.</p>
+      <p>Der Sinterprozess ist kostenintensiv (Sinterofenkapazitat, Energie, Prozesszeit) und erfordert spezialisiertes Know-how. Die Gesamtprozesskette vom Druck uber Entbinderung bis zum Sintern dauert deutlich langer als bei Kunststoffen oder Metallen.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="callout__link" target="_parent">Alle Materialien</a>
+        <a href="https://www.3ddrucklife.de/kontakt" class="callout__link" target="_parent">Beratung anfragen</a>
+        <a href="https://www.3ddrucklife.de/preisrechner" class="callout__link" target="_parent">Preisrechner</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">FAQ</div>
+    <h2 class="sec-title">Haufig gestellte Fragen</h2>
+    <div class="faq-list">
+
+      <!-- GRUPPE 1 -->
+      <div class="faq-group-label">Uber Keramik 3D-Druck</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.style.display = this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Welche Verfahren gibt es fur den 3D-Druck mit Keramik?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Die wichtigsten Verfahren sind Binder Jetting (Pulver-Binder-System), DLP/SLA mit keramischer Suspension (Slurry), FDM mit keramikgefulltem Filament und Robocasting (Direktextrusion keramischer Pasten). Binder Jetting ermoglicht die hochste Komplexitat und grosse Bauvolumina, DLP/SLA die feinste Aufloesung.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.style.display = this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Warum muss Keramik nach dem Druck gesintert werden?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Der frisch gedruckte Grunkorper enthalt neben dem Keramikpulver einen organischen Binder (50-60 Vol.-% Keramik). Dieser Binder wird beim Sintern bei 1200-1600 °C ausgebrannt (Entbinderung). Anschliessend verdichten sich die Keramikpartikel durch Diffusionsprozesse zu einem dichten, hochfesten Bauteil. Ohne Sintern bleibt das Teil mechanisch unbrauchbar.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.style.display = this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Welche Keramik eignet sich fur Zahne und Implantate?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Fur Zahnkronen und Bruecken wird vor allem Zirkonoxid (ZrO2) eingesetzt, da es weiss ist und eine sehr gute Bruchzahigkeit aufweist. Fur Knochenersatz und Scaffolds eignet sich Hydroxylapatit (HA), das chemisch identisch mit dem mineralischen Anteil menschlicher Knochen ist. Aluminiumoxid (Al2O3) wird fur Huftgelenkkopfe und chirurgische Instrumente verwendet.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.style.display = this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Wie viel schwindet Keramik beim Sintern?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Typisch sind 15-20 % linearer Schrumpf je Raumachse, was volumetrisch ca. 40-50 % Volumenreduktion bedeutet. Dieser Schrumpf muss bereits im CAD-Modell kompensiert werden, indem das Bauteil um den entsprechenden Faktor vergrossert wird. Bei komplexen Geometrien kann der Schrumpf anisotrop sein, was die Kompensation erschwert.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.style.display = this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Wie hoch ist die maximale Einsatztemperatur von Keramikbauteilen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Aluminiumoxid (Al2O3) ist bis ca. 1600 °C einsetzbar, Siliziumkarbid (SiC) sogar bis uber 1650 °C in inerter Atmosphare. Zirkonoxid ist bis ca. 1200 °C stabil, daruber konnen Phasenumwandlungen auftreten. Im Vergleich: Hochleistungskunststoffe wie PEEK halten maximal 260 °C aus, Titan schmilzt bei 1668 °C.</div>
+      </div>
+
+      <!-- GRUPPE 2 -->
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.style.display = this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Wie berechne ich den Preis fur ein Keramikbauteil?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Der Preis hangt von Materialvolumen, Verfahren, Nachbearbeitungsaufwand und Sinterprozesskosten ab. Keramik 3D-Druck ist deutlich teurer als Kunststoffdruck. Nutzen Sie unseren <a href="https://www.3ddrucklife.de/preisrechner" target="_parent">Preisrechner</a> fur eine erste Kalkulation oder kontaktieren Sie uns fur ein individuelles Angebot.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.style.display = this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Welche Dateiformate werden benotigt?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Wir akzeptieren STL, STEP und 3MF-Dateien. Fur Keramikbauteile empfehlen wir STEP-Dateien, da diese praxisionsgenaue Geometrien ohne Vernetzungsfehler liefern. Das Modell muss bereits mit dem Sinterscbrumpf-Faktor skaliert sein oder wir ubernehmen die Skalierung nach Rucksprache.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.style.display = this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Wie lange dauert die Lieferzeit fur Keramikteile?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Aufgrund des mehrstufigen Prozesses (Druck, Entbinderung, Sintern, eventuell Schleifen) betragen die Lieferzeiten typisch 5-15 Werktage. Express-Optionen sind in Absprache moglich. Kontaktieren Sie uns fur eine genaue Zeitplanung fur Ihr Projekt.</div>
+      </div>
+
+      <!-- GRUPPE 3 -->
+      <div class="faq-group-label">3D-Druck allgemein &amp; Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.style.display = this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Kann ich Keramikteile nachtraglich bearbeiten?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja, aber nur mit Diamantwerkzeugen. Gesinterte Keramik ist so hart, dass normale Hartmetall- oder HSS-Werkzeuge versagen. Schleifen, Lappen und Polieren mit Diamantschleifmitteln sind standard. Bohren und Fresen ist aufwendig und sollte auf das Notigste beschrankt werden. Im Grunzustand (vor dem Sintern) ist die Bearbeitung deutlich einfacher.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.style.display = this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Ist Keramik 3D-Druck fur kleine Stuckzahlen wirtschaftlich?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja, gerade fur Prototypen und kleine Serien ist 3D-Druck oft wirtschaftlicher als klassisches Pressen oder Giessen, da keine teuren Werkzeuge benotigt werden. Ab mittleren Stuckzahlen (100+) sollte man klassische keramische Fertigungsverfahren vergleichend bewerten. Individualisierte Bauteile wie Implantate profitieren besonders vom werkzeuglosen 3D-Druck.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.style.display = this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Wie unterscheidet sich Keramik von Metall und Kunststoff im 3D-Druck?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Keramik kombiniert Eigenschaften beider Gruppen: Wie Metall ist es hochfest und hitzebestandig, wie Glas ist es sprode und elektrisch isolierend. Gegenuber Kunststoffen besticht Keramik durch exzellente Chemikalienbestandigkeit und Temperaturbestandigkeit weit uber 1000 °C. Der Prozess ist komplexer als bei Kunststoffen, aber kompakte Geometrien sind mit guter Qualitat erzielbar.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.style.display = this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Welche Oberflachengute erreicht Keramik nach dem Sintern?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Direkt nach dem Sintern ist die Rauigkeit Ra typisch 1-5 µm, abhangig vom Verfahren und der Korngrose. DLP/SLA erreicht feinere Oberflachen als Binder Jetting. Mit Schleifen und Polieren (Diamantwerkzeuge) sind Ra-Werte unter 0,1 µm erreichbar, was fur Dichtflachen und optische Anwendungen notwendig ist.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.style.display = this.getAttribute('aria-expanded')==='true'?'block':'none'">
+          Gibt es Zertifizierungen fur medizinische Keramikbauteile?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Fur medizinische Implantate und Dentalteile gelten strenge Zulassungsanforderungen (MDR in der EU, FDA in den USA). Biokompatible Keramiken wie ZrO2 und Al2O3 sind grundsatzlich als biokompatibel anerkannt (ISO 6474). Der vollstandige Zertifizierungsprozess fur ein Medizinprodukt geht jedoch weit uber das Material hinaus und umfasst klinische Prufungen und Qualitatsmanagement. Kontaktieren Sie uns fur detaillierte Beratung.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">Keramikbauteile jetzt anfragen</div>
+        <p class="cta-left__text">3D-Datei hochladen, Material wahlen, Preis sofort erhalten. Oder kontaktieren Sie uns direkt fur Ihre Keramikanwendung.</p>
+        <div class="btn-row">
+          <a href="https://www.3ddrucklife.de/preisrechner" class="btn btn--white" target="_parent">Preisrechner offnen</a>
+          <a href="https://www.3ddrucklife.de/kontakt" class="btn btn--white-outline" target="_parent">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Direktkontakt</div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span>Haben Sie Fragen zu Keramik 3D-Druck? Wir beraten Sie gern.</span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <span>Antwort innerhalb von 24 Stunden an Werktagen</span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span>Produktion in Deutschland</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// TOC active state
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc-link');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

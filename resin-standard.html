@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resin Standard – SLA/DLP Photopolymer | 3D DRUCK LIFE</title>
+<meta name="description" content="Resin Standard für SLA, DLP und MSLA 3D-Druck: höchste Auflösung, glatte Oberflächen, 25 bis 50 µm Schichten. Eigenschaften, Chemie, Anwendungen und Nachbearbeitung.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --purple: #7c3aed;
+  --purple-soft: #f3e8ff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.07);
+  --max-w: 1080px;
+  --toc-h: 50px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: calc(var(--toc-h) + 12px); }
+
+/* BREADCRUMB */
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__inner a:hover { opacity: .8; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+/* HERO */
+.hero { background: var(--white); border-bottom: 1px solid var(--line); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(42px, 5.5vw, 62px); font-weight: 900; line-height: 1.02; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 480px; margin-bottom: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s, opacity .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; border: none; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.65); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.kstat { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; background: var(--orange-soft); border-radius: var(--radius); flex: 1; min-width: 100px; max-width: 160px; }
+.kstat__val { font-size: 17px; font-weight: 900; color: var(--orange-dark); line-height: 1.1; }
+.kstat__lbl { font-size: 11px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 700; }
+.chip--orange { background: var(--orange-soft); border: 1px solid #ffd0a8; color: var(--orange-dark); }
+.chip--purple { background: var(--purple-soft); border: 1px solid #ddd6fe; color: var(--purple); }
+.hero__image { border-radius: var(--radius); overflow: hidden; }
+.hero__image img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+/* STICKY TOC */
+.toc-bar { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 6px rgba(0,0,0,.05); height: var(--toc-h); }
+.toc-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; height: 100%; }
+.toc-bar__inner::-webkit-scrollbar { display: none; }
+.toc-link { white-space: nowrap; padding: 6px 13px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: background .12s, color .12s; flex-shrink: 0; text-decoration: none; }
+.toc-link:hover { background: var(--paper-2); color: var(--ink); }
+.toc-link.active { background: var(--orange-soft); color: var(--orange-dark); }
+
+/* SECTION BASE */
+.sec { padding: 64px 0; }
+.sec--alt { padding: 64px 0; background: var(--paper-2); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; margin-bottom: 36px; max-width: 620px; }
+
+/* INTRO */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.intro-text p { color: var(--ink-soft); margin-bottom: 16px; }
+.intro-text p:last-child { margin-bottom: 0; }
+.fact-stack { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.fact__icon { width: 34px; height: 34px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.fact__body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.fact__body span { font-size: 13px; color: var(--ink-soft); }
+
+/* VERGLEICH */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.ccard { border: 2px solid var(--line); border-radius: var(--radius); padding: 22px 18px; background: var(--white); }
+.ccard--center { border-color: var(--orange); background: var(--orange-soft); }
+.ccard__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.ccard--center .ccard__label { color: var(--orange-dark); }
+.ccard__name { font-size: 24px; font-weight: 900; margin-bottom: 18px; }
+.ccard__row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.ccard__row:last-child { border-bottom: none; padding-bottom: 0; }
+.ccard__key { color: var(--ink-soft); }
+.ccard__val { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-g { background: #22c55e; }
+.dot-y { background: #f59e0b; }
+.dot-r { background: #ef4444; }
+.dot-p { background: #a855f7; }
+
+/* BLOG LINK BOX */
+.blog-link-box { background: var(--blue-soft); border: 1px solid #c0cffe; border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+.blog-link-box svg { flex-shrink: 0; color: var(--blue-dark); }
+.blog-link-box p { font-size: 14px; color: var(--ink-soft); }
+.blog-link-box a:not(.btn) { color: var(--blue-dark); font-weight: 700; text-decoration: underline; }
+
+/* CHEM TABLE */
+.chem-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin-top: 4px; }
+.chem-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.chem-table thead { background: var(--ink); color: #fff; }
+.chem-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.chem-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.chem-table td:first-child { font-weight: 700; color: var(--ink); }
+.chem-table td:last-child { font-size: 13px; color: var(--ink-soft); }
+.chem-table tr:last-child td { border-bottom: none; }
+.chem-table tr:hover td { background: var(--paper-2); }
+.badge-g { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-y { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-r { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+.badge-p { display: inline-block; background: var(--purple-soft); color: var(--purple); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* TECH TABLE */
+.tech-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.tech-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tech-table thead { background: var(--ink); color: #fff; }
+.tech-table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.tech-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.tech-table td:first-child { font-weight: 700; color: var(--ink); }
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:hover td { background: var(--paper-2); }
+.tval { display: inline-block; background: var(--orange-soft); color: var(--orange-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+
+/* ANWENDUNGEN */
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ucard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); display: flex; flex-direction: column; gap: 10px; }
+.ucard__icon { width: 42px; height: 42px; background: var(--orange-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--orange-dark); }
+.ucard__title { font-size: 16px; font-weight: 900; }
+.ucard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+
+/* VARIANTEN */
+.variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.vcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--white); }
+.vcard__badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); background: var(--orange-soft); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+.vcard__name { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.vcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+/* NACHBEARBEITUNG */
+.post-steps { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.post-step { display: flex; align-items: flex-start; gap: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.post-step__num { width: 32px; height: 32px; background: var(--orange); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; flex-shrink: 0; }
+.post-step__body strong { display: block; font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+.post-step__body span { font-size: 13px; color: var(--ink-soft); }
+.post-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 14px 16px; margin-top: 16px; font-size: 13px; color: #92400e; }
+.post-note strong { font-weight: 700; }
+
+/* FÜLLUNGSGRADE */
+.fill-info { background: var(--purple-soft); border: 1px solid #ddd6fe; border-radius: var(--radius); padding: 24px 28px; margin-bottom: 20px; }
+.fill-info h3 { font-size: 17px; font-weight: 900; color: var(--purple); margin-bottom: 10px; }
+.fill-info p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 12px; }
+.fill-info p:last-child { margin-bottom: 0; }
+.fill-rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.fill-rule { border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; background: var(--white); }
+.fill-rule__icon { font-size: 22px; margin-bottom: 8px; }
+.fill-rule strong { display: block; font-size: 14px; font-weight: 900; margin-bottom: 4px; }
+.fill-rule p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+
+/* GRENZEN */
+.limits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.limit-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); display: flex; align-items: flex-start; gap: 12px; }
+.limit-card__icon { width: 34px; height: 34px; background: #fee2e2; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.limit-card strong { display: block; font-size: 14px; font-weight: 900; margin-bottom: 4px; }
+.limit-card span { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+
+/* FAQ */
+.faq-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 20px 0 6px; border-top: 1px solid var(--line); margin-top: 12px; }
+.faq-group-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 20px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink); transition: background .12s; }
+.faq-q:hover { background: var(--paper-2); }
+.faq-q[aria-expanded="true"] { background: var(--orange-soft); color: var(--orange-dark); }
+.faq-icon { flex-shrink: 0; transition: transform .2s; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.faq-a a { color: var(--orange); text-decoration: underline; }
+
+/* CTA SPLIT */
+.cta-wrap { padding: 64px 0; background: var(--paper-2); }
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.cta-left { background: var(--orange); padding: 48px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.cta-left__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
+.cta-left__text { font-size: 15px; color: rgba(255,255,255,.85); line-height: 1.55; }
+.cta-right { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 18px; justify-content: center; border-left: 1px solid var(--line); }
+.cta-right__label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.contact-row { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 700; }
+.contact-icon { width: 30px; height: 30px; background: var(--orange-soft); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--orange); flex-shrink: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-right { border-left: none; border-top: 1px solid var(--line); }
+}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="https://www.3ddrucklife.de" target="_parent">Start</a>
+    <span class="breadcrumb__sep">›</span>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Materialien</a>
+    <span class="breadcrumb__sep">›</span>
+    <span class="breadcrumb__current">Resin Standard</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="material" class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__eyebrow">SLA · DLP · MSLA Photopolymer</div>
+      <h1 class="hero__title">Resin Standard: hochauflösend, <span class="accent">detailgenau</span> und glatte Oberfläche.</h1>
+      <p class="hero__sub">Schichtstärken von 25 bis 50 µm, beste Oberflächenqualität aller 3D-Druckverfahren. Ideal für Prototypen, Miniaturen, Schmuck und Dentalmodelle.</p>
+      <div class="trust-row">
+        <div class="kstat"><span class="kstat__val">~60 MPa</span><span class="kstat__lbl">Zugfestigkeit</span></div>
+        <div class="kstat"><span class="kstat__val">bis 60 °C</span><span class="kstat__lbl">Formstabil</span></div>
+        <div class="kstat"><span class="kstat__val">&lt; 0,5 %</span><span class="kstat__lbl">Schwund</span></div>
+        <div class="kstat"><span class="kstat__val">1,12 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
+        <span class="chip chip--purple">25 bis 50 µm Schicht</span>
+        <span class="chip chip--orange">Sehr glatte Oberfläche</span>
+        <span class="chip chip--orange">SLA / DLP / MSLA</span>
+      </div>
+      <div class="btn-row">
+        <a href="https://3ddrucklife.com" class="btn btn--orange" target="_parent">➜ Preis berechnen</a>
+        <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Resin Standard" class="btn btn--outline">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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" alt="Resin Standard Photopolymer für SLA und DLP 3D-Druck" width="900" height="900" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- STICKY TOC -->
+<nav class="toc-bar" aria-label="Inhaltsnavigation">
+  <div class="toc-bar__inner">
+    <a class="toc-link" data-s="material" href="#material">Übersicht</a>
+    <a class="toc-link" data-s="eigenschaften" href="#eigenschaften">Eigenschaften</a>
+    <a class="toc-link" data-s="chemie" href="#chemie">Chemie</a>
+    <a class="toc-link" data-s="techdaten" href="#techdaten">Techdaten</a>
+    <a class="toc-link" data-s="anwendungen" href="#anwendungen">Anwendungen</a>
+    <a class="toc-link" data-s="varianten" href="#varianten">Varianten</a>
+    <a class="toc-link" data-s="nachbearbeitung" href="#nachbearbeitung">Nachbearbeitung</a>
+    <a class="toc-link" data-s="fuellungsgrade" href="#fuellungsgrade">Füllung</a>
+    <a class="toc-link" data-s="grenzen" href="#grenzen">Grenzen</a>
+    <a class="toc-link" data-s="faq" href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- WAS IST RESIN STANDARD -->
+<section id="eigenschaften" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Grundlagen</div>
+    <h2 class="sec-title">Was ist Resin Standard?</h2>
+    <p class="sec-sub">Photopolymer-Harz für lichtbasierte 3D-Druckverfahren mit überlegener Detailauflösung.</p>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>Resin Standard ist ein acrylatbasiertes Photopolymer für die Verfahren SLA (Stereolithografie), DLP (Digital Light Processing) und MSLA (Masked SLA / LCD). UV-Licht mit 385 nm oder 405 nm Wellenlänge initiiert eine radikalische Polymerisation, die das flüssige Harz schichtweise aushärtet.</p>
+        <p>Die erreichbaren Schichtstärken von 25 bis 50 µm sind deutlich feiner als im FDM-Druck möglich. Oberflächen wirken optisch glatt ohne sichtbare Schichtlinien. Damit ist Resin Standard das Verfahren der Wahl für hochdetaillierte Bauteile, Designprototypen und ästhetische Anwendungen.</p>
+        <p>Die Schwächen sind kompensierbar: Resin ist spröder als FDM-Materialien, reagiert empfindlich auf UV-Dauerstrahlung und erfordert einen geregelten Nachbearbeitungsprozess mit Waschen und UV-Nachcuring.</p>
+      </div>
+      <div class="fact-stack">
+        <div class="fact">
+          <div class="fact__icon">💡</div>
+          <div class="fact__body"><strong>Verfahren</strong><span>SLA, DLP, MSLA (LCD) mit 385 nm oder 405 nm UV-Licht</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🔬</div>
+          <div class="fact__body"><strong>Schichtauflösung</strong><span>25 bis 50 µm, XY-Auflösung bis 35 µm je nach Drucker</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">✨</div>
+          <div class="fact__body"><strong>Oberfläche</strong><span>Sehr glatt, nahezu spritzgussähnlich nach Nachcuring</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">⚠️</div>
+          <div class="fact__body"><strong>Einschränkung</strong><span>Spröde, UV-sensitiv, Restmonomer giftig, Sondermüll</span></div>
+        </div>
+        <div class="fact">
+          <div class="fact__icon">🏭</div>
+          <div class="fact__body"><strong>Typische Anwendung</strong><span>Prototypen, Schmuck, Miniaturen, Dental, Architekturmodelle</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VERGLEICH -->
+    <h3 style="font-size:20px;font-weight:900;margin:48px 0 16px;">Resin Standard im Vergleich</h3>
+    <div class="compare-grid">
+      <div class="ccard">
+        <div class="ccard__label">Alternative</div>
+        <div class="ccard__name">FDM PLA</div>
+        <div class="ccard__row"><span class="ccard__key">Auflösung</span><span class="ccard__val"><span class="dot dot-y"></span>100 bis 300 µm</span></div>
+        <div class="ccard__row"><span class="ccard__key">Oberfläche</span><span class="ccard__val"><span class="dot dot-y"></span>Sichtbare Linien</span></div>
+        <div class="ccard__row"><span class="ccard__key">Mechanik</span><span class="ccard__val"><span class="dot dot-g"></span>Zäh</span></div>
+        <div class="ccard__row"><span class="ccard__key">Nachbearbeitung</span><span class="ccard__val"><span class="dot dot-g"></span>Einfach</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis/kg</span><span class="ccard__val">15 bis 30 €</span></div>
+      </div>
+      <div class="ccard ccard--center">
+        <div class="ccard__label">Diese Seite</div>
+        <div class="ccard__name">Resin Standard</div>
+        <div class="ccard__row"><span class="ccard__key">Auflösung</span><span class="ccard__val"><span class="dot dot-g"></span>25 bis 50 µm</span></div>
+        <div class="ccard__row"><span class="ccard__key">Oberfläche</span><span class="ccard__val"><span class="dot dot-g"></span>Sehr glatt</span></div>
+        <div class="ccard__row"><span class="ccard__key">Mechanik</span><span class="ccard__val"><span class="dot dot-r"></span>Spröde</span></div>
+        <div class="ccard__row"><span class="ccard__key">Nachbearbeitung</span><span class="ccard__val"><span class="dot dot-y"></span>Waschen + Curing</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis/kg</span><span class="ccard__val">20 bis 50 €</span></div>
+      </div>
+      <div class="ccard">
+        <div class="ccard__label">Alternative</div>
+        <div class="ccard__name">Resin Tough</div>
+        <div class="ccard__row"><span class="ccard__key">Auflösung</span><span class="ccard__val"><span class="dot dot-g"></span>25 bis 50 µm</span></div>
+        <div class="ccard__row"><span class="ccard__key">Oberfläche</span><span class="ccard__val"><span class="dot dot-g"></span>Sehr glatt</span></div>
+        <div class="ccard__row"><span class="ccard__key">Mechanik</span><span class="ccard__val"><span class="dot dot-y"></span>Zäher</span></div>
+        <div class="ccard__row"><span class="ccard__key">Nachbearbeitung</span><span class="ccard__val"><span class="dot dot-y"></span>Waschen + Curing</span></div>
+        <div class="ccard__row"><span class="ccard__key">Preis/kg</span><span class="ccard__val">40 bis 80 €</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section id="chemie" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Werkstoffkunde</div>
+    <h2 class="sec-title">Chemischer Aufbau</h2>
+    <p class="sec-sub">Acrylatbasiertes Photopolymer mit UV-initiierter radikalischer Kettenreaktion.</p>
+    <div class="chem-table-wrap">
+      <table class="chem-table">
+        <thead>
+          <tr><th>Komponente</th><th>Funktion</th><th>Anteil</th><th>Bemerkung</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Oligomere (Urethanacrylat, Epoxidacrylat)</td><td>Basisstruktur des ausgehärteten Netzwerks</td><td><span class="badge-g">40 bis 60 %</span></td><td>Bestimmt Steifigkeit und Zähigkeit</td></tr>
+          <tr><td>Reaktive Verdünner (HEMA, IBOA)</td><td>Viskositätssenkung, Co-Monomer</td><td><span class="badge-y">20 bis 40 %</span></td><td>HEMA hautreizend, IBOA sensibilisierend</td></tr>
+          <tr><td>Fotoinitiator (TPO, Irgacure 819)</td><td>Startet Polymerisation bei UV-Bestrahlung</td><td><span class="badge-r">1 bis 5 %</span></td><td>385 nm oder 405 nm Absorptionsmaximum</td></tr>
+          <tr><td>Pigmente / Farbstoffe</td><td>Farbe, UV-Blockereffekt</td><td><span class="badge-g">bis 1 %</span></td><td>Opake Farben verbessern Druckqualität</td></tr>
+          <tr><td>Additive (Stabilisatoren, Weichmacher)</td><td>Lagerstabilität, Schwindungsreduktion</td><td><span class="badge-g">bis 3 %</span></td><td>Formulierungsabhängig</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:24px;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px;">
+      <h3 style="font-size:16px;font-weight:900;margin-bottom:10px;">Polymerisationsreaktion</h3>
+      <p style="font-size:14px;color:var(--ink-soft);line-height:1.65;margin-bottom:10px;">UV-Licht (385 nm oder 405 nm) aktiviert den Fotoinitiator, der Radikale freisetzt. Diese starten eine radikalische Kettenwachstumsreaktion der Acrylat-Doppelbindungen. Im Drucker erreicht das Harz einen Konversionsgrad von ca. 60 %. Erst durch UV-Nachcuring im UV-Ofen (5 bis 15 min, 405 nm) steigt er auf 85 bis 95 %, was Festigkeit und Dimensionsstabilität erheblich verbessert.</p>
+      <p style="font-size:14px;color:var(--ink-soft);line-height:1.65;"><strong>Wichtig:</strong> Ungehärtetes Restmonomer ist hautreizend und umweltgefährdend. Immer Nitrilhandschuhe tragen, niemals Rohharz in den Ausguss geben.</p>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p>Mehr zu Photopolymeren und UV-Aushärtung: <a href="https://www.3ddrucklife.de/post/resin-3d-druck" target="_parent">Resin 3D-Druck erklärt auf 3ddrucklife.de</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- TECHDATEN -->
+<section id="techdaten" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Spezifikation</div>
+    <h2 class="sec-title">Technische Daten</h2>
+    <p class="sec-sub">Typische Kennwerte nach UV-Nachcuring. Werte variieren je nach Hersteller und Aushärtegrad.</p>
+    <div class="tech-table-wrap">
+      <table class="tech-table">
+        <thead>
+          <tr><th>Eigenschaft</th><th>Wert</th><th>Norm</th><th>Hinweis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Zugfestigkeit</td><td><span class="tval">40 bis 65 MPa</span></td><td>ISO 527</td><td>Nach vollständigem UV-Nachcuring</td></tr>
+          <tr><td>E-Modul</td><td><span class="tval">2.000 bis 3.500 MPa</span></td><td>ISO 527</td><td>Steifer als PLA, sehr spröde</td></tr>
+          <tr><td>Bruchdehnung</td><td><span class="tval">2 bis 6 %</span></td><td>ISO 527</td><td>Sehr gering, keine Zähigkeit</td></tr>
+          <tr><td>Biegefestigkeit</td><td><span class="tval">60 bis 80 MPa</span></td><td>ISO 178</td><td>Gut für Formwerkzeuge</td></tr>
+          <tr><td>HDT (0,45 MPa)</td><td><span class="tval">45 bis 60 °C</span></td><td>ISO 75</td><td>Kein Hochtemperatureinsatz</td></tr>
+          <tr><td>Dichte</td><td><span class="tval">1,10 bis 1,15 g/cm³</span></td><td>ISO 1183</td><td>Etwas leichter als ABS</td></tr>
+          <tr><td>Wasseraufnahme</td><td><span class="tval">0,3 bis 0,8 %</span></td><td>ISO 62</td><td>Mäßig, kein Dauerkontakt mit Wasser</td></tr>
+          <tr><td>Schwindung</td><td><span class="tval">ca. 0,3 bis 0,5 %</span></td><td>-</td><td>Gering, hohe Maßhaltigkeit</td></tr>
+          <tr><td>Shore-Härte</td><td><span class="tval">ca. 80 bis 85 D</span></td><td>ISO 868</td><td>Hart, nicht flexibel</td></tr>
+          <tr><td>Transparenz</td><td><span class="tval">opak bis klar</span></td><td>-</td><td>Je nach Formulierung (Clear-Variante)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p>Technische Daten im Vergleich: <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_parent">Alle Materialien auf 3ddrucklife.de vergleichen</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Einsatzgebiete</div>
+    <h2 class="sec-title">Typische Anwendungen</h2>
+    <p class="sec-sub">Resin Standard dort einsetzen, wo Detailgenauigkeit und Oberflächenqualität wichtiger sind als mechanische Zähigkeit.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="ucard__title">Designprototypen</div>
+        <p>Konzeptmodelle und Designprototypen mit spritzgussähnlicher Oberfläche. Farbechtheit, Lackierbarkeit und optische Wertigkeit auf Messe- und Präsentationsniveau.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M12 12v8M8 16l4 4 4-4"/></svg>
+        </div>
+        <div class="ucard__title">Schmuck (Ausschmelzen)</div>
+        <p>Castable-Resin-Varianten ermöglichen Feinguss: Wachsausbrennen, Einbetten, Guss in Gold, Silber oder Bronze. Extrem feine Filigranstrukturen möglich.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div class="ucard__title">Dental-Studienmodelle</div>
+        <p>Kiefermodelle, Bohrschablonen und Provisorien mit bis zu 25 µm Schichtstärke. Zertifizierte Dental-Resins für intraoralen Einsatz verfügbar.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="ucard__title">Tabletop-Miniaturen</div>
+        <p>Rollenspielfiguren, Wargame-Miniaturen und Dioramamodelle mit höchstem Detailgrad. Resin ist das Standardmaterial der Tabletop-Community.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="ucard__title">Architekturmodelle</div>
+        <p>Fassadendetails, Innenraummodelle und Stadtplanungsmodelle. Resin ermöglicht filigrane Fensterrahmen, Balustraden und Ornamente in Modellbaugröße.</p>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="ucard__title">Silikonmold-Einsätze</div>
+        <p>Negativformen für Silikonguss: genaue Geometrieübertragung auf Silikon, Epoxid oder Urethankautschuk. Resin als Masterpositiv für Kleinserienfertigung.</p>
+      </div>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p>Anwendungsbeispiele und Projekte: <a href="https://www.3ddrucklife.de/post/resin-anwendungen" target="_parent">Resin-Anwendungen im 3D-Druck auf 3ddrucklife.de</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Materialübersicht</div>
+    <h2 class="sec-title">Resin-Varianten im Überblick</h2>
+    <p class="sec-sub">Photopolymer-Harze in vielen Spezialisierungen. Standard ist die Einstiegsvariante.</p>
+    <div class="variants-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Standard</div>
+        <div class="vcard__name">Resin Standard</div>
+        <p>Opak in vielen Farben, günstigster Einstieg. Hohe Detailauflösung, mäßige Mechanik. Für Prototypen, Miniaturen, Designmodelle.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Optik</div>
+        <div class="vcard__name">Resin Clear</div>
+        <p>Transparent bis transluzent nach Polieren. Für Linsenmodelle, Lampenschirme, Sichtteile. Erfordert Nachpolieren für optische Klarheit.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Mechanik</div>
+        <div class="vcard__name">Resin ABS-like</div>
+        <p>Verbesserte Schlagzähigkeit, weniger spröde als Standard. Guter Kompromiss zwischen Detailauflösung und mechanischer Belastbarkeit.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Zähigkeit</div>
+        <div class="vcard__name">Resin Tough</div>
+        <p>Deutlich zäher durch spezielle Oligomerstruktur. Für funktionale Teile mit Schlagbelastung. Teurer, aber robuster im Einsatz.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Flexibel</div>
+        <div class="vcard__name">Resin Flexibel</div>
+        <p>Gummiartige Konsistenz nach Aushärtung (Shore 40 bis 70 A). Für Dichtungen, Griffe, flexible Prototypen. Schwierigeres Handling.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Guss</div>
+        <div class="vcard__name">Resin Castable Wax</div>
+        <p>Wachsähnlich, rückstandsfrei ausbrennbar bis 1.000 °C. Standard in der Schmuckbranche für Feinguss. Keine Asche, keine Verunreinigung.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Dental</div>
+        <div class="vcard__name">Resin Dental</div>
+        <p>Zertifizierte Formulierungen für Klasse I und IIa Medizinprodukte. Studienmodelle, Bohrschablonen, Provisorien (Material C).</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Medizin</div>
+        <div class="vcard__name">Resin BioMed</div>
+        <p>Biokompatible Varianten für Kurzzeit-Hautkontakt und Schleimhautkontakt. ISO 10993 Biokompatibilitätsprüfung. Für Hilfsmittel und Medizintechnik.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Prozess</div>
+    <h2 class="sec-title">Nachbearbeitung Schritt für Schritt</h2>
+    <p class="sec-sub">Resin-Teile sind erst nach Waschen und UV-Curing fertig. Kein Schritt darf übersprungen werden.</p>
+    <div class="post-steps">
+      <div class="post-step">
+        <div class="post-step__num">1</div>
+        <div class="post-step__body"><strong>Isopropanol-Bad 1 (Grobwäsche)</strong><span>5 bis 8 Minuten in frischem IPA (99 %). Rohbauteil schütteln oder mit Ultraschall behandeln. Entfernt den Großteil des flüssigen Restharzes.</span></div>
+      </div>
+      <div class="post-step">
+        <div class="post-step__num">2</div>
+        <div class="post-step__body"><strong>Isopropanol-Bad 2 (Feinwäsche)</strong><span>3 bis 5 Minuten in sauberem IPA. Zweites Bad sichert vollständige Entfernung des Restmonomers. Tauschbad regelmäßig erneuern.</span></div>
+      </div>
+      <div class="post-step">
+        <div class="post-step__num">3</div>
+        <div class="post-step__body"><strong>Lufttrocknung</strong><span>2 bis 5 Minuten an der Luft oder mit Druckluft. IPA vollständig verdunsten lassen, bevor das Teil in den UV-Ofen kommt. IPA verhindert sonst gleichmäßige Aushärtung.</span></div>
+      </div>
+      <div class="post-step">
+        <div class="post-step__num">4</div>
+        <div class="post-step__body"><strong>Stützstrukturen entfernen</strong><span>Mit Seitenschneider oder Zange Support-Stümpfe entfernen. An Bruchpunkten mit 220er Schleifpapier glätten. Vor UV-Curing einfacher zu entfernen als danach.</span></div>
+      </div>
+      <div class="post-step">
+        <div class="post-step__num">5</div>
+        <div class="post-step__body"><strong>UV-Nachcuring</strong><span>5 bis 15 Minuten bei 405 nm in UV-Härtungsstation. Konversionsgrad steigt von ca. 60 % auf 85 bis 95 %. Teile drehen für gleichmäßige Bestrahlung. Übercuring vergilbt das Material.</span></div>
+      </div>
+      <div class="post-step">
+        <div class="post-step__num">6</div>
+        <div class="post-step__body"><strong>Schleifen und Lackieren (optional)</strong><span>400er bis 1200er Schleifpapier nass schleifen für noch glattere Oberfläche. Grundierung mit Füller-Primer, dann Lackierung möglich. Resin nimmt Farbe sehr gut an.</span></div>
+      </div>
+    </div>
+    <div class="post-note">
+      <strong>Sicherheitshinweis:</strong> Immer Nitrilhandschuhe und Schutzbrille tragen. Flüssiges Resin und IPA sind brennbar und hautreizend. Entsorgung als Sondermüll (nicht in den Ausguss!). IPA-Bäder unter UV-Licht auspolymerisieren, dann als Feststoff entsorgen.
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p>Vollständige Anleitung und Tipps: <a href="https://www.3ddrucklife.de/post/oberflachenbehandlung" target="_parent">Nachbearbeitungsmethoden im Überblick auf 3ddrucklife.de</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FÜLLUNGSGRADE -->
+<section id="fuellungsgrade" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Besonderheit Resin</div>
+    <h2 class="sec-title">Füllungsgrade bei Resin</h2>
+    <p class="sec-sub">Anders als FDM kennt Resin keine Infill-Einstellung. Das Volumen ist immer Vollmaterial.</p>
+    <div class="fill-info">
+      <h3>Kein Infill wie bei FDM</h3>
+      <p>Im FDM-Druck bestimmt der Füllungsgrad (Infill) die innere Struktur. Bei Resin gibt es das nicht: Jedes gedruckte Volumen ist vollständig mit ausgehärtetem Photopolymer gefüllt. Eine "Füllung von 20 %" ist technisch nicht möglich ohne besondere Konstruktionsmassnahmen.</p>
+      <p>Für große, massige Bauteile gibt es im Slicer einen Shell-Modus: Das Innere wird hohl gedruckt. Dabei sind Drain-Holes (min. 2 mm Durchmesser) zwingend notwendig. Fehlen sie, bleibt flüssiges Harz im Inneren, dehnt sich beim UV-Curing aus und verursacht Risse oder Explosionen des Bauteils.</p>
+    </div>
+    <div class="fill-rules">
+      <div class="fill-rule">
+        <div class="fill-rule__icon">🧱</div>
+        <strong>Vollmaterial (Standard)</strong>
+        <p>Alle kleinen Teile und Feindetails werden als Vollmaterial gedruckt. Kein Sonderaufwand, volle Festigkeit, kein Nachtrocknen innen.</p>
+      </div>
+      <div class="fill-rule">
+        <div class="fill-rule__icon">🐚</div>
+        <strong>Shell-Modus (Hohlkörper)</strong>
+        <p>Für Teile über ca. 30 mm Wandstärke oder große Volumina. Wandstärke mindestens 0,8 mm. Harzersparnis bis 70 % möglich.</p>
+      </div>
+      <div class="fill-rule">
+        <div class="fill-rule__icon">🕳️</div>
+        <strong>Drain-Holes (Pflicht)</strong>
+        <p>Bei Hohlkörpern: mindestens 2 Ablaufbohrungen mit min. 2 mm Durchmesser an der tiefsten Stelle. Verhindert Harzeinschluss und Rissbildung.</p>
+      </div>
+      <div class="fill-rule">
+        <div class="fill-rule__icon">📐</div>
+        <strong>Mindest-Wandstärke</strong>
+        <p>0,8 mm Mindestwandstärke für zuverlässige Druckergebnisse. Filigraner als 0,3 mm nur für detailstarke, nicht belastete Strukturen wie Miniaturenhaut.</p>
+      </div>
+    </div>
+    <div class="blog-link-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p>Konstruktionshinweise für Resin-Druck: <a href="https://www.3ddrucklife.de/post/resin-3d-druck" target="_parent">Resin 3D-Druck: Worauf achten? auf 3ddrucklife.de</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec--alt">
+  <div class="container">
+    <div class="sec-eyebrow">Einschränkungen</div>
+    <h2 class="sec-title">Wo Resin Standard nicht geeignet ist</h2>
+    <p class="sec-sub">Für mechanisch belastete oder Outdoor-Bauteile gibt es bessere Materialien.</p>
+    <div class="limits-grid">
+      <div class="limit-card">
+        <div class="limit-card__icon">💥</div>
+        <div><strong>Keine Schlagzähigkeit</strong><span>Resin-Teile brechen bei Stoß oder Fall. Kein Ersatz für zähe Thermoplaste wie PETG oder ABS. Nicht für mechanische Bauteile mit Stoßbelastung.</span></div>
+      </div>
+      <div class="limit-card">
+        <div class="limit-card__icon">☀️</div>
+        <div><strong>UV-Degradation</strong><span>Dauerlicht und Sonnenstrahlung vergilbt und versprödet Resin. Nur für Innenanwendungen oder mit UV-Schutzlack geeignet.</span></div>
+      </div>
+      <div class="limit-card">
+        <div class="limit-card__icon">🌡️</div>
+        <div><strong>Max. 60 °C Einsatz</strong><span>HDT von 45 bis 60 °C begrenzt den Hochtemperatureinsatz. Nicht für Motorraum, Geschirrspüler oder heiße Umgebungen geeignet.</span></div>
+      </div>
+      <div class="limit-card">
+        <div class="limit-card__icon">☣️</div>
+        <div><strong>Restmonomer giftig</strong><span>Ungehärtetes Harz und IPA-Waschwasser sind giftig und hautreizend. Schutzausrüstung zwingend. Entsorgung als Sondermüll.</span></div>
+      </div>
+      <div class="limit-card">
+        <div class="limit-card__icon">👃</div>
+        <div><strong>Geruchsbelästigung</strong><span>Beim Druck und Waschen entstehen intensive Gerüche. Nur in gut belüfteten Räumen oder mit Aktivkohlefilter betreiben.</span></div>
+      </div>
+      <div class="limit-card">
+        <div class="limit-card__icon">💶</div>
+        <div><strong>Kosteneffizienz</strong><span>Resin ist pro kg teurer als FDM-Filament. Nachbearbeitungsaufwand (Waschen, Curing) erhöht Gesamtkosten. Bei Kleinmengen deutlich teurer als FDM.</span></div>
+      </div>
+    </div>
+    <div style="margin-top:24px;background:var(--blue-soft);border-left:4px solid var(--blue-dark);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;">
+      <p style="font-size:15px;color:var(--ink-soft);line-height:1.65;">Braucht ihr mechanisch belastbare Teile mit guter Oberfläche? <strong><a href="https://www.3ddrucklife.de/3ddruckmaterial" style="color:var(--blue-dark);" target="_parent">Resin Tough oder PETG</a></strong> bieten bessere Schlagzähigkeit. Für Hochtemperaturanwendungen empfehlen wir <strong><a href="https://www.3ddrucklife.de/3ddruckmaterial" style="color:var(--blue-dark);" target="_parent">ABS, ASA oder PEEK</a></strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec">
+  <div class="container">
+    <div class="sec-eyebrow">Fragen und Antworten</div>
+    <h2 class="sec-title">Häufige Fragen zu Resin Standard</h2>
+    <div class="faq-list">
+
+      <!-- GRUPPE 1 -->
+      <div class="faq-group-label">Über Resin Standard</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was ist der Unterschied zwischen SLA, DLP und MSLA?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">SLA (Stereolithografie) nutzt einen UV-Laser, der das Harz punktweise abtastet. DLP (Digital Light Processing) belichtet eine gesamte Schicht gleichzeitig mit einem DMD-Chip. MSLA (Masked SLA / LCD) nutzt ein LCD-Panel als Maske vor einer UV-LED-Lichtquelle. Alle drei Verfahren verwenden Resin Standard als Material. DLP und MSLA sind für Heimanwender günstiger, SLA erreicht bei großen Bauteilen konsistentere Genauigkeit.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie glatt ist die Oberfläche wirklich?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Mit 25 bis 50 µm Schichtstärke sind Schichtlinien mit bloßem Auge kaum sichtbar. Senkrechte Flächen wirken optisch glatt. Geneigte Flächen zeigen bei sehr flachen Winkeln noch einen sogenannten Treppenstufeneffekt, der durch geschicktes Druckausrichten minimiert werden kann. Nach Nassschleifen ab 400er Körnung und Polieren sind Resin-Oberflächen nahezu spiegelglatt.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist Resin Standard lebensmittelecht (food safe)?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Nein. Standard-Resin ist nicht lebensmittelecht. Unausgehärtetes Restmonomer (HEMA, IBOA) ist gesundheitsschädlich. Selbst nach vollständigem UV-Curing erfüllen Standard-Formulierungen keine FDA- oder EU-Lebensmittelkontakt-Normen. Für lebensmittelrelevante Anwendungen gibt es zertifizierte Food-Grade-Resins in Sonderformulierungen. Wir klären das gerne auf Anfrage.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lange halten Resin-Drucke?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Innen aufbewahrt und vor UV-Licht geschützt halten Resin-Teile viele Jahre ohne merkliche Degradation. Im Freien oder unter Dauerlicht (Sonneneinstrahlung) beginnt UV-Abbau innerhalb von Monaten: das Material vergilbt und wird spröder. Ein UV-Schutzlack verlängert die Außenlebensdauer erheblich. Mechanisch belastete Teile können durch Ermüdungsrisse früher versagen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann man Resin Standard bemalen und lackieren?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja, sehr gut sogar. Resin nimmt Acrylfarben und Grundierungen hervorragend an. Die glatte Oberfläche hält Pinselfarbe gleichmäßiger als FDM-Teile. Für Lackierung mit Füller-Primer beginnen, dann mit Acryl- oder Modellbaulack arbeiten. Airbrush funktioniert ebenfalls ausgezeichnet. Modellierer und Miniaturenbemaler schätzen Resin genau dafür.</div>
+      </div>
+
+      <!-- GRUPPE 2 -->
+      <div class="faq-group-label">Konfiguration und Kosten</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Was kostet ein Resin-Druck bei 3D DRUCK LIFE?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Der Preis hängt von Volumen, Geometrie und Nachbearbeitung ab. Die schnellste Kalkulation erhaltet ihr über unseren <a href="https://3ddrucklife.com" target="_parent">Online-Preisrechner</a>: 3D-Datei hochladen, Material wählen, Preis sofort erhalten. Für Projekte mit Sonderanforderungen oder Stückzahlen ab 10 meldet euch direkt für ein individuelles Angebot.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Farben und Varianten sind lieferbar?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Resin Standard ist in mehreren Farben lieferbar (typisch: Grau, Schwarz, Beige, Weiß). Für transparente Teile empfehlen wir Resin Clear. Für zähere Anforderungen steht Resin Tough zur Verfügung. Den aktuellen Vorrat und weitere Spezialsorten (Castable, Dental) klären wir auf Anfrage. Die Verfügbarkeit kann variieren.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Stellt ihr auch Angebote für Unternehmen aus?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja. Für Unternehmen mit Bedarf an Angeboten oder Rahmenverträgen schickt uns eure Anfrage mit Bauteilbeschreibung, Stückzahl und Wunschtermin. Wir erstellen ein verbindliches Angebot. Bei größeren Mengen oder regelmäßigen Abrufen gibt es Mengenrabatte.</div>
+      </div>
+
+      <!-- GRUPPE 3 -->
+      <div class="faq-group-label">3D-Druck allgemein und Nachbearbeitung</div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Dateiformate werden akzeptiert?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Wir akzeptieren STL, STEP (STP) und 3MF. STL ist am weitesten verbreitet. STEP bevorzugen wir bei Präzisionsbauteilen, da die exakte Geometrie erhalten bleibt. OBJ ist ebenfalls möglich. Habt ihr nur ein PDF oder eine technische Zeichnung, helfen wir euch beim nächsten Schritt.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Wie lange dauert die Lieferung?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Wir bieten Economy, Standard und Express-Lieferung an. Resin-Teile brauchen durch Waschen und UV-Curing etwas mehr Vorlaufzeit als FDM-Teile. Vor Auftragsstart bekommt ihr immer eine konkrete Zeitangabe. Express-Produktion ist für dringende Projekte möglich.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kann 3D DRUCK LIFE die 3D-Datei für mich erstellen?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja. Schickt uns eine Skizze, ein Foto oder eine technische Zeichnung. Wir erstellen die 3D-Datei für euch. Konstruktionsaufwand und Preis besprechen wir vorab. Für Ersatzteile ohne Vorlage bieten wir Reverse Engineering an.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Welche Nachbearbeitungen bietet ihr für Resin-Teile an?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Wir bieten Schleifen, Lackieren, Grundieren und Polieren für Resin-Teile an. Gravur per Laser ist ebenfalls möglich. Stützstrukturen entfernen wir professionell ohne Bruchstellen. Eine vollständige Übersicht aller Nachbearbeitungsmethoden findet ihr in unserem <a href="https://www.3ddrucklife.de/post/oberflachenbehandlung" target="_parent">Blogbeitrag zur Oberflächenbehandlung</a>.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Ist 3D-Druck mit Resin für Kleinserie geeignet?
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Ja, besonders wenn es auf Detailqualität ankommt. DLP und MSLA können mehrere Bauteile gleichzeitig drucken, ohne Aufpreis pro Teil. Für Stückzahlen bis ca. 50 bis 100 ist Resin-Druck wirtschaftlich. Darüber hinaus lohnt oft Silikonguss vom Resin-Master, der dann als Positivform für günstigere Vervielfältigung dient.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">Resin Standard Bauteile bestellen</div>
+        <p class="cta-left__text">3D-Datei hochladen, Material wählen, Preis sofort erhalten. Kein Angebot, kein Warten. Oder sprecht uns für Dental-, Schmuck- und Sonderprojekte direkt an.</p>
+        <div class="btn-row">
+          <a href="https://3ddrucklife.com" class="btn btn--white" target="_parent">Preisrechner öffnen</a>
+          <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Resin Standard" class="btn btn--white-outline">Beratung anfragen</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right__label">Direktkontakt</div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.64a16 16 0 0 0 5.55 5.55l.83-.83a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <span><a href="tel:+4917664056860">+49 176 64056860</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <span><a href="mailto:Info@3ddrucklife.de">Info@3ddrucklife.de</a></span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <span><a href="https://wa.me/4917664056860" target="_parent">WhatsApp schreiben</a></span>
+        </div>
+        <div style="margin-top:8px;padding-top:16px;border-top:1px solid var(--line);">
+          <p style="font-size:13px;color:var(--ink-soft);">Mo bis Fr erreichbar · Zweibrücken, Deutschland</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-q').forEach(b => { b.setAttribute('aria-expanded','false'); b.nextElementSibling.style.display='none'; });
+    if (!open) { btn.setAttribute('aria-expanded','true'); btn.nextElementSibling.style.display='block'; }
+  });
+});
+
+// Active TOC
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.toc-link');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.dataset.s === e.target.id));
+  });
+}, { rootMargin: '-50px 0px -60% 0px' });
+secs.forEach(s => obs.observe(s));
+links.forEach(l => l.addEventListener('click', e => { e.preventDefault(); document.getElementById(l.dataset.s)?.scrollIntoView({behavior:'smooth'}); }));
+</script>
+</body>
+</html>
