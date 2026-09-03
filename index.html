@@ -1,6 +1,2063 @@
 <!DOCTYPE html>
-<html><head>
-<meta http-equiv="refresh" content="0;url=https://www.3ddrucklife.de/3ddruckmaterial">
-</head><body>
-<a href="https://www.3ddrucklife.de/3ddruckmaterial">→ 3ddrucklife.de/3ddruckmaterial</a>
-</body></html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3D-Druck Materialien – Alle Werkstoffe im Überblick | 3D DRUCK LIFE</title>
+<meta content="Kunststoffe, Metalle, Resins und mehr – alle 3D-Druck Materialien von 3D DRUCK LIFE. Mit Filter nach Verfahren, Eigenschaften, Anwendungsfall und Bauteil." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --orange: #ff7800;
+  --orange-dark: #eb6d00;
+  --orange-soft: #fff1e3;
+  --blue: #6c90fc;
+  --blue-dark: #004fcd;
+  --blue-soft: #e8eeff;
+  --ink: #111;
+  --ink-soft: #4a4a4a;
+  --line: #e5e5e5;
+  --paper-2: #f7f7f5;
+  --white: #fff;
+  --radius: 8px;
+  --max-w: 1080px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+
+/* DEMO BANNER */
+
+/* BREADCRUMB */
+.breadcrumb { background: var(--orange); padding: 10px 0; }
+.breadcrumb__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); flex-wrap: wrap; }
+.breadcrumb__inner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.breadcrumb__sep { opacity: .6; }
+.breadcrumb__current { color: #fff; font-weight: 900; }
+
+/* HERO */
+.hero { background: var(--white); border-bottom: 1px solid var(--line); padding: 56px 0 48px; }
+.hero__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+.hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 12px; }
+.hero__title { font-size: clamp(32px, 5vw, 52px); font-weight: 900; line-height: 1.05; margin-bottom: 16px; }
+.hero__title .accent { color: var(--orange); }
+.hero__sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 560px; margin-bottom: 28px; }
+.hero__stats { display: flex; gap: 36px; flex-wrap: wrap; }
+.hstat { display: flex; flex-direction: column; }
+.hstat__val { font-size: 28px; font-weight: 900; color: var(--orange-dark); line-height: 1; }
+.hstat__lbl { font-size: 12px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; margin-top: 2px; }
+
+/* FILTER BAR */
+.filter-bar { background: var(--white); border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); }
+.filter-bar__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+.filter-group { display: flex; align-items: center; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.filter-group:last-child { border-bottom: none; }
+.filter-group__label { font-size: 11px; font-weight: 900; color: var(--ink-soft); min-width: 130px; flex-shrink: 0; text-transform: uppercase; letter-spacing: .06em; line-height: 1.2; }
+.filter-chips { display: flex; gap: 5px; flex-wrap: wrap; flex: 1; align-items: center; }
+
+/* CHIPS */
+.chip { display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 11px; border-radius: 100px; font-size: 11px; font-weight: 700; cursor: pointer; border: 1.5px solid var(--line); color: var(--ink-soft); background: var(--white); transition: all .12s; user-select: none; white-space: nowrap; }
+.chip:hover:not(.chip-disabled) { border-color: var(--orange); color: var(--orange-dark); }
+.chip.active { background: var(--orange-soft); border-color: var(--orange); color: var(--orange-dark); }
+.chip.chip-disabled { opacity: .3; cursor: not-allowed; }
+.chip.chip-soon { opacity: .45; cursor: default; }
+.chip-soon-tag { font-size: 9px; font-weight: 700; background: var(--line); color: var(--ink-soft); border-radius: 3px; padding: 1px 4px; }
+
+
+/* SUCHLEISTE */
+
+
+
+
+
+
+
+
+/* RESULTS BAR */
+.results-bar { max-width: var(--max-w); margin: 0 auto; padding: 16px 24px 4px; display: flex; align-items: center; justify-content: space-between; }
+.results-count { font-size: 13px; color: var(--ink-soft); font-weight: 700; }
+.results-count strong { color: var(--orange-dark); }
+.reset-btn { font-size: 12px; font-weight: 700; color: var(--ink-soft); background: none; border: none; cursor: pointer; padding: 4px 8px; border-radius: 6px; display: none; }
+.reset-btn:hover { background: var(--paper-2); color: var(--ink); }
+.reset-btn.visible { display: block; }
+
+/* GRID */
+.grid-wrap { max-width: var(--max-w); margin: 0 auto; padding: 16px 24px 64px; }
+.mat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; align-items: stretch; }
+
+/* MATERIAL CARD — einheitliche Höhe via flexbox */
+.mcard {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 20px; background: var(--white);
+  display: flex; flex-direction: column; gap: 10px;
+  transition: box-shadow .15s, border-color .15s;
+  height: 100%;
+}
+.mcard:hover { border-color: #c0bfba; box-shadow: 0 4px 18px rgba(0,0,0,.08); }
+.mcard.hidden { display: none; }
+
+.mcard__badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.vbadge { display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+.vbadge-fdm    { background: var(--orange-soft); color: var(--orange-dark); }
+.vbadge-pulver { background: #e8f5e9; color: #2e7d32; }
+.vbadge-metall { background: #e3f2fd; color: #1565c0; }
+.vbadge-resin  { background: #f3e5f5; color: #6a1b9a; }
+.vbadge-endlos { background: #e0f2f1; color: #00695c; }
+.vbadge-prep   { background: var(--paper-2); color: var(--ink-soft); }
+
+.mcard__name { font-size: 21px; font-weight: 900; line-height: 1.1; }
+.mcard__sub { font-size: 13px; color: var(--ink-soft); line-height: 1.55; flex: 1; }
+
+/* Prop-Tags — neutral */
+.mcard__props { display: flex; flex-wrap: wrap; gap: 4px; }
+.prop { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; background: var(--paper-2); color: var(--ink-soft); border: 1px solid var(--line); }
+
+/* Footer */
+.mcard__footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line); }
+.btn-detail { display: inline-flex; align-items: center; justify-content: center; gap: 5px; height: 34px; padding: 0 16px; border-radius: 100px; font-family: 'Lato', sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; text-decoration: none; border: 1.5px solid var(--orange); color: var(--orange-dark); background: transparent; transition: all .12s; white-space: nowrap; min-width: 120px; }
+.btn-detail:hover { background: var(--orange); color: #fff; }
+.btn-prep { display: inline-flex; align-items: center; justify-content: center; height: 34px; padding: 0 16px; border-radius: 100px; font-family: 'Lato', sans-serif; font-size: 12px; font-weight: 700; border: 1.5px solid var(--line); color: var(--ink-soft); background: transparent; white-space: nowrap; min-width: 120px; cursor: default; }
+
+/* Varianten-Toggle */
+.variants-toggle { display: inline-flex; align-items: center; gap: 5px; height: 34px; padding: 0 14px; border-radius: 100px; font-family: 'Lato', sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; background: var(--blue-soft); border: 1.5px solid var(--blue); color: var(--blue-dark); transition: all .12s; white-space: nowrap; }
+.variants-toggle:hover { border-color: #bbb; background: #f0efec; }
+.variants-toggle .arr { transition: transform .15s; display: inline-block; font-size: 10px; }
+.variants-toggle.open .arr { transform: rotate(180deg); }
+
+/* Varianten-Drawer */
+.variants-drawer { display: none; flex-direction: column; gap: 6px; margin-top: 4px; }
+.variants-drawer.open { display: flex; }
+.variants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 5px;
+  padding: 6px 0;
+}
+.vtag { background: var(--white); color: var(--ink); border: 1.5px solid var(--line); border-radius: 6px; padding: 5px 10px; font-size: 11px; font-weight: 600; text-align: center; display: flex; align-items: center; justify-content: center; min-height: 34px; cursor: default; transition: border-color .1s; }
+.vtag:hover { border-color: var(--orange); color: var(--orange-dark); }
+.vtag-note { font-size: 10px; color: var(--ink-soft); font-weight: 400; padding-left: 10px; }
+
+/* NO RESULTS */
+.no-results { display: none; text-align: center; padding: 64px 24px; color: var(--ink-soft); }
+.no-results.visible { display: block; }
+.no-results__icon { font-size: 40px; margin-bottom: 16px; }
+.no-results h3 { font-size: 20px; font-weight: 900; color: var(--ink); margin-bottom: 8px; }
+
+/* CTA SPLIT */
+.cta-split { display: grid; grid-template-columns: 1fr 1fr; }
+.cta-left { background: var(--orange); color: #fff; padding: 56px 48px; }
+.cta-left__eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.75); margin-bottom: 12px; }
+.cta-left__title { font-size: clamp(22px, 3vw, 30px); font-weight: 900; line-height: 1.1; margin-bottom: 12px; }
+.cta-left__text { color: rgba(255,255,255,.85); font-size: 15px; line-height: 1.6; margin-bottom: 24px; max-width: 380px; }
+.cta-right { background: var(--ink); color: #fff; padding: 56px 48px; }
+.cta-right__label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.5); margin-bottom: 20px; }
+.cta-right h3 { font-size: 20px; font-weight: 900; margin-bottom: 20px; }
+.cta-right p { font-size: 14px; color: rgba(255,255,255,.65); margin-top: 20px; line-height: 1.6; }
+.contact-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.contact-row svg { flex-shrink: 0; opacity: .6; }
+.contact-row a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; text-decoration: none; transition: all .12s; border: none; }
+.btn--white { background: #fff; color: var(--orange-dark); }
+.btn--white:hover { background: #f5f5f5; }
+.btn--white-outline { border: 2px solid rgba(255,255,255,.55); color: #fff; background: transparent; }
+.btn--white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.btn-row-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ── MOBILE OPTIMIERUNG ─────────────────────────────────────────── */
+
+/* ≤ 860px: CTA stacked */
+@media (max-width: 860px) {
+  .cta-split { grid-template-columns: 1fr; }
+  .cta-left, .cta-right { padding: 40px 24px; }
+}
+
+/* ≤ 768px: Mobile / iPhone */
+@media (max-width: 768px) {
+
+  /* HERO kompakter */
+  .hero { padding: 28px 0 22px; }
+  .hero__sub { font-size: 15px; margin-bottom: 16px; }
+  .hero__stats { gap: 14px 20px; }
+  .hstat__val { font-size: 22px; }
+  .hero__cta { flex-direction: column; gap: 8px; }
+  .hero__cta .btn { justify-content: center; width: 100%; box-sizing: border-box; }
+
+  /* FILTER-BAR: vertikal, Chips horizontal scrollbar */
+  .filter-group { flex-direction: column; gap: 4px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .filter-group:last-child { border-bottom: none; }
+  .filter-group__label { min-width: unset; font-size: 10px; letter-spacing: .08em; }
+  .filter-bar__inner { padding: 0 16px; }
+  .filter-chips {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    margin-right: -16px;
+    padding-right: 16px;
+  }
+  .filter-chips::-webkit-scrollbar { display: none; }
+
+  /* Feste 168px-Chip-Breite auf Mobile aufheben */
+  .filter-group--eigen .chip,
+  .filter-group--anwendung .chip,
+  .filter-group--bauteil .chip {
+    width: auto !important;
+    flex-shrink: 0;
+    justify-content: flex-start !important;
+  }
+
+  /* Touch-Target: Chips min. 38px hoch */
+  .chip { height: 38px; padding: 0 13px; font-size: 11px; touch-action: manipulation; }
+
+  /* RESULTS BAR */
+  .results-bar { padding: 12px 16px 4px; }
+
+  /* GRID WRAP: Padding unten für Sticky CTA */
+  .grid-wrap { padding: 12px 16px 100px; }
+
+  /* GRID: 1 Spalte */
+  .mat-grid { grid-template-columns: 1fr; gap: 10px; }
+
+  /* KARTE kompakter */
+  .mcard { padding: 16px; }
+  .mcard__name { font-size: 18px; }
+  .mcard__sub { font-size: 13px; }
+  .btn-detail, .btn-prep, .variants-toggle { height: 40px; font-size: 13px; }
+
+  /* TOP-12: Karten ab Position 13 im Peek-Modus ausblenden */
+  #mat-grid.mob-peek .mcard:nth-child(n+13) { display: none; }
+
+  /* SHOW MORE BUTTON */
+  .show-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 100px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 2px solid var(--orange);
+    color: var(--orange-dark);
+    background: var(--white);
+    transition: all .12s;
+    touch-action: manipulation;
+  }
+  .show-more-btn:active { background: var(--orange); color: #fff; }
+}
+
+/* SHOW MORE WRAP – JS gesteuert, auf Desktop immer unsichtbar */
+.show-more-wrap { display: none; padding: 16px 16px 4px; text-align: center; }
+@media (min-width: 769px) { .show-more-wrap { display: none !important; } }
+
+/* ERWEITERTE FILTER – Mobile Accordion */
+.adv-filter-toggle { display: none; }
+@media (max-width: 768px) {
+  .adv-filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding: 9px 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    touch-action: manipulation;
+  }
+  .adv-filter-toggle .adv-arr { transition: transform .2s; font-size: 10px; margin-left: auto; }
+  .adv-filter-toggle.open .adv-arr { transform: rotate(180deg); }
+  .adv-filter-groups { display: none; }
+  .adv-filter-groups.open { display: block; }
+}
+
+/* MOBILE DROPDOWN FILTER ───────────────────────────────────────── */
+.mob-dropdown-bar { display: none; background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+@media (max-width: 768px) {
+  .filter-bar { display: none; }
+  .mob-dropdown-bar { display: block; }
+  .mob-dd { border-bottom: 1px solid var(--line); }
+  .mob-dd:last-child { border-bottom: none; }
+  .mob-dd__btn {
+    display: flex; align-items: center; width: 100%;
+    padding: 10px 16px; font-family: 'Lato', sans-serif;
+    font-size: 12px; font-weight: 700; text-align: left;
+    background: none; border: none; cursor: pointer;
+    color: var(--ink); touch-action: manipulation;
+  }
+  .mob-dd__btn.has-active { color: var(--orange-dark); }
+  .mob-dd__label { flex: 1; }
+  .mob-dd__badge {
+    display: none; background: var(--orange); color: #fff;
+    font-size: 11px; font-weight: 900; border-radius: 100px;
+    padding: 2px 8px; margin-right: 8px;
+  }
+  .mob-dd__badge.visible { display: inline-block; }
+  .mob-dd__arr { font-size: 11px; color: var(--ink-soft); transition: transform .2s; }
+  .mob-dd.open .mob-dd__arr { transform: rotate(180deg); }
+  .mob-dd__panel { display: none; padding: 10px 16px 14px; border-top: 1px solid var(--line); }
+  .mob-dd.open .mob-dd__panel { display: block; }
+  .mob-dd__chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .mob-dd__chips .chip { height: 28px; padding: 0 10px; font-size: 11px; flex-shrink: 0; white-space: nowrap; width: auto !important; }
+}
+
+/* STICKY CTA – nur Mobile */
+.sticky-cta-mobile { display: none; }
+@media (max-width: 768px) {
+  .sticky-cta-mobile {
+    display: block;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 300;
+    background: #fff;
+    border-top: 2px solid var(--line);
+    padding: 10px 16px max(14px, env(safe-area-inset-bottom));
+    box-shadow: 0 -4px 20px rgba(0,0,0,.12);
+  }
+  .sticky-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 50px;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 100px;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: background .12s;
+  }
+  .sticky-cta-btn:active { background: var(--orange-dark); }
+}
+
+/* Uniform chip widths per group */
+.filter-group--eigen .filter-chips,
+.filter-group--anwendung .filter-chips,
+.filter-group--bauteil .filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.filter-group--eigen .chip,
+.filter-group--anwendung .chip,
+.filter-group--bauteil .chip {
+  justify-content: space-between;
+  width: 168px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+.hero__cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 100px; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s, color .15s; text-decoration: none; border: none; }
+.btn--orange { background: var(--orange); color: #fff; }
+.btn--orange:hover { background: var(--orange-dark); }
+.btn--outline { border: 2px solid #b0b0b0; color: var(--ink); background: transparent; }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange-dark); }
+</style>
+</head>
+<body>
+<nav class="breadcrumb">
+<div class="breadcrumb__inner">
+<a href="https://www.3ddrucklife.de">Start</a>
+<span class="breadcrumb__sep">/</span>
+<span class="breadcrumb__current">Materialien</span>
+</div>
+</nav>
+<!-- HERO -->
+<section class="hero">
+<div class="hero__inner">
+<div class="hero__eyebrow">Werkstoff-Finder</div>
+<h1 class="hero__title">59 Materialien <span class="accent">– ein Dienstleister.</span></h1>
+<p class="hero__sub">Wir fertigen Bauteile aus 55 Materialfamilien in 15 Verfahren. Filtere nach Verfahren, Eigenschaft oder Bauteilanwendung und finde sofort den passenden Werkstoff für dein Projekt.</p>
+<div class="hero__stats">
+<div class="hstat"><span class="hstat__val">59</span><span class="hstat__lbl">Materialfamilien</span></div>
+<div class="hstat"><span class="hstat__val">15</span><span class="hstat__lbl">Technologien</span></div>
+<div class="hstat"><span class="hstat__val">24</span><span class="hstat__lbl">Nachbearbeitungen</span></div>
+<div class="hstat"><span class="hstat__val">500+</span><span class="hstat__lbl">Werkstoff-Varianten</span></div>
+</div>
+<div class="hero__cta">
+<a class="btn btn--orange" href="https://3ddrucklife.com">➜ Preis berechnen</a>
+<a class="btn btn--outline" href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Materialien">Beratung anfragen</a>
+</div>
+</div>
+</section>
+<!-- MOBILE DROPDOWN FILTER (nur Mobile sichtbar) -->
+<div class="mob-dropdown-bar" id="mob-dropdown-bar">
+<div class="mob-dd" id="mob-dd-verfahren">
+<button aria-expanded="false" class="mob-dd__btn" id="mob-btn-verfahren" onclick="toggleMobDD('verfahren')">
+<span class="mob-dd__label">Verfahren</span>
+<span class="mob-dd__badge" id="mob-badge-verfahren"></span>
+<span class="mob-dd__arr">▾</span>
+</button>
+<div class="mob-dd__panel">
+<div class="mob-dd__chips">
+<span class="chip" data-filter="verfahren" data-value="fdm">FDM</span>
+<span class="chip" data-filter="verfahren" data-value="pulver">Pulver (SLS / MJF / HSS)</span>
+<span class="chip" data-filter="verfahren" data-value="metall">Metall (SLM / DMLS)</span>
+<span class="chip" data-filter="verfahren" data-value="resin">Resin (SLA / DLP)</span>
+<span class="chip" data-filter="verfahren" data-value="endlos">Endlosfaser (CFF)</span>
+<span class="chip" data-filter="verfahren" data-value="polyjet">PolyJet / Vollfarb</span>
+<span class="chip" data-filter="verfahren" data-value="cnc">CNC Fräsen</span>
+<span class="chip" data-filter="verfahren" data-value="feinguss">Feinguss</span>
+</div>
+</div>
+</div>
+<div class="mob-dd" id="mob-dd-eigen">
+<button aria-expanded="false" class="mob-dd__btn" id="mob-btn-eigen" onclick="toggleMobDD('eigen')">
+<span class="mob-dd__label">Eigenschaften</span>
+<span class="mob-dd__badge" id="mob-badge-eigen"></span>
+<span class="mob-dd__arr">▾</span>
+</button>
+<div class="mob-dd__panel">
+<div class="mob-dd__chips">
+<span class="chip" data-filter="eigen" data-value="hitzebestaendig">Hitzebeständig</span>
+<span class="chip" data-filter="eigen" data-value="chemikalienbestaendig">Chem. beständig</span>
+<span class="chip" data-filter="eigen" data-value="flammhemmend">Flammhemmend</span>
+<span class="chip" data-filter="eigen" data-value="esd">ESD</span>
+<span class="chip" data-filter="eigen" data-value="lebensmittelecht">Lebensmittelecht</span>
+<span class="chip" data-filter="eigen" data-value="biokompatibel">Biokompatibel</span>
+<span class="chip" data-filter="eigen" data-value="flexibel">Flexibel</span>
+<span class="chip" data-filter="eigen" data-value="transparent">Transparent</span>
+<span class="chip" data-filter="eigen" data-value="cf-verstaerkt">CF / GF verstärkt</span>
+<span class="chip" data-filter="eigen" data-value="uv-bestaendig">UV-Beständig</span>
+<span class="chip" data-filter="eigen" data-value="verschleissfest">Verschleißfest</span>
+<span class="chip" data-filter="eigen" data-value="leichtgewicht">Leichtgewicht</span>
+<span class="chip" data-filter="eigen" data-value="guenstig">Einstiegsmaterial</span>
+<span class="chip" data-filter="eigen" data-value="recycelt">Recycelt</span>
+<span class="chip" data-filter="eigen" data-value="bio">Bio-basiert</span>
+<span class="chip" data-filter="eigen" data-value="hochfest">Hochfest</span>
+<span class="chip" data-filter="eigen" data-value="elektrisch-leitend">Elektrisch leitend</span>
+<span class="chip" data-filter="eigen" data-value="wasserbestaendig">Wasserbeständig</span>
+</div>
+</div>
+</div>
+<div class="mob-dd" id="mob-dd-bauteil">
+<button aria-expanded="false" class="mob-dd__btn" id="mob-btn-bauteil" onclick="toggleMobDD('bauteil')">
+<span class="mob-dd__label">Bauteilanwendung</span>
+<span class="mob-dd__badge" id="mob-badge-bauteil"></span>
+<span class="mob-dd__arr">▾</span>
+</button>
+<div class="mob-dd__panel">
+<div class="mob-dd__chips">
+<span class="chip" data-filter="bauteil" data-value="zahnrad">Zahnräder</span>
+<span class="chip" data-filter="bauteil" data-value="lager">Lager</span>
+<span class="chip" data-filter="bauteil" data-value="gehaeuse">Gehäuse</span>
+<span class="chip" data-filter="bauteil" data-value="werkzeug">Werkzeuge</span>
+<span class="chip" data-filter="bauteil" data-value="schuhsohle">Schuhsohlen</span>
+<span class="chip" data-filter="bauteil" data-value="orthese">Orthesen</span>
+<span class="chip" data-filter="bauteil" data-value="drohne">Drohnen</span>
+<span class="chip" data-filter="bauteil" data-value="leichtbau">Leichtbau</span>
+<span class="chip" data-filter="bauteil" data-value="dichtung">Dichtungen</span>
+<span class="chip" data-filter="bauteil" data-value="daempfer">Dämpfer</span>
+<span class="chip" data-filter="bauteil" data-value="schmuck">Schmuck</span>
+<span class="chip" data-filter="bauteil" data-value="gusskern">Gusskerne</span>
+<span class="chip" data-filter="bauteil" data-value="prototyp">Prototyp</span>
+<span class="chip" data-filter="bauteil" data-value="halterung">Halterung</span>
+<span class="chip" data-filter="bauteil" data-value="messemodell">Messemodell</span>
+<span class="chip" data-filter="bauteil" data-value="automobil">Automobil</span>
+<span class="chip" data-filter="bauteil" data-value="elektronik">Elektronik</span>
+<span class="chip" data-filter="bauteil" data-value="sport">Sport</span>
+<span class="chip" data-filter="bauteil" data-value="robotik">Robotik</span>
+<span class="chip" data-filter="bauteil" data-value="labor">Labor</span>
+<span class="chip" data-filter="bauteil" data-value="medizin">Medizin</span>
+<span class="chip" data-filter="bauteil" data-value="greifer">Greifer</span>
+<span class="chip" data-filter="bauteil" data-value="waermetauscher">Wärmetauscher</span>
+<span class="chip" data-filter="bauteil" data-value="luftfahrt">Luftfahrt</span>
+</div>
+</div>
+</div>
+</div>
+<!-- FILTER BAR (Desktop) -->
+<div class="filter-bar">
+<div class="filter-bar__inner">
+<!-- VERFAHREN -->
+<div class="filter-group filter-group--verfahren">
+<span class="filter-group__label">Verfahren</span>
+<div class="filter-chips">
+<span class="chip" data-filter="verfahren" data-tip="Fused Deposition Modeling – Schmelzschichtung von Thermoplasten (PLA, PETG, ABS, PA, PEEK). Günstiger Einstieg, breite Materialauswahl, ideal für Funktionsteile und Prototypen." data-value="fdm">FDM</span>
+<span class="chip" data-filter="verfahren" data-tip="Pulverbettverfahren (SLS, MJF, HSS) – ohne Stützstrukturen, hohe Detailgenauigkeit. Ideal für komplexe Geometrien in PA12, PA11, TPU. Gut für Serie und Kleinserie." data-value="pulver">Pulver (SLS / MJF / HSS)</span>
+<span class="chip" data-filter="verfahren" data-tip="Metallpulver-Schmelzverfahren (SLM, DMLS, EBM, Binder Jetting) – dichte, hochfeste Metallteile in Titan, Edelstahl, Aluminium, Inconel und mehr." data-value="metall">Metall (SLM / DMLS / EBM)</span>
+<span class="chip" data-filter="verfahren" data-tip="Photopolymerisation (SLA, DLP, LCD) – höchste Detailauflösung, glatte Oberflächen. Für Dental, Schmuck, Prototypen und Präzisionsfunktionsteile." data-value="resin">Resin (SLA / DLP / LCD)</span>
+<span class="chip" data-filter="verfahren" data-tip="Continuous Fiber Fabrication – Endlosfasern (Carbon, Glas, Kevlar) eingebettet in PA oder PETG. Festigkeit vergleichbar mit Aluminium bei deutlich weniger Gewicht." data-value="endlos">Endlosfaser (CFF)</span>
+<span class="chip" data-filter="verfahren" data-tip="PolyJet-Tintenstrahldruck für Silikon-ähnliche Bauteile, Mehrkomponenten-Teile und Vollfarb-Modelle. Höchste Shore-Vielfalt und Detailgenauigkeit." data-value="polyjet">PolyJet / Vollfarb</span>
+<span class="chip" data-filter="verfahren" data-tip="CNC Fräsen und Drehen – subtraktive Fertigung aus Aluminium, Stahl und Kunststoff. Engste Toleranzen, höchste Oberflächenqualität, kein Schichtaufbau." data-value="cnc">CNC Fräsen / Drehen</span>
+<span class="chip" data-filter="verfahren" data-tip="Feinguss mit 3D-Druck-Modell (Lost Wax) – für Schmuck, Kunstobjekte und Metallteile komplexer Geometrie ohne teure Werkzeuge." data-value="feinguss">Feinguss (LWC)</span>
+<span class="chip chip-soon">Spritzguss <span class="chip-soon-tag">bald</span></span>
+</div>
+</div>
+<!-- ERWEITERTE FILTER TOGGLE (nur Mobile) -->
+<button aria-expanded="false" class="adv-filter-toggle" id="adv-filter-toggle" onclick="toggleAdvFilter()">
+      Erweiterte Filter <span class="adv-arr">▾</span>
+</button>
+<!-- EIGENSCHAFTEN + BAUTEILANWENDUNG (auf Mobile eingeklappt) -->
+<div class="adv-filter-groups" id="adv-filter-groups">
+<!-- EIGENSCHAFTEN -->
+<div class="filter-group filter-group--eigen">
+<span class="filter-group__label">Eigenschaften</span>
+<div class="filter-chips">
+<span class="chip" data-filter="eigen" data-tip="Wärmeformbeständigkeit (HDT) über 100 °C. Spitzenwerte: PEEK 250 °C, PPS 260 °C, PA6 bis 200 °C mit GF-Verstärkung." data-value="hitzebestaendig">🌡️ Hitzebeständig</span>
+<span class="chip" data-filter="eigen" data-tip="Beständig gegen Öle, Kraftstoffe, Säuren oder Laugen. Geeignet: PPS, PP, PE, Edelstahl 316L, Titan, PTFE-ähnliche Werkstoffe." data-value="chemikalienbestaendig">⚗️ Chem. beständig</span>
+<span class="chip" data-filter="eigen" data-tip="Selbstverlöschend nach UL94 V-0 oder besser. Pflicht für Elektro-, Luftfahrt- und Bahnanwendungen." data-value="flammhemmend">🛡️ Flammhemmend</span>
+<span class="chip" data-filter="eigen" data-tip="Oberflächenwiderstand 10⁶ bis 10⁹ Ω. Schützt elektrostatisch sensitive Baugruppen in Elektronikfertigung und Reinraum." data-value="esd">⚡ ESD</span>
+<span class="chip" data-filter="eigen" data-tip="FDA-konforme Varianten für Lebensmittelkontakt, Verpackungsmaschinen und medizinische Anwendungen." data-value="lebensmittelecht">🍎 Lebensmittelecht</span>
+<span class="chip" data-filter="eigen" data-tip="Geprüft nach ISO 10993 – geeignet für Implantate, chirurgische Instrumente, Dentalprothesen und Körperkontakt." data-value="biokompatibel">✚ Biokompatibel</span>
+<span class="chip" data-filter="eigen" data-tip="Elastisch und gummiartig (Shore A-Bereich). Ideal für Dichtungen, Dämpfer, Griffe, Schuhsohlen und Schutztüllen." data-value="flexibel">〰️ Flexibel</span>
+<span class="chip" data-filter="eigen" data-tip="Optisch klar in Reinform oder transparenter Variante. Für Sichtfenster, Lichtleiter, Abdeckungen und Linsenhalter." data-value="transparent">💎 Transparent</span>
+<span class="chip" data-filter="eigen" data-tip="Carbon- oder Glasfaser-Verstärkung verfügbar" data-value="cf-verstaerkt">🏎️ CF / GF verstärkt</span>
+<span class="chip" data-filter="eigen" data-tip="Stabil bei dauerhafter UV-Exposition im Freien" data-value="uv-bestaendig">☀️ UV-Beständig</span>
+<span class="chip" data-filter="eigen" data-tip="Selbstschmierend oder tribologisch optimiert (z. B. Igus iglidur, PEEK+CF, PA+Öl). Für Lager, Zahnräder und Führungen ohne Schmierung." data-value="verschleissfest">⚙️ Verschleißfest</span>
+<span class="chip" data-filter="eigen" data-tip="Deutlich leichter als Standard durch Mikroschäumung oder Faserverstärkung. Beispiel: LW-PLA bis 50 % leichter, CFK-Verbund leichter als Aluminium." data-value="leichtgewicht">🪶 Leichtgewicht</span>
+<span class="chip" data-filter="eigen" data-tip="Einstiegsfreundliches Material in seiner Verfahrensgruppe – ideal für erste Prototypen, Iterationen und preissensible Kleinserie." data-value="guenstig">💰 Einstiegsmaterial</span>
+<span class="chip" data-filter="eigen" data-tip="Aus Recyclingmaterial gefertigt – z. B. rPA, rPETG, rPLA für nachhaltige Produktion ohne Qualitätsverlust." data-value="recycelt">♻️ Recycelt</span>
+<span class="chip" data-filter="eigen" data-tip="Biobasierter Kunststoff aus nachwachsenden Rohstoffen. Beispiele: PLA aus Maisstärke, PHA aus Mikroorganismen, PHA kompostierbar." data-value="bio">🌱 Bio-basiert</span>
+<span class="chip" data-filter="eigen" data-tip="Sehr hohe Zugfestigkeit. Beispiele: 17-4PH Edelstahl bis 1400 MPa, Titan bis 950 MPa, CFK-Verbund bis 800 MPa Biegefestigkeit." data-value="hochfest">💪 Hochfest</span>
+<span class="chip" data-filter="eigen" data-tip="Elektrisch leitfähig für Stromleitung, EMV-Schirmung oder Wärmeableitung. Hauptsächlich Kupfer-Legierungen." data-value="elektrisch-leitend">🔌 Elektrisch leitend</span>
+<span class="chip" data-filter="eigen" data-tip="Dauerhaft beständig gegen Feuchtigkeit, Spritzwasser und Immersion. Geeignet: PP, PE, PPS, ASA, Edelstahl, Titan, Silikon." data-value="wasserbestaendig">💧 Wasserbeständig</span>
+</div>
+</div>
+<!-- BAUTEILANWENDUNG -->
+<div class="filter-group filter-group--bauteil">
+<span class="filter-group__label">Bauteilanwendung</span>
+<div class="filter-chips">
+<span class="chip" data-filter="bauteil" data-tip="Stirnrad, Kegelrad, Schneckenrad, Riemenscheibe, Ritzel – tribologisch optimierte Werkstoffe für geräuscharmen Betrieb." data-value="zahnrad">⚙️ Zahnräder</span>
+<span class="chip" data-filter="bauteil" data-tip="Gleitlager, Buchse, Kugellager-Käfig, Linearführung – wartungsfrei durch Selbstschmierung, kein Nachfetten nötig." data-value="lager">🔩 Lager</span>
+<span class="chip" data-filter="bauteil" data-tip="Elektronikgehäuse, Schaltkasten, Gerätegehäuse, Verkleidung – komplex, maßhaltig, mit Clip- und Schnappverbindungen." data-value="gehaeuse">📦 Gehäuse</span>
+<span class="chip" data-filter="bauteil" data-tip="Spritzgussform, Bohrlehre, Montagejig, Prüflehre, Greifwerkzeug – für Produktion und Qualitätssicherung." data-value="werkzeug">🔧 Werkzeuge</span>
+<span class="chip" data-filter="bauteil" data-tip="Einlegesohle, Laufsohle, orthopädische Sohle – individuell angepasst nach 3D-Scan des Fußes." data-value="schuhsohle">👟 Schuhsohlen</span>
+<span class="chip" data-filter="bauteil" data-tip="Knieorthese, Handgelenkschiene, Sprunggelenkorthese (AFO), Exoskelett-Komponente – individuell und leicht." data-value="orthese">🦿 Orthesen</span>
+<span class="chip" data-filter="bauteil" data-tip="Drohnenrahmen, UAV-Arm, Kamera-Rig, FPV-Gehäuse, Propellerschutz – leicht und steif." data-value="drohne">🚁 Drohnen</span>
+<span class="chip" data-filter="bauteil" data-tip="Rennrad-Komponente, Motorsport-Teil, Aerospace-Strukturbauteil – maximale Festigkeit bei minimalem Gewicht." data-value="leichtbau">🏗️ Leichtbau</span>
+<span class="chip" data-filter="bauteil" data-tip="O-Ring-Ersatz, Flachdichtung, Wellendichtring, Lippendichtung – in Standard- und Sondergeometrien." data-value="dichtung">〇 Dichtungen</span>
+<span class="chip" data-filter="bauteil" data-tip="Antivibrationspuffer, Stoßdämpfer, Schutzklappe, Tülle, Gummipuffer – elastisch und dämpfend." data-value="daempfer">〜 Dämpfer</span>
+<span class="chip" data-filter="bauteil" data-tip="Ringschiene, Kettenanhänger, Manschettenknopf, Brosche – direkt gedruckt oder als Feinguss-Wachsmodell." data-value="schmuck">💍 Schmuck</span>
+<span class="chip" data-filter="bauteil" data-tip="Wachsmodell, Anguss-System, Lost-Wax-Kern für Feinguss – für Metall-Bauteile ohne teure Werkzeuge." data-value="gusskern">🏭 Gusskerne</span>
+<span class="chip" data-filter="bauteil" data-tip="Konzept- und Funktionsprototypen, Designstudien, Iterationsmodelle vor der Serienfertigung." data-value="prototyp">🧩 Prototyp</span>
+<span class="chip" data-filter="bauteil" data-tip="Kabelhalter, Rohrschellen, Sensor-Halter, Montageadapter, Klemmhalter, Schienensysteme." data-value="halterung">🪝 Halterung</span>
+<span class="chip" data-filter="bauteil" data-tip="Maßstabsmodell, Designobjekt, Ausstellungsstück, Präsentationsmodell für Messen und Pitches." data-value="messemodell">🏆 Messemodell</span>
+<span class="chip" data-filter="bauteil" data-tip="Kfz-Innenverkleidung, Luftführung, Befestigungsclip, Halterahmen, Anbauteil, Spiegelgehäuse." data-value="automobil">🚗 Automobil</span>
+<span class="chip" data-filter="bauteil" data-tip="Antennenhalter, Steckergehäuse, Leiterplattenhalter, Sensorgehäuse, Kabelkanal, EMV-Schirmung." data-value="elektronik">🖥️ Elektronik</span>
+<span class="chip" data-filter="bauteil" data-tip="Bike-Komponente, Helm-Einsatz, Trainingsgerät-Teil, Protektor, individueller Sportschuh-Einsatz." data-value="sport">🏃 Sport</span>
+<span class="chip" data-filter="bauteil" data-tip="Gelenkarm, Koppelstange, Sensorhalter, Kabelführung, Strukturkomponente für Industrieroboter." data-value="robotik">🤖 Robotik</span>
+<span class="chip" data-filter="bauteil" data-tip="Küvette, Trichter, Pipetten-Rack, Reaktionskammer, Probenhalter, mikrofluidische Kanäle." data-value="labor">🔬 Labor</span>
+<span class="chip" data-filter="bauteil" data-tip="OP-Instrumente, Prothesen, chirurgische Schablonen, Anatomiemodelle, Implantate, Hilfsmittel." data-value="medizin">🏥 Medizin</span>
+<span class="chip" data-filter="bauteil" data-tip="Robotergreifer, Vakuumsaugkopf, Zentrierklaue, Spannbacke, End-Of-Arm-Tooling für Automation." data-value="greifer">🦾 Greifer</span>
+<span class="chip" data-filter="bauteil" data-tip="Kühlkörper, Kühlkanal, konformale Kühlung, Temperierblock, Wärmeverteiler." data-value="waermetauscher">♨️ Wärmetauscher</span>
+<span class="chip" data-filter="bauteil" data-tip="Kabinenbauteil, Strukturhalterung, Bracket, Kanalführung, Leichtbaustruktur für Luft- und Raumfahrt." data-value="luftfahrt">✈️ Luftfahrt</span>
+</div>
+</div>
+</div><!-- /adv-filter-groups -->
+</div>
+</div>
+<!-- RESULTS BAR -->
+<div class="results-bar">
+<p class="results-count"><strong id="result-count">59</strong> Materialien gefunden</p>
+<button class="reset-btn" id="reset-btn" onclick="resetFilters()">Filter zurücksetzen ×</button>
+</div>
+<!-- GRID -->
+<div class="grid-wrap">
+<div class="mat-grid mob-peek" id="mat-grid">
+<div class="mcard" data-anwendung="prototypen serienbauteile elektronik" data-bauteil="automobil elektronik gehaeuse halterung messemodell prototyp" data-eigen="hitzebestaendig chemikalienbestaendig esd cf-verstaerkt verschleissfest" data-keywords="elektronikgehäuse schaltkasten kfz innenverkleidung fernbedienung dashboard clip spielzeug aceton glättern" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">ABS</div>
+<p class="mcard__sub">Bewährter Konstruktionswerkstoff mit guter Wärmebeständigkeit und Schlagzähigkeit. Mit Aceton glättbar. Klassiker für Elektronikgehäuse, Kfz-Innenteile und Funktionsbauteile.</p>
+<div class="mcard__props">
+<span class="prop">~40 MPa</span>
+<span class="prop">bis 98 °C HDT</span>
+<span class="prop">Acetonglättbar</span>
+<span class="prop">ESD-Variante</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/abs">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">4 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">ABS</span>
+<span class="vtag">ABS-CF</span>
+<span class="vtag">ABS-ESD</span>
+<span class="vtag">PC-ABS</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="ausseneinsatz prototypen serienbauteile" data-bauteil="automobil drohne gehaeuse halterung prototyp" data-eigen="uv-bestaendig hitzebestaendig chemikalienbestaendig cf-verstaerkt wasserbestaendig" data-keywords="vogelhäuschen außenschild kfz solarhalterung garten motorrad boot antenne aussenbereich wetterfest outdoor balkon" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">ASA</div>
+<p class="mcard__sub">UV- und witterungsbeständig. Erste Wahl für Dauereinsatz im Freien. Ähnliche Eigenschaften wie ABS, aber farbstabil und nicht vergilbend nach jahrelanger Sonneneinstrahlung.</p>
+<div class="mcard__props">
+<span class="prop">~46 MPa</span>
+<span class="prop">bis 97 °C HDT</span>
+<span class="prop">UV-stabil</span>
+<span class="prop">Acetonglättbar</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/asa">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">ASA</span>
+<span class="vtag">ASA-CF</span>
+<span class="vtag">ASA-Kevlar</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="lebensmittel prototypen serienbauteile" data-bauteil="gehaeuse messemodell prototyp" data-eigen="lebensmittelecht biokompatibel recycelt bio guenstig" data-keywords="lebensmittelecht fda küche küchenutensilien besteck behälter transport greentec bio nachhaltig kompostierbar zertifiziert" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">GreenTEC PRO</div>
+<p class="mcard__sub">FDA- und lebensmittelzertifiziertes Biopolymer. Entwickelt für direkten Lebensmittelkontakt: Küchenutensilien, Behälter, Transportlösungen. Biobasiert, langlebiger als PLA und mit höherer Wärmebeständigkeit.</p>
+<div class="mcard__props">
+<span class="prop">FDA-zertifiziert</span>
+<span class="prop">Lebensmittelkontakt</span>
+<span class="prop">Biobasiert</span>
+<span class="prop">bis 100 °C HDT</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/greentec-pro">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">GreenTEC PRO</span>
+<span class="vtag">GreenTEC PRO CF</span>
+<span class="vtag">GreenTEC PRO GF</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen" data-bauteil="prototyp messemodell gehaeuse" data-eigen="guenstig leichtgewicht wasserbestaendig" data-keywords="stützmaterial stütz support löslich limonen abs dekor kulisse bühnenbild" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">HIPS</div>
+<p class="mcard__sub">Hochschlagzähes Polystyrol. Primär als Stützmaterial für ABS eingesetzt: löst sich rückstandsfrei in d-Limonen auf, ohne das ABS-Bauteil anzugreifen. Auch für leichte Kulissen und Dekorteile.</p>
+<div class="mcard__props">
+<span class="prop">Stützmaterial für ABS</span>
+<span class="prop">Löslich in Limonen</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/hips">Details →</a>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen" data-bauteil="messemodell prototyp schmuck" data-eigen="recycelt bio guenstig" data-keywords="holzoptik holz dekorativ dekoration geschenk skulptur vase bilderrahmen schreiner furnier echtholz optik natürlich natur" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">Holz-Filament</div>
+<p class="mcard__sub">PLA-Basis mit 15–40% echten Holzpartikeln: Weiden, Kiefer, Eiche, Ebenholz, Olivenholz, Kokosnuss. Schleifbar nach dem Druck, natürliche Holzoptik und -haptik. Für Dekoartikel, Geschenke und Kunstprojekte.</p>
+<div class="mcard__props">
+<span class="prop">Echte Holzpartikel</span>
+<span class="prop">Schleifbar</span>
+<span class="prop">6 Holzarten</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/holz-filament">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">6 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Weide</span>
+<span class="vtag">Kiefer</span>
+<span class="vtag">Olive</span>
+<span class="vtag">Ebenholz</span>
+<span class="vtag">Kokosnuss</span>
+<span class="vtag">Zeder</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile" data-bauteil="lager robotik zahnrad" data-eigen="verschleissfest chemikalienbestaendig hitzebestaendig" data-keywords="gleitlager selbstschmierend wartungsfrei zahnrad buchse führung schiene linearführung igus iglidur tribopolymer reibung verschleiß roboter automation" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">Igus iglidur</div>
+<p class="mcard__sub">Tribologisch optimierte Hochleistungspolymere von Igus: selbstschmierend, wartungsfrei, sehr niedrige Reibwerte. Erste Wahl für Gleitlager, Zahnräder und Führungen wo kein externes Schmiermittel möglich ist.</p>
+<div class="mcard__props">
+<span class="prop">Selbstschmierend</span>
+<span class="prop">Wartungsfrei</span>
+<span class="prop">Niedrige Reibung</span>
+<span class="prop">6 Typen</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/iglidur">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">6 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">iglidur I150</span>
+<span class="vtag">iglidur I151</span>
+<span class="vtag">iglidur I180</span>
+<span class="vtag">iglidur I190</span>
+<span class="vtag">iglidur J260</span>
+<span class="vtag">iglidur X</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="luft-raumfahrt prototypen" data-bauteil="drohne leichtbau sport luftfahrt" data-eigen="leichtgewicht recycelt" data-keywords="leichtbau drohne rc flugzeug uav gewicht sparen mikrogeschäumt lw-pla lw-asa schaumstoff lightweight geschäumt aerodynamik" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">LW Materialien (Lightweight)</div>
+<p class="mcard__sub">Mikrogeschäumte Filamente die beim Drucken aufschäumen: bis zu 50% leichter als Standard-PLA oder -ASA. Für RC-Flugzeuge, Drohnen und Bauteile wo Gewicht entscheidend ist ohne Festigkeit stark zu opfern.</p>
+<div class="mcard__props">
+<span class="prop">bis −50% Gewicht</span>
+<span class="prop">~0,46–0,97 g/cm³</span>
+<span class="prop">FDM-optimiert</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/lw-materialien">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">LW-PLA</span>
+<span class="vtag">LW-ASA</span>
+<span class="vtag">LW-PLA Metal</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="luft-raumfahrt serienbauteile" data-bauteil="automobil halterung lager robotik werkzeug zahnrad" data-eigen="hitzebestaendig chemikalienbestaendig cf-verstaerkt verschleissfest hochfest" data-keywords="ultra hochleistung low melt peek lmpaek aerospace struktur extrem temperatur hochfest cf gf verbund" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PAEK</div>
+<p class="mcard__sub">Ultra-Hochleistungspolymer der PEEK-Familie mit reduzierter Schmelztemperatur für einfachere Verarbeitung. Für strukturkritische Luft- und Raumfahrtteile, die PEEK übertreffen müssen.</p>
+<div class="mcard__props">
+<span class="prop">bis 260 °C</span>
+<span class="prop">Über PEEK-Niveau</span>
+<span class="prop">CF / GF verfügbar</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/paek">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">2 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">LMPAEK 101 GRA</span>
+<span class="vtag">LMPAEK AM 200</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen serienbauteile luft-raumfahrt" data-bauteil="gehaeuse halterung labor prototyp" data-eigen="hitzebestaendig transparent flammhemmend chemikalienbestaendig" data-keywords="schutzvisor abdeckscheibe schutzscheibe linse helm optik leuchtmittel schlagfest transparent sichtfenster" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PC</div>
+<p class="mcard__sub">Polycarbonat mit höchster Schlagzähigkeit unter Standardkunststoffen und optionaler Transparenz. Für Schutzvisiere, Maschinenabdeckungen und Gehäuse mit thermischer Beanspruchung.</p>
+<div class="mcard__props">
+<span class="prop">~55 MPa</span>
+<span class="prop">bis 130 °C HDT</span>
+<span class="prop">Transparent möglich</span>
+<span class="prop">FR-Variante</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pc">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PC</span>
+<span class="vtag">PC-CF</span>
+<span class="vtag">PC FR</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile elektronik luft-raumfahrt" data-bauteil="automobil elektronik gehaeuse halterung robotik" data-eigen="hitzebestaendig flammhemmend cf-verstaerkt esd" data-keywords="flammschutz ul94 gehäuse elektronik kfz automotive innenverkleidung schaltkasten halterung brandschutz pc abs blend" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PC-ABS</div>
+<p class="mcard__sub">Blendmaterial aus PC und ABS: verbindet die Schlagzähigkeit von ABS mit der Wärmebeständigkeit von PC. Flammhemmend (UL 94 V-0 in FR-Variante). Für Elektronikgehäuse und Kfz-Innenteile mit Brandschutzanforderung.</p>
+<div class="mcard__props">
+<span class="prop">bis 110 °C HDT</span>
+<span class="prop">UL94 V-0 (FR)</span>
+<span class="prop">Schlagzäh</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pc-abs">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">2 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PC-ABS</span>
+<span class="vtag">PC-ABS FR</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen serienbauteile medizin lebensmittel" data-bauteil="dichtung gehaeuse labor prototyp" data-eigen="transparent lebensmittelecht chemikalienbestaendig recycelt wasserbestaendig" data-keywords="sichtfenster behälter lebensmittel klar transparent medizinisch sterilisierbar gerätehülle schutzhülle trinkflasche" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PCTG</div>
+<p class="mcard__sub">Kristallklares PETG-Derivat mit verbesserter Schlagzähigkeit und höherer Transparenz. Für optisch anspruchsvolle Behälter, Medizingehäuse und Sichtfenster. Lebensmittelecht in bestimmten Varianten.</p>
+<div class="mcard__props">
+<span class="prop">Optisch klar</span>
+<span class="prop">Schlagzäh</span>
+<span class="prop">Food Grade</span>
+<span class="prop">CF-Variante</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pctg">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">4 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PCTG</span>
+<span class="vtag">PCTG Transparent</span>
+<span class="vtag">PCTG Premium</span>
+<span class="vtag">PCTG-CF10</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile lebensmittel" data-bauteil="daempfer dichtung labor" data-eigen="chemikalienbestaendig lebensmittelecht recycelt wasserbestaendig" data-keywords="hdpe behälter chemisch beständig säure lauge schlauch kabelschutz industriebehälter wasserbeständig lebensmittel tank" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span><span class="vbadge vbadge-fdm">FGF</span></div>
+<div class="mcard__name">PE / HDPE</div>
+<p class="mcard__sub">Polyethylen: sehr gute Chemikalienbeständigkeit gegen Säuren, Laugen und Lösungsmittel. Lebensmittelecht. Primär im Großformat-Pelletdruck (FGF) für Behälter, Tanks und Industrieschutzhüllen.</p>
+<div class="mcard__props">
+<span class="prop">Chemikalienbeständig</span>
+<span class="prop">Lebensmittelecht</span>
+<span class="prop">Pellet-Druck</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pe-hdpe">Details →</a>
+</div>
+</div>
+<div class="mcard" data-anwendung="luft-raumfahrt medizin serienbauteile dental" data-bauteil="automobil lager robotik werkzeug zahnrad medizin luftfahrt" data-eigen="hitzebestaendig chemikalienbestaendig biokompatibel cf-verstaerkt verschleissfest hochfest" data-keywords="implantat wirbelsäule zahnimplantat pumpenrad ventil lager endoskop reinraum gleitlager schädelplatte biokompatibel" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PEEK</div>
+<p class="mcard__sub">Hochleistungskunststoff für extreme Anforderungen. Dauerhaft bis 250 °C belastbar, biokompatibel und chemikalienbeständig. Standard in Luft- und Raumfahrt sowie Medizintechnik.</p>
+<div class="mcard__props">
+<span class="prop">~100 MPa</span>
+<span class="prop">bis 250 °C</span>
+<span class="prop">Biokompatibel ISO 10993</span>
+<span class="prop">CF / GF verfügbar</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/peek">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PEEK</span>
+<span class="vtag">PEEK-CF</span>
+<span class="vtag">PEEK-GF</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="luft-raumfahrt medizin serienbauteile dental" data-bauteil="elektronik gehaeuse werkzeug" data-eigen="hitzebestaendig flammhemmend biokompatibel chemikalienbestaendig" data-keywords="flugzeug kabine luftfahrt halterung far 25.853 sterilisierbar autoklav medizin ultem aerospace verkleidung" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PEI (Ultem)</div>
+<p class="mcard__sub">Einziger FDM-Kunststoff mit Luftfahrtzertifizierung FAR/JAR 25.853. Bis 200 °C dauerhaft belastbar, flammhemmend, sterilisierbar. Ultem 9085 für Flugzeugkabinen, Ultem 1010 für medizinische Instrumente.</p>
+<div class="mcard__props">
+<span class="prop">~70 MPa</span>
+<span class="prop">bis 200 °C</span>
+<span class="prop">FAR 25.853 zertifiziert</span>
+<span class="prop">Autoklav-stabil</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pei">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">2 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Ultem 9085</span>
+<span class="vtag">Ultem 1010</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen serienbauteile lebensmittel elektronik" data-bauteil="daempfer dichtung elektronik gehaeuse halterung prototyp" data-eigen="chemikalienbestaendig lebensmittelecht esd flammhemmend cf-verstaerkt guenstig recycelt wasserbestaendig" data-keywords="halterung monitorstaender displaystaender behaelter schlauch maschinenverkleidung laborstaender aquarium kabelkanal lüfterabdeckung" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PETG</div>
+<p class="mcard__sub">Schlagzäh, chemikalienbeständig, optional lebensmittelecht. Verbindet die einfache Verarbeitung von PLA mit deutlich besserer Zähigkeit. Auch als ESD-, CF- und FR-Variante verfügbar.</p>
+<div class="mcard__props">
+<span class="prop">~50 MPa</span>
+<span class="prop">bis 80 °C HDT</span>
+<span class="prop">Food Grade</span>
+<span class="prop">UL94 V-0</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/petg">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">7 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PETG</span>
+<span class="vtag">PETG-CF</span>
+<span class="vtag">PETG FR</span>
+<span class="vtag">PETG-ESD</span>
+<span class="vtag">PETG HF</span>
+<span class="vtag">PET-CF</span>
+<span class="vtag">PCTG</span>
+<span class="vtag">rPETG</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen" data-bauteil="prototyp" data-eigen="recycelt lebensmittelecht bio" data-keywords="kompostierbar biologisch abbaubar nachhaltig umwelt einwegartikel verpackung garten pflanztopf pflanzenbasiert bio" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PHA</div>
+<p class="mcard__sub">Polyhydroxyalkanoat: vollständig kompostierbares Biopolymer aus Bakterien-Fermentation. 100% in Heimkompost abbaubar. Für umweltfreundliche Einwegartikel, Verpackungsprototypen und Gartenprodukte.</p>
+<div class="mcard__props">
+<span class="prop">100% kompostierbar</span>
+<span class="prop">Pflanzenbasiert</span>
+<span class="prop">Heimkompost-zertifiziert</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pha">Details →</a>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen" data-bauteil="gusskern messemodell prototyp schmuck" data-eigen="lebensmittelecht transparent guenstig recycelt bio" data-keywords="figur modell architektur skulptur schild vase deko prototyp cosplay spielzeug ornament tabletop miniatur büste" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PLA</div>
+<p class="mcard__sub">Einstiegskunststoff mit biologisch abbaubaren Anteilen. Formstabil bei Raumtemperatur, sehr gute Detailauflösung, viele Farben und Varianten. Für Prototypen, Modelle und Sichtteile ohne Wärmebelastung.</p>
+<div class="mcard__props">
+<span class="prop">~52 MPa</span>
+<span class="prop">bis 60 °C HDT</span>
+<span class="prop">Biologisch abbaubar</span>
+<span class="prop">FDA-Variante</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pla">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">8 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PLA</span>
+<span class="vtag">PLA Tough</span>
+<span class="vtag">PLA-CF</span>
+<span class="vtag">PLA Aero</span>
+<span class="vtag">PLA-HT</span>
+<span class="vtag">PLA Silk</span>
+<span class="vtag">PLA Metal</span>
+<span class="vtag">rPLA</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="luft-raumfahrt serienbauteile" data-bauteil="zahnrad lager werkzeug halterung" data-eigen="hitzebestaendig cf-verstaerkt chemikalienbestaendig verschleissfest" data-keywords="semi-aromatisch hochfest kfz motorraum hochdruck ventil turbo ansaugkrümmer pumpengehäuse hochtemperatur strukturbauteil" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PPA</div>
+<p class="mcard__sub">Semi-aromatisches Hochleistungspolyamid: kombiniert hohe Festigkeit (CF-Version bis 210 MPa) mit Wärmebeständigkeit bis 180 °C. Für Kfz-Motorraum-Bauteile und strukturell beanspruchte Halterungen.</p>
+<div class="mcard__props">
+<span class="prop">bis ~210 MPa (CF)</span>
+<span class="prop">bis 180 °C HDT</span>
+<span class="prop">CF verfügbar</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/ppa">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">2 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PPA-CF</span>
+<span class="vtag">KyronMAX S-4330</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile elektronik luft-raumfahrt" data-bauteil="automobil elektronik gehaeuse halterung lager zahnrad" data-eigen="hitzebestaendig chemikalienbestaendig flammhemmend esd cf-verstaerkt wasserbestaendig" data-keywords="pumpengehäuse ventilkörper chemisch beständig säure lauge lösungsmittel schaltschrankhalter elektronik kontaktträger automobilzulieferer hochtemperatur" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PPS</div>
+<p class="mcard__sub">Polyphenylensulfid: eines der chemikalienbeständigsten FDM-Materialien. Beständig gegen fast alle organischen Lösungsmittel, Säuren und Laugen. Für Pumpengehäuse, Ventilkörper und Chemiekalteile.</p>
+<div class="mcard__props">
+<span class="prop">bis 220 °C</span>
+<span class="prop">Chemikalienbeständig</span>
+<span class="prop">Flammhemmend</span>
+<span class="prop">ESD-Variante</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pps">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">7 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PPS</span>
+<span class="vtag">PPS-CF</span>
+<span class="vtag">PPS-CF10</span>
+<span class="vtag">PPS-GF20</span>
+<span class="vtag">PPS-GF20 ESD</span>
+<span class="vtag">PPS-CF20</span>
+<span class="vtag">PPS-GF40</span></div>
+</div>
+</div>
+<div class="mcard" data-anwendung="medizin serienbauteile luft-raumfahrt" data-bauteil="werkzeug halterung" data-eigen="hitzebestaendig biokompatibel chemikalienbestaendig flammhemmend" data-keywords="autoklav sterilisation chirurgisch instrument kassette wundhaken medizinisch hochtemperatur dampf 134 grad wiederverwendbar steril" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PPSU</div>
+<p class="mcard__sub">Polyphenylsulfon: autoklavierbar bis 134 °C, mit höchster Hydrolysestabilität. Für wiederverwendbare medizinische Instrumente, Sterilisierkassetten und Implantologieschablonen die Dampfsterilisation durchlaufen.</p>
+<div class="mcard__props">
+<span class="prop">Autoklav 134 °C</span>
+<span class="prop">Hydrolysestabil</span>
+<span class="prop">bis 210 °C HDT</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/ppsu">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">2 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PPSU</span>
+<span class="vtag">ThermaX PPSU</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen" data-bauteil="prototyp" data-eigen="guenstig" data-keywords="stützmaterial support löslich wasser wasserlöslich pva überhang dual extruder komplex hinterschnitt" data-verfahren="fdm">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PVA</div>
+<p class="mcard__sub">Wasserlösliches Stützmaterial für komplexe Geometrien mit starken Überhängen und Hinterschnitten. Löst sich rückstandsfrei in warmem Wasser auf: kein mechanisches Entfernen, keine Oberflächenschäden am Bauteil.</p>
+<div class="mcard__props">
+<span class="prop">Wasserlöslich</span>
+<span class="prop">Rückstandsfrei</span>
+<span class="prop">Dual-Druck</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pva">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">4 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PVA</span>
+<span class="vtag">BVOH</span>
+<span class="vtag">PolySupport</span>
+<span class="vtag">SR (Soluble)</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile medizin" data-bauteil="daempfer dichtung orthese schuhsohle sport medizin" data-eigen="chemikalienbestaendig flexibel recycelt bio" data-keywords="bio-basiert rizinusöl prothese schuhsohle einlegesohle flexibel schlauch hülle rohrbogen flexibler kanal" data-verfahren="fdm pulver">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span><span class="vbadge vbadge-pulver">SLS</span><span class="vbadge vbadge-pulver">MJF</span><span class="vbadge vbadge-pulver">SAF</span></div>
+<div class="mcard__name">PA 11</div>
+<p class="mcard__sub">Biobasiertes Polyamid aus Rizinusöl. Zäher und flexibler als PA12, mit besserer Chemikalienbeständigkeit. Bevorzugt für Sportschuhsohlen, flexible Schläuche und Prothesen mit Stoßabsorption.</p>
+<div class="mcard__props">
+<span class="prop">Biobasiert</span>
+<span class="prop">Flexibler als PA12</span>
+<span class="prop">CF / ESD</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pa-11">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">9 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PA11</span>
+<span class="vtag">PA11-CF</span>
+<span class="vtag">PA11 ESD</span>
+<span class="vtag">PA11 MJF</span>
+<span class="vtag">PA11 SAF</span>
+<span class="vtag">PA 1102 black</span>
+<span class="vtag">PA11 GF</span>
+<span class="vtag">PA11 FR</span>
+<span class="vtag">PA11 Flex HP</span></div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile prototypen medizin" data-bauteil="automobil halterung lager orthese schuhsohle zahnrad medizin greifer" data-eigen="hitzebestaendig chemikalienbestaendig cf-verstaerkt guenstig wasserbestaendig" data-keywords="sls workhorse einlegesohle laufsohle prothese knochenmodell klipp rahmen kanal rohr ansaugkrümmer schuhsohle orthese funktionsbauteil" data-verfahren="fdm pulver">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span><span class="vbadge vbadge-pulver">SLS</span><span class="vbadge vbadge-pulver">MJF</span><span class="vbadge vbadge-pulver">HSS</span></div>
+<div class="mcard__name">PA 12</div>
+<p class="mcard__sub">Meistgenutztes SLS-Material weltweit. Hohe Maßhaltigkeit, gute Chemikalienbeständigkeit, Deckungsbeitragsoptimiert bei Serienmengen. Standard für Schuhsohlen, Prothesen und Funktionsbauteile ohne Stützstruktur.</p>
+<div class="mcard__props">
+<span class="prop">~48 MPa</span>
+<span class="prop">SLS ohne Stützen</span>
+<span class="prop">Maßhaltig</span>
+<span class="prop">CF / GF / ESD</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pa-12">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">18 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PA12</span>
+<span class="vtag">PA12-CF</span>
+<span class="vtag">PA12-GF</span>
+<span class="vtag">PA12 ESD</span>
+<span class="vtag">Alumide</span>
+<span class="vtag">PA12 MJF</span>
+<span class="vtag">PA12 HSS</span>
+<span class="vtag">Nylon 12CF</span>
+<span class="vtag">PA12 FR</span>
+<span class="vtag">PA12 Flex</span>
+<span class="vtag">PA12 W (Lebensmittel)</span>
+<span class="vtag">DuraForm PA</span>
+<span class="vtag">HP 3D PA12</span>
+<span class="vtag">PA12 SLS Natur</span>
+<span class="vtag">PA12 MJF Flex</span>
+<span class="vtag">CarbonMide</span>
+<span class="vtag">Vestamid D</span>
+<span class="vtag">PA12 Glass Bead</span></div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile" data-bauteil="zahnrad lager werkzeug gehaeuse automobil halterung" data-eigen="hitzebestaendig cf-verstaerkt chemikalienbestaendig verschleissfest" data-keywords="zahnrad gleitlager buchse scharnier ansaugkrümmer kfz motorraum riemenscheibe pumpengehäuse lagergehäuse industrienylon technischerkunststoff" data-verfahren="fdm pulver">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span><span class="vbadge vbadge-pulver">SLS</span></div>
+<div class="mcard__name">PA 6</div>
+<p class="mcard__sub">Industrienylon mit hohem Steifigkeits-Zähigkeits-Verhältnis. Gut spanend bearbeitbar, als CF/GF-Variante für tragende Konstruktionsteile. Klassisch für Zahnräder, Lager und Kfz-Motorraum-Teile.</p>
+<div class="mcard__props">
+<span class="prop">~80 MPa</span>
+<span class="prop">GF30 / CF verfügbar</span>
+<span class="prop">bis 140 °C HDT</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pa-6">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">14 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PA6</span>
+<span class="vtag">PA6-CF</span>
+<span class="vtag">PA6-GF30</span>
+<span class="vtag">PA6+20% CF</span>
+<span class="vtag">PA6/66 Blend</span>
+<span class="vtag">PA66</span>
+<span class="vtag">PA66-CF30</span>
+<span class="vtag">PA66-GF30</span>
+<span class="vtag">PA612</span>
+<span class="vtag">PA610</span>
+<span class="vtag">PA6-T</span>
+<span class="vtag">PA6/12</span>
+<span class="vtag">PA6 ESD</span>
+<span class="vtag">PA6 FR</span></div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile elektronik" data-bauteil="elektronik gehaeuse halterung" data-eigen="hitzebestaendig chemikalienbestaendig cf-verstaerkt esd" data-keywords="steckverbinder elektrisch isolation kontaktträger spulenträger motorgehäuse relais kfz glühbirnenhalter elektromotor wickelkörper glas faserverstärkt" data-verfahren="fdm pulver">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span><span class="vbadge vbadge-pulver">SLS</span></div>
+<div class="mcard__name">PBT</div>
+<p class="mcard__sub">Polybutylenterephthalat: exzellente elektrische Isolation, gute Dimensionsstabilität und Chemikalienbeständigkeit. Standard in der Elektroindustrie für Steckverbinder, Spulenträger und Motorgehäuse.</p>
+<div class="mcard__props">
+<span class="prop">Elektroisolierend</span>
+<span class="prop">bis 150 °C HDT (GF)</span>
+<span class="prop">GF verfügbar</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pbt">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">2 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PBT Pellet</span>
+<span class="vtag">PBT Optimal</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="luft-raumfahrt serienbauteile elektronik" data-bauteil="elektronik halterung lager werkzeug zahnrad greifer luftfahrt" data-eigen="hitzebestaendig chemikalienbestaendig cf-verstaerkt esd hochfest" data-keywords="aerospace luft raumfahrt hochleistung peek alternative sls pulver esd antero lager pumpe chemisch inert kabelkanal rohr" data-verfahren="fdm pulver">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span><span class="vbadge vbadge-pulver">SLS</span></div>
+<div class="mcard__name">PEKK</div>
+<p class="mcard__sub">PEEK-Alternative mit besserer Verarbeitbarkeit im SLS-Verfahren. Dauerhaft bis 250 °C, chemikalienbeständig, in ESD-Variante (Antero 840CN03) für Halbleiter- und Raumfahrtanwendungen verfügbar.</p>
+<div class="mcard__props">
+<span class="prop">bis 250 °C</span>
+<span class="prop">ESD-Variante</span>
+<span class="prop">SLS druckbar</span>
+<span class="prop">CF verfügbar</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pekk">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">11 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PEKK Amorph</span>
+<span class="vtag">PEKK-CF</span>
+<span class="vtag">PEKK SLS</span>
+<span class="vtag">Antero 800NA</span>
+<span class="vtag">Antero 840CN03</span>
+<span class="vtag">Kepstan 6002</span>
+<span class="vtag">Kepstan 7002</span>
+<span class="vtag">PEKK-CF (SLS)</span>
+<span class="vtag">AeroPEKK</span>
+<span class="vtag">PEKK SP</span>
+<span class="vtag">PEKK ESD</span></div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile lebensmittel labor" data-bauteil="daempfer dichtung halterung labor" data-eigen="chemikalienbestaendig lebensmittelecht recycelt wasserbestaendig" data-keywords="behälter scharnier trichter laborwanne schlauch lebensmittelbehälter säurebehälter filmgelenk klappbox trinkwasser rohranschluss" data-verfahren="fdm pulver">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span><span class="vbadge vbadge-pulver">SLS</span></div>
+<div class="mcard__name">PP</div>
+<p class="mcard__sub">Leichtestes Standardpolymer, chemikalienbeständig und FDA-konform. Ermüdungsresistent für lebende Scharniere. Für Behälter mit Säure- oder Laugenkontakt, Laborkomponenten und Wasseranschlüsse.</p>
+<div class="mcard__props">
+<span class="prop">Chemikalienbeständig</span>
+<span class="prop">Leicht (0,9 g/cm³)</span>
+<span class="prop">FDA-konform</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pp">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">PP</span>
+<span class="vtag">PP-CF</span>
+<span class="vtag">PP-GF30</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen serienbauteile medizin" data-bauteil="daempfer dichtung orthese schuhsohle sport greifer" data-eigen="flexibel chemikalienbestaendig biokompatibel uv-bestaendig wasserbestaendig" data-keywords="schuhsohle einlegesohle dichtung daempfer griffstück robotergreifer handyhülle puffer ohrschutz reifen vibration antivibration weich gummi" data-verfahren="fdm pulver">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span><span class="vbadge vbadge-pulver">SLS</span><span class="vbadge vbadge-pulver">MJF</span></div>
+<div class="mcard__name">TPU / TPE</div>
+<p class="mcard__sub">Elastisch, abriebfest und schlagabsorbierend. Shore-Härte je nach Variante von 60A bis 98A wählbar. Für Dichtungen, Dämpfer, Schuhsohlen und Griffstücke die verformt werden müssen ohne zu brechen.</p>
+<div class="mcard__props">
+<span class="prop">Shore 60A bis 98A</span>
+<span class="prop">Abriebfest</span>
+<span class="prop">Ölbeständig</span>
+<span class="prop">SLS-Variante</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/tpu">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">5 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">TPU 85A</span>
+<span class="vtag">TPU 90A</span>
+<span class="vtag">TPU 95A</span>
+<span class="vtag">TPU-ESD</span>
+<span class="vtag">PEBA</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile medizin" data-bauteil="daempfer dichtung orthese schuhsohle sport" data-eigen="flexibel chemikalienbestaendig biokompatibel" data-keywords="laufsohle sportschuh dämpfung hochelastisch gummiersatz dichtung membrane medizin elastomer pulver hss peba sprint marathon laufen" data-verfahren="pulver">
+<div class="mcard__badges"><span class="vbadge vbadge-pulver">HSS</span></div>
+<div class="mcard__name">PEBA</div>
+<p class="mcard__sub">Thermoplastisches Polyetheramid-Elastomer: federnder als TPU, niedriger Drucksatz. Erste Wahl für Hochleistungs-Laufsohlen (z.B. Nike Flyprint), medizinische Schuheinlagen und federelastische Dichtungen.</p>
+<div class="mcard__props">
+<span class="prop">Hochelastisch</span>
+<span class="prop">Geringer Drucksatz</span>
+<span class="prop">Leicht</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/peba">Details →</a>
+</div>
+</div>
+<div class="mcard" data-anwendung="luft-raumfahrt serienbauteile" data-bauteil="drohne halterung leichtbau sport werkzeug greifer luftfahrt" data-eigen="cf-verstaerkt flammhemmend leichtgewicht hitzebestaendig hochfest" data-keywords="montagejig drohne roboter endeffector greifer halterung leichtbau aluminium ersatz carbon kevlar glasfaser markforged fixture jig" data-verfahren="endlos">
+<div class="mcard__badges"><span class="vbadge vbadge-endlos">CFF</span></div>
+<div class="mcard__name">Endlosfaser-Verbund</div>
+<p class="mcard__sub">Endlose Carbonfaser, Glasfaser oder Kevlar in einer Polymermatrix. Erreicht Steifigkeit nahe CFK-Laminat bei direktem Druck. Für Montagejigs, Roboterhalterungen und Leichtbauteile als Aluminium-Ersatz.</p>
+<div class="mcard__props">
+<span class="prop">bis 20× steifer als Kunststoff</span>
+<span class="prop">Aluminium-Ersatz</span>
+<span class="prop">FR-Variante</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/endlosfaser">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">4 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Carbon (CCF)</span>
+<span class="vtag">Glasfaser</span>
+<span class="vtag">Kevlar</span>
+<span class="vtag">HSHT Glasfaser</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen medizin" data-bauteil="messemodell prototyp" data-eigen="transparent uv-bestaendig" data-keywords="acrylglas klar optisch sichtfenster glasersatz licht durchsichtig transparent linse display schutzscheibe uhrenglas leuchtmittel zahntechnik" data-verfahren="fdm resin">
+<div class="mcard__badges"><span class="vbadge vbadge-fdm">FDM</span></div>
+<div class="mcard__name">PMMA (Acrylglas)</div>
+<p class="mcard__sub">Polymethylmethacrylat: das transparenteste 3D-druckbare Thermoplast. Für optische Sichtfenster, Leuchtgehäuse und medizinische Zahntechnik-Modelle wo hohe Lichtdurchlässigkeit gefragt ist.</p>
+<div class="mcard__props">
+<span class="prop">Optisch klar</span>
+<span class="prop">Glasartig</span>
+<span class="prop">UV-stabil</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/pmma">Details →</a>
+</div>
+</div>
+<div class="mcard" data-anwendung="luft-raumfahrt serienbauteile medizin" data-bauteil="halterung labor werkzeug" data-eigen="transparent hitzebestaendig chemikalienbestaendig" data-keywords="glas optik linse prisma mikrofluidik laborchip mikrobauteil fused silica quarzglas uv infrarot durchsichtig hochpräzision" data-verfahren="resin">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">2PP / LCM</span></div>
+<div class="mcard__name">Glas (Fused Silica)</div>
+<p class="mcard__sub">3D-gedrucktes Quarzglas: chemisch und physikalisch identisch mit kommerziellem Kieselglas. Optisch transparent von UV bis Infrarot, thermisch und chemisch stabil. Für Mikrooptik, Laborchips und Mikrobauteile auf Millimeterskala.</p>
+<div class="mcard__props">
+<span class="prop">UV–IR transparent</span>
+<span class="prop">bis 1000 °C</span>
+<span class="prop">Chemisch inert</span>
+<span class="prop">Mohs 7</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/glas">Details →</a>
+</div>
+</div>
+<div class="mcard" data-anwendung="luft-raumfahrt serienbauteile medizin" data-bauteil="labor lager zahnrad waermetauscher" data-eigen="hitzebestaendig chemikalienbestaendig biokompatibel verschleissfest" data-keywords="isolator düse zahnkrone gleitlager messer uhren hochtemperatur aluminiumoxid zirkon keramisch hart inert" data-verfahren="resin">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">LCM / DLP</span></div>
+<div class="mcard__name">Keramik</div>
+<p class="mcard__sub">Aluminiumoxid (Al2O3) und Zirkonoxid (ZrO2) für extreme Anforderungen. Bis 1600 °C stabil, elektrisch isolierend und chemisch inert. ZrO2 für Zahnkronen, Al2O3 für Hochspannungs-Isolatoren und Düsen.</p>
+<div class="mcard__props">
+<span class="prop">bis 1600 °C</span>
+<span class="prop">Elektroisolierend</span>
+<span class="prop">Mohs 9</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/keramik">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Al2O3</span>
+<span class="vtag">ZrO2</span>
+<span class="vtag">AlN</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen serienbauteile" data-bauteil="gusskern messemodell prototyp schmuck" data-eigen="transparent guenstig" data-keywords="prototyp modell miniatur figur display architektur tabletop schmuck ornament transparent klar" data-verfahren="resin">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">SLA</span><span class="vbadge vbadge-resin">DLP</span><span class="vbadge vbadge-resin">LCD</span></div>
+<div class="mcard__name">Resin Standard</div>
+<p class="mcard__sub">Günstigster Einstieg für Resin-Druck. Höchste Detailauflösung für Prototypen, Architekturmodelle, Miniaturen und Sichtteile.</p>
+<div class="mcard__props">
+<span class="prop">Schicht ab 0,025 mm</span>
+<span class="prop">Viele Farben</span>
+<span class="prop">Günstig</span>
+<span class="prop">Hohe Detailauflösung</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/resin">Details →</a><button class="variants-toggle" onclick="toggleVariants(this)">5 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Clear</span>
+<span class="vtag">White</span>
+<span class="vtag">Black</span>
+<span class="vtag">Grey</span>
+<span class="vtag">Pigmented</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen serienbauteile" data-bauteil="gehaeuse messemodell prototyp werkzeug" data-eigen="cf-verstaerkt guenstig" data-keywords="gehäuse clip schnappverbindung halterung funktionsbauteil schlagzäh biegesteif abs-ähnlich" data-verfahren="resin">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">SLA</span><span class="vbadge vbadge-resin">DLP</span><span class="vbadge vbadge-resin">LCD</span></div>
+<div class="mcard__name">Resin Tough</div>
+<p class="mcard__sub">Schlagzäh und biegesteif für Funktionsbauteile, Schnappverbindungen und mechanisch belastete Teile.</p>
+<div class="mcard__props">
+<span class="prop">ABS-ähnlich</span>
+<span class="prop">Schlagzäh</span>
+<span class="prop">Mehrfach biegbar</span>
+<span class="prop">Biegesteif</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-tough">Details →</a><button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Tough 1500</span>
+<span class="vtag">ABS-Like</span>
+<span class="vtag">Tough Black</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile" data-bauteil="dichtung daempfer" data-eigen="flexibel guenstig" data-keywords="dichtung gummi elastisch flexibel weich stoßdämpfer griff puffer antivibration tülle" data-verfahren="resin">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">SLA</span><span class="vbadge vbadge-resin">DLP</span><span class="vbadge vbadge-resin">LCD</span></div>
+<div class="mcard__name">Resin Flexibel</div>
+<p class="mcard__sub">Gummiartig elastisch für Dichtungen, Griffe, Stoßdämpfer und biegsame Strukturen.</p>
+<div class="mcard__props">
+<span class="prop">Shore 30A–80A</span>
+<span class="prop">Reißfest</span>
+<span class="prop">Knickfest</span>
+<span class="prop">Elastisch</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-flexibel">Details →</a><button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Flexible 80A</span>
+<span class="vtag">Elastic 50A</span>
+<span class="vtag">Rubber-Like</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile luft-raumfahrt" data-bauteil="werkzeug halterung" data-eigen="hitzebestaendig chemikalienbestaendig" data-keywords="gießform formenbau hochtemperatur hitze hdt wärme motorpart automotive aerospace" data-verfahren="resin">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">SLA</span><span class="vbadge vbadge-resin">DLP</span></div>
+<div class="mcard__name">Resin Hitzebeständig</div>
+<p class="mcard__sub">Hohe Wärmeformbeständigkeit für Gießformen, Motorteile und Hochtemperaturanwendungen.</p>
+<div class="mcard__props">
+<span class="prop">HDT bis 220 °C</span>
+<span class="prop">Dimensionsstabil</span>
+<span class="prop">Formenbau geeignet</span>
+<span class="prop">Post-Cure optimiert</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-hitzebestaendig">Details →</a><button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">High Temp</span>
+<span class="vtag">Ceramic-Filled</span>
+<span class="vtag">Rigid 10K HT</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="elektronik serienbauteile" data-bauteil="elektronik gehaeuse halterung" data-eigen="flammhemmend esd" data-keywords="brandschutz flammhemmend ule94 v0 elektronik kabelhalter schaltkasten esd" data-verfahren="resin">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">SLA</span><span class="vbadge vbadge-resin">DLP</span></div>
+<div class="mcard__name">Resin Flammhemmend</div>
+<p class="mcard__sub">UL94 V-0 zertifiziert für Elektronikgehäuse, Kabelhalter und Bauteile mit Brandschutzanforderungen.</p>
+<div class="mcard__props">
+<span class="prop">UL94 V-0</span>
+<span class="prop">Selbstverlöschend</span>
+<span class="prop">ESD-Variante</span>
+<span class="prop">CE-konform</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-flammhemmend">Details →</a><button class="variants-toggle" onclick="toggleVariants(this)">2 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">FR Resin</span>
+<span class="vtag">FR-ESD Resin</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="medizin dental" data-bauteil="medizin" data-eigen="biokompatibel transparent" data-keywords="zahnschiene aligner krone brücke zahnmodell bohrschablone dental prothese biokompatibel steril" data-verfahren="resin">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">SLA</span><span class="vbadge vbadge-resin">DLP</span><span class="vbadge vbadge-resin">LCD</span></div>
+<div class="mcard__name">Resin Dental</div>
+<p class="mcard__sub">ISO 10993 und CE-zertifiziert. Für Zahnschienen, Bohrschablonen, Kronen und Prothesen.</p>
+<div class="mcard__props">
+<span class="prop">CE-zertifiziert</span>
+<span class="prop">ISO 10993</span>
+<span class="prop">Biokompatibel</span>
+<span class="prop">Sterilisierbar</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-dental">Details →</a><button class="variants-toggle" onclick="toggleVariants(this)">5 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Dental LT Clear</span>
+<span class="vtag">Dental SG</span>
+<span class="vtag">Dental Model</span>
+<span class="vtag">Dental Guide</span>
+<span class="vtag">Surgical Guide</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen" data-bauteil="schmuck gusskern" data-eigen="guenstig" data-keywords="schmuck ring anhänger feinguss wachs casting ausbrennbar goldschmied silber bronze kunstguss" data-verfahren="resin">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">SLA</span><span class="vbadge vbadge-resin">DLP</span></div>
+<div class="mcard__name">Resin Castable Wax</div>
+<p class="mcard__sub">Ausbrennbares Wachsmodell für Feinguss. Für Schmuck, Kunstguss und komplexe Metallguss-Geometrien ohne Rückstände.</p>
+<div class="mcard__props">
+<span class="prop">Rückstandsfrei ausbrennbar</span>
+<span class="prop">Wachsähnlich</span>
+<span class="prop">Hochdetailliert</span>
+<span class="prop">LWC-kompatibel</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-castable-wax">Details →</a><button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Castable Wax</span>
+<span class="vtag">BlueCast X10</span>
+<span class="vtag">Moldmax</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen serienbauteile industrieteile" data-bauteil="gehaeuse halterung werkzeug labor prototyp automobil" data-eigen="hitzebestaendig chemikalienbestaendig verschleissfest hochfest" data-keywords="rigid 10k glasgefüllt steif hochsteif spritzgussersatz jig fixture formlabs" data-verfahren="resin">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">SLA</span><span class="vbadge vbadge-resin">DLP</span><span class="vbadge vbadge-resin">LCD</span></div>
+<div class="mcard__name">Resin Rigid</div>
+<p class="mcard__sub">Glasgefülltes Hochleistungsharz – steifster Werkstoff im Resin-Portfolio. Für Präzisionsbauteile unter hoher Last: Spritzgussersatz, Jigs, Fixtures und aerodynamische Testmodelle.</p>
+<div class="mcard__props">
+<span class="prop">65–88 MPa</span>
+<span class="prop">10 GPa E-Modul</span>
+<span class="prop">HDT 218 °C</span>
+<span class="prop">Glasgefüllt</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-rigid">Details →</a><button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Rigid 4000</span>
+<span class="vtag">Rigid Grey</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="elektronikfertigung serienbauteile" data-bauteil="elektronik halterung werkzeug gehaeuse labor" data-eigen="esd elektrisch-leitend" data-keywords="esd safe elektrostatisch dissipativ pcb handling elektronikfertigung formlabs antistatisch" data-verfahren="resin">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">SLA</span><span class="vbadge vbadge-resin">DLP</span><span class="vbadge vbadge-resin">LCD</span></div>
+<div class="mcard__name">Resin ESD</div>
+<p class="mcard__sub">Elektrostatisch dissipativ – schützt empfindliche Bauteile in der Elektronikfertigung. Für Trays, Carrier, Fertigungsjigs und PCB-Halter mit definiertem Ableitwiderstand.</p>
+<div class="mcard__props">
+<span class="prop">44 MPa</span>
+<span class="prop">1,9 GPa E-Modul</span>
+<span class="prop">10⁵–10⁸ Ω/sq</span>
+<span class="prop">ABS-ähnlich</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-esd">Details →</a><button class="variants-toggle" onclick="toggleVariants(this)">2 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">ESD Resin</span>
+<span class="vtag">ESD-Safe Black</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="medizin serienbauteile" data-bauteil="medizin labor orthese prototyp halterung" data-eigen="biokompatibel transparent wasserbestaendig" data-keywords="biomed biokompatibel iso 10993 medizinprodukt sterilisierbar chirurgisch formlabs fda" data-verfahren="resin">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">SLA</span><span class="vbadge vbadge-resin">DLP</span><span class="vbadge vbadge-resin">LCD</span></div>
+<div class="mcard__name">Resin BioMed</div>
+<p class="mcard__sub">ISO-10993-zertifiziertes Medizinharz für Lang­zeit-Haut­kontakt und Schleim­haut­kontakt. Sterilisierbar per Autoklav, E-Beam und Gamma. Hergestellt in ISO-13485-Umgebung.</p>
+<div class="mcard__props">
+<span class="prop">52 MPa</span>
+<span class="prop">2.080 MPa E-Modul</span>
+<span class="prop">ISO 10993</span>
+<span class="prop">Sterilisierbar</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-biomed">Details →</a><button class="variants-toggle" onclick="toggleVariants(this)">5 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">BioMed Clear</span>
+<span class="vtag">BioMed Amber</span>
+<span class="vtag">BioMed White</span>
+<span class="vtag">BioMed Black</span>
+<span class="vtag">BioMed Durable</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen serienbauteile optik" data-bauteil="prototyp messemodell labor gehaeuse" data-eigen="transparent guenstig uv-bestaendig" data-keywords="klar transparent optisch sichtfenster lichtleiter linse fluidik formlabs clear acrylähnlich" data-verfahren="resin">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">SLA</span><span class="vbadge vbadge-resin">DLP</span><span class="vbadge vbadge-resin">LCD</span></div>
+<div class="mcard__name">Resin Klar</div>
+<p class="mcard__sub">Optisch klares Allzweckharz – polierbar bis nahezu optischer Transparenz. Für Sichtfenster, Lichtleiter, Fluidikkanäle und Gehäuse, bei denen innere Strukturen sichtbar sein sollen.</p>
+<div class="mcard__props">
+<span class="prop">60 MPa</span>
+<span class="prop">2.750 MPa E-Modul</span>
+<span class="prop">85 % Transmission</span>
+<span class="prop">Acryl-ähnlich</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-klar">Details →</a><button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Clear V5</span>
+<span class="vtag">Clear V4.1</span>
+<span class="vtag">Water Clear</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="medizin serienbauteile lebensmittel labor" data-bauteil="daempfer dichtung labor" data-eigen="flexibel biokompatibel lebensmittelecht chemikalienbestaendig uv-bestaendig wasserbestaendig" data-keywords="hörgerät dichtung medizin baby lebensmittel steril atemmaske weich gummi hautverträglich körperkontakt implant katheter" data-verfahren="polyjet">
+<div class="mcard__badges"><span class="vbadge vbadge-resin">PJ</span></div>
+<div class="mcard__name">Silikon</div>
+<p class="mcard__sub">Biokompatibel, temperaturbeständig von -60 bis +200 °C und chemisch inert. Für Hörgeräte-Schalen, Atemmasken-Dichtflächen und medizinische Weichteile, die sterilisierbar sein müssen.</p>
+<div class="mcard__props">
+<span class="prop">Biokompatibel</span>
+<span class="prop">Sterilisierbar</span>
+<span class="prop">FDA-konform</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/silikon">Details →</a>
+</div>
+</div>
+<div class="mcard" data-anwendung="luft-raumfahrt serienbauteile prototypen" data-bauteil="drohne halterung leichtbau robotik werkzeug greifer waermetauscher luftfahrt automobil" data-eigen="hitzebestaendig leichtgewicht chemikalienbestaendig guenstig wasserbestaendig" data-keywords="kühlkörper drohne motorhalterung leichtbau rennwagen wärmetauscher hydraulikblock uav kühlkanal kompressor" data-verfahren="metall">
+<div class="mcard__badges"><span class="vbadge vbadge-metall">SLM</span><span class="vbadge vbadge-metall">DMLS</span></div>
+<div class="mcard__name">Aluminium</div>
+<p class="mcard__sub">Leichtestes Metall im 3D-Druck-Portfolio. AlSi10Mg für komplexe Kühlstrukturen und Leichtbaukomponenten. Günstigstes Metall-Verfahren bei 3D DRUCK LIFE.</p>
+<div class="mcard__props">
+<span class="prop">~310 MPa</span>
+<span class="prop">Leichtbau (2,67 g/cm³)</span>
+<span class="prop">Gut wärmeleitend</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/aluminium">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">7 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">AlSi10Mg</span>
+<span class="vtag">AlSi12</span>
+<span class="vtag">AlSi9Cu3</span>
+<span class="vtag">AlMgSi0,5</span>
+<span class="vtag">Al 6061</span>
+<span class="vtag">Al 7075</span>
+<span class="vtag">Scalmalloy</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile" data-bauteil="schmuck gusskern zahnrad lager" data-eigen="chemikalienbestaendig verschleissfest" data-keywords="schmuck ring anhänger dekoration ästhetik antik kunstguss statue gleitlager buchse bronze messing kupferzinn lwc" data-verfahren="metall feinguss">
+<div class="mcard__badges"><span class="vbadge vbadge-metall">LWC</span><span class="vbadge vbadge-metall">SLM</span></div>
+<div class="mcard__name">Bronze</div>
+<p class="mcard__sub">Kupfer-Zinn-Legierung (CuSn) im Laser Wire Cladding (LWC) Verfahren. Für dekorative Objekte, Kunstguss-Repliken, Schmuck mit bronzener Ästhetik und korrosionsbeständige Gleitlager im Maschinenbau.</p>
+<div class="mcard__props">
+<span class="prop">CuSn Legierung</span>
+<span class="prop">Korrosionsbeständig</span>
+<span class="prop">Dekorativ</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/bronze">Details →</a>
+</div>
+</div>
+<div class="mcard" data-anwendung="medizin serienbauteile dental" data-bauteil="schmuck medizin luftfahrt" data-eigen="biokompatibel chemikalienbestaendig hitzebestaendig verschleissfest hochfest" data-keywords="zahnkrone brücke hüftgelenk kniegelenk herzklappen prothese cobalt chrom dental cobaltchrom gelenk verschleißfestigkeit" data-verfahren="metall">
+<div class="mcard__badges"><span class="vbadge vbadge-metall">SLM</span><span class="vbadge vbadge-metall">DMLS</span></div>
+<div class="mcard__name">Cobalt-Chrom</div>
+<p class="mcard__sub">Höchste Verschleißfestigkeit aller implantierbaren Metalle. Für Zahnkronen, Brückengerüste, Hüftgelenk-Kugeln und Herzklappen-Rahmen. Korrosionsbeständig in Körperflüssigkeiten.</p>
+<div class="mcard__props">
+<span class="prop">~1000 MPa</span>
+<span class="prop">Biokompatibel</span>
+<span class="prop">Korrosionsbeständig</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/cobalt-chrom">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">2 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">CoCrMo (F75)</span>
+<span class="vtag">MP1</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-bauteil="automobil halterung schmuck werkzeug waermetauscher medizin luftfahrt" data-eigen="chemikalienbestaendig biokompatibel hitzebestaendig verschleissfest hochfest wasserbestaendig" data-keywords="316l 17-4ph 15-5ph slm dmls laserschmelzen hochfest korrosion chirurgisch lebensmittelecht turbine hydraulik motorsport ventil" data-verfahren="metall">
+<div class="mcard__badges"><span class="vbadge vbadge-metall">SLM</span><span class="vbadge vbadge-metall">DMLS</span></div>
+<div class="mcard__name">Edelstahl SLM / DMLS</div>
+<p class="mcard__sub">Laserschmelzen von 316L (biokompatibel, lebensmittelecht), 17-4PH (bis 1400 MPa, aushärtbar) und weiteren Legierungen. Höchste Dichte, keine Nachbearbeitung der Porosität nötig.</p>
+<div class="mcard__props">
+<span class="prop">316L: Biokompatibel</span>
+<span class="prop">17-4PH: bis 1400 MPa</span>
+<span class="prop">Korrosionsbeständig</span>
+<span class="prop">Dichte ≥ 99,9 %</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/edelstahl">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">6 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">316L (1.4404)</span>
+<span class="vtag">17-4PH (1.4542)</span>
+<span class="vtag">15-5PH</span>
+<span class="vtag">304L</span>
+<span class="vtag">420 SS</span>
+<span class="vtag">H13</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-bauteil="automobil halterung werkzeug waermetauscher schmuck" data-eigen="chemikalienbestaendig biokompatibel verschleissfest hochfest" data-keywords="binder jetting 316l 17-4ph serie hochvolumen edelstahl sinter stützstrukturfrei" data-verfahren="metall">
+<div class="mcard__badges"><span class="vbadge vbadge-pulver">BJ</span></div>
+<div class="mcard__name">Edelstahl Binder Jetting</div>
+<p class="mcard__sub">Binder Jetting für Edelstahl – ideal für Serienteile in mittlerer Stückzahl. Sehr günstige Teilekosten, komplexe Geometrien ohne Stützstrukturen. Dichte nach Sintern ca. 97–98 %.</p>
+<div class="mcard__props">
+<span class="prop">316L / 17-4PH</span>
+<span class="prop">Stützstrukturfrei</span>
+<span class="prop">Serie &amp; Kleinserie</span>
+<span class="prop">Dichte ~97–98 %</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/edelstahl-binder-jetting">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">316L (BJ)</span>
+<span class="vtag">17-4PH (BJ)</span>
+<span class="vtag">15-5PH (BJ)</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="luft-raumfahrt serienbauteile" data-bauteil="werkzeug halterung waermetauscher luftfahrt" data-eigen="hitzebestaendig chemikalienbestaendig verschleissfest hochfest" data-keywords="turbine turbinenschaufel rakete düse gasturbine öl gas hochtemperatur oxidation brennkammer kompressor blisk triebwerk" data-verfahren="metall">
+<div class="mcard__badges"><span class="vbadge vbadge-metall">SLM</span><span class="vbadge vbadge-metall">DMLS</span></div>
+<div class="mcard__name">Inconel</div>
+<p class="mcard__sub">Nickellegierung für extreme Temperaturen und korrosive Umgebungen. Bis über 900 °C einsatzfähig. Standard in Flugtriebwerken, Raketen und Öl- und Gasindustrie.</p>
+<div class="mcard__props">
+<span class="prop">bis 900+ °C</span>
+<span class="prop">Oxidationsbeständig</span>
+<span class="prop">Hochfest</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/inconel">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">2 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">IN625 (2.4856)</span>
+<span class="vtag">IN718 (2.4668)</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="elektronik serienbauteile" data-bauteil="gehaeuse waermetauscher elektronik" data-eigen="chemikalienbestaendig elektrisch-leitend" data-keywords="induktor kühlkörper elektrode spule leitfähig elektrisch thermisch schweißdüse stromschiene kontakt" data-verfahren="metall feinguss">
+<div class="mcard__badges"><span class="vbadge vbadge-metall">SLM</span><span class="vbadge vbadge-metall">LWC</span></div>
+<div class="mcard__name">Kupfer</div>
+<p class="mcard__sub">Höchste elektrische und thermische Leitfähigkeit aller 3D-druckbaren Metalle. Für Induktionsspulen, Kühlkörper mit internen Mikrokanalstrukturen und Schweißdüsen.</p>
+<div class="mcard__props">
+<span class="prop">Elektrisch leitend</span>
+<span class="prop">400 W/mK</span>
+<span class="prop">58 MS/m</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/kupfer">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Cu (2.0040)</span>
+<span class="vtag">CuCrZr (2.1293)</span>
+<span class="vtag">CuNi2SiCr</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile" data-bauteil="schmuck gusskern zahnrad lager" data-eigen="chemikalienbestaendig guenstig" data-keywords="messing schmuck ring armband dekoration ästhetik vergolden galvanisch kupferzink beschlag musikinstrument ornament ventil" data-verfahren="metall feinguss">
+<div class="mcard__badges"><span class="vbadge vbadge-metall">SLM</span><span class="vbadge vbadge-metall">LWC</span></div>
+<div class="mcard__name">Messing</div>
+<p class="mcard__sub">Kupfer-Zink-Legierung (CuZn) für dekorative und funktionale Bauteile. Gut galvanisierbar (vergolden, versilbern). Für Schmuck, Beschläge, Musikinstrument-Komponenten und Armaturen-Kleinteile.</p>
+<div class="mcard__props">
+<span class="prop">CuZn Legierung</span>
+<span class="prop">Vergoldbar</span>
+<span class="prop">Antibakteriell</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/messing">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">2 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">CuZn (SLM)</span>
+<span class="vtag">CuZnSn (LWC)</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="luft-raumfahrt medizin" data-bauteil="drohne leichtbau robotik medizin waermetauscher luftfahrt" data-eigen="biokompatibel chemikalienbestaendig hitzebestaendig leichtgewicht hochfest wasserbestaendig" data-keywords="hüftimplantat knieimplantat wirbelsäule zahnimplantat schädelplatte rennrad luft raumfahrt leichtbau spant rippe" data-verfahren="metall">
+<div class="mcard__badges"><span class="vbadge vbadge-metall">SLM</span><span class="vbadge vbadge-metall">EBM</span></div>
+<div class="mcard__name">Titan TiAl6V4</div>
+<p class="mcard__sub">Leicht, hochfest und biokompatibel. Bestes Festigkeit-Gewicht-Verhältnis aller Metalle. Standard für Hüftimplantate, Knochenplatten und Luft- und Raumfahrt-Strukturteile.</p>
+<div class="mcard__props">
+<span class="prop">~950 MPa</span>
+<span class="prop">Biokompatibel</span>
+<span class="prop">4,4 g/cm³</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/titan">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">2 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">TiAl6V4 Grade 5</span>
+<span class="vtag">Ti6Al4V ELI Grade 23</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile" data-bauteil="werkzeug halterung automobil" data-eigen="hitzebestaendig verschleissfest chemikalienbestaendig hochfest" data-keywords="spritzgussform stanzwerkzeug druckgussform tiefziehen gesenk konforme kühlung formeinsatz schneidwerkzeug maraaging werkzeugbau" data-verfahren="metall">
+<div class="mcard__badges"><span class="vbadge vbadge-metall">SLM</span></div>
+<div class="mcard__name">Werkzeugstahl</div>
+<p class="mcard__sub">Maraging Steel 1.2709 und H13 für höchste mechanische Beanspruchung. Im 3D-Druck sind konforme Kühlkanäle direkt in Spritzgussformen möglich: senkt Zykluszeit um 30 bis 50 %.</p>
+<div class="mcard__props">
+<span class="prop">bis 1800 MPa</span>
+<span class="prop">Konforme Kühlung</span>
+<span class="prop">Wärmebehandelbar</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/werkzeugstahl">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">MS1 (1.2709)</span>
+<span class="vtag">H13 (1.2344)</span>
+<span class="vtag">M2 HSS</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen serienbauteile" data-bauteil="gehaeuse halterung" data-eigen="guenstig chemikalienbestaendig" data-keywords="zink zamak druckguss druckgussprototyp funktionsprototyp serienähnlich zinklegierung gehäuse beschlag knopf dekor spielzeug" data-verfahren="metall">
+<div class="mcard__badges"><span class="vbadge vbadge-metall">SLM</span></div>
+<div class="mcard__name">Zink (Zamak)</div>
+<p class="mcard__sub">Zamak 5 Zinklegierung für funktionale Prototypen serienähnlicher Druckgussbauteile. Ermöglicht das Testen von Form, Funktion und Oberfläche direkt aus Serienmaterial: bevor teure Druckguss-Werkzeuge gefertigt werden.</p>
+<div class="mcard__props">
+<span class="prop">Zamak 5</span>
+<span class="prop">Druckguss-ähnlich</span>
+<span class="prop">Gut galvanisierbar</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/zink">Details →</a>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile" data-bauteil="werkzeug gehaeuse" data-eigen="hitzebestaendig guenstig" data-keywords="sandguss sandform binder jetting giesskern giessform aluminium eisen bronze casting kern sand feinguss giesserei" data-verfahren="metall">
+<div class="mcard__badges"><span class="vbadge vbadge-metall">BJ</span></div>
+<div class="mcard__name">Verbund / Sandguss</div>
+<p class="mcard__sub">Quarzsand mit Furanharz: gedruckte Gussformen und Giesskerne für die klassische Gießerei. Kein teures Werkzeug, komplexe Innengeometrien in Aluminium, Grauguss oder Bronze in Kleinserie möglich.</p>
+<div class="mcard__props">
+<span class="prop">Gießereisand</span>
+<span class="prop">Kein Formenwerkzeug</span>
+<span class="prop">Al / Fe / Bronze</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/verbund-sandguss">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">2 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Quarzsand + Furan</span>
+<span class="vtag">FS003 Silica+Furan</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="prototypen" data-bauteil="messemodell prototyp schmuck" data-eigen="guenstig" data-keywords="vollfarbe bunt mehrfarbig multicolor farbig rgb polyjet mjf vollfarb modell figur präsentation designmodell visuelle vorschau" data-verfahren="polyjet pulver">
+<div class="mcard__badges"><span class="vbadge vbadge-pulver">MJF</span><span class="vbadge vbadge-resin">PJ</span></div>
+<div class="mcard__name">Multicolor / Vollfarb</div>
+<p class="mcard__sub">Vollfarbige Bauteile in einem Druckgang. HP MJF Multicolor druckt Nylon in CMYK-Farbraum direkt ein: kein Nachbemalen. PolyJet kombiniert verschiedene Materialien mit unterschiedlichen Shore-Härten und Farben in einem Objekt.</p>
+<div class="mcard__props">
+<span class="prop">CMYK-Vollfarbdruck</span>
+<span class="prop">Multi-Material</span>
+<span class="prop">Kein Nachlackieren</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/multicolor">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">3 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">HP MJF Multicolor</span>
+<span class="vtag">PolyJet Vollfarb</span>
+<span class="vtag">High-Def Full Color</span>
+</div>
+</div>
+</div>
+<div class="mcard" data-anwendung="serienbauteile prototypen luft-raumfahrt" data-bauteil="automobil drohne halterung leichtbau robotik werkzeug greifer waermetauscher luftfahrt zahnrad lager elektronik" data-eigen="hitzebestaendig leichtgewicht chemikalienbestaendig" data-keywords="fräsen drehen cnc spanend zerspanen aluminium passgenau toleranz oberfläche finish maßhaltig zeichnung zeichnungsteil" data-verfahren="cnc">
+<div class="mcard__badges"><span class="vbadge vbadge-prep">CNC</span></div>
+<div class="mcard__name">CNC Aluminium</div>
+<p class="mcard__sub">Subtraktive Fertigung: Aluminiumrohlinge in 6 Legierungen (5052, 5083, 6061, 6063, 6082, 7075) auf Maß gefräst oder gedreht. Für höchste Maßhaltigkeit, enge Toleranzen und Passflächen die im 3D-Druck nicht erreichbar sind.</p>
+<div class="mcard__props">
+<span class="prop">Toleranz ab ±0,05 mm</span>
+<span class="prop">6 Legierungen</span>
+<span class="prop">Zerspanend</span>
+</div>
+<div class="mcard__footer">
+<a class="btn-detail" target="_parent" href="https://www.3ddrucklife.de/3ddruckmaterial/cnc-aluminium">Details →</a>
+<button class="variants-toggle" onclick="toggleVariants(this)">6 Varianten <span class="arr">▾</span></button>
+</div>
+<div class="variants-drawer">
+<div class="variants-grid">
+<span class="vtag">Al 5052</span>
+<span class="vtag">Al 5083</span>
+<span class="vtag">Al 6061</span>
+<span class="vtag">Al 6063</span>
+<span class="vtag">Al 6082</span>
+<span class="vtag">Al 7075</span>
+</div>
+</div>
+</div>
+<div class="no-results" id="no-results">
+<div class="no-results__icon">🔍</div>
+<h3>Kein Treffer</h3>
+<p>Für diese Kombination haben wir aktuell kein passendes Material. Filter zurücksetzen oder direkt anfragen.</p>
+</div>
+</div>
+<!-- SHOW MORE – Mobile only, JS gesteuert -->
+<div class="show-more-wrap" id="show-more-wrap">
+<button class="show-more-btn" id="show-more-btn" onclick="showAllCards()">Alle 59 Materialien anzeigen ↓</button>
+</div>
+<!-- CTA SPLIT -->
+<div class="cta-split">
+<div class="cta-left">
+<div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+<div class="cta-left__title">Material gefunden? Preis sofort berechnen.</div>
+<p class="cta-left__text">3D-Datei hochladen, Material wählen, Preis sofort erhalten. Kein Angebot, kein Warten.</p>
+<div class="btn-row-cta">
+<a class="btn btn--white" href="https://3ddrucklife.com">➜ Preisrechner öffnen</a>
+</div>
+</div>
+<div class="cta-right">
+<div class="cta-right__label">Direktkontakt</div>
+<h3>Sondermaterial oder besondere Anforderungen?</h3>
+<div class="contact-row">
+<svg fill="none" height="18" stroke="#fff" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+<a href="mailto:info@3ddrucklife.de?subject=Materialanfrage">info@3ddrucklife.de</a>
+</div>
+<div class="contact-row">
+<svg fill="none" height="18" stroke="#fff" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17v-.08z"></path></svg>
+<a href="tel:+4917664056860">+49 176 640 56860</a>
+</div>
+<p>Großmengen, Spezialmaterialien oder Projekte mit Sonderanforderungen — wir erstellen ein individuelles Angebot.</p>
+</div>
+</div>
+<script>
+// ── Mobile Dropdown Filter ─────────────────────────────────────────
+function toggleMobDD(group) {
+  const dd = document.getElementById('mob-dd-' + group);
+  const btn = document.getElementById('mob-btn-' + group);
+  const isOpen = dd.classList.toggle('open');
+  if (btn) btn.setAttribute('aria-expanded', isOpen);
+  // Andere Dropdowns schließen
+  ['verfahren', 'eigen', 'bauteil'].forEach(g => {
+    if (g !== group) {
+      const other = document.getElementById('mob-dd-' + g);
+      const otherBtn = document.getElementById('mob-btn-' + g);
+      if (other) other.classList.remove('open');
+      if (otherBtn) otherBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  setTimeout(updateFilterSpacer, 250);
+}
+
+function updateMobBadges() {
+  ['verfahren', 'eigen', 'bauteil'].forEach(group => {
+    const count = activeFilters[group]?.size || 0;
+    const badge = document.getElementById('mob-badge-' + group);
+    const btn = document.getElementById('mob-btn-' + group);
+    if (badge) { badge.textContent = count; badge.classList.toggle('visible', count > 0); }
+    if (btn) btn.classList.toggle('has-active', count > 0);
+  });
+}
+
+// ── Erweiterte Filter (Mobile Accordion) ───────────────────────────
+function toggleAdvFilter() {
+  const btn = document.getElementById('adv-filter-toggle');
+  const groups = document.getElementById('adv-filter-groups');
+  if (!btn || !groups) return;
+  const open = btn.classList.toggle('open');
+  groups.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open);
+  setTimeout(updateFilterSpacer, 250);
+}
+
+// ── Varianten-Toggle ───────────────────────────────────────────────
+function toggleVariants(btn) {
+  btn.classList.toggle('open');
+  const drawer = btn.closest('.mcard').querySelector('.variants-drawer');
+  drawer.classList.toggle('open');
+}
+
+// ── Filter-State ───────────────────────────────────────────────────
+const activeFilters = {
+  verfahren: new Set(),
+  eigen: new Set(),
+  bauteil: new Set()
+};
+
+// ── Chip-Click (Info-Btn ausschließen) ─────────────────────────────
+document.querySelectorAll('.chip[data-filter]:not(.chip-soon)').forEach(chip => {
+  chip.addEventListener('click', (e) => {
+    const group = chip.dataset.filter;
+    const val = chip.dataset.value;
+    const isNowActive = !activeFilters[group].has(val);
+    if (isNowActive) { activeFilters[group].add(val); } else { activeFilters[group].delete(val); }
+    // Sync alle Chips mit gleicher group+value (Desktop + Mobile)
+    document.querySelectorAll(`.chip[data-filter="${group}"][data-value="${val}"]`).forEach(c => {
+      c.classList.toggle('active', isNowActive);
+    });
+    applyFilters();
+    updateResetBtn();
+    updateMobBadges();
+  });
+});
+
+// ── Suche ──────────────────────────────────────────────────────────
+
+// ── Filter anwenden ────────────────────────────────────────────────
+function applyFilters() {
+  const cards = document.querySelectorAll('.mcard');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const cv = (card.dataset.verfahren || '').split(' ');
+    const ce = (card.dataset.eigen || '').split(' ');
+    const cb = (card.dataset.bauteil || '').split(' ');
+
+    const matchV = activeFilters.verfahren.size === 0 || [...activeFilters.verfahren].some(f => cv.includes(f));
+    const matchE = activeFilters.eigen.size === 0 || [...activeFilters.eigen].some(f => ce.includes(f));
+    const matchB = activeFilters.bauteil.size === 0 || [...activeFilters.bauteil].some(f => cb.includes(f));
+
+    const show = matchV && matchE && matchB;
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+
+      updateChipAvailability();
+
+  // Mobile: mob-peek wenn kein Filter aktiv
+  if (window.innerWidth <= 768) {
+    const hasFilter = activeFilters.verfahren.size + activeFilters.eigen.size + activeFilters.bauteil.size > 0;
+    const grid = document.getElementById('mat-grid');
+    if (hasFilter) {
+      grid.classList.remove('mob-peek');
+    } else if (!mobPeekDismissed) {
+      grid.classList.add('mob-peek');
+    }
+    updateShowMoreBtn();
+  }
+}
+
+// ── Chip-Verfügbarkeit (grau wenn kein Treffer) ────────────────────
+function updateChipAvailability() {
+  const visibleCards = [...document.querySelectorAll('.mcard:not(.hidden)')];
+  document.querySelectorAll('.chip[data-filter]:not(.chip-soon)').forEach(chip => {
+    const group = chip.dataset.filter;
+    const val   = chip.dataset.value;
+    if (chip.classList.contains('active')) { chip.classList.remove('chip-disabled'); return; }
+    const key = group === 'verfahren' ? 'verfahren'
+              : group === 'eigen'     ? 'eigen'
+              : group === 'anwendung' ? 'anwendung'
+              : 'bauteil';
+    const hasMatch = visibleCards.some(card => (card.dataset[key] || '').split(' ').includes(val));
+    chip.classList.toggle('chip-disabled', !hasMatch);
+  });
+}
+
+// ── Reset ──────────────────────────────────────────────────────────
+function resetFilters() {
+  activeFilters.verfahren.clear();
+  activeFilters.eigen.clear();
+  activeFilters.bauteil.clear();
+  document.querySelectorAll('.chip.active').forEach(c => c.classList.remove('active'));
+  // Auf Mobile: Peek-Modus wiederherstellen (wenn nicht manuell dismisst)
+  if (window.innerWidth <= 768 && !mobPeekDismissed) {
+    document.getElementById('mat-grid').classList.add('mob-peek');
+  }
+  applyFilters();
+  updateResetBtn();
+  updateMobBadges();
+}
+
+function updateResetBtn() {
+  const hasActive =
+    activeFilters.verfahren.size +
+    activeFilters.eigen.size +
+    activeFilters.bauteil.size > 0;
+  document.getElementById('reset-btn').classList.toggle('visible', hasActive);
+}
+
+// ── Mob-Peek (Mobile Top-12) ──────────────────────────────────────────────
+let mobPeekDismissed = false;
+
+function updateShowMoreBtn() {
+  const wrap = document.getElementById('show-more-wrap');
+  const btn  = document.getElementById('show-more-btn');
+  if (!wrap) return;
+  const isMobile = window.innerWidth <= 768;
+  const inPeek   = document.getElementById('mat-grid').classList.contains('mob-peek');
+  wrap.style.display = (isMobile && inPeek) ? 'block' : 'none';
+  if (btn && inPeek) {
+    const visible = document.querySelectorAll('.mcard:not(.hidden)').length;
+    btn.textContent = 'Alle ' + visible + ' Materialien anzeigen ↓';
+  }
+}
+
+function showAllCards() {
+  mobPeekDismissed = true;
+  document.getElementById('mat-grid').classList.remove('mob-peek');
+  updateShowMoreBtn();
+}
+
+// ── Init ───────────────────────────────────────────────────────────
+updateChipAvailability();
+updateShowMoreBtn();
+
+// Filter-bar fixed spacer
+function updateFilterSpacer() {
+  const fb = document.querySelector('.filter-bar');
+  const sp = document.getElementById('filter-spacer');
+  if (fb && sp) sp.style.height = fb.offsetHeight + 'px';
+}
+window.addEventListener('load', updateFilterSpacer);
+window.addEventListener('resize', updateFilterSpacer);
+</script>
+<!-- WIX IFRAME AUTO-RESIZE -->
+<script>
+  function sendHeight() {
+    var h = document.documentElement.scrollHeight || document.body.scrollHeight;
+    window.parent.postMessage({ type: "iframe-height", value: h }, "*");
+  }
+  window.addEventListener("load", sendHeight);
+  window.addEventListener("resize", sendHeight);
+  var mo = new MutationObserver(sendHeight);
+  mo.observe(document.body, { childList: true, subtree: true, attributes: true });
+</script>
+<!-- STICKY CTA MOBILE -->
+<div class="sticky-cta-mobile">
+<a class="sticky-cta-btn" href="https://3ddrucklife.com">➜ Preis berechnen</a>
+</div>
+</div></body>
+</html>
