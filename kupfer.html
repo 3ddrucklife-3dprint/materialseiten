@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kupfer 3D-Druck Materialeigenschaften & Anwendungen | 3D DRUCK LIFE</title>
+<meta name="description" content="Kupfer im 3D-Druck: höchste Wärme- und Leitfähigkeit, ideal für Wärmetauscher, Induktionsspulen und Kühlkanäle. Technische Daten, Varianten und Anwendungsbeispiele.">
+<style>
+:root {
+  --orange:#e87722;--orange-dark:#c45e00;--orange-soft:#fff3e8;
+  --blue:#4a6cf7;--blue-dark:#2d4ed8;--blue-soft:#eef1fe;
+  --ink:#1a1a2e;--ink-soft:#555570;--line:#e5e7eb;
+  --white:#fff;--radius:12px;--bg:#fafafa;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+a{color:var(--orange-dark);text-decoration:none;}
+img{max-width:100%;display:block;}
+.container{max-width:860px;margin:0 auto;padding:0 20px;}
+/* Breadcrumb */
+.breadcrumb{background:var(--white);border-bottom:1px solid var(--line);padding:10px 0;font-size:13px;}
+.breadcrumb__inner{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.breadcrumb__sep{color:var(--ink-soft);}
+.breadcrumb__current{color:var(--ink-soft);}
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;padding:48px 0 40px;}
+@media(max-width:640px){.hero{grid-template-columns:1fr;}}
+.hero__eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-dark);margin-bottom:10px;}
+.hero__title{font-size:clamp(28px,5vw,42px);font-weight:900;line-height:1.1;margin-bottom:16px;}
+.hero__title .accent{color:var(--orange);}
+.hero__sub{font-size:15px;color:var(--ink-soft);margin-bottom:20px;line-height:1.6;}
+.kstats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+.kstat{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:8px 14px;text-align:center;}
+.kstat__val{display:block;font-size:17px;font-weight:800;color:var(--orange-dark);}
+.kstat__lbl{display:block;font-size:11px;color:var(--ink-soft);margin-top:2px;}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;}
+.btn{display:inline-block;padding:11px 22px;border-radius:100px;font-size:14px;font-weight:700;cursor:pointer;transition:.15s;text-decoration:none;}
+.btn--orange{background:var(--orange);color:#fff;border:none;}
+.btn--orange:hover{background:var(--orange-dark);}
+.btn--outline{background:transparent;border:1.5px solid var(--orange-dark);color:var(--orange-dark);}
+.btn--outline:hover{background:var(--orange-soft);}
+.hero__image{border-radius:var(--radius);overflow:hidden;}
+.hero__image img{width:100%;height:auto;display:block;border-radius:var(--radius);}
+/* TOC */
+.toc{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px;margin:0 0 40px;}
+.toc__title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:12px;}
+.toc__list{display:flex;flex-wrap:wrap;gap:8px;list-style:none;}
+.toc__list a{font-size:13px;color:var(--ink-soft);padding:4px 10px;background:var(--bg);border-radius:100px;border:1px solid var(--line);}
+.toc__list a:hover{color:var(--orange-dark);border-color:var(--orange-dark);}
+/* Sections */
+.sec{padding:44px 0;border-top:1px solid var(--line);}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-dark);margin-bottom:8px;}
+.sec-title{font-size:clamp(22px,4vw,30px);font-weight:900;margin-bottom:12px;}
+.sec-sub{font-size:15px;color:var(--ink-soft);margin-bottom:24px;line-height:1.6;}
+/* Vergleich */
+.comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;}
+@media(max-width:600px){.comp-grid{grid-template-columns:1fr;}}
+.ccard{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:16px;}
+.ccard--highlight{border:2px solid var(--orange);background:var(--orange-soft);}
+.ccard__badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--orange-dark);margin-bottom:6px;}
+.ccard__name{font-size:18px;font-weight:900;margin-bottom:10px;}
+.ccard__row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid var(--line);}
+.ccard__row:last-child{border:none;}
+.ccard__key{color:var(--ink-soft);}
+.ccard__val{font-weight:600;}
+/* Stärken */
+.strengths{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px;}
+@media(max-width:500px){.strengths{grid-template-columns:1fr;}}
+.str-item{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:12px;}
+.str-item strong{display:block;font-size:14px;font-weight:700;margin-bottom:2px;}
+.str-item span{font-size:13px;color:var(--ink-soft);}
+/* Tabelle */
+.data-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px;}
+.data-table th,.data-table td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);}
+.data-table th{background:var(--orange-soft);font-weight:700;color:var(--ink);}
+.data-table tr:last-child td,.data-table tr:last-child th{border-bottom:none;}
+/* Ucards */
+.use-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:20px;}
+@media(max-width:500px){.use-grid{grid-template-columns:1fr;}}
+.ucard{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:16px;}
+.ucard__icon{font-size:22px;margin-bottom:8px;}
+.ucard__title{font-size:15px;font-weight:700;margin-bottom:6px;}
+.ucard__link{display:inline-block;margin-top:10px;font-size:13px;color:var(--orange-dark);font-weight:700;text-decoration:underline;}
+/* Varianten */
+.var-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px;}
+@media(max-width:500px){.var-grid{grid-template-columns:1fr;}}
+.vcard{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;}
+.vcard__badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--orange-dark);margin-bottom:4px;}
+.vcard__name{font-size:15px;font-weight:800;margin-bottom:6px;}
+.vcard p{font-size:13px;color:var(--ink-soft);line-height:1.5;}
+/* Nachbearbeitung */
+.nb-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px;}
+@media(max-width:500px){.nb-grid{grid-template-columns:1fr;}}
+.nb-item{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:12px;}
+.nb-item .nb-icon{font-size:20px;margin-bottom:4px;}
+.nb-item strong{display:block;font-size:14px;font-weight:700;margin-bottom:4px;}
+.nb-item p{font-size:13px;color:var(--ink-soft);line-height:1.5;}
+/* Infill */
+.fill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;}
+@media(max-width:500px){.fill-grid{grid-template-columns:1fr;}}
+.fcard{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:12px;text-align:center;}
+.fcard__pct{font-size:22px;font-weight:900;color:var(--orange-dark);}
+.fcard__lbl{font-size:13px;font-weight:700;margin:4px 0 2px;}
+.fcard p{font-size:12px;color:var(--ink-soft);}
+/* Grenzen */
+.limit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px;}
+@media(max-width:500px){.limit-grid{grid-template-columns:1fr;}}
+.lcard{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:12px;}
+.lcard .lcard__icon{font-size:20px;margin-bottom:4px;}
+.lcard strong{display:block;font-size:14px;font-weight:700;margin-bottom:4px;}
+.lcard p{font-size:13px;color:var(--ink-soft);line-height:1.5;}
+/* Callout */
+.callout{background:var(--orange-soft);border-left:4px solid var(--orange);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin-top:20px;}
+.callout__title{font-size:16px;font-weight:800;color:var(--orange-dark);margin-bottom:8px;}
+.callout p{font-size:14px;color:var(--ink-soft);line-height:1.6;margin-bottom:10px;}
+.callout__links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.callout__link{display:inline-block;padding:6px 14px;background:var(--white);border:1.5px solid var(--orange);border-radius:100px;font-size:13px;font-weight:700;color:var(--orange-dark);}
+/* blog-link-box */
+.blog-link-box{background:var(--orange-soft);border:1px solid #ffd0a8;border-radius:var(--radius);padding:16px 20px;margin-top:20px;display:flex;align-items:center;gap:14px;}
+.blog-link-box svg{flex-shrink:0;color:var(--orange-dark);}
+.blog-link-box p{font-size:14px;color:var(--ink-soft);}
+.blog-link-box a:not(.btn){color:var(--orange-dark);font-weight:700;text-decoration:underline;}
+/* FAQ */
+.faq-group-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);padding:20px 0 6px;border-top:1px solid var(--line);margin-top:12px;}
+.faq-group-label:first-child{border-top:none;margin-top:0;}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:14px 0;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.faq-icon{flex-shrink:0;transition:.2s;}
+.faq-a{display:none;padding:0 0 16px;font-size:14px;color:var(--ink-soft);line-height:1.65;}
+.faq-item.open .faq-a{display:block;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+/* CTA */
+.cta-wrap{background:linear-gradient(135deg,var(--orange-dark) 0%,#a84800 100%);color:#fff;padding:48px 0;margin-top:48px;}
+.cta-split{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.cta-left__eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;opacity:.8;margin-bottom:8px;}
+.cta-left__title{font-size:24px;font-weight:900;margin-bottom:8px;}
+.cta-left p{font-size:15px;opacity:.85;margin-bottom:16px;}
+.btn--white{background:#fff;color:var(--orange-dark);border:none;}
+.btn--white:hover{background:var(--orange-soft);}
+.btn--white-outline{background:transparent;border:2px solid rgba(255,255,255,.6);color:#fff;}
+.btn--white-outline:hover{background:rgba(255,255,255,.1);}
+/* Footer */
+.site-footer{background:var(--ink);color:rgba(255,255,255,.7);padding:24px 0;text-align:center;font-size:13px;margin-top:0;}
+.site-footer a{color:rgba(255,255,255,.7);text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb__inner">
+      <a href="https://www.3ddrucklife.de" target="_top">Start</a>
+      <span class="breadcrumb__sep">/</span>
+      <a href="https://www.3ddrucklife.de/3ddruckmaterial" target="_top">Materialien</a>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Kupfer</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="container">
+  <div class="hero">
+    <div class="hero__content">
+      <p class="hero__eyebrow">Metall · DMLS/SLM · Höchste Leitfähigkeit</p>
+      <h1 class="hero__title">Kupfer:<br><span class="accent">thermisch</span> und<br>elektrisch führend.</h1>
+      <p class="hero__sub">Reines Kupfer und Kupferlegierungen im DMLS/SLM-Verfahren. Unübertroffen bei Wärme- und Stromleitung für Wärmetauscher, Induktionsspulen und konturnahe Kühlung.</p>
+      <div class="kstats">
+        <div class="kstat"><span class="kstat__val">~200 MPa</span><span class="kstat__lbl">Zugfestigkeit</span></div>
+        <div class="kstat"><span class="kstat__val">~400 W/mK</span><span class="kstat__lbl">Wärmeleitf.</span></div>
+        <div class="kstat"><span class="kstat__val">~58 MS/m</span><span class="kstat__lbl">Elektr. Leitf.</span></div>
+        <div class="kstat"><span class="kstat__val">8,9 g/cm³</span><span class="kstat__lbl">Dichte</span></div>
+      </div>
+      <div class="btn-row">
+        <a href="https://3ddrucklife.com" class="btn btn--orange" target="_top">➜ Preis berechnen</a>
+        <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Kupfer 3D-Druck" class="btn btn--outline">Beratung anfragen</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="data:image/jpeg;base64,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" alt="Kupfer 3D-Druck Bauteil 3D DRUCK LIFE" loading="eager" width="900" height="900">
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc__title">Auf dieser Seite</div>
+    <ul class="toc__list">
+      <li><a href="#material">Was ist Kupfer?</a></li>
+      <li><a href="#eigenschaften">Eigenschaften</a></li>
+      <li><a href="#chemie">Chemie & Aufbau</a></li>
+      <li><a href="#techdaten">Technische Daten</a></li>
+      <li><a href="#anwendungen">Anwendungen</a></li>
+      <li><a href="#varianten">Varianten</a></li>
+      <li><a href="#nachbearbeitung">Nachbearbeitung</a></li>
+      <li><a href="#grenzen">Grenzen</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- WAS IST KUPFER -->
+<section id="material" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Grundlagen</p>
+    <h2 class="sec-title">Was ist Kupfer im 3D-Druck?</h2>
+    <p class="sec-sub">Das einzige Metall, das Wärme- und Stromleitfähigkeit auf Niveau von Reinstkupfer mit der Freiheit additiver Fertigung verbindet.</p>
+    <p>Kupfer (Cu) ist seit Jahrtausenden das bevorzugte Metall für Wärme- und Stromleitung. Im 3D-Druck erschliesst das DMLS/SLM-Verfahren (Direktes Metall-Lasersintern / Selektives Laserschmelzen) geometrische Freiheiten, die konventionelle Fertigung nicht erlaubt: konturnahe Kühlkanäle in Spritzgusswerkzeugen, hochkomplexe Induktionsspulen und optimierte Wärmetauschergeometrien entstehen als einteilige Baugruppen ohne Fügeprozesse.</p>
+    <p>Die Herausforderung: Kupfer reflektiert infrarote Laserstrahlung stark (Reflexionsgrad > 90 % bei 1.070 nm). Moderne Systeme mit grünem oder blauem Laser (515 nm / 450 nm) haben dieses Problem gelöst und ermöglichen die zuverlässige Verarbeitung von Reinstkupfer mit einem Leitfähigkeitswert von über 58 MS/m.</p>
+
+    <div class="strengths">
+      <div class="str-item"><strong>Höchste Wärmeleitfähigkeit</strong><span>~390 bis 400 W/mK für Reinstkupfer, Faktor 10 besser als Edelstahl</span></div>
+      <div class="str-item"><strong>Beste Stromleitfähigkeit</strong><span>~58 MS/m, nur Silber übertrifft Kupfer als Leiter</span></div>
+      <div class="str-item"><strong>Freie Kanalgeometrie</strong><span>Konturnahe Kühlkanäle, Spiralen und Hohlräume ohne Werkzeug</span></div>
+      <div class="str-item"><strong>Einteilige Baugruppen</strong><span>Komplexe Induktionsspulen und Wärmetauscher ohne Lötnähte</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENSCHAFTEN / VERGLEICH -->
+<section id="eigenschaften" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Materialvergleich</p>
+    <h2 class="sec-title">Kupfer im Vergleich zu anderen Metallen</h2>
+    <p class="sec-sub">Wärme- und Stromleitfähigkeit sind die Alleinstellungsmerkmale von Kupfer gegenüber anderen 3D-druckbaren Metallen.</p>
+    <div class="comp-grid">
+      <div class="ccard">
+        <div class="ccard__badge">Leicht & korrosionsfest</div>
+        <div class="ccard__name"><a href="https://www.3ddrucklife.de/3ddruckmaterial/aluminium" target="_top" style="color:var(--orange-dark);font-weight:700;text-decoration:underline;">Aluminium</a></div>
+        <div class="ccard__row"><span class="ccard__key">Wärmeleitf.</span><span class="ccard__val">~160 W/mK</span></div>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">~400 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Dichte</span><span class="ccard__val">2,7 g/cm³</span></div>
+        <div class="ccard__row"><span class="ccard__key">Leitfähigkeit</span><span class="ccard__val">~37 MS/m</span></div>
+      </div>
+      <div class="ccard ccard--highlight">
+        <div class="ccard__badge">Unser Material · Höchste Leitfähigkeit</div>
+        <div class="ccard__name">Kupfer (Cu)</div>
+        <div class="ccard__row"><span class="ccard__key">Wärmeleitf.</span><span class="ccard__val">~400 W/mK</span></div>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">~200 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Dichte</span><span class="ccard__val">8,9 g/cm³</span></div>
+        <div class="ccard__row"><span class="ccard__key">Leitfähigkeit</span><span class="ccard__val">~58 MS/m</span></div>
+      </div>
+      <div class="ccard">
+        <div class="ccard__badge">Korrosionsfest & stark</div>
+        <div class="ccard__name"><a href="https://www.3ddrucklife.de/3ddruckmaterial/edelstahl" target="_top" style="color:var(--orange-dark);font-weight:700;text-decoration:underline;">Edelstahl 316L</a></div>
+        <div class="ccard__row"><span class="ccard__key">Wärmeleitf.</span><span class="ccard__val">~16 W/mK</span></div>
+        <div class="ccard__row"><span class="ccard__key">Zugfestigkeit</span><span class="ccard__val">~530 MPa</span></div>
+        <div class="ccard__row"><span class="ccard__key">Dichte</span><span class="ccard__val">7,9 g/cm³</span></div>
+        <div class="ccard__row"><span class="ccard__key">Leitfähigkeit</span><span class="ccard__val">~1,4 MS/m</span></div>
+      </div>
+    </div>
+    <p style="font-size:14px;color:var(--ink-soft);">Kupfer leitet Wärme 25-mal besser als Edelstahl und 2,5-mal besser als Aluminium. Für jede Anwendung, bei der Wärme schnell abgeführt oder Strom verlustarm geleitet werden muss, gibt es kein besseres Metall im 3D-Druck-Portfolio.</p>
+    <div class="blog-link-box" style="margin-top:20px;">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/>
+    <line x1="16" y1="17" x2="8" y2="17"/>
+  </svg>
+  <div>
+    <p>Alle metallischen 3D-Druckmaterialien mit Kennwerten im direkten Vergleich.</p>
+    <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_top">Zur Materialübersicht</a>
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- CHEMIE -->
+<section id="chemie" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Molekulare Struktur</p>
+    <h2 class="sec-title">Kupfer: Kristallstruktur und Leitfähigkeit</h2>
+    <p class="sec-sub">Die kubisch-flächenzentrierte (kfz) Kristallstruktur von Kupfer erklärt seine einzigartigen elektrischen und thermischen Eigenschaften.</p>
+    <p>Kupfer (Cu, Ordnungszahl 29) ist ein kubisch-flächenzentriertes Metall mit einem Gitterparameter von 3,615 Å. Die kfz-Struktur maximiert die Packungsdichte der Atome und erlaubt die freie Beweglichkeit der Leitungselektronen. Jedes Kupferatom gibt ein Elektron an das Leitungsband ab, was zu einer Leitungselektronendichte von etwa 8,5 × 10²⁸ m⁻³ führt und die exzellente elektrische Leitfähigkeit erklärt.</p>
+    <p>Die hohe thermische Leitfähigkeit entsteht durch zwei Mechanismen: freie Elektronen transportieren Wärme direkt (dominanter Beitrag), und die geringe Phononenstreuung im geordneten Kristallgitter trägt zusätzlich bei. Verunreinigungen und Legierungsbestandteile stören das Gitter und reduzieren die Leitfähigkeit erheblich. Reinstkupfer (&gt;99,95 % Cu) ist deshalb deutlich leitfähiger als Kupferlegierungen.</p>
+    <div class="blog-link-box" style="margin-top:20px;">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/>
+    <line x1="16" y1="17" x2="8" y2="17"/>
+  </svg>
+  <div>
+    <p>Metallische Werkstoffe im 3D-Druck: Verfahren, Eigenschaften und Anwendungsgebiete im Überblick.</p>
+    <a href="https://www.3ddrucklife.de/post/3d-druck-material-mit-10-beispiele" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_top">10 Anwendungsbeispiele lesen</a>
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- TECHNISCHE DATEN -->
+<section id="techdaten" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Techn. Daten</p>
+    <h2 class="sec-title">Material-Kennwerte im Detail</h2>
+    <p class="sec-sub">Richtwerte für Reinstkupfer (Cu &gt;99,9 %) im DMLS/SLM-Verfahren mit grünem Laser.</p>
+    <table class="data-table">
+      <thead><tr><th>Eigenschaft</th><th>Wert</th><th>Norm / Hinweis</th></tr></thead>
+      <tbody>
+        <tr><td>Zugfestigkeit</td><td>180 bis 220 MPa</td><td>ISO 6892-1</td></tr>
+        <tr><td>Streckgrenze (Rp0,2)</td><td>100 bis 140 MPa</td><td>ISO 6892-1</td></tr>
+        <tr><td>Bruchdehnung</td><td>25 bis 40 %</td><td>ISO 6892-1</td></tr>
+        <tr><td>E-Modul</td><td>~115 GPa</td><td>ISO 6892-1</td></tr>
+        <tr><td>Wärmeleitfähigkeit</td><td>380 bis 400 W/(m·K)</td><td>DIN EN ISO 22007</td></tr>
+        <tr><td>Elektrische Leitfähigkeit</td><td>~58 MS/m (&gt;100 % IACS)</td><td>IEC 60468</td></tr>
+        <tr><td>Dichte</td><td>8,9 g/cm³</td><td>ISO 1183 (analog)</td></tr>
+        <tr><td>Schmelzpunkt</td><td>1.085 °C</td><td>Reinstkupfer</td></tr>
+        <tr><td>Relative Dichte nach Druck</td><td>&gt;99,5 %</td><td>Archimedesmethode</td></tr>
+        <tr><td>Oberflächenrauheit Ra (as-built)</td><td>5 bis 15 µm</td><td>ISO 4287</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--ink-soft);margin-top:12px;">Alle Werte sind Richtwerte nach Pulverspezifikation und Maschineneinstellung. Für CuCrZr (ausgehärtet) liegen Zugfestigkeit bis 450 MPa und Leitfähigkeit ~48 MS/m.</p>
+    <div class="blog-link-box" style="margin-top:20px;">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/>
+    <line x1="16" y1="17" x2="8" y2="17"/>
+  </svg>
+  <div>
+    <p>Materialeigenschaften aller 3D-Druck-Werkstoffe im systematischen Vergleich.</p>
+    <a href="https://www.3ddrucklife.de/post/3d-druck-materialeigenschaften" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_top">Ratgeber lesen</a>
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- ANWENDUNGEN -->
+<section id="anwendungen" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Einsatzgebiete</p>
+    <h2 class="sec-title">Wofür wird Kupfer im 3D-Druck eingesetzt?</h2>
+    <p class="sec-sub">Überall dort, wo Wärme schnell abgeführt oder Strom verlustarm geleitet werden muss, ist Kupfer das Material der Wahl.</p>
+    <div class="use-grid">
+      <div class="ucard">
+        <div class="ucard__icon">🔁</div>
+        <div class="ucard__title">Wärmetauscher</div>
+        <p>Hochkomplexe Wärmetauscher mit integrierten Mikro-Kühlkanälen, Turbulenzgeneratoren und optimierten Oberflächen. Geometrien, die als Gussbauteil unmöglich wären.</p>
+        <a href="https://www.3ddrucklife.de/post/verschleißfeste-kunststoffe" class="ucard__link" target="_top">Hochleistungswerkstoffe im Vergleich →</a>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">⚡</div>
+        <div class="ucard__title">Induktionsspulen</div>
+        <p>Einteilige Induktionsspulen mit integrierter Wasserkühlung. Maßgefertigte Geometrien für Härteprozesse, Schmelzanwendungen und induktive Erwärmung.</p>
+        <a href="https://www.3ddrucklife.de/post/digitale-ersatzteile-für-die-food-und-getränkeindustrie-3d-druck-im-maschinenbau" class="ucard__link" target="_top">Digitale Ersatzteile →</a>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">🏭</div>
+        <div class="ucard__title">Konturnahe Kühlung</div>
+        <p>Kupfer-Einsätze in Spritzguss- und Druckgusswerkzeugen mit konformal geführten Kühlkanälen. Deutlich kürzere Zykluszeiten durch optimierte Wärmeabfuhr.</p>
+        <a href="https://www.3ddrucklife.de/post/3d-druck-material-mit-10-beispiele" class="ucard__link" target="_top">10 Anwendungsbeispiele →</a>
+      </div>
+      <div class="ucard">
+        <div class="ucard__icon">🔬</div>
+        <div class="ucard__title">Elektronik & Hochvakuum</div>
+        <p>Hochfrequenz-Bauteile, Waveguides und Vakuumkammerkomponenten. Kupfer ist in HF-Anwendungen unverzichtbar und ausgasungsarm für Ultrahochvakuum.</p>
+        <a href="https://www.3ddrucklife.de/post/individuelle-uebungsmodelle" class="ucard__link" target="_top">Individuelle Fertigungslösungen →</a>
+      </div>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/>
+    <line x1="16" y1="17" x2="8" y2="17"/>
+  </svg>
+  <div>
+    <p>Metallische Werkstoffe im industriellen Einsatz: Fallbeispiele aus Maschinenbau und Elektronik.</p>
+    <a href="https://www.3ddrucklife.de/post/digitale-ersatzteile-für-die-food-und-getränkeindustrie-3d-druck-im-maschinenbau" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_top">Praxisbeispiele lesen</a>
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- VARIANTEN -->
+<section id="varianten" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Materialvarianten</p>
+    <h2 class="sec-title">Kupfer-Varianten im 3D-Druck</h2>
+    <p class="sec-sub">Von Reinstkupfer für maximale Leitfähigkeit bis zur ausgehärteten CuCrZr-Legierung für Hochtemperaturanwendungen.</p>
+    <div class="var-grid">
+      <div class="vcard">
+        <div class="vcard__badge">Standard</div>
+        <div class="vcard__name">Reinstkupfer Cu&gt;99,9 %</div>
+        <p>Maximale elektrische (~58 MS/m) und thermische Leitfähigkeit (~400 W/mK). Für Induktionsspulen, Wärmetauscher und HF-Anwendungen. Geringere Festigkeit als Legierungen.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Hochfest & leitfähig</div>
+        <div class="vcard__name">CuCrZr (Kupfer-Chrom-Zirkon)</div>
+        <p>Durch Wärmebehandlung aushärtbar auf bis zu 450 MPa Zugfestigkeit bei noch ~48 MS/m Leitfähigkeit. Ideal für Elektroden, Schweisswerkzeuge und hochbelastete Wärmetauscher.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Korrosionsfest</div>
+        <div class="vcard__name">CuNi2SiCr</div>
+        <p>Kupfer-Nickel-Silizium-Chrom-Legierung mit verbesserter Korrosionsbeständigkeit. Für Meeresanwendungen, chemische Prozessanlagen und Wärmetauscher in aggressiven Medien.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__badge">Günstige Alternative</div>
+        <div class="vcard__name">Kupfer/Bronze (Binder Jetting)</div>
+        <p>Im Binder-Jetting-Verfahren sinterte Kupfer- und Bronzebauteile. Kostengünstiger, aber niedrigere Dichte (~95 %) und reduzierte Leitfähigkeit gegenüber DMLS.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NACHBEARBEITUNG -->
+<section id="nachbearbeitung" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Finishing</p>
+    <h2 class="sec-title">Nachbearbeitung von Kupfer-Bauteilen</h2>
+    <p class="sec-sub">Kupfer lässt sich gut spanend bearbeiten und elektrochemisch polieren. Für Hochleitfähigkeits-Anwendungen ist die Oberflächenqualität der inneren Kanäle entscheidend.</p>
+    <div class="nb-grid">
+      <div class="nb-item">
+        <div class="nb-icon">⚙️</div>
+        <strong>CNC-Fräsen & Drehen</strong>
+        <p>Kupfer ist sehr gut zerspanbar. Scharfe Werkzeuge und niedrige Schnittgeschwindigkeit verhindern Aufschmieren. Toleranzen bis IT6 erreichbar.</p>
+      </div>
+      <div class="nb-item">
+        <div class="nb-icon">✨</div>
+        <strong>Elektrochemisches Polieren</strong>
+        <p>Elektropolieren glättet innere Oberflächen von Kühlkanälen und reduziert Strömungswiderstände. Gleichzeitig entfernt es oxidierte Schichten.</p>
+      </div>
+      <div class="nb-item">
+        <div class="nb-icon">🔥</div>
+        <strong>Wärmebehandlung (CuCrZr)</strong>
+        <p>Lösungsglühen bei 980 °C, Abschrecken, dann Auslagern bei 450 °C für 2 bis 4 h. Erhöht Festigkeit auf bis zu 450 MPa bei erhaltenem Leitfähigkeitswert.</p>
+      </div>
+      <div class="nb-item">
+        <div class="nb-icon">🛡️</div>
+        <strong>Vergolden / Versilbern</strong>
+        <p>Galvanische Dünnschichtbeschichtungen für Hochfrequenz-Bauteile (Skineffekt) und Korrosionsschutz. Goldschicht 0,5 bis 5 µm für HF-Anwendungen.</p>
+      </div>
+    </div>
+    <div class="blog-link-box" style="margin-top:20px;">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/>
+    <line x1="16" y1="17" x2="8" y2="17"/>
+  </svg>
+  <div>
+    <p>Alle Nachbearbeitungsverfahren für Metall- und Kunststoffbauteile im Überblick.</p>
+    <a href="https://www.3ddrucklife.de/nachbearbeitung" class="btn btn--outline" style="margin-top:10px;font-size:13px;padding:7px 16px;" target="_top">Alle Nachbearbeitungsmethoden ansehen</a>
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Einschränkungen</p>
+    <h2 class="sec-title">Grenzen von Kupfer im 3D-Druck</h2>
+    <div class="callout">
+      <div class="callout__title">Was Kupfer nicht kann</div>
+      <p>Kupfer ist mechanisch deutlich schwächer als <a href="https://www.3ddrucklife.de/3ddruckmaterial/edelstahl" target="_top" style="color:var(--orange-dark);font-weight:700;text-decoration:underline;">Edelstahl</a> (530 MPa) oder <a href="https://www.3ddrucklife.de/3ddruckmaterial/titan" target="_top" style="color:var(--orange-dark);font-weight:700;text-decoration:underline;">Titan</a> (900 MPa). Für strukturtragende Bauteile mit hoher mechanischer Last ist Kupfer ungeeignet. CuCrZr verbessert die Festigkeit auf bis zu 450 MPa, bleibt aber deutlich unter Stahlwerten.</p>
+      <p>Reinstkupfer korrodiert an der Luft durch Oxidation (Patina). Für Außenumgebungen oder feuchte Medien ist eine Schutzschicht (Vergolden, Lackieren) oder eine Legierung wie CuNi2SiCr vorzuziehen. Kupfer ist nicht für Lebensmittelkontakt mit sauren Medien zugelassen.</p>
+      <p>Der Materialpreis von Kupferpulver liegt bei 100 bis 300 €/kg, der Fertigungspreis deutlich über anderen Metallen, da spezielle Laser-Systeme (grün/blau) erforderlich sind. Für einfache Wärmeleitung ist <a href="https://www.3ddrucklife.de/3ddruckmaterial/aluminium" target="_top" style="color:var(--orange-dark);font-weight:700;text-decoration:underline;">Aluminium</a> oft kostengünstiger.</p>
+      <div class="callout__links">
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial/aluminium" class="callout__link" target="_top">Aluminium ansehen →</a>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial/edelstahl" class="callout__link" target="_top">Edelstahl ansehen →</a>
+        <a href="https://www.3ddrucklife.de/3ddruckmaterial" class="callout__link" target="_top">Alle Materialien →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Häufige Fragen</p>
+    <h2 class="sec-title">FAQ zu Kupfer im 3D-Druck</h2>
+
+    <div class="faq-group-label">Über Kupfer</div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">Warum ist Kupfer im 3D-Druck so schwierig zu verarbeiten?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <div class="faq-a">Kupfer reflektiert infrarote Laserstrahlung (1.070 nm) zu über 90 %. Herkömmliche DMLS-Anlagen mit IR-Laser können das Pulver deshalb kaum aufschmelzen. Erst grüne (515 nm) und blaue (450 nm) Laser, die Kupfer mit unter 40 % Reflexionsgrad ansprechen, ermöglichen zuverlässiges Kupfer-Drucken. Die Verarbeitungskosten sind entsprechend höher als bei anderen Metallen.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">Welche Leitfähigkeit erreicht 3D-gedrucktes Kupfer?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <div class="faq-a">Reinstkupfer im DMLS-Verfahren (grüner Laser) erreicht elektrische Leitfähigkeiten von 95 bis 105 % IACS (International Annealed Copper Standard), also nahezu gleichwertig zu gewalztem Reinstkupfer. Die Dichte des gedruckten Bauteils liegt bei über 99,5 %. Für HF-Anwendungen und Induktionsspulen ist diese Leitfähigkeit ausreichend.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">Was ist der Vorteil von CuCrZr gegenüber Reinstkupfer?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <div class="faq-a">CuCrZr (Kupfer-Chrom-Zirkon) ist eine aushärtbare Legierung: Nach dem Druck wird das Bauteil lösungsgeglüht und ausgelagert, wodurch die Zugfestigkeit von ~200 MPa (Reinstkupfer) auf bis zu 450 MPa steigt. Die elektrische Leitfähigkeit sinkt dabei von ~58 MS/m auf ~48 MS/m, bleibt aber noch sehr hoch. Ideal für Schweisselektroden, stark belastete Werkzeuge und Induktionsspulen unter mechanischer Belastung.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">Für welche Kühlkanalgeometrien ist Kupfer-3D-Druck geeignet?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <div class="faq-a">Kupfer-DMLS eignet sich für konformal geführte Kühlkanäle ab 1 mm Durchmesser. Runde Querschnitte bis ca. 8 mm sind ohne Stützstrukturen druckbar. Für innere Kanäle größerer Querschnitte werden Stützstrukturen benötigt, die nach dem Druck herausgebrochen werden. Elektrochemisches Polieren glättet innere Oberflächen und reduziert Strömungswiderstände erheblich.</div>
+    </div>
+
+    <div class="faq-group-label">Konfiguration und Kosten</div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">Wie viel kostet ein Kupfer-Bauteil bei 3D DRUCK LIFE?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <div class="faq-a">Der Preis hängt von Volumen, Geometrie, Variante und Stückzahl ab. Aufgrund der spezialisierten Laser-Technologie (grüner/blauer Laser) liegt Kupfer preislich über anderen DMLS-Metallen wie Aluminium oder Edelstahl. Genaue Preise erhaltet ihr über unseren Preisrechner oder per Beratungsanfrage.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">Welche Dateiformate werden für eine Bestellung akzeptiert?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <div class="faq-a">Wir akzeptieren STL, STEP (STP) und 3MF. Für Kupfer-Bauteile bevorzugen wir STEP, da die exakte Geometrie der Kühlkanäle und Oberflächen erhalten bleibt. STL-Dateien findet ihr auch hier: <a href="https://www.3ddrucklife.de/post/3d-druck-vorlagen" target="_top" style="color:var(--orange-dark);font-weight:700;text-decoration:underline;">50 Portale für 3D-Druck-Vorlagen</a>.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">Wie lange dauert die Lieferung?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <div class="faq-a">Standardlieferzeit für Kupfer-Bauteile: 5 bis 10 Werktage nach Auftragsbestätigung. Wärmebehandlung (CuCrZr) und Nachbearbeitungsschritte wie Elektropolieren verlängern die Zeit. Vor Auftragsstart kommunizieren wir die genaue Lieferzeit. Details: <a href="https://www.3ddrucklife.de/post/versand-zahlung" target="_top" style="color:var(--orange-dark);font-weight:700;text-decoration:underline;">Versand & Zahlung</a>.</div>
+    </div>
+
+    <div class="faq-group-label">3D-Druck allgemein & Nachbearbeitung</div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">Kann Kupfer auch im Binder-Jetting-Verfahren gedruckt werden?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 024" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <div class="faq-a">Ja. Im Binder-Jetting-Verfahren wird Kupferpulver mit einem Binder verklebt und anschließend gesintert. Das Verfahren ist kostengünstiger als DMLS, erzeugt aber eine geringere Dichte (~95 %) und damit reduzierte Leitfähigkeit (~40 bis 50 MS/m). Für einfache Bronze-Dekorbauteile und weniger leitfähigkeitskritische Anwendungen ist Binder Jetting eine wirtschaftliche Alternative.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">Wie schütze ich Kupfer-Bauteile vor Oxidation?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <div class="faq-a">Kupfer oxidiert an der Luft und bildet eine Patina (Kupferoxid, grünlich). Für Innenanwendungen ohne aggressive Medien ist die Patina unkritisch. Für HF-Bauteile empfiehlt sich galvanisches Vergolden (0,5 bis 5 µm). Für den Außeneinsatz: Klarlack, Vernickelung oder Versilberung. Für aggressive Medien: Kupferlegierung CuNi2SiCr wählen.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">Welche Wandstärken und Kanalgrößen sind bei Kupfer-DMLS möglich?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <div class="faq-a">Mindestwandstärke: 0,3 bis 0,5 mm. Mindestkanaldurchmesser für stützstrukturfreie innere Kanäle: 1 mm (rund). Detailauflösung: ca. 0,1 mm. Die typische Schichtstärke beträgt 20 bis 40 µm. Für Wärmetauscher mit Mikrokanälen unter 0,5 mm empfiehlt sich eine Bauteilanalyse vorab.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-left">
+        <div class="cta-left__eyebrow">3D DRUCK LIFE</div>
+        <div class="cta-left__title">Kupfer-Bauteile jetzt bestellen</div>
+        <p class="cta-left__text">3D-Datei hochladen, Kupfer als Material wählen, Preis sofort erhalten.</p>
+        <div class="btn-row">
+          <a href="https://3ddrucklife.com" class="btn btn--white" target="_top">Preisrechner öffnen</a>
+          <a href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Kupfer 3D-Druck" class="btn btn--white-outline">Beratung anfragen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <p>3D DRUCK LIFE &mdash; Made in Germany &middot; <a href="mailto:info@3ddrucklife.de" target="_top">info@3ddrucklife.de</a></p>
+    <p style="font-size:13px;color:rgba(255,255,255,.7);">Mo&ndash;Fr erreichbar &middot; Zweibrücken, Deutschland</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+    btn.setAttribute('aria-expanded', !open);
+  });
+});
+</script>
+</body>
+</html>
