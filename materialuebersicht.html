@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D-Druck Materialien – alle Werkstoffe im Überblick | 3D DRUCK LIFE</title>
+<meta name="description" content="Alle 74 3D-Druck-Materialien von 3D DRUCK LIFE: Kunststoffe, Resins, Metalle, Keramik und mehr. Suche nach Bauteil, Eigenschaft oder Verfahren und finde sofort den passenden Werkstoff.">
+<style>
+:root{--orange:#e87722;--orange-dark:#c45e00;--orange-soft:#fff3e8;--ink:#1a1a2e;--ink-soft:#555570;--line:#e5e7eb;--white:#fff;--radius:14px;--bg:#fafafa;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+a{color:var(--orange-dark);text-decoration:none;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 18px;}
+.crumb{font-size:13px;color:var(--ink-soft);padding:14px 0;}.crumb a{color:var(--ink-soft);}
+.hero{padding:14px 0 28px;}
+.hero__eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-dark);margin-bottom:8px;}
+.hero__title{font-size:clamp(26px,4.5vw,40px);font-weight:900;line-height:1.1;margin-bottom:12px;}
+.hero__title .accent{color:var(--orange);}
+.hero__sub{font-size:15px;color:var(--ink-soft);max-width:640px;margin-bottom:18px;}
+.stats{display:flex;flex-wrap:wrap;gap:22px;margin-bottom:20px;}
+.stat b{display:block;font-size:24px;font-weight:900;color:var(--orange-dark);line-height:1;}
+.stat span{font-size:12px;color:var(--ink-soft);}
+.hero__btns{display:flex;gap:10px;flex-wrap:wrap;}
+.btn{display:inline-block;padding:11px 22px;border-radius:100px;font-size:14px;font-weight:700;cursor:pointer;border:none;}
+.btn--orange{background:var(--orange);color:#fff;}.btn--orange:hover{background:var(--orange-dark);}
+.btn--outline{background:transparent;border:1.5px solid var(--orange-dark);color:var(--orange-dark);}.btn--outline:hover{background:var(--orange-soft);}
+.finder{background:var(--bg);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:4px;}
+.search{display:flex;align-items:center;gap:10px;background:var(--white);border:1.5px solid var(--line);border-radius:100px;padding:10px 18px;margin-bottom:12px;}
+.search:focus-within{border-color:var(--orange);}
+.search input{border:none;outline:none;font-size:15px;flex:1;background:transparent;color:var(--ink);}
+.search svg{flex-shrink:0;color:var(--ink-soft);}
+.fgrp{margin-bottom:9px;}
+.fgrp__label{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;}
+.frow{display:flex;flex-wrap:wrap;gap:7px;align-items:center;}
+.fchip{font-size:13px;padding:6px 13px;border-radius:100px;border:1.5px solid var(--line);background:var(--white);color:var(--ink-soft);cursor:pointer;transition:.12s;}
+.fchip:hover{border-color:var(--orange);color:var(--orange-dark);}
+.fchip.active{background:var(--orange);border-color:var(--orange);color:#fff;}
+.resultbar{display:flex;justify-content:space-between;align-items:center;padding:14px 0 4px;font-size:14px;color:var(--ink-soft);}
+.resultbar b{color:var(--ink);}
+.reset{font-size:13px;color:var(--orange-dark);background:none;border:none;cursor:pointer;font-weight:700;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;padding:12px 0 40px;}
+.mcard{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;transition:.15s;}
+.mcard:hover{border-color:var(--orange);box-shadow:0 6px 20px rgba(200,94,0,.08);transform:translateY(-2px);}
+.mcard__badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px;}
+.vbadge{font-size:10px;font-weight:800;letter-spacing:.04em;padding:3px 8px;border-radius:5px;background:var(--orange-soft);color:var(--orange-dark);text-transform:uppercase;}
+.mcard__name{font-size:19px;font-weight:900;margin-bottom:7px;}
+.mcard__sub{font-size:13.5px;color:var(--ink-soft);line-height:1.55;flex:1;margin-bottom:12px;}
+.mcard__chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+.pchip{font-size:11px;padding:3px 9px;border-radius:100px;background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);}
+.mcard__btn{align-self:flex-start;font-size:13px;font-weight:800;color:var(--orange-dark);padding:8px 16px;border:1.5px solid var(--orange-dark);border-radius:100px;transition:.12s;}
+.mcard__btn:hover{background:var(--orange-dark);color:#fff;}
+.noresult{display:none;text-align:center;padding:50px 20px;}
+.noresult.show{display:block;}
+.noresult h3{font-size:20px;font-weight:800;margin-bottom:8px;}
+.noresult p{color:var(--ink-soft);margin-bottom:16px;}
+.cta{background:linear-gradient(135deg,var(--orange-dark),#a84800);color:#fff;border-radius:var(--radius);padding:34px;margin:20px 0 40px;text-align:center;}
+.cta h3{font-size:22px;font-weight:900;margin-bottom:8px;}.cta p{opacity:.9;margin-bottom:18px;font-size:15px;}
+.btn--white{background:#fff;color:var(--orange-dark);}.btn--white:hover{background:var(--orange-soft);}
+@media(max-width:600px){.grid{grid-template-columns:1fr 1fr;gap:11px;}.mcard{padding:13px;}.mcard__name{font-size:16px;}.mcard__sub{font-size:12.5px;}}
+@media(max-width:420px){.grid{grid-template-columns:1fr;}}
+</style></head>
+<body>
+<div class="wrap">
+  <nav class="crumb"><a href="https://www.3ddrucklife.de" target="_top">Start</a> / Materialien</nav>
+  <section class="hero">
+    <div class="hero__eyebrow">Werkstoff-Finder</div>
+    <h1 class="hero__title">74 Materialien.<br><span class="accent">Ein Dienstleister.</span></h1>
+    <p class="hero__sub">Von PLA bis Titan: Wir fertigen Bauteile aus über 74 Werkstoffen in mehr als 15 Verfahren. Sag uns, was du brauchst, und finde in Sekunden das passende Material.</p>
+    <div class="stats">
+      <div class="stat"><b>74</b><span>Materialien</span></div>
+      <div class="stat"><b>15+</b><span>Verfahren</span></div>
+      <div class="stat"><b>24</b><span>Nachbearbeitungen</span></div>
+      <div class="stat"><b>500+</b><span>Varianten</span></div>
+    </div>
+    <div class="hero__btns">
+      <a class="btn btn--orange" href="https://3ddrucklife.com" target="_top">➜ Preis berechnen</a>
+      <a class="btn btn--outline" href="mailto:info@3ddrucklife.de?subject=Beratungsanfrage Material" target="_top">Beratung anfragen</a>
+    </div>
+  </section>
+</div>
+
+<div class="finder"><div class="wrap">
+  <div class="search">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input id="q" type="text" placeholder="Suche nach Bauteil, Eigenschaft oder Material – z. B. Zahnrad, wetterfest, PEEK">
+  </div>
+  <div class="fgrp"><div class="fgrp__label">Verfahren</div><div class="frow"><button class="fchip" data-fgroup="verfahren" data-fval="fdm">FDM</button><button class="fchip" data-fgroup="verfahren" data-fval="pulver">Pulver (SLS/MJF)</button><button class="fchip" data-fgroup="verfahren" data-fval="metall">Metall (SLM/DMLS)</button><button class="fchip" data-fgroup="verfahren" data-fval="resin">Resin (SLA/DLP)</button><button class="fchip" data-fgroup="verfahren" data-fval="endlos">Endlosfaser</button><button class="fchip" data-fgroup="verfahren" data-fval="polyjet">PolyJet / Vollfarb</button><button class="fchip" data-fgroup="verfahren" data-fval="cnc">CNC-Fräsen</button><button class="fchip" data-fgroup="verfahren" data-fval="feinguss">Feinguss</button></div></div>
+  <div class="fgrp"><div class="fgrp__label">Eigenschaften</div><div class="frow"><button class="fchip" data-fgroup="eigen" data-fval="hitzebestaendig">🌡️ Hitzebeständig</button><button class="fchip" data-fgroup="eigen" data-fval="chemikalienbestaendig">⚗️ Chem. beständig</button><button class="fchip" data-fgroup="eigen" data-fval="hochfest">💪 Hochfest</button><button class="fchip" data-fgroup="eigen" data-fval="verschleissfest">⚙️ Verschleißfest</button><button class="fchip" data-fgroup="eigen" data-fval="flexibel">〰️ Flexibel</button><button class="fchip" data-fgroup="eigen" data-fval="lebensmittelecht">🍎 Lebensmittelecht</button><button class="fchip" data-fgroup="eigen" data-fval="biokompatibel">✚ Biokompatibel</button><button class="fchip" data-fgroup="eigen" data-fval="transparent">💎 Transparent</button><button class="fchip" data-fgroup="eigen" data-fval="uv-bestaendig">☀️ UV-beständig</button><button class="fchip" data-fgroup="eigen" data-fval="flammhemmend">🛡️ Flammhemmend</button><button class="fchip" data-fgroup="eigen" data-fval="leichtgewicht">🪶 Leichtgewicht</button><button class="fchip" data-fgroup="eigen" data-fval="waermeleitend">♨️ Wärmeleitend</button><button class="fchip" data-fgroup="eigen" data-fval="elektrisch-leitend">🔌 Elektrisch leitend</button><button class="fchip" data-fgroup="eigen" data-fval="esd">⚡ ESD-ableitfähig</button><button class="fchip" data-fgroup="eigen" data-fval="wasserbestaendig">💧 Wasserbeständig</button><button class="fchip" data-fgroup="eigen" data-fval="cf-verstaerkt">🏎️ Faserverstärkt</button><button class="fchip" data-fgroup="eigen" data-fval="bio">🌱 Bio-basiert</button><button class="fchip" data-fgroup="eigen" data-fval="dekorativ">🎨 Dekorativ</button><button class="fchip" data-fgroup="eigen" data-fval="guenstig">💰 Kostengünstig</button><button class="fchip" data-fgroup="eigen" data-fval="wasserloeslich">🫧 Wasserlöslich</button><button class="fchip" data-fgroup="eigen" data-fval="gussform">🏭 Für Metallguss</button></div></div>
+  <div class="fgrp"><div class="fgrp__label">Bauteilanwendung</div><div class="frow"><button class="fchip" data-fgroup="bauteil" data-fval="zahnrad">⚙️ Zahnräder</button><button class="fchip" data-fgroup="bauteil" data-fval="lager">🔩 Lager</button><button class="fchip" data-fgroup="bauteil" data-fval="gehaeuse">📦 Gehäuse</button><button class="fchip" data-fgroup="bauteil" data-fval="werkzeug">🔧 Werkzeuge</button><button class="fchip" data-fgroup="bauteil" data-fval="schuhsohle">👟 Schuhsohlen</button><button class="fchip" data-fgroup="bauteil" data-fval="orthese">🦿 Orthesen</button><button class="fchip" data-fgroup="bauteil" data-fval="drohne">🚁 Drohnen</button><button class="fchip" data-fgroup="bauteil" data-fval="leichtbau">🏗️ Leichtbau</button><button class="fchip" data-fgroup="bauteil" data-fval="dichtung">〇 Dichtungen</button><button class="fchip" data-fgroup="bauteil" data-fval="daempfer">〜 Dämpfer</button><button class="fchip" data-fgroup="bauteil" data-fval="schmuck">💍 Schmuck</button><button class="fchip" data-fgroup="bauteil" data-fval="gusskern">🏭 Gusskerne</button><button class="fchip" data-fgroup="bauteil" data-fval="prototyp">🧩 Prototyp</button><button class="fchip" data-fgroup="bauteil" data-fval="halterung">🪝 Halterung</button><button class="fchip" data-fgroup="bauteil" data-fval="messemodell">🏆 Messemodell</button><button class="fchip" data-fgroup="bauteil" data-fval="automobil">🚗 Automobil</button><button class="fchip" data-fgroup="bauteil" data-fval="elektronik">🖥️ Elektronik</button><button class="fchip" data-fgroup="bauteil" data-fval="sport">🏃 Sport</button><button class="fchip" data-fgroup="bauteil" data-fval="robotik">🤖 Robotik</button><button class="fchip" data-fgroup="bauteil" data-fval="labor">🔬 Labor</button><button class="fchip" data-fgroup="bauteil" data-fval="medizin">🏥 Medizin</button><button class="fchip" data-fgroup="bauteil" data-fval="greifer">🦾 Greifer</button><button class="fchip" data-fgroup="bauteil" data-fval="waermetauscher">♨️ Wärmetauscher</button><button class="fchip" data-fgroup="bauteil" data-fval="luftfahrt">✈️ Luftfahrt</button></div></div>
+</div></div>
+
+<div class="wrap">
+  <div class="resultbar"><span><b id="count">74</b> Materialien gefunden</span><button class="reset" id="reset">Filter zurücksetzen ×</button></div>
+  <div class="grid" id="grid">
+<article class="mcard" data-verfahren="fdm" data-eigen="hitzebestaendig verschleissfest" data-bauteil="automobil elektronik gehaeuse halterung messemodell prototyp" data-name="abs" data-keywords="elektronikgehäuse schaltkasten kfz innenverkleidung fernbedienung dashboard clip spielzeug aceton">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">ABS</h3>
+<p class="mcard__sub">Bewährter Konstruktionswerkstoff mit guter Wärmebeständigkeit und Schlagzähigkeit, mit Aceton glättbar. Klassiker für Elektronikgehäuse und Funktionsbauteile.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">⚙️ Verschleißfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/abs" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="uv-bestaendig hitzebestaendig wasserbestaendig" data-bauteil="automobil drohne gehaeuse halterung prototyp" data-name="asa" data-keywords="außenschild kfz solarhalterung garten motorrad boot antenne wetterfest outdoor balkon">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">ASA</h3>
+<p class="mcard__sub">UV- und witterungsbeständig, farbstabil und nicht vergilbend. Erste Wahl für den Dauereinsatz im Freien.</p>
+<div class="mcard__chips"><span class="pchip">☀️ UV-beständig</span><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">💧 Wasserbeständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/asa" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="lebensmittelecht bio hitzebestaendig" data-bauteil="gehaeuse messemodell prototyp" data-name="greentec pro" data-keywords="lebensmittelecht fda küche besteck behälter greentec bio nachhaltig kompostierbar">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">GreenTEC PRO</h3>
+<p class="mcard__sub">FDA- und lebensmittelzertifiziertes Biopolymer für direkten Lebensmittelkontakt. Biobasiert, langlebiger und wärmebeständiger als PLA.</p>
+<div class="mcard__chips"><span class="pchip">🍎 Lebensmittelecht</span><span class="pchip">🌱 Bio-basiert</span><span class="pchip">🌡️ Hitzebeständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/greentec-pro" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="leichtgewicht dekorativ" data-bauteil="prototyp messemodell gehaeuse" data-name="hips" data-keywords="stützmaterial support löslich limonen abs dekor kulisse">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">HIPS</h3>
+<p class="mcard__sub">Hochschlagzähes Polystyrol, primär als Stützmaterial für ABS. Löst sich rückstandsfrei in d-Limonen. Auch für leichte Kulissen und Dekorteile.</p>
+<div class="mcard__chips"><span class="pchip">🪶 Leichtgewicht</span><span class="pchip">🎨 Dekorativ</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/hips" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="dekorativ bio" data-bauteil="messemodell prototyp schmuck" data-name="holz-filament" data-keywords="holzoptik holz dekorativ geschenk skulptur vase echtholz natürlich">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">Holz-Filament</h3>
+<p class="mcard__sub">PLA mit echten Holzpartikeln (Weide, Kiefer, Eiche, Olive u. a.). Schleifbar, natürliche Holzoptik und -haptik. Für Deko, Geschenke und Kunst.</p>
+<div class="mcard__chips"><span class="pchip">🎨 Dekorativ</span><span class="pchip">🌱 Bio-basiert</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/holz-filament" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="verschleissfest chemikalienbestaendig hitzebestaendig" data-bauteil="lager robotik zahnrad" data-name="igus iglidur" data-keywords="gleitlager selbstschmierend wartungsfrei zahnrad buchse führung igus tribopolymer reibung roboter">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">Igus iglidur</h3>
+<p class="mcard__sub">Selbstschmierende, wartungsfreie Hochleistungspolymere mit sehr niedrigen Reibwerten. Erste Wahl für Gleitlager, Zahnräder und Führungen ohne Schmiermittel.</p>
+<div class="mcard__chips"><span class="pchip">⚙️ Verschleißfest</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">🌡️ Hitzebeständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/iglidur" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="leichtgewicht" data-bauteil="drohne leichtbau sport luftfahrt" data-name="lw materialien (lightweight)" data-keywords="leichtbau drohne rc flugzeug uav gewicht mikrogeschäumt lightweight aerodynamik">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">LW Materialien (Lightweight)</h3>
+<p class="mcard__sub">Mikrogeschäumte Filamente, bis zu 50 % leichter als Standard-PLA/-ASA. Für RC-Flugzeuge, Drohnen und gewichtskritische Bauteile.</p>
+<div class="mcard__chips"><span class="pchip">🪶 Leichtgewicht</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/lw-materialien" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="hitzebestaendig chemikalienbestaendig hochfest" data-bauteil="automobil halterung lager robotik werkzeug zahnrad" data-name="paek" data-keywords="ultra hochleistung low melt peek lmpaek aerospace struktur extrem hochfest verbund">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PAEK</h3>
+<p class="mcard__sub">Ultra-Hochleistungspolymer der PEEK-Familie mit einfacherer Verarbeitung. Für strukturkritische Luft- und Raumfahrtteile.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">💪 Hochfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/paek" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="hitzebestaendig transparent hochfest" data-bauteil="gehaeuse halterung labor prototyp" data-name="pc" data-keywords="schutzvisor schutzscheibe linse helm optik schlagfest transparent sichtfenster">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PC</h3>
+<p class="mcard__sub">Polycarbonat mit höchster Schlagzähigkeit und optionaler Transparenz. Für Schutzvisiere, Maschinenabdeckungen und thermisch beanspruchte Gehäuse.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">💎 Transparent</span><span class="pchip">💪 Hochfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pc" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="hitzebestaendig hochfest" data-bauteil="automobil elektronik gehaeuse halterung robotik" data-name="pc-abs" data-keywords="flammschutz ul94 gehäuse elektronik kfz innenverkleidung schaltkasten brandschutz">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PC-ABS</h3>
+<p class="mcard__sub">Blend aus PC und ABS: Schlagzähigkeit von ABS plus Wärmebeständigkeit von PC. Flammhemmend (UL 94 V-0 in FR-Variante) für Elektronik und Kfz-Innenteile.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">💪 Hochfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pc-abs" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="transparent chemikalienbestaendig lebensmittelecht" data-bauteil="dichtung gehaeuse labor prototyp" data-name="pctg" data-keywords="sichtfenster behälter lebensmittel klar transparent medizinisch sterilisierbar trinkflasche">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PCTG</h3>
+<p class="mcard__sub">Kristallklares PETG-Derivat mit besserer Schlagzähigkeit und höherer Transparenz. Für Behälter, Medizingehäuse und Sichtfenster.</p>
+<div class="mcard__chips"><span class="pchip">💎 Transparent</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">🍎 Lebensmittelecht</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pctg" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="chemikalienbestaendig lebensmittelecht wasserbestaendig" data-bauteil="daempfer dichtung labor" data-name="pe / hdpe" data-keywords="hdpe behälter chemisch säure lauge schlauch tank wasserbeständig lebensmittel">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PE / HDPE</h3>
+<p class="mcard__sub">Polyethylen mit sehr guter Chemikalienbeständigkeit gegen Säuren, Laugen und Lösungsmittel. Lebensmittelecht. Für Behälter, Tanks und Schutzhüllen.</p>
+<div class="mcard__chips"><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">🍎 Lebensmittelecht</span><span class="pchip">💧 Wasserbeständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pe-hdpe" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="hitzebestaendig chemikalienbestaendig biokompatibel hochfest" data-bauteil="automobil lager robotik werkzeug zahnrad medizin luftfahrt" data-name="peek" data-keywords="implantat wirbelsäule pumpenrad ventil lager endoskop reinraum gleitlager biokompatibel">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PEEK</h3>
+<p class="mcard__sub">Hochleistungskunststoff für extreme Anforderungen: dauerhaft bis 250 °C, biokompatibel und chemikalienbeständig. Standard in Luftfahrt und Medizintechnik.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">✚ Biokompatibel</span><span class="pchip">💪 Hochfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/peek" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="hitzebestaendig flammhemmend chemikalienbestaendig" data-bauteil="elektronik gehaeuse werkzeug" data-name="pei (ultem)" data-keywords="flugzeug kabine luftfahrt far 25.853 sterilisierbar autoklav medizin ultem aerospace">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PEI (Ultem)</h3>
+<p class="mcard__sub">Einziger FDM-Kunststoff mit Luftfahrtzertifizierung (FAR 25.853). Bis 200 °C belastbar, flammhemmend, sterilisierbar. Für Flugzeugkabinen und Medizininstrumente.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">🛡️ Flammhemmend</span><span class="pchip">⚗️ Chem. beständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pei" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="chemikalienbestaendig lebensmittelecht" data-bauteil="daempfer dichtung elektronik gehaeuse halterung prototyp" data-name="petg" data-keywords="halterung monitorständer behälter schlauch maschinenverkleidung aquarium kabelkanal">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PETG</h3>
+<p class="mcard__sub">Schlagzäh, chemikalienbeständig und optional lebensmittelecht. Verbindet die einfache Verarbeitung von PLA mit deutlich besserer Zähigkeit.</p>
+<div class="mcard__chips"><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">🍎 Lebensmittelecht</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/petg" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="bio lebensmittelecht" data-bauteil="prototyp" data-name="pha" data-keywords="kompostierbar biologisch abbaubar nachhaltig umwelt einwegartikel verpackung pflanzenbasiert">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PHA</h3>
+<p class="mcard__sub">Vollständig kompostierbares Biopolymer, 100 % in Heimkompost abbaubar. Für umweltfreundliche Einwegartikel, Verpackungsprototypen und Gartenprodukte.</p>
+<div class="mcard__chips"><span class="pchip">🌱 Bio-basiert</span><span class="pchip">🍎 Lebensmittelecht</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pha" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="guenstig bio" data-bauteil="gusskern messemodell prototyp schmuck" data-name="pla" data-keywords="figur modell architektur skulptur schild vase deko prototyp cosplay spielzeug miniatur">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PLA</h3>
+<p class="mcard__sub">Einstiegskunststoff, formstabil bei Raumtemperatur, sehr gute Detailauflösung und viele Farben. Für Prototypen, Modelle und Sichtteile ohne Wärmebelastung.</p>
+<div class="mcard__chips"><span class="pchip">💰 Kostengünstig</span><span class="pchip">🌱 Bio-basiert</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pla" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="hitzebestaendig hochfest chemikalienbestaendig" data-bauteil="zahnrad lager werkzeug halterung" data-name="ppa" data-keywords="semi-aromatisch hochfest kfz motorraum ventil turbo ansaugkrümmer hochtemperatur strukturbauteil">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PPA</h3>
+<p class="mcard__sub">Semi-aromatisches Hochleistungspolyamid: hohe Festigkeit (CF bis 210 MPa) und Wärmebeständigkeit bis 180 °C. Für Kfz-Motorraum und tragende Halterungen.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">💪 Hochfest</span><span class="pchip">⚗️ Chem. beständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/ppa" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="hitzebestaendig chemikalienbestaendig flammhemmend" data-bauteil="automobil elektronik gehaeuse halterung lager zahnrad" data-name="pps" data-keywords="pumpengehäuse ventilkörper chemisch säure lauge lösungsmittel elektronik automobilzulieferer hochtemperatur">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PPS</h3>
+<p class="mcard__sub">Eines der chemikalienbeständigsten FDM-Materialien, beständig gegen fast alle Lösungsmittel, Säuren und Laugen. Für Pumpengehäuse und Ventilkörper.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">🛡️ Flammhemmend</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pps" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="hitzebestaendig biokompatibel chemikalienbestaendig" data-bauteil="werkzeug halterung" data-name="ppsu" data-keywords="autoklav sterilisation chirurgisch instrument kassette medizinisch hochtemperatur dampf wiederverwendbar steril">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PPSU</h3>
+<p class="mcard__sub">Autoklavierbar bis 134 °C mit höchster Hydrolysestabilität. Für wiederverwendbare Medizininstrumente, Sterilisierkassetten und OP-Schablonen.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">✚ Biokompatibel</span><span class="pchip">⚗️ Chem. beständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/ppsu" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="wasserloeslich" data-bauteil="prototyp" data-name="pva" data-keywords="stützmaterial support löslich wasser wasserlöslich pva überhang dual hinterschnitt">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PVA</h3>
+<p class="mcard__sub">Wasserlösliches Stützmaterial für komplexe Geometrien mit Überhängen und Hinterschnitten. Löst sich rückstandsfrei in warmem Wasser auf.</p>
+<div class="mcard__chips"><span class="pchip">🫧 Wasserlöslich</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pva" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm pulver" data-eigen="chemikalienbestaendig flexibel bio" data-bauteil="daempfer dichtung orthese schuhsohle sport medizin" data-name="pa 11" data-keywords="bio-basiert rizinusöl prothese schuhsohle einlegesohle flexibel schlauch">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">PA 11</h3>
+<p class="mcard__sub">Biobasiertes Polyamid aus Rizinusöl, zäher und flexibler als PA12. Bevorzugt für Sportsohlen, flexible Schläuche und Prothesen mit Stoßabsorption.</p>
+<div class="mcard__chips"><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">〰️ Flexibel</span><span class="pchip">🌱 Bio-basiert</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pa11" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm pulver" data-eigen="chemikalienbestaendig verschleissfest" data-bauteil="automobil halterung lager orthese schuhsohle zahnrad medizin greifer" data-name="pa 12" data-keywords="sls einlegesohle laufsohle prothese knochenmodell rahmen kanal rohr funktionsbauteil">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">PA 12</h3>
+<p class="mcard__sub">Meistgenutztes SLS-Material weltweit: maßhaltig, chemikalienbeständig, ohne Stützstruktur druckbar. Standard für Schuhsohlen, Prothesen und Funktionsbauteile.</p>
+<div class="mcard__chips"><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">⚙️ Verschleißfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pa12" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm pulver" data-eigen="hochfest verschleissfest hitzebestaendig" data-bauteil="zahnrad lager werkzeug gehaeuse automobil halterung" data-name="pa 6" data-keywords="zahnrad gleitlager buchse scharnier ansaugkrümmer kfz motorraum riemenscheibe industrienylon">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">PA 6</h3>
+<p class="mcard__sub">Industrienylon mit hohem Steifigkeits-Zähigkeits-Verhältnis, gut spanbar. Als CF/GF-Variante für tragende Teile. Klassisch für Zahnräder und Lager.</p>
+<div class="mcard__chips"><span class="pchip">💪 Hochfest</span><span class="pchip">⚙️ Verschleißfest</span><span class="pchip">🌡️ Hitzebeständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pa6" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm pulver" data-eigen="chemikalienbestaendig hitzebestaendig" data-bauteil="elektronik gehaeuse halterung" data-name="pbt" data-keywords="steckverbinder elektrisch isolation kontaktträger spulenträger motorgehäuse relais kfz glasfaserverstärkt">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">PBT</h3>
+<p class="mcard__sub">Exzellente elektrische Isolation, gute Dimensionsstabilität und Chemikalienbeständigkeit. Standard in der Elektroindustrie für Steckverbinder und Spulenträger.</p>
+<div class="mcard__chips"><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">🌡️ Hitzebeständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pbt" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm pulver" data-eigen="hitzebestaendig chemikalienbestaendig hochfest" data-bauteil="elektronik halterung lager werkzeug zahnrad greifer luftfahrt" data-name="pekk" data-keywords="aerospace luft raumfahrt hochleistung peek alternative sls esd antero lager pumpe chemisch inert">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">PEKK</h3>
+<p class="mcard__sub">PEEK-Alternative mit besserer SLS-Verarbeitbarkeit, dauerhaft bis 250 °C und chemikalienbeständig. Als ESD-Variante für Halbleiter und Raumfahrt.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">💪 Hochfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pekk" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm pulver" data-eigen="chemikalienbestaendig lebensmittelecht leichtgewicht" data-bauteil="daempfer dichtung halterung labor" data-name="pp" data-keywords="behälter scharnier trichter laborwanne schlauch lebensmittelbehälter säurebehälter filmgelenk trinkwasser">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">PP</h3>
+<p class="mcard__sub">Leichtestes Standardpolymer, chemikalienbeständig und FDA-konform. Ermüdungsresistent für lebende Scharniere. Für Behälter mit Säure-/Laugenkontakt und Labor.</p>
+<div class="mcard__chips"><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">🍎 Lebensmittelecht</span><span class="pchip">🪶 Leichtgewicht</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pp" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm pulver" data-eigen="flexibel verschleissfest chemikalienbestaendig" data-bauteil="daempfer dichtung orthese schuhsohle sport greifer" data-name="tpu / tpe" data-keywords="schuhsohle einlegesohle dichtung dämpfer griffstück robotergreifer handyhülle puffer reifen vibration weich gummi">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">TPU / TPE</h3>
+<p class="mcard__sub">Elastisch, abriebfest und schlagabsorbierend, Shore-Härte von 60A bis 98A. Für Dichtungen, Dämpfer, Schuhsohlen und Griffstücke, die sich verformen müssen.</p>
+<div class="mcard__chips"><span class="pchip">〰️ Flexibel</span><span class="pchip">⚙️ Verschleißfest</span><span class="pchip">⚗️ Chem. beständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/tpu" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="pulver" data-eigen="flexibel leichtgewicht biokompatibel" data-bauteil="daempfer dichtung orthese schuhsohle sport" data-name="peba" data-keywords="laufsohle sportschuh dämpfung hochelastisch gummiersatz dichtung membrane medizin elastomer marathon">
+<div class="mcard__badges"><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">PEBA</h3>
+<p class="mcard__sub">Thermoplastisches Elastomer, federnder als TPU mit niedrigem Drucksatz. Erste Wahl für Hochleistungs-Laufsohlen, Schuheinlagen und federelastische Dichtungen.</p>
+<div class="mcard__chips"><span class="pchip">〰️ Flexibel</span><span class="pchip">🪶 Leichtgewicht</span><span class="pchip">✚ Biokompatibel</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/peba" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="endlos" data-eigen="cf-verstaerkt hochfest leichtgewicht" data-bauteil="drohne halterung leichtbau sport werkzeug greifer luftfahrt" data-name="endlosfaser-verbund" data-keywords="montagejig drohne roboter greifer halterung leichtbau aluminium ersatz carbon kevlar glasfaser fixture jig">
+<div class="mcard__badges"><span class="vbadge">CFF</span></div>
+<h3 class="mcard__name">Endlosfaser-Verbund</h3>
+<p class="mcard__sub">Endlose Carbon-, Glas- oder Kevlarfaser in Polymermatrix, Steifigkeit nahe CFK-Laminat. Für Montagejigs, Roboterhalterungen und Leichtbau als Aluminium-Ersatz.</p>
+<div class="mcard__chips"><span class="pchip">🏎️ Faserverstärkt</span><span class="pchip">💪 Hochfest</span><span class="pchip">🪶 Leichtgewicht</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/endlosfaser" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm resin" data-eigen="transparent uv-bestaendig" data-bauteil="messemodell prototyp" data-name="pmma (acrylglas)" data-keywords="acrylglas klar optisch sichtfenster glasersatz durchsichtig transparent linse display schutzscheibe zahntechnik">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">PMMA (Acrylglas)</h3>
+<p class="mcard__sub">Das transparenteste 3D-druckbare Thermoplast. Für optische Sichtfenster, Leuchtgehäuse und Zahntechnik-Modelle mit hoher Lichtdurchlässigkeit.</p>
+<div class="mcard__chips"><span class="pchip">💎 Transparent</span><span class="pchip">☀️ UV-beständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pmma" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="transparent hitzebestaendig chemikalienbestaendig" data-bauteil="halterung labor werkzeug" data-name="glas (fused silica)" data-keywords="glas optik linse prisma mikrofluidik laborchip fused silica quarzglas uv infrarot hochpräzision">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Glas (Fused Silica)</h3>
+<p class="mcard__sub">3D-gedrucktes Quarzglas, chemisch identisch mit Kieselglas. Optisch transparent von UV bis Infrarot, thermisch und chemisch stabil. Für Mikrooptik und Laborchips.</p>
+<div class="mcard__chips"><span class="pchip">💎 Transparent</span><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">⚗️ Chem. beständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/glas" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="hitzebestaendig verschleissfest chemikalienbestaendig biokompatibel" data-bauteil="labor lager zahnrad waermetauscher" data-name="keramik" data-keywords="isolator düse zahnkrone gleitlager messer hochtemperatur aluminiumoxid zirkon keramisch hart inert">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Keramik</h3>
+<p class="mcard__sub">Aluminiumoxid (Al2O3) und Zirkonoxid (ZrO2) für Extreme: bis 1600 °C stabil, elektrisch isolierend und chemisch inert. Für Zahnkronen, Isolatoren und Düsen.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">⚙️ Verschleißfest</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">✚ Biokompatibel</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/keramik" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="guenstig dekorativ" data-bauteil="gusskern messemodell prototyp schmuck" data-name="resin standard" data-keywords="prototyp modell miniatur figur display architektur tabletop schmuck ornament transparent klar">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Resin Standard</h3>
+<p class="mcard__sub">Günstigster Einstieg in den Resin-Druck mit höchster Detailauflösung. Für Prototypen, Architekturmodelle, Miniaturen und Sichtteile.</p>
+<div class="mcard__chips"><span class="pchip">💰 Kostengünstig</span><span class="pchip">🎨 Dekorativ</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-standard" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="hochfest verschleissfest" data-bauteil="gehaeuse messemodell prototyp werkzeug" data-name="resin tough" data-keywords="gehäuse clip schnappverbindung halterung funktionsbauteil schlagzäh biegesteif abs-ähnlich">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Resin Tough</h3>
+<p class="mcard__sub">Schlagzäh und biegesteif (ABS-ähnlich). Für Funktionsbauteile, Schnappverbindungen und mechanisch belastete Teile.</p>
+<div class="mcard__chips"><span class="pchip">💪 Hochfest</span><span class="pchip">⚙️ Verschleißfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-tough" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="flexibel" data-bauteil="dichtung daempfer" data-name="resin flexibel" data-keywords="dichtung gummi elastisch flexibel weich stoßdämpfer griff puffer tülle">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Resin Flexibel</h3>
+<p class="mcard__sub">Gummiartig elastisch für Dichtungen, Griffe, Stoßdämpfer und biegsame Strukturen.</p>
+<div class="mcard__chips"><span class="pchip">〰️ Flexibel</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-flexibel" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="hitzebestaendig chemikalienbestaendig" data-bauteil="werkzeug halterung" data-name="resin hitzebeständig" data-keywords="gießform formenbau hochtemperatur hitze hdt wärme motorpart automotive aerospace">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Resin Hitzebeständig</h3>
+<p class="mcard__sub">Hohe Wärmeformbeständigkeit bis über 200 °C. Für Gießformen, thermische Prüfteile und Hochtemperaturanwendungen.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">⚗️ Chem. beständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-hitzebestaendig" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="flammhemmend" data-bauteil="elektronik gehaeuse halterung" data-name="resin flammhemmend" data-keywords="brandschutz flammhemmend ul94 v0 elektronik kabelhalter schaltkasten esd">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Resin Flammhemmend</h3>
+<p class="mcard__sub">UL94 V-0 zertifiziert. Für Elektronikgehäuse, Kabelhalter und Bauteile mit Brandschutzanforderungen.</p>
+<div class="mcard__chips"><span class="pchip">🛡️ Flammhemmend</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-flammhemmend" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="biokompatibel" data-bauteil="medizin" data-name="resin dental" data-keywords="zahnschiene aligner krone brücke zahnmodell bohrschablone dental prothese biokompatibel steril">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Resin Dental</h3>
+<p class="mcard__sub">ISO 10993 und CE-zertifiziert. Für Zahnschienen, Bohrschablonen, Modelle, Kronen und Prothesen.</p>
+<div class="mcard__chips"><span class="pchip">✚ Biokompatibel</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-dental" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="gussform" data-bauteil="schmuck gusskern" data-name="resin castable wax" data-keywords="schmuck ring anhänger feinguss wachs casting ausbrennbar goldschmied silber bronze kunstguss">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Resin Castable Wax</h3>
+<p class="mcard__sub">Ausbrennbares Wachsmodell für den Feinguss. Für Schmuck, Kunstguss und komplexe Metallguss-Geometrien, rückstandsfrei.</p>
+<div class="mcard__chips"><span class="pchip">🏭 Für Metallguss</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-castable-wax" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="hochfest hitzebestaendig verschleissfest" data-bauteil="gehaeuse halterung werkzeug labor prototyp automobil" data-name="resin rigid" data-keywords="rigid 10k glasgefüllt steif hochsteif spritzgussersatz jig fixture">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Resin Rigid</h3>
+<p class="mcard__sub">Glasgefülltes Hochleistungsharz, der steifste Resin-Werkstoff. Für Präzisionsbauteile unter Last: Spritzgussersatz, Jigs, Fixtures und Testmodelle.</p>
+<div class="mcard__chips"><span class="pchip">💪 Hochfest</span><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">⚙️ Verschleißfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-rigid" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="esd" data-bauteil="elektronik halterung werkzeug gehaeuse labor" data-name="resin esd" data-keywords="esd safe elektrostatisch dissipativ pcb handling elektronikfertigung antistatisch">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Resin ESD</h3>
+<p class="mcard__sub">Elektrostatisch ableitfähig, schützt empfindliche Bauteile in der Elektronikfertigung. Für Trays, Carrier, Fertigungsjigs und PCB-Halter.</p>
+<div class="mcard__chips"><span class="pchip">⚡ ESD-ableitfähig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-esd" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="biokompatibel" data-bauteil="medizin labor orthese prototyp halterung" data-name="resin biomed" data-keywords="biomed biokompatibel iso 10993 medizinprodukt sterilisierbar chirurgisch fda">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Resin BioMed</h3>
+<p class="mcard__sub">ISO-10993-zertifiziertes Medizinharz für Haut- und Schleimhautkontakt. Sterilisierbar per Autoklav, E-Beam und Gamma. Für Instrumente und OP-Führungen.</p>
+<div class="mcard__chips"><span class="pchip">✚ Biokompatibel</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-biomed" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="transparent" data-bauteil="prototyp messemodell labor gehaeuse" data-name="resin klar" data-keywords="klar transparent optisch sichtfenster lichtleiter linse fluidik clear acrylähnlich">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Resin Klar</h3>
+<p class="mcard__sub">Optisch klares Harz, polierbar bis nahezu optischer Transparenz. Für Sichtfenster, Lichtleiter, Fluidikkanäle und Gehäuse mit sichtbarem Innenleben.</p>
+<div class="mcard__chips"><span class="pchip">💎 Transparent</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-klar" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="polyjet" data-eigen="flexibel biokompatibel hitzebestaendig lebensmittelecht" data-bauteil="daempfer dichtung labor" data-name="silikon" data-keywords="hörgerät dichtung medizin baby lebensmittel steril atemmaske weich gummi hautverträglich körperkontakt">
+<div class="mcard__badges"><span class="vbadge">PJ</span></div>
+<h3 class="mcard__name">Silikon</h3>
+<p class="mcard__sub">Biokompatibel, temperaturbeständig von -60 bis +200 °C und chemisch inert. Für Hörgeräte-Schalen, Dichtflächen und sterilisierbare medizinische Weichteile.</p>
+<div class="mcard__chips"><span class="pchip">〰️ Flexibel</span><span class="pchip">✚ Biokompatibel</span><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">🍎 Lebensmittelecht</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/silikon" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall" data-eigen="leichtgewicht waermeleitend" data-bauteil="drohne halterung leichtbau robotik werkzeug greifer waermetauscher luftfahrt automobil" data-name="aluminium" data-keywords="kühlkörper drohne motorhalterung leichtbau rennwagen wärmetauscher hydraulikblock uav kühlkanal">
+<div class="mcard__badges"><span class="vbadge">Metall</span></div>
+<h3 class="mcard__name">Aluminium</h3>
+<p class="mcard__sub">Leichtestes Metall im Portfolio. AlSi10Mg für komplexe Kühlstrukturen und Leichtbau. Günstigstes Metallverfahren bei 3D DRUCK LIFE.</p>
+<div class="mcard__chips"><span class="pchip">🪶 Leichtgewicht</span><span class="pchip">♨️ Wärmeleitend</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/aluminium" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall feinguss" data-eigen="verschleissfest chemikalienbestaendig dekorativ" data-bauteil="schmuck gusskern zahnrad lager" data-name="bronze" data-keywords="schmuck ring anhänger dekoration antik kunstguss statue gleitlager buchse bronze kupferzinn">
+<div class="mcard__badges"><span class="vbadge">Metall</span><span class="vbadge">Guss</span></div>
+<h3 class="mcard__name">Bronze</h3>
+<p class="mcard__sub">Kupfer-Zinn-Legierung für dekorative Objekte, Kunstguss-Repliken, Schmuck und korrosionsbeständige Gleitlager.</p>
+<div class="mcard__chips"><span class="pchip">⚙️ Verschleißfest</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">🎨 Dekorativ</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/bronze" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall" data-eigen="biokompatibel verschleissfest hitzebestaendig hochfest" data-bauteil="schmuck medizin luftfahrt" data-name="cobalt-chrom" data-keywords="zahnkrone brücke hüftgelenk kniegelenk herzklappen prothese cobalt chrom dental gelenk">
+<div class="mcard__badges"><span class="vbadge">Metall</span></div>
+<h3 class="mcard__name">Cobalt-Chrom</h3>
+<p class="mcard__sub">Höchste Verschleißfestigkeit aller implantierbaren Metalle. Für Zahnkronen, Brückengerüste, Gelenk-Komponenten und Luftfahrtteile.</p>
+<div class="mcard__chips"><span class="pchip">✚ Biokompatibel</span><span class="pchip">⚙️ Verschleißfest</span><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">💪 Hochfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/cobalt-chrom" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall" data-eigen="hochfest chemikalienbestaendig hitzebestaendig biokompatibel" data-bauteil="automobil halterung schmuck werkzeug waermetauscher medizin luftfahrt" data-name="edelstahl slm / dmls" data-keywords="316l 17-4ph 15-5ph slm dmls laserschmelzen hochfest korrosion chirurgisch lebensmittelecht turbine hydraulik ventil">
+<div class="mcard__badges"><span class="vbadge">Metall</span></div>
+<h3 class="mcard__name">Edelstahl SLM / DMLS</h3>
+<p class="mcard__sub">Laserschmelzen von 316L (biokompatibel, lebensmittelecht), 17-4PH (bis 1400 MPa) u. a. Höchste Dichte für Funktionsteile, Werkzeuge und Wärmetauscher.</p>
+<div class="mcard__chips"><span class="pchip">💪 Hochfest</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">✚ Biokompatibel</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/edelstahl" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall" data-eigen="hochfest chemikalienbestaendig verschleissfest" data-bauteil="automobil halterung werkzeug waermetauscher schmuck" data-name="edelstahl binder jetting" data-keywords="binder jetting 316l 17-4ph serie hochvolumen edelstahl sinter stützstrukturfrei">
+<div class="mcard__badges"><span class="vbadge">Metall</span></div>
+<h3 class="mcard__name">Edelstahl Binder Jetting</h3>
+<p class="mcard__sub">Binder Jetting für Edelstahl, ideal für Serienteile in mittlerer Stückzahl. Günstige Teilekosten, komplexe Geometrien ohne Stützstrukturen.</p>
+<div class="mcard__chips"><span class="pchip">💪 Hochfest</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">⚙️ Verschleißfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/edelstahl-binder-jetting" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall" data-eigen="hitzebestaendig chemikalienbestaendig hochfest" data-bauteil="werkzeug halterung waermetauscher luftfahrt" data-name="inconel" data-keywords="turbine turbinenschaufel rakete düse gasturbine öl gas hochtemperatur oxidation brennkammer triebwerk">
+<div class="mcard__badges"><span class="vbadge">Metall</span></div>
+<h3 class="mcard__name">Inconel</h3>
+<p class="mcard__sub">Nickellegierung für extreme Temperaturen und korrosive Umgebungen, bis über 900 °C. Standard in Flugtriebwerken, Raketen sowie Öl- und Gasindustrie.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">💪 Hochfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/inconel" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall feinguss" data-eigen="elektrisch-leitend waermeleitend chemikalienbestaendig" data-bauteil="gehaeuse waermetauscher elektronik" data-name="kupfer" data-keywords="induktor kühlkörper elektrode spule leitfähig elektrisch thermisch schweißdüse stromschiene kontakt">
+<div class="mcard__badges"><span class="vbadge">Metall</span><span class="vbadge">Guss</span></div>
+<h3 class="mcard__name">Kupfer</h3>
+<p class="mcard__sub">Höchste elektrische und thermische Leitfähigkeit aller druckbaren Metalle. Für Induktionsspulen, Kühlkörper mit Mikrokanälen und Schweißdüsen.</p>
+<div class="mcard__chips"><span class="pchip">🔌 Elektrisch leitend</span><span class="pchip">♨️ Wärmeleitend</span><span class="pchip">⚗️ Chem. beständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/kupfer" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall feinguss" data-eigen="dekorativ chemikalienbestaendig" data-bauteil="schmuck gusskern zahnrad lager" data-name="messing" data-keywords="messing schmuck ring dekoration vergolden galvanisch kupferzink beschlag musikinstrument ventil">
+<div class="mcard__badges"><span class="vbadge">Metall</span><span class="vbadge">Guss</span></div>
+<h3 class="mcard__name">Messing</h3>
+<p class="mcard__sub">Kupfer-Zink-Legierung für dekorative und funktionale Bauteile, gut galvanisierbar. Für Schmuck, Beschläge, Instrumenten-Komponenten und Armaturen.</p>
+<div class="mcard__chips"><span class="pchip">🎨 Dekorativ</span><span class="pchip">⚗️ Chem. beständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/messing" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall" data-eigen="leichtgewicht hochfest biokompatibel chemikalienbestaendig" data-bauteil="drohne leichtbau robotik medizin waermetauscher luftfahrt" data-name="titan tial6v4" data-keywords="hüftimplantat knieimplantat wirbelsäule zahnimplantat schädelplatte rennrad leichtbau spant rippe">
+<div class="mcard__badges"><span class="vbadge">Metall</span></div>
+<h3 class="mcard__name">Titan TiAl6V4</h3>
+<p class="mcard__sub">Leicht, hochfest und biokompatibel, bestes Festigkeit-Gewicht-Verhältnis aller Metalle. Standard für Implantate, Knochenplatten und Luftfahrt-Strukturteile.</p>
+<div class="mcard__chips"><span class="pchip">🪶 Leichtgewicht</span><span class="pchip">💪 Hochfest</span><span class="pchip">✚ Biokompatibel</span><span class="pchip">⚗️ Chem. beständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/titan" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall" data-eigen="hochfest verschleissfest hitzebestaendig" data-bauteil="werkzeug halterung automobil" data-name="werkzeugstahl" data-keywords="spritzgussform stanzwerkzeug druckgussform tiefziehen gesenk konforme kühlung formeinsatz maraging werkzeugbau">
+<div class="mcard__badges"><span class="vbadge">Metall</span></div>
+<h3 class="mcard__name">Werkzeugstahl</h3>
+<p class="mcard__sub">Maraging Steel 1.2709 und H13 für höchste Beanspruchung. Erlaubt konforme Kühlkanäle direkt in Spritzgussformen, senkt Zykluszeit um 30 bis 50 %.</p>
+<div class="mcard__chips"><span class="pchip">💪 Hochfest</span><span class="pchip">⚙️ Verschleißfest</span><span class="pchip">🌡️ Hitzebeständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/werkzeugstahl" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall" data-eigen="dekorativ" data-bauteil="gehaeuse halterung" data-name="zink (zamak)" data-keywords="zink zamak druckguss druckgussprototyp serienähnlich zinklegierung gehäuse beschlag knopf dekor">
+<div class="mcard__badges"><span class="vbadge">Metall</span></div>
+<h3 class="mcard__name">Zink (Zamak)</h3>
+<p class="mcard__sub">Zamak 5 für funktionale Prototypen serienähnlicher Druckgussbauteile. Testet Form, Funktion und Oberfläche, bevor teure Druckguss-Werkzeuge entstehen.</p>
+<div class="mcard__chips"><span class="pchip">🎨 Dekorativ</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/zink" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall feinguss" data-eigen="gussform hitzebestaendig" data-bauteil="werkzeug gehaeuse" data-name="verbund / sandguss" data-keywords="sandguss sandform binder jetting giesskern giessform aluminium eisen bronze casting kern giesserei">
+<div class="mcard__badges"><span class="vbadge">Metall</span><span class="vbadge">Guss</span></div>
+<h3 class="mcard__name">Verbund / Sandguss</h3>
+<p class="mcard__sub">Quarzsand mit Furanharz: gedruckte Gussformen und Gießkerne für die klassische Gießerei. Kein Werkzeug, komplexe Innengeometrien in Kleinserie.</p>
+<div class="mcard__chips"><span class="pchip">🏭 Für Metallguss</span><span class="pchip">🌡️ Hitzebeständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/verbund-sandguss" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="polyjet pulver" data-eigen="dekorativ" data-bauteil="messemodell prototyp schmuck" data-name="multicolor / vollfarb" data-keywords="vollfarbe bunt mehrfarbig multicolor farbig rgb polyjet mjf vollfarb modell figur präsentation designmodell">
+<div class="mcard__badges"><span class="vbadge">PJ</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">Multicolor / Vollfarb</h3>
+<p class="mcard__sub">Vollfarbige Bauteile in einem Druckgang, ohne Nachbemalen. MJF druckt Nylon in CMYK; PolyJet kombiniert Materialien, Härten und Farben in einem Objekt.</p>
+<div class="mcard__chips"><span class="pchip">🎨 Dekorativ</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/multicolor" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="cnc" data-eigen="leichtgewicht hochfest" data-bauteil="automobil drohne halterung leichtbau robotik werkzeug greifer waermetauscher luftfahrt zahnrad lager elektronik" data-name="cnc aluminium" data-keywords="fräsen drehen cnc spanend zerspanen aluminium passgenau toleranz oberfläche maßhaltig zeichnungsteil">
+<div class="mcard__badges"><span class="vbadge">CNC</span></div>
+<h3 class="mcard__name">CNC Aluminium</h3>
+<p class="mcard__sub">Subtraktive Fertigung aus Vollmaterial in 6 Legierungen. Für höchste Maßhaltigkeit, enge Toleranzen und Passflächen, die im 3D-Druck nicht erreichbar sind.</p>
+<div class="mcard__chips"><span class="pchip">🪶 Leichtgewicht</span><span class="pchip">💪 Hochfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/cnc-aluminium" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm pulver" data-eigen="verschleissfest chemikalienbestaendig hochfest" data-bauteil="zahnrad lager gehaeuse halterung werkzeug" data-name="pa (nylon)" data-keywords="polyamid nylon technisch zahnrad lager buchse abriebfest robust allrounder">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">PA (Nylon)</h3>
+<p class="mcard__sub">Technisches Nylon mit hoher Zähigkeit und Abriebfestigkeit. Robuster Allrounder für mechanisch belastete Funktionsteile wie Zahnräder, Lager und Gehäuse.</p>
+<div class="mcard__chips"><span class="pchip">⚙️ Verschleißfest</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">💪 Hochfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pa" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall" data-eigen="hitzebestaendig chemikalienbestaendig hochfest" data-bauteil="werkzeug halterung waermetauscher luftfahrt" data-name="nickel-legierungen" data-keywords="hastelloy waspaloy nickel superlegierung turbine rakete chemie hochtemperatur korrosion brennkammer">
+<div class="mcard__badges"><span class="vbadge">Metall</span></div>
+<h3 class="mcard__name">Nickel-Legierungen</h3>
+<p class="mcard__sub">Nickel-Basislegierungen (z. B. Hastelloy) für extreme Temperaturen und aggressive Medien bis über 1.000 °C. Für Turbinen, Raketen und Chemieanlagen.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">💪 Hochfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/nickel" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="transparent lebensmittelecht chemikalienbestaendig" data-bauteil="gehaeuse dichtung labor prototyp" data-name="pet" data-keywords="transparent klar lebensmittel sichtfenster steif behälter flasche recycelt rpet">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PET</h3>
+<p class="mcard__sub">Transparent, steif und lebensmittelsicher, klarer und steifer als PETG. Für Sichtfenster, lebensmittelechte Behälter und formstabile Sichtteile.</p>
+<div class="mcard__chips"><span class="pchip">💎 Transparent</span><span class="pchip">🍎 Lebensmittelecht</span><span class="pchip">⚗️ Chem. beständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pet" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="transparent dekorativ" data-bauteil="messemodell prototyp schmuck" data-name="pvb" data-keywords="glättbar isopropanol glänzend transluzent vase leuchte lithophanie sichtteil deko">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PVB</h3>
+<p class="mcard__sub">Mit Isopropanol glättbar zu glänzenden, transluzenten Oberflächen. Für Vasen, Leuchten, Lithophanien und dekorative Sichtteile.</p>
+<div class="mcard__chips"><span class="pchip">💎 Transparent</span><span class="pchip">🎨 Dekorativ</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pvb" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="chemikalienbestaendig flammhemmend" data-bauteil="dichtung gehaeuse labor" data-name="pvc" data-keywords="chemikalienbeständig flammhemmend witterungsfest rohr fitting chemie elektro isolation ventil">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">PVC</h3>
+<p class="mcard__sub">Chemikalienbeständig, flammhemmend und witterungsfest. Für Rohre, Fittings, Chemieteile und Elektroteile mit Brandschutzanforderung.</p>
+<div class="mcard__chips"><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">🛡️ Flammhemmend</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pvc" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="verschleissfest flexibel" data-bauteil="gehaeuse lager dichtung prototyp" data-name="resin durable" data-keywords="durable zäh verschleißfest polypropylen pp-ähnlich schnappverbindung clip lager bewegt">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Resin Durable</h3>
+<p class="mcard__sub">Zäh und verschleißfest wie Polypropylen. Für Schnappverbindungen, Lager, bewegte Teile und robuste Prototypen, die nicht spröde brechen dürfen.</p>
+<div class="mcard__chips"><span class="pchip">⚙️ Verschleißfest</span><span class="pchip">〰️ Flexibel</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-durable" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="resin" data-eigen="dekorativ" data-bauteil="schmuck messemodell prototyp" data-name="resin high detail" data-keywords="high detail feinste auflösung miniatur modellbau schmuck urmodell filigran figur tabletop">
+<div class="mcard__badges"><span class="vbadge">Resin</span></div>
+<h3 class="mcard__name">Resin High Detail</h3>
+<p class="mcard__sub">Feinste Auflösung und glatteste Oberflächen. Für Miniaturen, Modellbau, Schmuck-Urmodelle und filigrane Bauteile mit schärfsten Details.</p>
+<div class="mcard__chips"><span class="pchip">🎨 Dekorativ</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/resin-high-detail" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm pulver" data-eigen="hochfest hitzebestaendig cf-verstaerkt" data-bauteil="zahnrad lager halterung automobil werkzeug" data-name="pa6-gf30" data-keywords="glasfaser gf30 nylon polyamid steif tragend metallersatz zahnrad halterung motorraum konstruktion">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">PA6-GF30</h3>
+<p class="mcard__sub">Polyamid 6 mit 30 % Glasfaser: deutlich steifer, fester und wärmebeständiger als unverstärktes Nylon. Für tragende Bauteile wie Zahnräder, Halterungen und Motorraum-Teile.</p>
+<div class="mcard__chips"><span class="pchip">💪 Hochfest</span><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">🏎️ Faserverstärkt</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pa6-gf30" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="hitzebestaendig flammhemmend biokompatibel lebensmittelecht" data-bauteil="medizin gehaeuse halterung werkzeug luftfahrt" data-name="ultem 1010" data-keywords="ultem pei hochtemperatur biokompatibel sterilisierbar autoklav lebensmittel flammhemmend medizin luftfahrt">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">Ultem 1010</h3>
+<p class="mcard__sub">Leistungsstärkster PEI-Typ: wärmebeständig bis 216 °C, biokompatibel, sterilisierbar, lebensmittelecht und flammhemmend. Für Medizin, Lebensmittel und Luftfahrt.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">🛡️ Flammhemmend</span><span class="pchip">✚ Biokompatibel</span><span class="pchip">🍎 Lebensmittelecht</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/ultem-1010" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm pulver" data-eigen="hochfest hitzebestaendig cf-verstaerkt" data-bauteil="zahnrad lager halterung automobil werkzeug" data-name="pa-gf" data-keywords="glasfaser gf pa12-gf pa6-gf nylon polyamid steif tragend metallersatz konstruktion">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">PA-GF</h3>
+<p class="mcard__sub">Glasfaserverstärktes Polyamid: sehr steif, fest und wärmebeständig. Oberbegriff für PA6-GF und PA12-GF. Für tragende Konstruktionsteile und Metallersatz.</p>
+<div class="mcard__chips"><span class="pchip">💪 Hochfest</span><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">🏎️ Faserverstärkt</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pa-gf" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm pulver" data-eigen="esd chemikalienbestaendig verschleissfest" data-bauteil="elektronik halterung werkzeug gehaeuse labor" data-name="pa-esd" data-keywords="esd ableitfähig antistatisch dissipativ elektronik werkstückträger pcb halbleiter polyamid nylon">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">PA-ESD</h3>
+<p class="mcard__sub">Elektrostatisch ableitfähiges Polyamid: robust und ESD-sicher. Für Werkstückträger, Bauteilaufnahmen und Vorrichtungen in der Elektronikfertigung.</p>
+<div class="mcard__chips"><span class="pchip">⚡ ESD-ableitfähig</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">⚙️ Verschleißfest</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pa-esd" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm pulver" data-eigen="flammhemmend chemikalienbestaendig hitzebestaendig" data-bauteil="elektronik gehaeuse halterung luftfahrt" data-name="pa-fr" data-keywords="flammhemmend fr ul94 v0 brandschutz bahn en45545 luftfahrt elektronik polyamid nylon selbstverlöschend">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">PA-FR</h3>
+<p class="mcard__sub">Flammhemmendes Polyamid (UL94 V-0 möglich): robust und selbstverlöschend. Für Elektronik, Schienenfahrzeuge (EN 45545) und Luftfahrt.</p>
+<div class="mcard__chips"><span class="pchip">🛡️ Flammhemmend</span><span class="pchip">⚗️ Chem. beständig</span><span class="pchip">🌡️ Hitzebeständig</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/pa-fr" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="metall cnc" data-eigen="leichtgewicht hochfest waermeleitend" data-bauteil="halterung leichtbau automobil drohne werkzeug robotik elektronik" data-name="aluminium 6061" data-keywords="6061 almgsi1 knetlegierung schweißbar eloxierbar zerspanbar leichtbau cnc aluminium legierung t6">
+<div class="mcard__badges"><span class="vbadge">Metall</span><span class="vbadge">CNC</span></div>
+<h3 class="mcard__name">Aluminium 6061</h3>
+<p class="mcard__sub">Vielseitige Aluminium-Knetlegierung (AlMgSi1): gut schweiß- und zerspanbar, korrosionsfest und eloxierbar. Für Leichtbau, Halterungen und Funktionsteile.</p>
+<div class="mcard__chips"><span class="pchip">🪶 Leichtgewicht</span><span class="pchip">💪 Hochfest</span><span class="pchip">♨️ Wärmeleitend</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/aluminium-6061" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm" data-eigen="hitzebestaendig flammhemmend leichtgewicht" data-bauteil="luftfahrt gehaeuse halterung werkzeug" data-name="ultem 9085" data-keywords="ultem 9085 pei pc luftfahrt far 25.853 flammhemmend fst kabine bahn leichtbau zertifiziert">
+<div class="mcard__badges"><span class="vbadge">FDM</span></div>
+<h3 class="mcard__name">Ultem 9085</h3>
+<p class="mcard__sub">Luftfahrt-PEI (FAR 25.853): flammhemmend mit geringer Rauchentwicklung (FST) und hohem Festigkeit-Gewicht-Verhältnis. Für Flugzeugkabinen, Bahn und Leichtbau-Strukturteile.</p>
+<div class="mcard__chips"><span class="pchip">🌡️ Hitzebeständig</span><span class="pchip">🛡️ Flammhemmend</span><span class="pchip">🪶 Leichtgewicht</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/ultem-9085" target="_top">Material ansehen →</a>
+</article>
+<article class="mcard" data-verfahren="fdm pulver" data-eigen="cf-verstaerkt hochfest leichtgewicht" data-bauteil="drohne leichtbau halterung werkzeug robotik automobil greifer luftfahrt" data-name="carbon" data-keywords="carbon cf kohlefaser faserverstärkt pa-cf petg-cf peek-cf leichtbau steif drohne vorrichtung jig strukturteil">
+<div class="mcard__badges"><span class="vbadge">FDM</span><span class="vbadge">SLS</span></div>
+<h3 class="mcard__name">Carbon</h3>
+<p class="mcard__sub">Kohlefaserverstärkte Materialien (CF): extrem steif und leicht. Als CF-Variante vieler Kunststoffe (PA-CF, PETG-CF, PEEK-CF) für Leichtbau, Drohnen und Strukturteile.</p>
+<div class="mcard__chips"><span class="pchip">🏎️ Faserverstärkt</span><span class="pchip">💪 Hochfest</span><span class="pchip">🪶 Leichtgewicht</span></div>
+<a class="mcard__btn" href="https://www.3ddrucklife.de/3ddruckmaterial/carbon" target="_top">Material ansehen →</a>
+</article>
+  </div>
+  <div class="noresult" id="noresult">
+    <h3>Kein Treffer</h3>
+    <p>Für diese Kombination haben wir aktuell kein passendes Material gelistet. Setz die Filter zurück oder frag uns direkt – wir beschaffen fast jeden Werkstoff.</p>
+    <a class="btn btn--orange" href="mailto:info@3ddrucklife.de?subject=Materialanfrage" target="_top">Material anfragen</a>
+  </div>
+  <div class="cta">
+    <h3>Material gefunden? Preis sofort berechnen.</h3>
+    <p>3D-Datei hochladen, Material wählen, Preis sofort erhalten – kein Angebot, kein Warten.</p>
+    <a class="btn btn--white" href="https://3ddrucklife.com" target="_top">➜ Preisrechner öffnen</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var q=document.getElementById('q'), grid=document.getElementById('grid'), cards=[].slice.call(grid.querySelectorAll('.mcard'));
+  var count=document.getElementById('count'), noresult=document.getElementById('noresult');
+  var active={verfahren:null,eigen:null,bauteil:null};
+  function apply(){
+    var term=(q.value||'').trim().toLowerCase(), n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(active.verfahren && (c.dataset.verfahren||'').split(' ').indexOf(active.verfahren)<0) ok=false;
+      if(ok && active.eigen && (c.dataset.eigen||'').split(' ').indexOf(active.eigen)<0) ok=false;
+      if(ok && active.bauteil && (c.dataset.bauteil||'').split(' ').indexOf(active.bauteil)<0) ok=false;
+      if(ok && term){
+        var hay=(c.dataset.name+' '+c.dataset.keywords+' '+c.dataset.eigen+' '+c.dataset.bauteil+' '+c.querySelector('.mcard__sub').textContent).toLowerCase();
+        if(hay.indexOf(term)<0) ok=false;
+      }
+      c.style.display=ok?'':'none'; if(ok)n++;
+    });
+    count.textContent=n; noresult.classList.toggle('show',n===0);
+  }
+  q.addEventListener('input',apply);
+  [].slice.call(document.querySelectorAll('.fchip')).forEach(function(ch){
+    ch.addEventListener('click',function(){
+      var g=ch.dataset.fgroup, v=ch.dataset.fval;
+      if(active[g]===v){active[g]=null;ch.classList.remove('active');}
+      else{active[g]=v;[].slice.call(document.querySelectorAll('.fchip[data-fgroup="'+g+'"]')).forEach(function(o){o.classList.remove('active');});ch.classList.add('active');}
+      apply();
+    });
+  });
+  document.getElementById('reset').addEventListener('click',function(){
+    active={verfahren:null,eigen:null,bauteil:null};q.value='';
+    [].slice.call(document.querySelectorAll('.fchip')).forEach(function(o){o.classList.remove('active');});apply();
+  });
+})();
+</script>
+</body></html>
